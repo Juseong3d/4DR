@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: :FDLivePlayerLib-release:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1cd83117bdd6eb549c199edf6302465d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1cd83117bdd6eb549c199edf6302465d/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

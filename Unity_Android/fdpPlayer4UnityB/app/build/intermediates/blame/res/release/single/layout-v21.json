@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Project\\Unity_Android\\fdpPlayer4UnityB\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\d2edfa9876d19d957ca6de68fe61ce4e\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\Project\\Unity_Android\\fdpPlayer4UnityB\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\d2edfa9876d19d957ca6de68fe61ce4e\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Project\\Unity_Android\\fdpPlayer4UnityB\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\d2edfa9876d19d957ca6de68fe61ce4e\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\Project\\Unity_Android\\fdpPlayer4UnityB\\app\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\d2edfa9876d19d957ca6de68fe61ce4e\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]
