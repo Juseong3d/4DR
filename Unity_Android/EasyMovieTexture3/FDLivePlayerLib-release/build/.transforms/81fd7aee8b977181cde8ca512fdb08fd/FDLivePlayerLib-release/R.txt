@@ -1,0 +1,2 @@
+int string lib_name 0x7f150001
+int string lib_version 0x7f150002
