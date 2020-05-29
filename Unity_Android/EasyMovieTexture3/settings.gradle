@@ -1,0 +1,2 @@
+rootProject.name='EasyMovieTexture'
+include ':app', ':FDLivePlayerLib-release'

@@ -15,7 +15,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="D:\Project\_GIT\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
+            file="D:\Project\_GITHUB\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
             line="7"
             column="9"/>
     </issue>
@@ -31,7 +31,7 @@
         errorLine1="    implementation files(&apos;..\\zip_file.jar&apos;)"
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="D:\Project\_GIT\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
+            file="D:\Project\_GITHUB\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
             line="38"
             column="5"/>
     </issue>

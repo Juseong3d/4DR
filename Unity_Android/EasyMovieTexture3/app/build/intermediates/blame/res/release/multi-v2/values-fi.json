@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Project\\_GIT\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-fi\\values-fi.xml",
+            "outputFile": "D:\\Project\\_GITHUB\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\res\\merged\\release\\values-fi\\values-fi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\f1874e0f0dbf11a49aa8731cd4658266\\res\\values-fi\\values-fi.xml",
@@ -33,7 +33,7 @@
             ]
         },
         {
-            "outputFile": "D:\\Project\\_GIT\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\res\\merged\\release\\values-fi\\values-fi.xml",
+            "outputFile": "D:\\Project\\_GITHUB\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-fi\\values-fi.xml",
             "map": [
                 {
                     "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\f1874e0f0dbf11a49aa8731cd4658266\\res\\values-fi\\values-fi.xml",
