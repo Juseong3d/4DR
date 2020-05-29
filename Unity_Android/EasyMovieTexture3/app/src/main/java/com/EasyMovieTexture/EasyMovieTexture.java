@@ -419,7 +419,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         if(m4DLivePlayer != null) {
             if (m_iCurrentState == MEDIAPLAYER_STATE.READY || m_iCurrentState == MEDIAPLAYER_STATE.PLAYING || m_iCurrentState == MEDIAPLAYER_STATE.PAUSED) {
-                m4DLivePlayer.seekTo(iSeek);
+                m4DLivePlayer.seek(iSeek);
             }
         }
     }
@@ -779,13 +779,16 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             m_iVideoheight = height;
             m_iDuration = duration;
 
+            String _value = "getVideoStreamInfo," + width + "," + height + "," + duration;
+
             Log.d(TAG, "info ?????????????? " + m4DLivePlayer);
+            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getVideoStreamInfo", _value);
         }
 
         @Override
         public void getCurrentPlayInfo(int channel, int frame, int frame_cycle, long time, String utc)
         {
-            Log.d(TAG, "getCurrentPlayInfo " + channel + " / " + frame_cycle + " / " + frame + " / " + time +  " / " + utc);
+            //Log.d(TAG, "getCurrentPlayInfo " + channel + " / " + frame_cycle + " / " + frame + " / " + time +  " / " + utc);
             //m_bUpdate = true;
 
             long cur_msec = time;
@@ -793,9 +796,11 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
             final String info = "Play ch:" + channel + " /frame_cycle:" + frame_cycle + " /frame:" + frame + " /time:" + time;
             final String sUTC = "utc: " + utc;
+            String _value = "getCurrentPlayInfo," + channel + "," + frame + "," + frame_cycle + "," + time + "," + utc;
 
-            //m_iCurrentSeekPercent = m_iDuration / time;
             m_iCurrentSeekPosition = frame;
+
+            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getCurrentPlayInfo", _value);
             //Log.d(TAG, info + " ?????????? " + m4DLivePlayer);
 
             //mTextPlay.setText(info);

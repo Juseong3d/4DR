@@ -1,12 +1,15 @@
 ﻿//using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
 public class isoFdPlayerCtl : MonoBehaviour {
-
+        
     public MediaPlayerCtrl scrMedia;
+
+    public AppandroidCallback4FDPlayer _info;
 
     public UIButton buttonTL;
     public UIButton buttonTR;
@@ -21,6 +24,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+
+        _info = FindObjectOfType<AppandroidCallback4FDPlayer>();
+
         isRight = false;
         isLeft = false;
         isLeftTime = false;
@@ -28,6 +34,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         buttonTL.isEnabled = false;
         buttonTR.isEnabled = false;
+
+        slider.onDragFinished += onDragFinished;
+    }
+
+    private void onDragFinished() {
+
+        int _change = (int)((double)_info.duration * slider.value);
+                
+        scrMedia.SeekTo(_change);
+        
     }
 
     // Update is called once per frame
@@ -49,9 +65,14 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }else if(isRightTime == true) {
                 OnClickButton4Right(true);
             }
-        }
+        }               
+        
+        if(Appmain.appevent.isButtonDown == false && _info.duration != 0) {
+            
+            float _value = (float)_info.time / (float)_info.duration;
+            slider.value = _value;
 
-        slider.value = scrMedia.GetSeekBarValue();
+        }
         
     }   
 

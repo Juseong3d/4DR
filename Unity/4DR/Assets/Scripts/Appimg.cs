@@ -46,11 +46,13 @@ public class Appimg : MonoBehaviour {
 				break;
 			case GAME_STATUS.GS_TITLE :		
 				{
-					GameObject _videoManager = LoadResource4Prefab4UI(UIDEFINE.PATH_VIDEO_MANAGER, true);
+					GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
 					MediaPlayerCtrl _ctl = _videoManager.GetComponent<MediaPlayerCtrl>();
 
-					_videoManager.transform.localScale = new Vector3(1280, 720, 1);
-					_videoManager.transform.localPosition = new Vector3(0, 0, _videoManager.transform.localPosition.z);
+					_videoManager.transform.SetParent(appmain.appui.transform);
+
+					_videoManager.transform.localScale = new Vector3(DEFINE.BASE_SCREEN_WIDTH, DEFINE.BASE_SCREEN_HEIGHT, 1);
+					_videoManager.transform.localPosition = new Vector3(0, 0, _videoManager.transform.localPosition.z);					
 
 					GameObject playerCtl = LoadResource4Prefab4UI(UIDEFINE.PATH_VIDEO_CTL, true);
 					isoFdPlayerCtl _playerCtl = playerCtl.GetComponent<isoFdPlayerCtl>();

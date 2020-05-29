@@ -6,6 +6,9 @@ public class DEFINE : MonoBehaviour {
 	public const int CAMERA_RATIO_W = 16;
 	public const int CAMERA_RATIO_H = 9;
 
+	public const float BASE_SCREEN_WIDTH = 1920;
+	public const float BASE_SCREEN_HEIGHT = 1080;
+
 	public const string KEY_OPTION_BGM = "KEY_OPTION_BGM";
 	public const string KEY_OPTION_EFFECT_SOUND = "KEY_OPTION_EFFECT_SOUND";
 

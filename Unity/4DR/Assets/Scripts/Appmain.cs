@@ -7,6 +7,7 @@ public class Appmain : MonoBehaviour {
 	public AppUI appui;
 	public Appdoc appdoc;
 	public static Appsound appsound;
+	public static Appevent appevent;
 
 	public static GameObject MAIN_GAMEOBJECT;
 
@@ -48,9 +49,10 @@ public class Appmain : MonoBehaviour {
 
 		appmain = this; 
 
-		appui = (AppUI)GetComponent<AppUI>();
+		appui = FindObjectOfType<AppUI>();
 		appdoc = (Appdoc)GetComponent<Appdoc>();
 		appsound = GetComponent<Appsound>();
+		appevent = GetComponent<Appevent>();
 
 		initGameApp();
 
