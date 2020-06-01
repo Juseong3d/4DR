@@ -159,9 +159,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void UnLoad() {
 
-        Log.d(TAG, "###################### UnLoad() ");
         if(m4DLivePlayer != null) {
-            Log.d(TAG, "###################### UnLoad() " + m_iCurrentState);
             if (m_iCurrentState != MEDIAPLAYER_STATE.NOT_READY) {
                 try {
                     m4DLivePlayer.pause();
@@ -173,7 +171,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Log.d(TAG, "################ 4dPlayer nulllllllllllllllllllllll 1");
                 m4DLivePlayer = null;
             } else {
                 try {
@@ -185,7 +182,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Log.d(TAG, "################# 4dPlayer nulllllllllllllllllllllll 2");
                 m4DLivePlayer = null;
             }
         }
@@ -531,7 +527,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             }
         }
 
-        Log.d(TAG, "?????????????? " + m4DLivePlayer);
         if(m4DLivePlayer != null) {
             if(m_iCurrentState == MEDIAPLAYER_STATE.PLAYING) {
                 m4DLivePlayer.pause();
@@ -780,8 +775,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             m_iDuration = duration;
 
             String _value = "getVideoStreamInfo," + width + "," + height + "," + duration;
-
-            Log.d(TAG, "info ?????????????? " + m4DLivePlayer);
             UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getVideoStreamInfo", _value);
         }
 
@@ -913,9 +906,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
 
     public void close() {
-
-        Log.d(TAG, "?????????????? " + m4DLivePlayer);
-
         m4DLivePlayer.pause();
         m4DLivePlayer.streamClose();
         Log.d(TAG, "call streamClose ");
@@ -924,7 +914,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void open1(String _url, boolean _isTCP, boolean _isHWDec, int _port) {
 
-        Log.d(TAG, "############ open1 Start");
         boolean isSub = false;
 
         if (m4DLivePlayer.isStreamOpened()) {
@@ -940,21 +929,11 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         final Surface surfaceMainEx = surfaceMain;
 
-//        boolean _isOpened = m4DLivePlayer.isStreamOpened();
-//
-//        Log.d(TAG, "check _isOpened 000 :::  " + _isOpened);
-
         int ret = 1;
-        Log.d(TAG, "111 ?????????? " + m4DLivePlayer);
+
         if (!m4DLivePlayer.isStreamOpened()) {
             ret = m4DLivePlayer.streamOpen(url, surfaceMainEx, isTCP, isHWDec);
         }
-
-        Log.d(TAG, "############ streamOpen End ::: ret = " + ret);
-//
-//        _isOpened = m4DLivePlayer.isStreamOpened();
-//
-//        Log.d(TAG, "check _isOpened 111 :::  " + _isOpened);
 
         final int finalRet = ret;
 
@@ -974,21 +953,14 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             if (ss_ip.indexOf(":") > 0)
                 ss_ip = ss_ip.substring(0, ss_ip.indexOf(":"));
 
-            Log.d(TAG, "restful : " + ss_ip + " / " + port);
-            Log.d(TAG, "222 ?????????? " + m4DLivePlayer);
-
             if(m4DLivePlayer != null) {
                 m4DLivePlayer.RESTFulOpen(ss_ip, port);
             }else {
                 Log.d(TAG, "m4DLivePlayer nullllllllllllll");
             }
-            Log.d(TAG, "333 ?????????? " + m4DLivePlayer);
         }
-        //m4DLivePlayer.play();
-        Log.d(TAG, "444 ?????????? " + m4DLivePlayer);
-        m4DLivePlayer.setLooping(true);
-        Log.d(TAG, "open1 end");
-        Log.d(TAG, "555 ?????????? " + m4DLivePlayer);
+
+        //m4DLivePlayer.setLooping(true);
     }
 
 }

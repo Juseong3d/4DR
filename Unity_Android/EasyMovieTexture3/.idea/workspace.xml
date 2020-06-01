@@ -6,7 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/AlphaTexture.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/AlphaTexture.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/VideoMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/VideoMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Hovl Studio/Procedural fire/Demo scene/Floor3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Hovl Studio/Procedural fire/Demo scene/Floor3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/DEFINE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/DEFINE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/PreviewTestNew.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/PreviewTestNew.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/reports/lint-results.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/lint-results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/reports/tests/testDebugUnitTest/classes/com.EasyMovieTexture.ExampleUnitTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/tests/testDebugUnitTest/classes/com.EasyMovieTexture.ExampleUnitTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/reports/tests/testDebugUnitTest/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/reports/tests/testDebugUnitTest/index.html" afterDir="false" />
