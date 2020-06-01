@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 11}
   - component: {fileID: 10}
   - component: {fileID: 17}
-  - component: {fileID: 18}
   m_Layer: 0
   m_Name: COMMON
   m_TagString: Untagged
@@ -288,47 +287,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5}
   m_Enabled: 1
---- !u!114 &18
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e3bd68387ec3143be694dcbd3f21bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _IP: 
-  _URL: 
-  AUTH_URL_CHECK: 
-  AUTH_URL_CHECK_RETURN: 
-  AUTH_URL_RESULT: 
-  AUTH_URL_RETRY: 
-  netStatusCnt: 0
-  netStatus: 0
-  _COOKIE_ID: 
-  _USER_SEQ: 
-  _USER_ID: 
-  _USER_SOCKET_ID: 
-  _AUTH_REQ_INFO: 
-  _AUTH_STR_SEQUENCE: 
-  _AUTH_SEND_TRY_CNT: 0
-  _IAB_ORDER_ID: 
-  _IAB_PACKAGE_NAME: 
-  _IAB_TOKEN: 
-  tmpNetWorkData:
-    functionName: 
-    sendDataStr: 
-    sendData:
-      paramName: []
-      value: []
-    tmpRecvData: 
-    recvData: []
-    recvTime: 0
-    eventReceiver: {fileID: 0}
-    eventFuncName: 
 --- !u!1 &33662852
 GameObject:
   m_ObjectHideFlags: 0

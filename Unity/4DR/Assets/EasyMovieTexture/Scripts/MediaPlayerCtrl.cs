@@ -258,18 +258,20 @@ public class MediaPlayerCtrl : MonoBehaviour
 		//threadVideo.Start();
 	#endif
 
+		Debug.Log("111111111111");
 	#if UNITY_ANDROID && !UNITY_EDITOR		
 	#if UNITY_5
 		if( SystemInfo.graphicsMultiThreaded == true)
 			InitNDK();
 	#endif
-		m_iAndroidMgrID = Call_InitNDK();		
-	#endif		
-		Call_SetUnityActivity();		
+		m_iAndroidMgrID = Call_InitNDK();
+		Debug.Log("111111111 222222 " + m_iAndroidMgrID);
+	#endif
+		Debug.Log("222222222");
+		Call_SetUnityActivity();
+		Debug.Log("3333333");
 
     }
-
-
     // Use this for initialization
     void Start()
     {
@@ -2113,6 +2115,8 @@ void LoadVideoPart2 ()
 					bFindVideo = true;
 					pStream = (pFormatContext)->streams[i];
 					iStreamIndex = i;
+
+					Debug.Log("Video" +  iStreamIndex);
 				}
 
 			}
