@@ -626,7 +626,7 @@ MonoBehaviour:
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 1920, w: 1080}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 1000
+  mDepth: 1
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
 --- !u!4 &689313295
@@ -866,7 +866,6 @@ Transform:
   m_LocalScale: {x: 0.0018518518, y: 0.0018518518, z: 0.0018518518}
   m_Children:
   - {fileID: 33662853}
-  - {fileID: 8691251392784414666}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1202,83 +1201,3 @@ MonoBehaviour:
   mAtlas: {fileID: 6015249252971408108, guid: 44a9847ffa6bed848b66040a02f0562b, type: 3}
   mSpriteName: Popup_b
   mFillCenter: 1
---- !u!1001 &8691251392784414665
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 842523920}
-    m_Modifications:
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196950870940745286, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_Name
-      value: pfb_VideoManager_Mini2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3196950870940745286, guid: 3f9c0a058ae71c84eb124401152141d7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3f9c0a058ae71c84eb124401152141d7, type: 3}
---- !u!4 &8691251392784414666 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1502518854624205504, guid: 3f9c0a058ae71c84eb124401152141d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8691251392784414665}
-  m_PrefabAsset: {fileID: 0}
