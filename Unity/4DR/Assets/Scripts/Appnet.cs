@@ -278,7 +278,8 @@ public class Appnet : MonoBehaviour {
 		APPLICATION_XML,
 		MULTIPART_FORMED_DATA,
 		TEXT_XML,
-		OCTET_STREAM
+		OCTET_STREAM,
+		ACCEPT_JSON
 
 	}	
 
@@ -323,6 +324,7 @@ public class Appnet : MonoBehaviour {
 	Appimg appimg;
 	Appevent appevent;
     Appsound appsound;
+	Appclass appclass;
 
 	// Use this for initialization
 	void Start () {
@@ -332,12 +334,18 @@ public class Appnet : MonoBehaviour {
 		appimg = GetComponent<Appimg>();
 		appsound = (Appsound)GetComponent<Appsound>();
 		appevent = (Appevent)GetComponent<Appevent>();
+		appclass = GetComponent<Appclass>();
 
 		_IP = "110.45.132.199:7888/web_api.php?xml=";
 		
 		_URL = "http://" + _IP;
 
 		initNetwork();
+
+		_URL = "https://work.muteklab.com:50443/admin/content/unity/api";
+		__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);		
+
+		//appclass._list_conent_fdlist = new LIST_CONTENT_FDLIVE();
 
 	}
 	
@@ -425,21 +433,23 @@ public class Appnet : MonoBehaviour {
 #if UNITY_EDITOR
 			Debug.Log("RECV TEXT :\n" + www.text);
 #endif
-			{
-				int cnt = __GET_XML_COUNT(networkData.tmpRecvData);
-				int i = 0;
+			//{
+			//	int cnt = __GET_XML_COUNT(networkData.tmpRecvData);
+			//	int i = 0;
 
-				networkData.recvData = new XML_DATA[cnt];
-				for (i = 0; i < cnt; i++) {
-					string tmpcutString = __CUT_XML(networkData.tmpRecvData, i + 1);
+			//	networkData.recvData = new XML_DATA[cnt];
+			//	for (i = 0; i < cnt; i++) {
+			//		string tmpcutString = __CUT_XML(networkData.tmpRecvData, i + 1);
 
-					//Debug.Log("-----------" + i);
-					//Debug.Log(tmpcutString);
-					networkData.recvData[i] = new XML_DATA(tmpcutString);
-				}
-			}	
+			//		//Debug.Log("-----------" + i);
+			//		//Debug.Log(tmpcutString);
+			//		networkData.recvData[i] = new XML_DATA(tmpcutString);
+			//	}
+			//}	
 
-			recvCompleate4Web(networkData);		
+			//recvCompleate4Web(networkData);
+			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + www.text + "}");
+			
 			tmpNetWorkData = networkData;
 			this.netStatus = NET_STATUS.NONE;
 
@@ -539,6 +549,38 @@ public class Appnet : MonoBehaviour {
 			_headers.Add("Host", _URL);
 			www = new WWW(_URL, _form);
 
+		}		
+	}
+
+
+	internal void __WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string sendData) {
+
+		NETWORK_DATA networkData = new NETWORK_DATA();
+		networkData.init();
+
+		networkData.sendDataStr = sendData;
+		//networkData.sendData = new XML_DATA(sendData);
+		//networkData.functionName = networkData.sendData.getValue("cmd");
+		
+		//WWW www;
+
+		{
+			//__WEB_CONNECT_SET_HEADER_EX(WEB_TYPE.ACCEPT_JSON);
+			//_form.AddField("json", networkData.sendDataStr);			
+			//_form.headers.Add("Content-Length", networkData.sendDataStr.Length.ToString());
+			//_form.headers.Add("Host", _URL);
+
+			//Debug.Log("_URL : " + _URL);
+			//www = new WWW(_URL, _form);
+
+			//StartCoroutine (WaitForRequest (www));
+
+			Dictionary<string, string> headers = new Dictionary<string,string>();
+			headers.Add("Accept", "application/json");
+
+			WWW www = new WWW(_URL, null, headers);
+
+			StartCoroutine (WaitForRequest (www));			
 		}		
 	}
 

@@ -69,16 +69,16 @@ public class Appevent : MonoBehaviour {
 
 		if(isDrag == true) {
 
-			float _x = Input.mousePosition.x - (Screen.width / 2);
-			float _y = Input.mousePosition.y - (Screen.height / 2);
+			//float _x = Input.mousePosition.x - (Screen.width / 2);
+			//float _y = Input.mousePosition.y - (Screen.height / 2);
 
-			//Debug.Log("_x :: " + _x + "/" + _y);
-			//for testing...
-			GameObject prefab = Appimg.LoadResource4Prefab(UIDEFINE.TEST_EFFECT);
+			////Debug.Log("_x :: " + _x + "/" + _y);
+			////for testing...
+			//GameObject prefab = Appimg.LoadResource4Prefab(UIDEFINE.TEST_EFFECT);
 			
-			prefab.transform.SetParent(AppUI.mainCamera.transform);
-			prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
-			prefab.transform.localScale = new Vector3(50, 50, 50);
+			//prefab.transform.SetParent(AppUI.mainCamera.transform);
+			//prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
+			//prefab.transform.localScale = new Vector3(50, 50, 50);
 
 		}
 

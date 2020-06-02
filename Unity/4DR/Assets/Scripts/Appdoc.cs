@@ -48,7 +48,6 @@ public class Appdoc : MonoBehaviour {
 			Appmain.gameStatusCnt = 0;
 			//appimg.isLoading = true;
 			
-			Debug.Log("check == " + (int)status);
 			Application.LoadLevel(((int)status));
 		}
 

@@ -4,10 +4,13 @@ using System.Collections;
 public class Appmain : MonoBehaviour {
 
 	public static Appmain appmain;
-	public AppUI appui;
-	public Appdoc appdoc;
+	public static AppUI appui;
+	public static Appdoc appdoc;
 	public static Appsound appsound;
 	public static Appevent appevent;
+	public static Appclass appclass;
+
+	public static Appimg appimg;
 
 	public static GameObject MAIN_GAMEOBJECT;
 
@@ -53,6 +56,9 @@ public class Appmain : MonoBehaviour {
 		appdoc = (Appdoc)GetComponent<Appdoc>();
 		appsound = GetComponent<Appsound>();
 		appevent = GetComponent<Appevent>();
+		appclass = GetComponent<Appclass>();
+		appimg = GetComponent<Appimg>();
+
 
 		initGameApp();
 

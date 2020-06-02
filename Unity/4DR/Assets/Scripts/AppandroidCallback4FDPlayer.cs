@@ -30,7 +30,7 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     void CallBackFromFDPlayer(string _value) {
 
         Debug.Log("CallBackFromFDPlayer ::: " + _value);
-        PopupBox.Create(_value);
+        //PopupBox.Create(_value);
     }
 
 

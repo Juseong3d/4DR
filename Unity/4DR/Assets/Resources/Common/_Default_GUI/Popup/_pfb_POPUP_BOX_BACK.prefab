@@ -63,8 +63,8 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 0.3529412}
   mPivot: 4
-  mWidth: 1280
-  mHeight: 1280
+  mWidth: 2000
+  mHeight: 2000
   mDepth: 0
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
@@ -94,7 +94,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1280, y: 1280, z: 0}
+  m_Size: {x: 2000, y: 2000, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &138398
 GameObject:
@@ -164,7 +164,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3004
+  startingRenderQueue: 3001
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 720, w: 1280}

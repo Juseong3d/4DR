@@ -151,4 +151,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     }
 
+
+    public void OnClickButtonExit() {
+
+        Appmain.appimg.mainUIPrefab.SetActive(true);
+        NGUITools.Destroy(this.transform.parent.gameObject);
+
+    }
+
 }

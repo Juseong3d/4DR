@@ -32,6 +32,8 @@ public class Appimg : MonoBehaviour {
 
 		switch(Appmain.prevGameStatus) {
 			case GAME_STATUS.GS_INTRO :
+			case GAME_STATUS.GS_TITLE :
+			case GAME_STATUS.GS_MENU :
 				NGUITools.Destroy(mainUIPrefab);
 				break;
 		}
@@ -44,23 +46,72 @@ public class Appimg : MonoBehaviour {
 			case GAME_STATUS.GS_INTRO :
 				mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_INTRO, true);				
 				break;
-			case GAME_STATUS.GS_TITLE :		
+			case GAME_STATUS.GS_TITLE :
+				//{
+				//	GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
+				//	MediaPlayerCtrl _ctl = _videoManager.GetComponent<MediaPlayerCtrl>();
+
+				//	_videoManager.transform.SetParent(appmain.appui.transform);
+
+				//	_videoManager.transform.localScale = new Vector3(DEFINE.BASE_SCREEN_WIDTH, DEFINE.BASE_SCREEN_HEIGHT, 1);
+				//	_videoManager.transform.localPosition = new Vector3(0, 0, _videoManager.transform.localPosition.z);					
+
+				//	GameObject playerCtl = LoadResource4Prefab4UI(UIDEFINE.PATH_VIDEO_CTL, true);
+				//	isoFdPlayerCtl _playerCtl = playerCtl.GetComponent<isoFdPlayerCtl>();
+
+				//	_playerCtl.scrMedia = _ctl;
+				//}
 				{
-					GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
-					MediaPlayerCtrl _ctl = _videoManager.GetComponent<MediaPlayerCtrl>();
+					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_TITLE, true);
+				}
+				break;
+			case GAME_STATUS.GS_MENU :
+				{
+					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_MAIN_MENU, true);
+					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();
+					
+					
 
-					_videoManager.transform.SetParent(appmain.appui.transform);
+					for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
+						GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
+						uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
+						MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
 
-					_videoManager.transform.localScale = new Vector3(DEFINE.BASE_SCREEN_WIDTH, DEFINE.BASE_SCREEN_HEIGHT, 1);
-					_videoManager.transform.localPosition = new Vector3(0, 0, _videoManager.transform.localPosition.z);					
+						_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
+						_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();
+						_instan.transform.SetParent(mainMenu._gridMain.transform);
+						_instan.transform.localScale = new Vector3(1, 1, 1);
+					}
 
-					GameObject playerCtl = LoadResource4Prefab4UI(UIDEFINE.PATH_VIDEO_CTL, true);
-					isoFdPlayerCtl _playerCtl = playerCtl.GetComponent<isoFdPlayerCtl>();
+					mainMenu._gridMain.repositionNow = true;
 
-					_playerCtl.scrMedia = _ctl;
 				}
 				break;
 		}
+	}
+
+
+	public void LOAD_FULL_SCREEN_VIDEO(string _url) {
+
+		{
+            GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
+            MediaPlayerCtrl _ctl = _videoManager.GetComponentInChildren<MediaPlayerCtrl>();
+
+			_ctl.m_strFileName = _url;
+            _videoManager.transform.SetParent(Appmain.appui.transform);
+			_videoManager.transform.localScale = new Vector3(1, 1, 1);
+
+            _ctl.transform.localScale = new Vector3(DEFINE.BASE_SCREEN_WIDTH, DEFINE.BASE_SCREEN_HEIGHT, 1);
+            _ctl.transform.localPosition = new Vector3(0, 0, -10);
+
+            //GameObject playerCtl = LoadResource4Prefab4UI(UIDEFINE.PATH_VIDEO_CTL, true);
+            //isoFdPlayerCtl _playerCtl = playerCtl.GetComponent<isoFdPlayerCtl>();
+
+            //_playerCtl.scrMedia = _ctl;
+
+			mainUIPrefab.SetActive(false);
+        }
+
 	}
 
 
