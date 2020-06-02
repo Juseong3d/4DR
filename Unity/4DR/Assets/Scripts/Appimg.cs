@@ -111,7 +111,6 @@ public class Appimg : MonoBehaviour {
 
 			mainUIPrefab.SetActive(false);
         }
-
 	}
 
 
