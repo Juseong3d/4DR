@@ -53,6 +53,6 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
         frame = int.Parse(_tmp[2]);
         frame_cycle = int.Parse(_tmp[3]);
         time = long.Parse(_tmp[4]);
-        utc = _tmp[5];
+        utc = _tmp[5];        
     }
 }

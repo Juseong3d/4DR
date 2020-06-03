@@ -10,9 +10,15 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public MediaPlayerCtrl scrMedia;
 
     public AppandroidCallback4FDPlayer _info;
-
+    
+    public UIButton _player;
     public UIButton buttonTL;
     public UIButton buttonTR;
+
+    public UIButton buttonLeftCamera;
+    public UIButton buttonRightCamera;
+    bool isPressLeftCamera;
+    bool isPressRightCamera;
 
     public UISlider slider;
     
@@ -21,6 +27,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     bool isLeftTime;
     bool isRightTime;
+
+    float _cameraY;
+    float _cameraRotationSpeed;
+
+    
+	public int _idx;
 
     // Start is called before the first frame update
     void Start() {
@@ -36,6 +48,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
         buttonTR.isEnabled = false;
 
         slider.onDragFinished += onDragFinished;
+
+        buttonLeftCamera.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Left_Camera;
+        buttonRightCamera.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Right_Camera;
+        _player.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Player;
+        _cameraY = 0.0f;
+        _cameraRotationSpeed = 4.5f;
+
     }
 
     private void onDragFinished() {
@@ -47,7 +66,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
@@ -65,17 +84,78 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }else if(isRightTime == true) {
                 OnClickButton4Right(true);
             }
-        }               
+        }
         
-        if(Appmain.appevent.isButtonDown == false && _info.duration != 0) {
+        if(isPressLeftCamera == true) {
+            OnClickButton4Left_Camera(this.gameObject, true);
+        }
+
+        if(isPressRightCamera == true) {
+            OnClickButton4Right_Camera(this.gameObject, true);
+        }
+        
+        if(_info.duration != 0) {
             
             float _value = (float)_info.time / (float)_info.duration;
             slider.value = _value;
 
+            if(isPressRightCamera == false && isPressLeftCamera == false) {
+                _cameraY = _info.channel * _cameraRotationSpeed;
+                AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            }
         }
-        
     }   
 
+
+    public void OnClickButton4Player(GameObject obj, bool isPress) {
+
+        if(isPress == true) {
+            float _x = Input.mousePosition.x - (Screen.width / 2);
+			float _y = Input.mousePosition.y - (Screen.height / 2);
+
+			//Debug.Log("_x :: " + _x + "/" + _y);
+			//for testing...
+			string[] _effects_path = {
+					"Common/_Default_Effect/Magic fire 0",
+					"Common/_Default_Effect/Magic fire 1",
+					"Common/_Default_Effect/Magic fire 2",
+					"Common/_Default_Effect/Magic fire 3",
+					"Common/_Default_Effect/Magic fire pro blue",	//4
+
+					"Common/_Default_Effect/Magic fire pro green",
+					"Common/_Default_Effect/Magic fire pro orange",
+					"Common/_Default_Effect/Magic fire pro red",
+					"Common/_Default_Effect/Magic fire pro yellow",
+					"Common/_Default_Effect/pfb_Effect_Touch",	//9
+
+					"Common/_Default_Effect/RotatorPS1",
+					"Common/_Default_Effect/RotatorPS2",
+					"Common/_Default_Effect_2/star2",
+				};
+
+			_idx = 9;
+
+			RaycastHit _hit;
+
+			Ray _ray = AppUI.mainCamera.ScreenPointToRay(Input.mousePosition);
+
+			if(Physics.Raycast(_ray, out _hit)) {
+				GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
+				prefab.transform.SetParent(Appmain.appui.transform);
+				
+				prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
+				prefab.transform.localScale = new Vector3(150, 150, 150);
+			}
+
+			//GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
+			
+			//prefab.transform.SetParent(Appmain.appui.transform);
+			//prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
+			//prefab.transform.localScale = new Vector3(150, 150, 150);
+
+        }
+
+    }
 
     public void OnClickButton4PressLeft() {
         isLeft = true;
@@ -120,8 +200,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4Left(bool _how) {
 
         //Debug.Log("OnClickButton4Left() :: " + _how);
-        scrMedia.Left(_how);
-
+        scrMedia.Left(_how);       
+        //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
     }
 
 
@@ -129,8 +209,38 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         //Debug.Log("OnClickButton4Right() :: " + _how);
         scrMedia.Right(_how);
+        //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
+    }
+
+    void OnClickButton4Left_Camera(GameObject go, bool press) {
+
+        isPressLeftCamera = press;
+        
+        if(press == true) {
+            float now = AppUI.mainCamera.transform.localRotation.y;
+                        
+            AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
+
+            _cameraY -= Time.deltaTime * (_cameraRotationSpeed * 2);
+        }
 
     }
+
+    void OnClickButton4Right_Camera(GameObject go, bool press) {
+
+        isPressRightCamera = press;
+
+        if(press == true) {
+            float now = AppUI.mainCamera.transform.localRotation.y;
+
+            AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
+
+            _cameraY += Time.deltaTime * (_cameraRotationSpeed * 2);
+        }
+    }
+
 
 
     public void OnClickButton4Load() {
@@ -138,7 +248,20 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //Debug.Log("OnClickButton4Load()");
         scrMedia.Play();
         buttonTL.isEnabled = false;
-        buttonTR.isEnabled = false;
+        buttonTR.isEnabled = false;       
+
+    }
+
+
+    public void OnClickButton4PlayParticle() {
+
+        {
+            ParticleSystem[] _ppp = Appmain.appui.GetComponentsInChildren<ParticleSystem>();
+
+            for(int i = 0; i<_ppp.Length; i++) {
+                _ppp[i].Play();
+            }
+        }
 
     }
 
@@ -147,7 +270,33 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         scrMedia.Pause();
         buttonTL.isEnabled = true;
-        buttonTR.isEnabled = true;
+        buttonTR.isEnabled = true;       
+
+    }
+
+
+    public void OnClickButton4PauseParticle() {
+
+        {
+            ParticleSystem[] _ppp = Appmain.appui.GetComponentsInChildren<ParticleSystem>();
+
+            for(int i = 0; i<_ppp.Length; i++) {
+                _ppp[i].Pause();
+            }
+        }
+
+    }
+
+
+    public void OnClickButton4ClearParticle() {
+
+        {
+            ParticleSystem[] _ppp = Appmain.appui.GetComponentsInChildren<ParticleSystem>();
+
+            for(int i = 0; i<_ppp.Length; i++) {
+                NGUITools.Destroy(_ppp[i].gameObject);
+            }
+        }
 
     }
 

@@ -454,6 +454,10 @@ public class Appnet : MonoBehaviour {
 			this.netStatus = NET_STATUS.NONE;
 
         } else {
+			string _tmp = 
+				"[{\"id\":9,\"title\":\"LGU+_Baseball\",\"url\":\"rtsp://app.4dlive.kr/vod_test01.4ds\",\"type\":\"vod\"},{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"},{\"id\":11,\"title\":\"Golf\",\"url\":\"rtsp://app.4dlive.kr/Golf_20Mbps.4ds\",\"type\":\"vod\"},{\"id\":12,\"title\":\"JUDO\",\"url\":\"rtsp://app.4dlive.kr/judo_4k_30p.4ds\",\"type\":\"vod\"},{\"id\":13,\"title\":\"mbc_test01\",\"url\":\"rtsp://app.4dlive.kr/mbc_test01.4ds\",\"type\":\"vod\"},{\"id\":14,\"title\":\"vod_test02\",\"url\":\"rtsp://app.4dlive.kr/vod_test02.4ds\",\"type\":\"vod\"}]";
+
+			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
             Debug.Log("WWW Error: "+ www.error);
         }    
     }

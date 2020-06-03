@@ -49,7 +49,7 @@ public enum STATUS {
     GS_INIT,
     GS_INTRO,
     GS_TITLE,
-    GS_MENU    
+    GS_MENU   
 
 }
 

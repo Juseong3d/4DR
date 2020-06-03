@@ -257,31 +257,21 @@ public class MediaPlayerCtrl : MonoBehaviour
 		//threadVideo = new Thread(ThreadUpdate);
 		//threadVideo.Start();
 	#endif
-
-		Debug.Log("111111111111");
+		
 	#if UNITY_ANDROID && !UNITY_EDITOR		
 	#if UNITY_5
 		if( SystemInfo.graphicsMultiThreaded == true)
 			InitNDK();
 	#endif
-		m_iAndroidMgrID = Call_InitNDK();
-		Debug.Log("111111111 222222 " + m_iAndroidMgrID);
-	#endif
-		Debug.Log("222222222");
+		m_iAndroidMgrID = Call_InitNDK();		
+	#endif		
 		Call_SetUnityActivity();
-		Debug.Log("3333333");
-
     }
+
+
     // Use this for initialization
     void Start()
     {
-
-
-	
-
-
-
-
 
 #if UNITY_ANDROID
 		if (Application.dataPath.Contains(".obb")) {
@@ -357,7 +347,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 #elif UNITY_ANDROID
 
 #if UNITY_EDITOR
-			strName = "rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";
+			strName = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";//"rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";
 #endif
 
 			if(m_bSupportRockchip)
