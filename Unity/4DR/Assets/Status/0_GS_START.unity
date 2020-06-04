@@ -278,6 +278,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316f91d0ed0b8fb4cb9232eb80c07d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appInfo:
+    version0: 2
+    version1: 0
+    version2: 2
+    appVersion: v.2.0.21
+    phoneNumber: UNKNOW
+    market_url: 
+    market_url_short: 
+    facebook_url: 
+    facebook_link_icon: 
+    bundle_id: 
   serverTime: 0
   tmpStartToLogin: 0
 --- !u!81 &17
@@ -1075,9 +1086,9 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -1102,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912019294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -1920}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
