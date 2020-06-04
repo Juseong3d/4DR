@@ -81,7 +81,9 @@ public class Appimg : MonoBehaviour {
 						//_instan.transform.SetParent(mainMenu._gridMain.transform);
 						//_instan.transform.localScale = new Vector3(1, 1, 1);
 
-						StartCoroutine(_LOAD_MINI_VIDEO(i));
+						if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals("not_used")) {
+							StartCoroutine(_LOAD_MINI_VIDEO(i));
+						}
 					}
 
 					//mainMenu._gridMain.repositionNow = true;

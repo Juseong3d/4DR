@@ -52,6 +52,8 @@ public class  LIST_CONTENT_FDLIVE {
 [Serializable]
 public class LIST_CONTENT_FDLIVE_ITEM {
 
+	const string _4DREPLAY_TYPE_ = ".4ds";
+
 	public int id;
 	public string title;
 	public string url;
@@ -63,7 +65,12 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 
 	internal string GETURL() {
 
-		return string.Format("{0}?type={1}", url, type);
+		if(url.Contains(_4DREPLAY_TYPE_) == true) {
+			return string.Format("{0}?type={1}", url, type);
+		}else {
+			return url;
+		}
+
 		throw new NotImplementedException();
 	}
 }
