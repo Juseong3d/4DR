@@ -19,6 +19,8 @@ public class Appmain : MonoBehaviour {
 	public static GAME_STATUS gameStatus;
 	internal static int havePopupCnt;
 
+	public APP_INFO appInfo;
+
 	[Header(" * COMMON ------------")]
 	public static bool isLoading;
 	public static GameObject gameObjectPopupBack;
@@ -29,25 +31,14 @@ public class Appmain : MonoBehaviour {
 	public float tmpStartToLogin;
 	internal PROJECT_TYPE projectType;
 
-	public static int gameLoadingStatusCnt {
-		get;
-		set;
-	}
-
-	public static int gameStatusCnt {
-		get;
-		set;
-	}
-
-	public static float gameStatusTime {
-		get;
-		set;
-	}
+	public static int gameLoadingStatusCnt;
+	public static int gameStatusCnt;
+	public static float gameStatusTime;
 
 
 	void Start() {
 
-		//appInfo = new APP_INFO();		
+		appInfo = new APP_INFO();		
 		MAIN_GAMEOBJECT = this.gameObject;
 
 		appmain = this; 

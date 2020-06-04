@@ -5,10 +5,14 @@ using UnityEngine;
 public class uisoTITLE : MonoBehaviour
 {
 
+
+    public UILabel labelVersion;
     // Start is called before the first frame update
     void Start()
     {
         
+        labelVersion.text = Appmain.appmain.appInfo.appVersion;
+
     }
 
     // Update is called once per frame
