@@ -245,12 +245,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         m_iCurrentState = MEDIAPLAYER_STATE.NOT_READY;
 
-        Log.d(TAG, "999 ?????????????? " + m4DLivePlayer);
+        //Log.d(TAG, "999 ?????????????? " + m4DLivePlayer);
         Context _cont = m_UnityActivity.getBaseContext();
         //Context _cont = m_UnityActivity.getApplicationContext();
         m4DLivePlayer = new FDLivePlayer(_cont, m4DPlayerCallback);
 
-        Log.d(TAG, "888 ?????????????? " + m4DLivePlayer);
+        //Log.d(TAG, "888 ?????????????? " + m4DLivePlayer);
         m_MediaPlayer = new MediaPlayer();
         m_MediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
@@ -333,7 +333,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         m_Surface = new Surface( m_SurfaceTexture);
 
         if(m_strFileName.contains(".4ds") == true) {
-            Log.d(TAG, "m_strFileName ::::::: " + m_strFileName);
+            //Log.d(TAG, "m_strFileName ::::::: " + m_strFileName);
             open1(m_strFileName, m_bTcp, m_bHWDec, m_iRESTFul_Port);
 
             m_MediaPlayer.release();
@@ -781,7 +781,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
             String _value = "getVideoStreamInfo," + width + "," + height + "," + duration;
 
-            Log.d(TAG, "info ?????????????? " + m4DLivePlayer);
+            //Log.d(TAG, "info ?????????????? " + m4DLivePlayer);
             UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getVideoStreamInfo", _value);
         }
 
@@ -914,7 +914,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void close() {
 
-        Log.d(TAG, "?????????????? " + m4DLivePlayer);
+        //Log.d(TAG, "?????????????? " + m4DLivePlayer);
 
         m4DLivePlayer.pause();
         m4DLivePlayer.streamClose();
@@ -924,7 +924,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void open1(String _url, boolean _isTCP, boolean _isHWDec, int _port) {
 
-        Log.d(TAG, "############ open1 Start");
+        //Log.d(TAG, "############ open1 Start");
         boolean isSub = false;
 
         if (m4DLivePlayer.isStreamOpened()) {
@@ -945,12 +945,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 //        Log.d(TAG, "check _isOpened 000 :::  " + _isOpened);
 
         int ret = 1;
-        Log.d(TAG, "111 ?????????? " + m4DLivePlayer);
+        //Log.d(TAG, "111 ?????????? " + m4DLivePlayer);
         if (!m4DLivePlayer.isStreamOpened()) {
             ret = m4DLivePlayer.streamOpen(url, surfaceMainEx, isTCP, isHWDec);
         }
 
-        Log.d(TAG, "############ streamOpen End ::: ret = " + ret);
+        //Log.d(TAG, "############ streamOpen End ::: ret = " + ret);
 //
 //        _isOpened = m4DLivePlayer.isStreamOpened();
 //
@@ -974,21 +974,21 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             if (ss_ip.indexOf(":") > 0)
                 ss_ip = ss_ip.substring(0, ss_ip.indexOf(":"));
 
-            Log.d(TAG, "restful : " + ss_ip + " / " + port);
-            Log.d(TAG, "222 ?????????? " + m4DLivePlayer);
+            //Log.d(TAG, "restful : " + ss_ip + " / " + port);
+            //Log.d(TAG, "222 ?????????? " + m4DLivePlayer);
 
             if(m4DLivePlayer != null) {
                 m4DLivePlayer.RESTFulOpen(ss_ip, port);
             }else {
-                Log.d(TAG, "m4DLivePlayer nullllllllllllll");
+                //Log.d(TAG, "m4DLivePlayer nullllllllllllll");
             }
-            Log.d(TAG, "333 ?????????? " + m4DLivePlayer);
+            //Log.d(TAG, "333 ?????????? " + m4DLivePlayer);
         }
         //m4DLivePlayer.play();
-        Log.d(TAG, "444 ?????????? " + m4DLivePlayer);
+        //Log.d(TAG, "444 ?????????? " + m4DLivePlayer);
         m4DLivePlayer.setLooping(true);
-        Log.d(TAG, "open1 end");
-        Log.d(TAG, "555 ?????????? " + m4DLivePlayer);
+        //Log.d(TAG, "open1 end");
+        //Log.d(TAG, "555 ?????????? " + m4DLivePlayer);
     }
 
 }
