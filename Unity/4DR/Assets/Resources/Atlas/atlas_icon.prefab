@@ -45,9 +45,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 6ddff873b9d9a424ca9b065c8e6ff3eb, type: 2}
   mSprites:
+  - name: button_round_130
+    x: 209
+    y: 560
+    width: 130
+    height: 140
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: menu
-    x: 233
-    y: 79
+    x: 683
+    y: 816
     width: 224
     height: 208
     borderLeft: 0
@@ -59,8 +72,8 @@ MonoBehaviour:
     paddingTop: 24
     paddingBottom: 24
   - name: pause
-    x: 458
-    y: 63
+    x: 0
+    y: 26
     width: 176
     height: 224
     borderLeft: 0
@@ -72,8 +85,8 @@ MonoBehaviour:
     paddingTop: 16
     paddingBottom: 16
   - name: play
-    x: 458
-    y: 288
+    x: 0
+    y: 476
     width: 208
     height: 224
     borderLeft: 0
@@ -85,8 +98,8 @@ MonoBehaviour:
     paddingTop: 16
     paddingBottom: 16
   - name: repeat
-    x: 0
-    y: 55
+    x: 233
+    y: 800
     width: 224
     height: 224
     borderLeft: 0
@@ -98,8 +111,8 @@ MonoBehaviour:
     paddingTop: 16
     paddingBottom: 16
   - name: settings
-    x: 233
-    y: 288
+    x: 458
+    y: 800
     width: 224
     height: 224
     borderLeft: 0
@@ -110,9 +123,35 @@ MonoBehaviour:
     paddingRight: 16
     paddingTop: 16
     paddingBottom: 16
+  - name: toggle_bg_200
+    x: 0
+    y: 251
+    width: 200
+    height: 224
+    borderLeft: 40
+    borderRight: 40
+    borderTop: 43
+    borderBottom: 60
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: universal_panel_10
+    x: 0
+    y: 701
+    width: 520
+    height: 90
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: x
     x: 0
-    y: 280
+    y: 792
     width: 232
     height: 232
     borderLeft: 0

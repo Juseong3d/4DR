@@ -2284,7 +2284,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -3679,7 +3679,7 @@ MonoBehaviour:
   m_objResize:
   - {fileID: 8345317369318998497}
   m_bLoop: 0
-  m_bAutoPlay: 0
+  m_bAutoPlay: 1
 --- !u!33 &8345317369318202849
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3773,7 +3773,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3010
+  startingRenderQueue: 3009
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}

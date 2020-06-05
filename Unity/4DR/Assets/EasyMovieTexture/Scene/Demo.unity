@@ -4962,7 +4962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f0082db35c5d5614f9e8c63a7f86aa4e, type: 3}
       propertyPath: m_strFileName
-      value: rtsp://app.4dlive.kr/mbc_test03.4ds?type=vod
+      value: https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: f0082db35c5d5614f9e8c63a7f86aa4e, type: 3}
       propertyPath: m_objResize.Array.data[1]
