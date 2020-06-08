@@ -6,8 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/alpha.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Materials/alpha.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/PhyMaterial2D.physicsMaterial2D" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/PhyMaterial2D.physicsMaterial2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +20,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="LMV500N7e000e99" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
