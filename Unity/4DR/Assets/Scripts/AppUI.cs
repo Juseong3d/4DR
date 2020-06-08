@@ -4,7 +4,8 @@ using System.Collections;
 public class AppUI : MonoBehaviour {
 
 	public static UIRoot uiRoot;
-	public static Camera mainCamera;
+	public Camera mainCamera2D;
+	public Camera mainCamera3D;
 	public UICamera uiCamera;
 	public Appmain appmain;
 	public Appandroid appandroid;
@@ -14,14 +15,17 @@ public class AppUI : MonoBehaviour {
 	void Awake() {
 
 		uiRoot = (UIRoot)FindObjectOfType<UIRoot>();
-		mainCamera = uiRoot.GetComponentInChildren<Camera>();
+
+		if(mainCamera2D == null)
+			mainCamera2D = uiRoot.GetComponentInChildren<Camera>();
+
 		uiCamera = GetComponentInParent<UICamera>();
 
 		//꽉차지 않은 경우 ios에서 반려때문에 늘려줄때 사용
 		//uiCamera.GetComponent<Camera>().aspect = 1280.0f / 720.0f;
 
 		//Screen.SetResolution( Screen.width, (Screen.width * 16) / 9 , true);
-		Rect _rect = mainCamera.rect;
+		Rect _rect = mainCamera2D.rect;
 		float scaleheight = ((float)Screen.width / Screen.height) / ((float)16 / 9);
 		float scalewidth = 1f / scaleheight;
 
@@ -33,7 +37,8 @@ public class AppUI : MonoBehaviour {
 			_rect.x = (1f - scalewidth) / 2f;
 		}
 
-		mainCamera.rect = _rect;
+		mainCamera2D.rect = _rect;
+		mainCamera3D.rect = _rect;
 	}
 
 

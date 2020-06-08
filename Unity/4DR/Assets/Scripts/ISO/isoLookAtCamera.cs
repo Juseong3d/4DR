@@ -11,7 +11,7 @@ public class isoLookAtCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _camera = Camera.main;
+        _camera = Appmain.appui.mainCamera3D;
         //_renderer = GetComponentInChildren<Renderer>();
         _renderer.material.renderQueue -= 10;
         

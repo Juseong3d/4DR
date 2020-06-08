@@ -17,8 +17,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public UIButton buttonLeftCamera;
     public UIButton buttonRightCamera;
-    bool isPressLeftCamera;
-    bool isPressRightCamera;
+    public bool isPressLeftCamera;
+    public bool isPressRightCamera;
 
     public UISlider slider;
     
@@ -33,6 +33,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     
 	public int _idx;
+
+    public Transform beforeParent;
 
     // Start is called before the first frame update
     void Start() {
@@ -54,6 +56,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
         _player.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Player;
         _cameraY = 0.0f;
         _cameraRotationSpeed = 4.5f;
+
+        //beforeParent = this.gameObject.transform.parent;
+        //this.transform.SetParent(this.gameObject.transform.parent.parent);
 
     }
 
@@ -101,7 +106,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
             if(isPressRightCamera == false && isPressLeftCamera == false) {
                 _cameraY = _info.channel * _cameraRotationSpeed;
-                AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+                Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             }
         }
     }   
@@ -137,7 +142,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 			RaycastHit _hit;
 
-			Ray _ray = AppUI.mainCamera.ScreenPointToRay(Input.mousePosition);
+			Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
 
 			if(Physics.Raycast(_ray, out _hit)) {
 				GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
@@ -217,12 +222,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isPressLeftCamera = press;
         
         if(press == true) {
-            float now = AppUI.mainCamera.transform.localRotation.y;
-                        
-            AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
+            
+            Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
+            Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
-            _cameraY -= Time.deltaTime * (_cameraRotationSpeed * 2);
+            _cameraY -= Time.deltaTime * (_cameraRotationSpeed * 4);
         }
 
     }
@@ -232,12 +238,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isPressRightCamera = press;
 
         if(press == true) {
-            float now = AppUI.mainCamera.transform.localRotation.y;
+            float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
 
-            AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
+            Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
-            _cameraY += Time.deltaTime * (_cameraRotationSpeed * 2);
+            _cameraY += Time.deltaTime * (_cameraRotationSpeed * 4);
         }
     }
 
@@ -304,7 +311,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButtonExit() {
 
         Appmain.appimg.mainUIPrefab.SetActive(true);
-        NGUITools.Destroy(this.transform.parent.gameObject);
+        NGUITools.Destroy(this.beforeParent.gameObject);
+        NGUITools.Destroy(this.transform.gameObject);
 
     }
 

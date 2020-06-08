@@ -495,7 +495,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627505262702806403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90fc8427bee38c478f5b2f6f0ae9580, type: 3}
   m_Name: 
@@ -2219,6 +2219,7 @@ GameObject:
   - component: {fileID: 762444241272432}
   - component: {fileID: 3993594888378106927}
   - component: {fileID: 4259189132329558024}
+  - component: {fileID: 3575581813352422979}
   m_Layer: 8
   m_Name: pfb_FDPlayerCTL
   m_TagString: Untagged
@@ -2284,7 +2285,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3001
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -2311,8 +2312,11 @@ MonoBehaviour:
   buttonTR: {fileID: 3993594887445741517}
   buttonLeftCamera: {fileID: 6420877868275491973}
   buttonRightCamera: {fileID: 7672715480620541458}
+  isPressLeftCamera: 0
+  isPressRightCamera: 0
   slider: {fileID: 113733674875875211}
   _idx: 0
+  beforeParent: {fileID: 0}
 --- !u!54 &4259189132329558024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2329,6 +2333,54 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3575581813352422979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993594888378106913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2747e3775af504da1a4d5a46c5a1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 1
+  steeperCurves: 0
+  tweenGroup: 0
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: 0
+  to: 1
 --- !u!1 &3993594888513280899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3689,7 @@ GameObject:
   - component: {fileID: 8345317369496655098}
   - component: {fileID: 4710590041401247876}
   - component: {fileID: 483339618410296291}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: pfb_VideoManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3678,7 +3730,7 @@ MonoBehaviour:
   m_ScaleValue: 0
   m_objResize:
   - {fileID: 8345317369318998497}
-  m_bLoop: 0
+  m_bLoop: 1
   m_bAutoPlay: 1
 --- !u!33 &8345317369318202849
 MeshFilter:
@@ -3732,7 +3784,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8345317369318998497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f9c9d51d11ef94b8bb97206b9b10df, type: 3}
   m_Name: 
@@ -3773,7 +3825,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3010
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}

@@ -7,6 +7,7 @@ public class Appimg : MonoBehaviour {
 	Appandroid appandroid;
 
 	public GameObject mainUIPrefab;
+	public isoFdPlayerCtl _nowFullCtl;
 
 	// Use this for initialization
 	void Start () {
@@ -107,7 +108,7 @@ public class Appimg : MonoBehaviour {
 		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
 		_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();
 		_instan.transform.SetParent(mainMenu._gridMain.transform);
-		_instan.transform.localScale = new Vector3(1, 1, 1);
+		_instan.transform.localScale = new Vector3(1, 1, 1);		
 
 		mainMenu._gridMain.repositionNow = true;
 
@@ -118,6 +119,10 @@ public class Appimg : MonoBehaviour {
 		{
             GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
             MediaPlayerCtrl _ctl = _videoManager.GetComponentInChildren<MediaPlayerCtrl>();
+
+			_nowFullCtl = _videoManager.GetComponentInChildren<isoFdPlayerCtl>();
+
+			
 
 			_ctl.m_strFileName = _url;
             _videoManager.transform.SetParent(Appmain.appui.transform);
@@ -130,6 +135,9 @@ public class Appimg : MonoBehaviour {
             //isoFdPlayerCtl _playerCtl = playerCtl.GetComponent<isoFdPlayerCtl>();
 
             //_playerCtl.scrMedia = _ctl;
+
+			_nowFullCtl.beforeParent = _videoManager.gameObject.transform;
+			_nowFullCtl.transform.SetParent(Appmain.appui.transform);
 
 			mainUIPrefab.SetActive(false);
         }
@@ -186,7 +194,7 @@ public class Appimg : MonoBehaviour {
 		}
 #endif	
 
-		instan.transform.SetParent(AppUI.mainCamera.transform);
+		instan.transform.SetParent(Appmain.appui.mainCamera2D.transform);
 		instan.transform.localScale = new Vector3(1, 1, 1);
 
 		return instan;

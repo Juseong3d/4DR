@@ -79,7 +79,7 @@ public class PopupBox : MonoBehaviour {
 		GameObject _instan = (GameObject)Instantiate(_prefab);
 		PopupBox dialogBox = _instan.GetComponent<PopupBox>();
 
-		_instan.transform.SetParent(AppUI.mainCamera.transform);
+		_instan.transform.SetParent(Appmain.appui.mainCamera2D.transform);
 		_instan.transform.localScale = new Vector3(1, 1, 1);
 		UIPanel panel = _instan.GetComponent<UIPanel>();
 		panel.depth += Appmain.havePopupCnt;
