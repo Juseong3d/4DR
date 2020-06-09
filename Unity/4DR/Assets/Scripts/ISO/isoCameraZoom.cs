@@ -9,6 +9,8 @@ public class isoCameraZoom : MonoBehaviour
     public float zoomOutMin = 0.1f;
     public float zoomOutMax = 8.0f;
 
+    public int doubleTouchCnt = 0;
+
     private void Start() {
 
         //zoomOutMin = 0.1f;
@@ -45,24 +47,34 @@ public class isoCameraZoom : MonoBehaviour
 
             //Vector3 direction = touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition);
             //Appmain.appui.mainCamera3D.transform.position += direction * (Appmain.appui.mainCamera3D.orthographicSize + 1.0f);
+            if(touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved) {
+                zoom(difference * 0.001f);
+            }
 
-            zoom(difference * 0.001f);
+            doubleTouchCnt ++;
         }else if(Input.GetMouseButton(0)){
-            Vector3 direction = touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition);
-            Appmain.appui.mainCamera3D.transform.position += direction * (Appmain.appui.mainCamera3D.orthographicSize + 1.0f);
 
-            float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * 1.6f);
-            float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * 1.6f);
+            if(doubleTouchCnt == 0) {
+                Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)) * ((1.0f - Appmain.appui.mainCamera3D.orthographicSize) + 1.0f);
+                Appmain.appui.mainCamera3D.transform.position += direction;
 
-            float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
-            float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
+                float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
+                float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
 
-            float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
-            float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
-            
-            Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
+                float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
+                float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
+
+                float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
+                float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
+
+                Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
+            }
         }
         zoom(Input.GetAxis("Mouse ScrollWheel"));
+
+        if(Input.touchCount == 0) {
+            doubleTouchCnt = 0;
+        }
 	}
 
     void zoom(float increment){
@@ -70,8 +82,8 @@ public class isoCameraZoom : MonoBehaviour
         if(increment != 0) {
             Appmain.appui.mainCamera3D.orthographicSize = Mathf.Clamp(Appmain.appui.mainCamera3D.orthographicSize - increment, zoomOutMin, zoomOutMax);
 
-            float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * 1.6f);
-            float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * 1.6f);
+            float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
+            float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
 
             float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
             float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
