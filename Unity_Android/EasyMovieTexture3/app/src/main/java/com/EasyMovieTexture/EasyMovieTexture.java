@@ -986,9 +986,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         }
         //m4DLivePlayer.play();
         //Log.d(TAG, "444 ?????????? " + m4DLivePlayer);
-        m4DLivePlayer.setLooping(true);
+        //m4DLivePlayer.setLooping(true);
         //Log.d(TAG, "open1 end");
         //Log.d(TAG, "555 ?????????? " + m4DLivePlayer);
+
+        //m4DLivePlayer.pause();
+
     }
 
 }

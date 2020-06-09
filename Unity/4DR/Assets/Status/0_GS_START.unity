@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainUIPrefab: {fileID: 0}
   _nowFullCtl: {fileID: 0}
+  _nowFullVideo: {fileID: 0}
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomOutMin: 0.1
   zoomOutMax: 1
+  doubleTouchCnt: 0
 --- !u!20 &507854230
 Camera:
   m_ObjectHideFlags: 0

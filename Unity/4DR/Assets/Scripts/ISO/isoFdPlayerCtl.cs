@@ -59,6 +59,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         //beforeParent = this.gameObject.transform.parent;
         //this.transform.SetParent(this.gameObject.transform.parent.parent);
+        _idx = 9;
 
     }
 
@@ -138,20 +139,23 @@ public class isoFdPlayerCtl : MonoBehaviour {
 					"Common/_Default_Effect/RotatorPS1",
 					"Common/_Default_Effect/RotatorPS2",
 					"Common/_Default_Effect_2/star2",
+
+                    "Common/_Default_effect_3/CFX_MagicPoof"
 				};
 
-			_idx = 9;
+			_idx = Mathf.Clamp(_idx, 0, _effects_path.Length - 1);
 
 			RaycastHit _hit;
 
 			Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
 
+            //Debug.DrawRay(_ray, Vector3.forward);
 			if(Physics.Raycast(_ray, out _hit)) {
 				GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
-				prefab.transform.SetParent(Appmain.appui.transform);
-				
-				prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
-				prefab.transform.localScale = new Vector3(150, 150, 150);
+				prefab.transform.SetParent(Appmain.appui.transform);                
+                				
+				prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
+				prefab.transform.localScale = new Vector3(50, 50, 50);
 			}
 
 			//GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
@@ -161,6 +165,18 @@ public class isoFdPlayerCtl : MonoBehaviour {
 			//prefab.transform.localScale = new Vector3(150, 150, 150);
 
         }
+    }
+
+    public void OnClickButton4EffectIndex() {
+
+        _idx ++;
+
+    }
+
+
+    public void OnClickButton4EffectIndexM() {
+
+        _idx --;
 
     }
 
