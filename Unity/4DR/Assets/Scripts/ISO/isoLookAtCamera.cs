@@ -18,8 +18,8 @@ public class isoLookAtCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        this.transform.LookAt(this.transform.position + _camera.transform.rotation * Vector3.forward, _camera.transform.rotation * Vector3.up);        
+        this.transform.LookAt(this.transform.position + _camera.transform.parent.rotation * Vector3.forward, _camera.transform.parent.rotation * Vector3.up);        
     }
 }

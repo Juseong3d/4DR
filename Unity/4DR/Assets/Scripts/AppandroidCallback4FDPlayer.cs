@@ -48,8 +48,9 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     void getCurrentPlayInfo(string _value) {               
 
         string[] _tmp = _value.Split(","[0]);
-
+#if !UNITY_EDITOR
         channel = int.Parse(_tmp[1]);
+#endif
         frame = int.Parse(_tmp[2]);
         frame_cycle = int.Parse(_tmp[3]);
         time = long.Parse(_tmp[4]);

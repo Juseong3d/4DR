@@ -607,7 +607,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   ignoreTimeScale: 1
   delay: 0
-  duration: 1
+  duration: 10
   steeperCurves: 0
   tweenGroup: 0
   onFinished: []

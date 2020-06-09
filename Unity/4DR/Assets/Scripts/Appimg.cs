@@ -8,6 +8,7 @@ public class Appimg : MonoBehaviour {
 
 	public GameObject mainUIPrefab;
 	public isoFdPlayerCtl _nowFullCtl;
+	public MediaPlayerCtrl _nowFullVideo;
 
 	// Use this for initialization
 	void Start () {
@@ -120,9 +121,8 @@ public class Appimg : MonoBehaviour {
             GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
             MediaPlayerCtrl _ctl = _videoManager.GetComponentInChildren<MediaPlayerCtrl>();
 
-			_nowFullCtl = _videoManager.GetComponentInChildren<isoFdPlayerCtl>();
-
-			
+			_nowFullVideo = _ctl;
+			_nowFullCtl = _videoManager.GetComponentInChildren<isoFdPlayerCtl>();			
 
 			_ctl.m_strFileName = _url;
             _videoManager.transform.SetParent(Appmain.appui.transform);

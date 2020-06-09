@@ -22,11 +22,11 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public UISlider slider;
     
-    bool isRight;
-    bool isLeft;
+    public bool isRight;
+    public bool isLeft;
 
-    bool isLeftTime;
-    bool isRightTime;
+    public bool isLeftTime;
+    public bool isRightTime;
 
     float _cameraY;
     float _cameraRotationSpeed;
@@ -71,7 +71,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void LateUpdate() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
@@ -104,9 +104,11 @@ public class isoFdPlayerCtl : MonoBehaviour {
             float _value = (float)_info.time / (float)_info.duration;
             slider.value = _value;
 
-            if(isPressRightCamera == false && isPressLeftCamera == false) {
+            if (isPressRightCamera == false && isPressLeftCamera == false) {
+
+                Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+
                 _cameraY = _info.channel * _cameraRotationSpeed;
-                Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             }
         }
     }   
@@ -204,48 +206,70 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Left(bool _how) {
 
+        //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
         //Debug.Log("OnClickButton4Left() :: " + _how);
-        scrMedia.Left(_how);       
+        scrMedia.Left(_how);
         //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
+#if UNITY_EDITOR
+        _info.channel --;
+        _info.channel = Mathf.Clamp(_info.channel, 0, 45);
+#endif
+        //_cameraY -= Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
+        
+        //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+        //Appmain.appui.mainCamera3D.transform.localPosition = before;
     }
 
 
     public void OnClickButton4Right(bool _how) {
 
+        //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
         //Debug.Log("OnClickButton4Right() :: " + _how);
         scrMedia.Right(_how);
         //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
+
+#if UNITY_EDITOR
+        _info.channel ++;
+        _info.channel = Mathf.Clamp(_info.channel, 0, 45);
+#endif  
+
+        //_cameraY += Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
+        ////Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+        
+        //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+        //Appmain.appui.mainCamera3D.transform.localPosition = before;
     }
 
-    void OnClickButton4Left_Camera(GameObject go, bool press) {
-
-        isPressLeftCamera = press;
+    void OnClickButton4Left_Camera(GameObject go, bool press) {       
         
         if(press == true) {
             float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
             
-            Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
-            Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            //Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
+            Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
-            _cameraY -= Time.deltaTime * (_cameraRotationSpeed * 4);
+            _cameraY -= Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
         }
+
+        isPressLeftCamera = press;
 
     }
 
     void OnClickButton4Right_Camera(GameObject go, bool press) {
-
-        isPressRightCamera = press;
-
+        
         if(press == true) {
             float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
 
-            Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
-            Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            //Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
+            Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
-            _cameraY += Time.deltaTime * (_cameraRotationSpeed * 4);
+            _cameraY += Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
         }
+
+        isPressRightCamera = press;
+
     }
 
 

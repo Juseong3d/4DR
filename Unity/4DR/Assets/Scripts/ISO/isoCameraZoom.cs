@@ -19,7 +19,7 @@ public class isoCameraZoom : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate () {
+    void Update () {
         
         if(Appmain.gameStatus < GAME_STATUS.GS_MENU) 
             return;
@@ -27,8 +27,21 @@ public class isoCameraZoom : MonoBehaviour
         if(Appmain.appimg._nowFullCtl == null) return;
 
         if(Appmain.appimg._nowFullCtl.isPressLeftCamera == true || Appmain.appimg._nowFullCtl.isPressRightCamera == true) {
+            doubleTouchCnt ++;
             return;
         }
+
+        if(Appmain.appimg._nowFullCtl.isRight == true || Appmain.appimg._nowFullCtl.isLeft == true) {
+            doubleTouchCnt ++;
+            return;
+        }
+
+        if(Appmain.appimg._nowFullCtl.isLeftTime == true || Appmain.appimg._nowFullCtl.isRightTime == true) {
+            doubleTouchCnt ++;
+            return;
+        }
+
+        //transform.LookAt(Appmain.appimg._nowFullVideo.transform);
 
         if(Input.GetMouseButtonDown(0)){
             touchStart = Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition);

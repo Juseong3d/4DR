@@ -34,7 +34,7 @@ public class APP_INFO {
 
 		version0 = "0";
 		version1 = "1";
-		version2 = "0";
+		version2 = "1";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
 		appVersion += ".PROTO";
