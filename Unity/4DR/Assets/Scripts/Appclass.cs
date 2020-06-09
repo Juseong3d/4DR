@@ -66,7 +66,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	internal string GETURL() {
 
 		if(url.Contains(_4DREPLAY_TYPE_) == true) {
-			return string.Format("{0}?type={1}", url, type);
+			return string.Format("{0}?type={1}&quality=fhd", url, type);
 		}else {
 			return url;
 		}
