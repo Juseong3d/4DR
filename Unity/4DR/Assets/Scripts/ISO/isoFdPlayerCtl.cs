@@ -36,6 +36,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public Transform beforeParent;
 
+    public float _contrlerStatusTime;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -60,6 +62,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //beforeParent = this.gameObject.transform.parent;
         //this.transform.SetParent(this.gameObject.transform.parent.parent);
         _idx = 9;
+
+        _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
 
     }
 
@@ -99,6 +103,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if(isPressRightCamera == true) {
             OnClickButton4Right_Camera(this.gameObject, true);
         }
+
+        //if(isPressPlayerBackButton == true) {
+        //    OnClickButton4Player(this.gameObject, true);
+        //}
         
         if(_info.duration != 0) {
             
@@ -112,9 +120,18 @@ public class isoFdPlayerCtl : MonoBehaviour {
                 _cameraY = _info.channel * _cameraRotationSpeed;
             }
         }
+
+        //if(_contrlerStatusTime > 0.0f) {
+        //    _contrlerStatusTime -= Time.deltaTime;
+        //}else if(_contrlerStatusTime == 0.0f) {
+
+        //}else {
+        //    _contrlerStatusTime = 0.0f;
+        //    tweenCtlPanel.PlayReverse();
+        //}
     }   
 
-
+    public bool isPressPlayerBackButton;
     public void OnClickButton4Player(GameObject obj, bool isPress) {
 
         if(isPress == true) {
@@ -124,21 +141,21 @@ public class isoFdPlayerCtl : MonoBehaviour {
 			//Debug.Log("_x :: " + _x + "/" + _y);
 			//for testing...
 			string[] _effects_path = {
-					"Common/_Default_Effect/Magic fire 0",
-					"Common/_Default_Effect/Magic fire 1",
-					"Common/_Default_Effect/Magic fire 2",
-					"Common/_Default_Effect/Magic fire 3",
-					"Common/_Default_Effect/Magic fire pro blue",	//4
+					//"Common/_Default_Effect/Magic fire 0",
+					//"Common/_Default_Effect/Magic fire 1",
+					//"Common/_Default_Effect/Magic fire 2",
+					//"Common/_Default_Effect/Magic fire 3",
+					//"Common/_Default_Effect/Magic fire pro blue",	//4
 
-					"Common/_Default_Effect/Magic fire pro green",
-					"Common/_Default_Effect/Magic fire pro orange",
-					"Common/_Default_Effect/Magic fire pro red",
-					"Common/_Default_Effect/Magic fire pro yellow",
+					//"Common/_Default_Effect/Magic fire pro green",
+					//"Common/_Default_Effect/Magic fire pro orange",
+					//"Common/_Default_Effect/Magic fire pro red",
+					//"Common/_Default_Effect/Magic fire pro yellow",
 					"Common/_Default_Effect/pfb_Effect_Touch",	//9
 
-					"Common/_Default_Effect/RotatorPS1",
-					"Common/_Default_Effect/RotatorPS2",
-					"Common/_Default_Effect_2/star2",
+					//"Common/_Default_Effect/RotatorPS1",
+					//"Common/_Default_Effect/RotatorPS2",
+					//"Common/_Default_Effect_2/star2",
 
                     "Common/_Default_effect_3/CFX_MagicPoof"
 				};
@@ -164,7 +181,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 			//prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
 			//prefab.transform.localScale = new Vector3(150, 150, 150);
 
+            tweenCtlPanel.PlayForward();
+            _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
+
         }
+
+        isPressPlayerBackButton = isPress;
     }
 
     public void OnClickButton4EffectIndex() {
@@ -355,5 +377,42 @@ public class isoFdPlayerCtl : MonoBehaviour {
         NGUITools.Destroy(this.transform.gameObject);
 
     }
+
+
+    public TweenPosition tweenPosition4RightMenu;
+    public bool isRightMenu = false;
+
+    public void OnClickButton4RightMenu() {
+
+        if(isRightMenu == true) {
+            tweenPosition4RightMenu.PlayForward();
+        }else {
+            tweenPosition4RightMenu.PlayReverse();
+        }
+
+        isRightMenu = !isRightMenu;
+
+    }
+
+
+    public TweenPosition tweenPosition4LeftMenu;
+    public bool isLeftMenu = false;
+
+    public void OnClickButton4LeftMenu() {
+
+        if(isLeftMenu == true) {
+            tweenPosition4LeftMenu.PlayForward();
+        }else {
+            tweenPosition4LeftMenu.PlayReverse();
+        }
+
+        isLeftMenu = !isLeftMenu;
+
+    }
+
+
+    public TweenAlpha tweenCtlPanel;
+
+
 
 }

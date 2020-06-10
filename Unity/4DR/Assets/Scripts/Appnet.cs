@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Text;
-
+using UnityEngine.Networking;
 
 public enum NET_STATUS {
 	
@@ -13,261 +13,6 @@ public enum NET_STATUS {
 	RECV_COMP = 11000,
 	RECV_COMP_ERROR = 11010,
 	RECV_COMP_BACK = 11100
-}
-
-
-[Serializable] 
-public class XML_DATA {
-
-	public string[] paramName;
-	public string[] value;
-	int paramCnt;
-	//HtmlDecoder htmlDecoder;
-	ArrayList listParam;
-	int listCnt;
-
-	public XML_DATA(string src) {
-
-		//htmlDecoder = new HtmlDecoder();
-		//Debug.Log("xml data parsring src = " + src);
-		listParam = new ArrayList();
-		_GO(src);
-	}
-
-	void _GO(string src) {
-
-		string[] tmpCut = src.Trim().Split("\n"[0]);
-		
-		//string[] tmpCut;
-		//int beforeIndex = 0;
-		//int lastIndex = 0;
-		//int maxcnt = 0;
-		int i = 0;
-
-		//src = src.Trim();
-
-		//for(i = 0; i<src.Length; i+=lastIndex) {
-		//    lastIndex = src.LastIndexOf(">\n", lastIndex);
-		//    maxcnt ++;
-		//}
-
-		//tmpCut = new string[maxcnt];
-		
-		//lastIndex = 0;
-
-		//for(i = 0; i<maxcnt; i++) {
-		//    beforeIndex = lastIndex;
-		//    lastIndex = src.LastIndexOf(">\n", lastIndex);
-		//    tmpCut[i] = src.Substring(beforeIndex, lastIndex - beforeIndex);
-		//    Debug.Log(tmpCut[i]);
-		//}
-
-
-		if(tmpCut.Length > 2) {
-			//setParamCnt(tmpCut.Length - 3);		
-			setParamCnt(tmpCut.Length - 2);		//cmd 까지 가지고 있도록 수정 20120827
-
-			for(i = 0; i<paramCnt; i++) {
-				//setParam(i, tmpCut[i + 2]);
-				setParam(i, tmpCut[i + 1]);		//cmd 까지 가지고 있도록 수정 20120827
-			}
-		}
-	}
-
-
-	void setParamCnt(int cnt) {
-
-		paramCnt = cnt;
-		
-		if(paramCnt > 0) {
-			paramName = new string[paramCnt];
-			value = new string[paramCnt];
-		}
-
-	}
-
-
-	void setParam(int idx, string src) {
-
-		string[] tmpData = src.Split(">"[0]);
-		
-		//for testing...s
-		//for(int i = 0; i<tmpData.Length; i++) {
-		//	Debug.Log("tmpData[i] = " + tmpData[i]);
-		//}
-		//for testing...e
-			
-		paramName[idx] = tmpData[0].Trim().Substring(1);
-
-		int valueLength = tmpData[1].Length - (paramName[idx].Length + 2);
-
-		if(valueLength < 0) {
-			value[idx] = "-1";
-			//Debug.Log("valueLength		:: " + valueLength);
-		}else {
-			value[idx] = tmpData[1].Substring(0, valueLength);
-		}
-	}
-
-
-	internal string getValue(string name, int idx = 0) {
-
-		bool find = false;
-		int findCnt = 0;
-		int i = 0;
-
-		//Debug.Log("getValue = " + getValue);
-
-		for(i = 0; i<paramCnt; i++) {
-			if(name.Equals(paramName[i])) {
-				
-				findCnt ++;
-
-				if(findCnt == idx + 1) {
-					find = true;
-					break;
-				}
-			}
-		}
-
-		if(find == true) {
-			//Debug.Log("b value[i] = " + value[i]);
-			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
-			string decodeString = value[i];//WWW.UnEscapeURL(value[i]);
-
-			//Debug.Log("n value[i] = " + decodeString);
-			return decodeString;
-		}
-
-		return name + " [CHECK_NO_VALUE]";
-	}
-
-
-	internal int getValueCnt(string name) {
-
-		int i = 0;
-		int findCnt = 0;
-
-		for(i = 0; i<paramCnt; i++) {
-			if(name.Equals(paramName[i])) {				
-				findCnt ++;
-			}
-		}
-
-		return findCnt;
-
-	}
-
-
-	internal int getValueToInt32(string name, int idx = 0) {
-
-		bool find = false;
-		int findCnt = 0;
-		int i = 0;
-
-		//Debug.Log("getValue = " + getValue);
-
-		for(i = 0; i<paramCnt; i++) {
-			if(name.Equals(paramName[i])) {
-				
-				findCnt ++;
-
-				if(findCnt == idx + 1) {
-					find = true;
-					break;
-				}
-			}
-		}
-
-		if(find == true) {
-			//Debug.Log("b value[i] = " + value[i]);
-			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
-
-			int decodeString = -99999;			
-			bool result = Int32.TryParse(value[i], out decodeString);//Convert.ToInt32(value[i]);//WWW.UnEscapeURL(value[i]);
-
-			//Debug.Log("n value[i] = " + decodeString);
-			return decodeString;
-		}
-
-		return -999999;
-	}
-
-
-	internal long getValueToInt64(string name, int idx = 0) {
-
-		bool find = false;
-		int findCnt = 0;
-		int i = 0;
-
-		//Debug.Log("getValue = " + getValue);
-
-		for(i = 0; i<paramCnt; i++) {
-			if(name.Equals(paramName[i])) {
-				
-				findCnt ++;
-
-				if(findCnt == idx + 1) {
-					find = true;
-					break;
-				}
-			}
-		}
-
-		if(find == true) {
-			//Debug.Log("b value[i] = " + value[i]);
-			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
-			long decodeString = -99999;			
-			bool result = Int64.TryParse(value[i], out decodeString);			
-
-			//Debug.Log("n value[i] = " + decodeString);
-			return decodeString;
-		}
-
-		return -999999;
-	}
-	
-}
-
-
-[Serializable] 
-public class NETWORK_DATA {
-
-	public string functionName;
-	public string sendDataStr;
-	public XML_DATA sendData;
-	public string tmpRecvData;
-	public XML_DATA[] recvData;	
-
-	public float recvTime;
-
-	public GameObject eventReceiver;
-	public string eventFuncName;
-
-	public NETWORK_DATA() {
-		//init();
-		functionName = "";
-		sendDataStr = "";
-		sendData = null;
-		tmpRecvData = "";
-		recvData = null;
-	}
-
-	public NETWORK_DATA(NETWORK_DATA nData)
-	{
-		this.sendDataStr = nData.sendDataStr;
-		this.sendData = nData.sendData;
-		this.functionName = nData.functionName;
-		this.eventReceiver = nData.eventReceiver;
-		this.eventFuncName = nData.eventFuncName;
-		this.recvData = null;
-		this.tmpRecvData = nData.tmpRecvData;
-	}
-
-	public void init() {
-		eventReceiver = Appmain.MAIN_GAMEOBJECT;
-		eventFuncName = "onRecvNetErrorFunc";
-	}
 }
 
 
@@ -448,7 +193,12 @@ public class Appnet : MonoBehaviour {
 			//}	
 
 			//recvCompleate4Web(networkData);
+			appclass._list_conent_fdlist = null;
 			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + www.text + "}");
+
+			if(Appmain.gameStatus == GAME_STATUS.GS_MENU) {
+				Appmain.appimg._SET_MINI_VIDEO_GRID();
+			}
 			
 			tmpNetWorkData = networkData;
 			this.netStatus = NET_STATUS.NONE;
@@ -457,6 +207,7 @@ public class Appnet : MonoBehaviour {
 			string _tmp = 
 				"[{\"id\":9,\"title\":\"LGU+_Baseball\",\"url\":\"rtsp://app.4dlive.kr/vod_test01.4ds\",\"type\":\"vod\"},{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"},{\"id\":11,\"title\":\"Golf\",\"url\":\"rtsp://app.4dlive.kr/Golf_20Mbps.4ds\",\"type\":\"vod\"},{\"id\":12,\"title\":\"JUDO\",\"url\":\"rtsp://app.4dlive.kr/judo_4k_30p.4ds\",\"type\":\"vod\"},{\"id\":13,\"title\":\"mbc_test01\",\"url\":\"rtsp://app.4dlive.kr/mbc_test01.4ds\",\"type\":\"vod\"},{\"id\":14,\"title\":\"vod_test02\",\"url\":\"rtsp://app.4dlive.kr/vod_test02.4ds\",\"type\":\"vod\"}]";
 
+			appclass._list_conent_fdlist = null;
 			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
             Debug.Log("WWW Error: "+ www.error);
         }    
@@ -953,3 +704,257 @@ public class Appnet : MonoBehaviour {
 	
 }
 
+
+[Serializable] 
+public class XML_DATA {
+
+	public string[] paramName;
+	public string[] value;
+	int paramCnt;
+	//HtmlDecoder htmlDecoder;
+	ArrayList listParam;
+	int listCnt;
+
+	public XML_DATA(string src) {
+
+		//htmlDecoder = new HtmlDecoder();
+		//Debug.Log("xml data parsring src = " + src);
+		listParam = new ArrayList();
+		_GO(src);
+	}
+
+	void _GO(string src) {
+
+		string[] tmpCut = src.Trim().Split("\n"[0]);
+		
+		//string[] tmpCut;
+		//int beforeIndex = 0;
+		//int lastIndex = 0;
+		//int maxcnt = 0;
+		int i = 0;
+
+		//src = src.Trim();
+
+		//for(i = 0; i<src.Length; i+=lastIndex) {
+		//    lastIndex = src.LastIndexOf(">\n", lastIndex);
+		//    maxcnt ++;
+		//}
+
+		//tmpCut = new string[maxcnt];
+		
+		//lastIndex = 0;
+
+		//for(i = 0; i<maxcnt; i++) {
+		//    beforeIndex = lastIndex;
+		//    lastIndex = src.LastIndexOf(">\n", lastIndex);
+		//    tmpCut[i] = src.Substring(beforeIndex, lastIndex - beforeIndex);
+		//    Debug.Log(tmpCut[i]);
+		//}
+
+
+		if(tmpCut.Length > 2) {
+			//setParamCnt(tmpCut.Length - 3);		
+			setParamCnt(tmpCut.Length - 2);		//cmd 까지 가지고 있도록 수정 20120827
+
+			for(i = 0; i<paramCnt; i++) {
+				//setParam(i, tmpCut[i + 2]);
+				setParam(i, tmpCut[i + 1]);		//cmd 까지 가지고 있도록 수정 20120827
+			}
+		}
+	}
+
+
+	void setParamCnt(int cnt) {
+
+		paramCnt = cnt;
+		
+		if(paramCnt > 0) {
+			paramName = new string[paramCnt];
+			value = new string[paramCnt];
+		}
+
+	}
+
+
+	void setParam(int idx, string src) {
+
+		string[] tmpData = src.Split(">"[0]);
+		
+		//for testing...s
+		//for(int i = 0; i<tmpData.Length; i++) {
+		//	Debug.Log("tmpData[i] = " + tmpData[i]);
+		//}
+		//for testing...e
+			
+		paramName[idx] = tmpData[0].Trim().Substring(1);
+
+		int valueLength = tmpData[1].Length - (paramName[idx].Length + 2);
+
+		if(valueLength < 0) {
+			value[idx] = "-1";
+			//Debug.Log("valueLength		:: " + valueLength);
+		}else {
+			value[idx] = tmpData[1].Substring(0, valueLength);
+		}
+	}
+
+
+	internal string getValue(string name, int idx = 0) {
+
+		bool find = false;
+		int findCnt = 0;
+		int i = 0;
+
+		//Debug.Log("getValue = " + getValue);
+
+		for(i = 0; i<paramCnt; i++) {
+			if(name.Equals(paramName[i])) {
+				
+				findCnt ++;
+
+				if(findCnt == idx + 1) {
+					find = true;
+					break;
+				}
+			}
+		}
+
+		if(find == true) {
+			//Debug.Log("b value[i] = " + value[i]);
+			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
+			string decodeString = value[i];//WWW.UnEscapeURL(value[i]);
+
+			//Debug.Log("n value[i] = " + decodeString);
+			return decodeString;
+		}
+
+		return name + " [CHECK_NO_VALUE]";
+	}
+
+
+	internal int getValueCnt(string name) {
+
+		int i = 0;
+		int findCnt = 0;
+
+		for(i = 0; i<paramCnt; i++) {
+			if(name.Equals(paramName[i])) {				
+				findCnt ++;
+			}
+		}
+
+		return findCnt;
+
+	}
+
+
+	internal int getValueToInt32(string name, int idx = 0) {
+
+		bool find = false;
+		int findCnt = 0;
+		int i = 0;
+
+		//Debug.Log("getValue = " + getValue);
+
+		for(i = 0; i<paramCnt; i++) {
+			if(name.Equals(paramName[i])) {
+				
+				findCnt ++;
+
+				if(findCnt == idx + 1) {
+					find = true;
+					break;
+				}
+			}
+		}
+
+		if(find == true) {
+			//Debug.Log("b value[i] = " + value[i]);
+			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
+
+			int decodeString = -99999;			
+			bool result = Int32.TryParse(value[i], out decodeString);//Convert.ToInt32(value[i]);//WWW.UnEscapeURL(value[i]);
+
+			//Debug.Log("n value[i] = " + decodeString);
+			return decodeString;
+		}
+
+		return -999999;
+	}
+
+
+	internal long getValueToInt64(string name, int idx = 0) {
+
+		bool find = false;
+		int findCnt = 0;
+		int i = 0;
+
+		//Debug.Log("getValue = " + getValue);
+
+		for(i = 0; i<paramCnt; i++) {
+			if(name.Equals(paramName[i])) {
+				
+				findCnt ++;
+
+				if(findCnt == idx + 1) {
+					find = true;
+					break;
+				}
+			}
+		}
+
+		if(find == true) {
+			//Debug.Log("b value[i] = " + value[i]);
+			//string decodeString = htmlDecoder.HtmlDecode(value[i]);
+			long decodeString = -99999;			
+			bool result = Int64.TryParse(value[i], out decodeString);			
+
+			//Debug.Log("n value[i] = " + decodeString);
+			return decodeString;
+		}
+
+		return -999999;
+	}
+	
+}
+
+
+[Serializable] 
+public class NETWORK_DATA {
+
+	public string functionName;
+	public string sendDataStr;
+	public XML_DATA sendData;
+	public string tmpRecvData;
+	public XML_DATA[] recvData;	
+
+	public float recvTime;
+
+	public GameObject eventReceiver;
+	public string eventFuncName;
+
+	public NETWORK_DATA() {
+		//init();
+		functionName = "";
+		sendDataStr = "";
+		sendData = null;
+		tmpRecvData = "";
+		recvData = null;
+	}
+
+	public NETWORK_DATA(NETWORK_DATA nData)
+	{
+		this.sendDataStr = nData.sendDataStr;
+		this.sendData = nData.sendData;
+		this.functionName = nData.functionName;
+		this.eventReceiver = nData.eventReceiver;
+		this.eventFuncName = nData.eventFuncName;
+		this.recvData = null;
+		this.tmpRecvData = nData.tmpRecvData;
+	}
+
+	public void init() {
+		eventReceiver = Appmain.MAIN_GAMEOBJECT;
+		eventFuncName = "onRecvNetErrorFunc";
+	}
+}

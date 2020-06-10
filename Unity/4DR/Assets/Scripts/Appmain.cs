@@ -12,6 +12,8 @@ public class Appmain : MonoBehaviour {
 
 	public static Appimg appimg;
 
+	public static Appnet appnet;
+
 	public static GameObject MAIN_GAMEOBJECT;
 
 	public static GAME_STATUS nextGameStatus;
@@ -49,7 +51,7 @@ public class Appmain : MonoBehaviour {
 		appevent = GetComponent<Appevent>();
 		appclass = GetComponent<Appclass>();
 		appimg = GetComponent<Appimg>();
-
+		appnet = GetComponent<Appnet>();
 
 		initGameApp();
 

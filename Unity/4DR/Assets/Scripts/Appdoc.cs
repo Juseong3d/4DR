@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Appdoc : MonoBehaviour {
 	
@@ -48,7 +49,8 @@ public class Appdoc : MonoBehaviour {
 			Appmain.gameStatusCnt = 0;
 			//appimg.isLoading = true;
 			
-			Application.LoadLevel(((int)status));
+			//Application.LoadLevel(((int)status));
+			SceneManager.LoadScene(((int)status));
 		}
 
 	}

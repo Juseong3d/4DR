@@ -20,8 +20,8 @@ public class DEFINE : MonoBehaviour {
 	public const string POPUP_EXIT_TITLE = "Close";
 	public const string POPUP_EXIT_QUSTION = "Want Close?";
 
-	public const int FDPLAYER_PORT = 7070;	
-   
+	public const int FDPLAYER_PORT = 7070;
+	public const float CONTRLER_STATUS_TIME = 5.0f;
 }
 
 public enum PROJECT_TYPE {

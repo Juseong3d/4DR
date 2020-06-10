@@ -17,4 +17,11 @@ public class uisoMainMenu : MonoBehaviour
     {
         
     }
+
+
+    public void OnClickButton4Reflash() {
+
+        Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);        
+
+    }
 }

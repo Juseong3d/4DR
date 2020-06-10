@@ -70,28 +70,31 @@ public class Appimg : MonoBehaviour {
 			case GAME_STATUS.GS_MENU :
 				{
 					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_MAIN_MENU, true);
-					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();					
-					
+					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();										
 
-					for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
-						//GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
-						//uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
-						//MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
-
-						//_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
-						//_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();
-						//_instan.transform.SetParent(mainMenu._gridMain.transform);
-						//_instan.transform.localScale = new Vector3(1, 1, 1);
-
-						if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals("not_used")) {
-							StartCoroutine(_LOAD_MINI_VIDEO(i));
-						}
-					}
-
-					//mainMenu._gridMain.repositionNow = true;
+					_SET_MINI_VIDEO_GRID();
 
 				}
 				break;
+		}
+	}
+
+
+	public void _SET_MINI_VIDEO_GRID() {
+
+		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();	
+		BetterList<Transform> _gridC = mainMenu._gridMain.GetChildList();
+
+		for(int i = 0; i<_gridC.size; i++) {
+			NGUITools.Destroy(_gridC[i].gameObject);
+		}
+
+		_gridC.Clear();
+
+		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
+			if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals("not_used")) {
+				StartCoroutine(_LOAD_MINI_VIDEO(i));
+			}
 		}
 	}
 

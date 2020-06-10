@@ -11,6 +11,8 @@ public class AppUI : MonoBehaviour {
 	public Appandroid appandroid;
 
 	public UILabel labelTopStatus;
+	public TweenPosition tweenPosition;
+	public bool isTopLabel;
 
 	void Awake() {
 
@@ -46,7 +48,7 @@ public class AppUI : MonoBehaviour {
 	void Start () {
 		
 		appmain = (Appmain)FindObjectOfType<Appmain>();
-		appandroid = (Appandroid)FindObjectOfType<Appandroid>();
+		appandroid = (Appandroid)FindObjectOfType<Appandroid>();		
 
 	}
 	
@@ -57,6 +59,36 @@ public class AppUI : MonoBehaviour {
 
 		labelTopStatus.text = Appmain.gameStatus + "/" + Appmain.gameStatusCnt + "/" + tmp;
 
+	}
+
+
+	public void OnClickButton42DCameraBloom() {
+
+		FastMobileBloom _bloom = mainCamera2D.GetComponent<FastMobileBloom>();
+
+		_bloom.enabled = !_bloom.enabled;
+
+	}
+
+
+	public void OnClickButton43DCameraBloom() {
+
+		FastMobileBloom _bloom = mainCamera3D.GetComponent<FastMobileBloom>();
+
+		_bloom.enabled = !_bloom.enabled;
+
+	}
+
+
+	public void OnClickButton4LabelTopTween() {
+
+		if(isTopLabel == true) {
+			tweenPosition.PlayForward();
+		}else {
+			tweenPosition.PlayReverse();
+		}
+
+		isTopLabel = !isTopLabel;
 	}
 
 }

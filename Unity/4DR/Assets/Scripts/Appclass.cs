@@ -33,8 +33,8 @@ public class APP_INFO {
 		phoneNumber = "UNKNOW";
 
 		version0 = "0";
-		version1 = "1";
-		version2 = "1";
+		version1 = "2";
+		version2 = "0";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
 		appVersion += ".PROTO";
@@ -58,6 +58,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public string title;
 	public string url;
 	public string type;
+	public int default_channel;
 
 	public LIST_CONTENT_FDLIVE_ITEM() {
 
@@ -66,7 +67,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	internal string GETURL() {
 
 		if(url.Contains(_4DREPLAY_TYPE_) == true) {
-			return string.Format("{0}?type={1}&quality=fhd", url, type);
+			return string.Format("{0}?type={1}&quality=fhd&target={2}", url, type, default_channel);
 		}else {
 			return url;
 		}
