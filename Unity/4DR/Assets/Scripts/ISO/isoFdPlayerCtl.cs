@@ -314,6 +314,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Left(bool _how) {
 
+        if(_info.channel == 0) return;
+
         //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
         //Debug.Log("OnClickButton4Left() :: " + _how);
         scrMedia.Left(_how);

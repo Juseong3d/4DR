@@ -86,35 +86,47 @@ public class Appimg : MonoBehaviour {
 		BetterList<Transform> _gridC = mainMenu._gridMain.GetChildList();
 
 		for(int i = 0; i<_gridC.size; i++) {
-			NGUITools.Destroy(_gridC[i].gameObject);
+
+			MediaPlayerCtrl _ctl = _gridC[i].GetComponentInChildren<MediaPlayerCtrl>();
+
+			_ctl.UnLoad();
+
+			//NGUITools.Destroy(_gridC[i].gameObject);
+			NGUITools.SetActive(_gridC[i].gameObject, false);
 		}
 
 		_gridC.Clear();
 
+		float _delay = 0.01f;
+
 		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
 			if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals("not_used")) {
-				StartCoroutine(_LOAD_MINI_VIDEO(i));
+				StartCoroutine(_LOAD_MINI_VIDEO(i, _delay));
+
+				_delay += 0.01f;
 			}
 		}
 	}
 
 
-	IEnumerator _LOAD_MINI_VIDEO(int i) {
-
-		yield return new WaitForEndOfFrame();
+	IEnumerator _LOAD_MINI_VIDEO(int i, float _delay = 0.5f) {
 
 		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();					
 
 		GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
-		uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
-		MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
-
-		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
-		_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();
 		_instan.transform.SetParent(mainMenu._gridMain.transform);
 		_instan.transform.localScale = new Vector3(1, 1, 1);		
 
 		mainMenu._gridMain.repositionNow = true;
+
+		yield return new WaitForSeconds(_delay);		
+		
+		uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
+		MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
+
+		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
+
+		_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();		
 
 	}
 

@@ -285,11 +285,28 @@ public class MediaPlayerCtrl : MonoBehaviour
 #endif
 
         m_bInit = true;
+		OnReady += OnVideoReady_LoadingMark;
+		OnVideoFirstFrameReady += OnVideoFirstFrameReady_LoadingMark;
+		//Appmain.SET_POPUP_BACK_9000();
 
     }
 
 
-    void OnApplicationQuit()
+	private void OnVideoReady_LoadingMark() {
+
+		//Debug.Log("test ::: OnVideoReady_LoadingMark");
+		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
+
+	}
+
+
+	private void OnVideoFirstFrameReady_LoadingMark() {
+		
+		//Debug.Log("test ::: ");
+		
+	}
+
+	void OnApplicationQuit()
     {
 
         //if (System.IO.Directory.Exists(Application.persistentDataPath + "/Data") == true)

@@ -4705,7 +4705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb521e9ace49d8546a83f420a0debd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_strFileName: rtsp://app.4dlive.kr/mbc_test03.4ds?type=vod
+  m_strFileName: 
   m_TargetMaterial:
   - {fileID: 8345317369318998497}
   m_bFullScreen: 0
