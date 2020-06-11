@@ -38,6 +38,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public float _contrlerStatusTime;
 
+    public TweenPosition tweenPosition4RightMenu;
+    public bool isRightMenu = true;
+    public TweenPosition tweenPosition4LeftMenu;
+    public bool isLeftMenu = true;
+
+    public UILabel labelEffectName;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -61,9 +68,14 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         //beforeParent = this.gameObject.transform.parent;
         //this.transform.SetParent(this.gameObject.transform.parent.parent);
-        _idx = 9;
+        _idx = 1;
 
         _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
+
+        isLeftMenu = true;
+        isRightMenu = true;
+
+        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
 
     }
 
@@ -139,28 +151,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
 			float _y = Input.mousePosition.y - (Screen.height / 2);
 
 			//Debug.Log("_x :: " + _x + "/" + _y);
-			//for testing...
-			string[] _effects_path = {
-					//"Common/_Default_Effect/Magic fire 0",
-					//"Common/_Default_Effect/Magic fire 1",
-					//"Common/_Default_Effect/Magic fire 2",
-					//"Common/_Default_Effect/Magic fire 3",
-					//"Common/_Default_Effect/Magic fire pro blue",	//4
-
-					//"Common/_Default_Effect/Magic fire pro green",
-					//"Common/_Default_Effect/Magic fire pro orange",
-					//"Common/_Default_Effect/Magic fire pro red",
-					//"Common/_Default_Effect/Magic fire pro yellow",
-					"Common/_Default_Effect/pfb_Effect_Touch",	//9
-
-					//"Common/_Default_Effect/RotatorPS1",
-					//"Common/_Default_Effect/RotatorPS2",
-					//"Common/_Default_Effect_2/star2",
-
-                    "Common/_Default_effect_3/CFX_MagicPoof"
-				};
-
-			_idx = Mathf.Clamp(_idx, 0, _effects_path.Length - 1);
+			//for testing...			
+            string _path = GET_EFFECT_NAME(_idx);			
+            int scaleSize = GET_EFFECT_SCALE_SIZE(_idx);
 
 			RaycastHit _hit;
 
@@ -168,11 +161,11 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
             //Debug.DrawRay(_ray, Vector3.forward);
 			if(Physics.Raycast(_ray, out _hit)) {
-				GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
+				GameObject prefab = Appimg.LoadResource4Prefab(_path);
 				prefab.transform.SetParent(Appmain.appui.transform);                
                 				
 				prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
-				prefab.transform.localScale = new Vector3(50, 50, 50);
+				prefab.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
 			}
 
 			//GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
@@ -189,9 +182,85 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isPressPlayerBackButton = isPress;
     }
 
+
+    string GET_EFFECT_NAME(int _index, bool isShort = false) {
+
+        string[] _effects_path = {
+					//"Common/_Default_Effect/Magic fire 0",
+					//"Common/_Default_Effect/Magic fire 1",
+					//"Common/_Default_Effect/Magic fire 2",
+					//"Common/_Default_Effect/Magic fire 3",
+					//"Common/_Default_Effect/Magic fire pro blue",	//4
+
+					//"Common/_Default_Effect/Magic fire pro green",
+					//"Common/_Default_Effect/Magic fire pro orange",
+					//"Common/_Default_Effect/Magic fire pro red",
+					//"Common/_Default_Effect/Magic fire pro yellow",
+					"Common/_Default_Effect/pfb_Effect_Touch",	//9
+
+					//"Common/_Default_Effect/RotatorPS1",
+					//"Common/_Default_Effect/RotatorPS2",
+					//"Common/_Default_Effect_2/star2",
+
+                    "Common/_Default_effect_3/CFX_MagicPoof",
+                    "Common/_Default_effect_3/CFX_Hit_A Red+RandomText",
+                    "Common/_Default_effect_3/CFX2_BrokenHeart",
+                    "Common/_Default_effect_3/CFX3_Fire_Explosion",
+                    "Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
+                    "Common/_Default_effect_3/CFX3_Snow_Dense",
+                    "Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+
+				};
+        
+        int rtn = Mathf.Clamp(_index, 0, _effects_path.Length - 1);
+        string _rtnString = _effects_path[rtn];
+        if(isShort == true) {
+            string[] _tmp = _rtnString.Split("/"[0]);
+
+            _rtnString = _tmp[2];
+        }
+
+        return _rtnString;
+
+    }
+
+    int GET_EFFECT_SCALE_SIZE(int _index) {
+
+        int[] _effects_scale_size = {
+					//"Common/_Default_Effect/Magic fire 0",
+					//"Common/_Default_Effect/Magic fire 1",
+					//"Common/_Default_Effect/Magic fire 2",
+					//"Common/_Default_Effect/Magic fire 3",
+					//"Common/_Default_Effect/Magic fire pro blue",	//4
+
+					//"Common/_Default_Effect/Magic fire pro green",
+					//"Common/_Default_Effect/Magic fire pro orange",
+					//"Common/_Default_Effect/Magic fire pro red",
+					//"Common/_Default_Effect/Magic fire pro yellow",
+					50,//"Common/_Default_Effect/pfb_Effect_Touch",	//9
+
+					//"Common/_Default_Effect/RotatorPS1",
+					//"Common/_Default_Effect/RotatorPS2",
+					//"Common/_Default_Effect_2/star2",
+
+                    50,//"Common/_Default_effect_3/CFX_MagicPoof",
+                    50,//"Common/_Default_effect_3/CFX_Hit_A Red+RandomText",
+                    50,//"Common/_Default_effect_3/CFX2_BrokenHeart",
+                    50,//"Common/_Default_effect_3/CFX3_Fire_Explosion",
+                    50,//"Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
+                    100,//"Common/_Default_effect_3/CFX3_Snow_Dense",
+                    200,//"Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+
+				};
+
+        return _effects_scale_size[_index];
+    }
+
+
     public void OnClickButton4EffectIndex() {
 
         _idx ++;
+        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
 
     }
 
@@ -199,6 +268,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4EffectIndexM() {
 
         _idx --;
+        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
 
     }
 
@@ -377,10 +447,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
         NGUITools.Destroy(this.transform.gameObject);
 
     }
-
-
-    public TweenPosition tweenPosition4RightMenu;
-    public bool isRightMenu = false;
+        
 
     public void OnClickButton4RightMenu() {
 
@@ -393,10 +460,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isRightMenu = !isRightMenu;
 
     }
-
-
-    public TweenPosition tweenPosition4LeftMenu;
-    public bool isLeftMenu = false;
+    
 
     public void OnClickButton4LeftMenu() {
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   mSprites:
   - name: logo
     x: 0
-    y: 18
+    y: 183
     width: 233
     height: 238
     borderLeft: 0
@@ -58,6 +58,32 @@ MonoBehaviour:
     paddingRight: 14
     paddingTop: 9
     paddingBottom: 9
+  - name: logo_intro
+    x: 0
+    y: 422
+    width: 510
+    height: 223
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: logo_splash
+    x: 0
+    y: 646
+    width: 864
+    height: 378
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0

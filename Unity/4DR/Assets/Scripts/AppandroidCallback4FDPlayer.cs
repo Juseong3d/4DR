@@ -14,10 +14,13 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     public long time;
     public string utc;
 
+    public bool isErrorPopup;
+
     // Start is called before the first frame update
     void Start()
     {
         duration = 999999;
+        isErrorPopup = false;
     }
 
     // Update is called once per frame
@@ -26,11 +29,17 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
         
     }
 
+    public void IS_CHANGE_POPUP(UIToggle _value) {
+
+        isErrorPopup = _value.value;
+    }
+
 
     void CallBackFromFDPlayer(string _value) {
 
         //Debug.Log("CallBackFromFDPlayer ::: " + _value);
-        PopupBox.Create(_value);        
+        if(isErrorPopup == true)
+            PopupBox.Create(_value);        
     }
 
 

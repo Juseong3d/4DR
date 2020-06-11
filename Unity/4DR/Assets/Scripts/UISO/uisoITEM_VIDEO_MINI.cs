@@ -5,6 +5,7 @@ using UnityEngine;
 public class uisoITEM_VIDEO_MINI : MonoBehaviour
 {
     public UILabel labelInfo;
+    public UILabel labelType;
 
     public LIST_CONTENT_FDLIVE_ITEM __info;
 
@@ -28,6 +29,11 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
         __info = _info;
 
         labelInfo.text = _tmp;
+        labelType.text = _info.type.ToUpper();
+
+        if(labelType.text.Equals("LIVE") == true) {
+            labelType.color = Color.red;
+        }
 
     }
 

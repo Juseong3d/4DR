@@ -364,6 +364,100 @@ Transform:
   m_Father: {fileID: 113733674864870981}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521688265615484776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4398761304963453144}
+  - component: {fileID: 468424890137047339}
+  m_Layer: 8
+  m_Name: effect_name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4398761304963453144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521688265615484776}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 647.98, y: -17.699997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 616613448288558220}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468424890137047339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521688265615484776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  rightAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  bottomAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mWidth: 259
+  mHeight: 55
+  mDepth: 5
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 4.7090907
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 0}
+  mFont: {fileID: 11477304, guid: e9ee0a9adf0d4184f8131732430568b3, type: 3}
+  mText: '-'
+  mFontSize: 24
+  mFontStyle: 0
+  mAlignment: 0
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mOverflow: 0
+  mMaterial: {fileID: 0}
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1 &627505262702806403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1372,7 @@ Transform:
   - {fileID: 2414180621620525042}
   - {fileID: 8874046718346459442}
   m_Father: {fileID: 7568389253214293358}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2889449778397188466
 GameObject:
@@ -1342,6 +1436,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4398761304963453144}
   - {fileID: 7872399013333554089}
   m_Father: {fileID: 3544318963862279805}
   m_RootOrder: 1
@@ -1358,6 +1453,7 @@ GameObject:
   - component: {fileID: 3324199840752008206}
   - component: {fileID: 1670380373367925210}
   - component: {fileID: 4621626729308447015}
+  - component: {fileID: 3505962519726804448}
   m_Layer: 8
   m_Name: Sprite_background
   m_TagString: Untagged
@@ -1377,7 +1473,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7568389253214293358}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3324199840752008206
 MonoBehaviour:
@@ -1471,8 +1567,28 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 355.27686, y: 544, z: 0}
-  m_Center: {x: 29.138428, y: 0, z: 0}
+  m_Size: {x: 365.39438, y: 544, z: 0}
+  m_Center: {x: 34.1972, y: 0, z: 0}
+--- !u!114 &3505962519726804448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542060726681028630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90fc8427bee38c478f5b2f6f0ae9580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7568389253214293358}
+  scrollMomentum: {x: 0, y: 0, z: 0}
+  restrictWithinPanel: 0
+  contentRect: {fileID: 0}
+  dragEffect: 2
+  momentumAmount: 35
+  scale: {x: 1, y: 1, z: 0}
+  scrollWheelFactor: 0
 --- !u!1 &3627806187856376133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2717,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -2638,11 +2754,12 @@ MonoBehaviour:
   _idx: 0
   beforeParent: {fileID: 0}
   _contrlerStatusTime: 0
-  isPressPlayerBackButton: 0
   tweenPosition4RightMenu: {fileID: 7792672820972970112}
   isRightMenu: 0
   tweenPosition4LeftMenu: {fileID: 6356523667177259751}
   isLeftMenu: 0
+  labelEffectName: {fileID: 468424890137047339}
+  isPressPlayerBackButton: 0
   tweenCtlPanel: {fileID: 3575581813352422979}
 --- !u!54 &4259189132329558024
 Rigidbody:
@@ -3539,7 +3656,6 @@ GameObject:
   - component: {fileID: 5938519332867043789}
   - component: {fileID: 7792672820972970112}
   - component: {fileID: 1592926242}
-  - component: {fileID: 2488351471196089533}
   m_Layer: 8
   m_Name: button_right
   m_TagString: Untagged
@@ -3555,7 +3671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4460983846458892302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 436.23, y: -157.76, z: 0}
+  m_LocalPosition: {x: 454.99, y: -157.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4865126704033802897}
@@ -3599,7 +3715,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3012
+  startingRenderQueue: 3011
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -3614,7 +3730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4460983846458892302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
   m_Name: 
@@ -3653,7 +3769,7 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {x: 436.23, y: -157, z: 0}
+  from: {x: 455, y: -157, z: 0}
   to: {x: 172, y: -157, z: 0}
   worldSpace: 0
 --- !u!54 &1592926242
@@ -3672,26 +3788,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2488351471196089533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4460983846458892302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90fc8427bee38c478f5b2f6f0ae9580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 3544318963862279805}
-  scrollMomentum: {x: 0, y: 0, z: 0}
-  restrictWithinPanel: 0
-  contentRect: {fileID: 0}
-  dragEffect: 2
-  momentumAmount: 35
-  scale: {x: 1, y: 1, z: 0}
-  scrollWheelFactor: 0
 --- !u!1 &4461875327642935367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,6 +4124,7 @@ GameObject:
   - component: {fileID: 6133571030620994386}
   - component: {fileID: 1904394904105132396}
   - component: {fileID: 7525416417766162664}
+  - component: {fileID: 7749140762889771446}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -4043,11 +4140,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6416081290336288381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 654, y: 246, z: 0}
+  m_LocalPosition: {x: 654, y: 204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 616613448288558220}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6133571030620994386
 MonoBehaviour:
@@ -4081,12 +4178,12 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 0.18039216}
   mPivot: 4
   mWidth: 298
-  mHeight: 462
+  mHeight: 546
   mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.6450216
+  aspectRatio: 0.5457876
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -4111,8 +4208,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 379.5177, y: 462, z: 0}
-  m_Center: {x: -41.888855, y: 0, z: 0}
+  m_Size: {x: 391.46185, y: 462, z: 0}
+  m_Center: {x: -47.86093, y: 0, z: 0}
 --- !u!114 &7525416417766162664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,6 +4240,26 @@ MonoBehaviour:
     mMethodName: OnClickButton4RightMenu
     mParameters: []
     oneShot: 0
+--- !u!114 &7749140762889771446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416081290336288381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90fc8427bee38c478f5b2f6f0ae9580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 3544318963862279805}
+  scrollMomentum: {x: 0, y: 0, z: 0}
+  restrictWithinPanel: 0
+  contentRect: {fileID: 0}
+  dragEffect: 2
+  momentumAmount: 35
+  scale: {x: 1, y: 1, z: 0}
+  scrollWheelFactor: 0
 --- !u!1 &6556815972755030772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,7 +4414,7 @@ Transform:
   - {fileID: 3993594887636004366}
   - {fileID: 3993594888317011155}
   m_Father: {fileID: 7568389253214293358}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7428404541020808362
 GameObject:
@@ -4311,7 +4428,6 @@ GameObject:
   - component: {fileID: 4317071179596192781}
   - component: {fileID: 7214847049554102854}
   - component: {fileID: 6356523667177259751}
-  - component: {fileID: 1822719533732973016}
   m_Layer: 8
   m_Name: button_left
   m_TagString: Untagged
@@ -4327,12 +4443,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428404541020808362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -246.01, y: -141.7, z: 0}
+  m_LocalPosition: {x: -274.04, y: -141.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2024295216170924803}
   - {fileID: 1446151252998445973}
   - {fileID: 6777871783546576198}
-  - {fileID: 2024295216170924803}
   m_Father: {fileID: 3993594888378106926}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4372,7 +4488,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3007
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -4403,7 +4519,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428404541020808362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d166255cacf07b4292b8402b3ddefc5, type: 3}
   m_Name: 
@@ -4442,29 +4558,9 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {x: -248, y: -141, z: 0}
+  from: {x: -274, y: -141, z: 0}
   to: {x: 0, y: -141, z: 0}
   worldSpace: 0
---- !u!114 &1822719533732973016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7428404541020808362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90fc8427bee38c478f5b2f6f0ae9580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 7568389253214293358}
-  scrollMomentum: {x: 0, y: 0, z: 0}
-  restrictWithinPanel: 0
-  contentRect: {fileID: 0}
-  dragEffect: 2
-  momentumAmount: 35
-  scale: {x: 1, y: 1, z: 0}
-  scrollWheelFactor: 0
 --- !u!1 &7540804397644083657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,7 +4808,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}

@@ -37,6 +37,8 @@ public class Appmain : MonoBehaviour {
 	public static int gameStatusCnt;
 	public static float gameStatusTime;
 
+	public bool isErrorPopup;
+
 
 	void Start() {
 

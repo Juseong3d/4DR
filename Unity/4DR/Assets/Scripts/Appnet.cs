@@ -210,6 +210,7 @@ public class Appnet : MonoBehaviour {
 			appclass._list_conent_fdlist = null;
 			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
             Debug.Log("WWW Error: "+ www.error);
+			PopupBox.Create("plz check web server : " + www.error);
         }    
     }
 
