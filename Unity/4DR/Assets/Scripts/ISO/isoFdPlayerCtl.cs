@@ -338,22 +338,26 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4Left(bool _how) {
 
         if(_info.channel == 0) return;
+
         if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
             if(_info.frame == lastCallFrame) return;
         }
 
-        //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
-        //Debug.Log("OnClickButton4Left() :: " + _how);
+       StartCoroutine(_OnClickButton4Left(_how));
+
+    }
+
+
+    IEnumerator _OnClickButton4Left(bool _how) {
+
+        yield return new WaitForFixedUpdate();
+
         scrMedia.Left(_how);
-        //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
+
 #if UNITY_EDITOR
         _info.channel --;
         _info.channel = Mathf.Clamp(_info.channel, 0, 45);
 #endif
-        //_cameraY -= Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
-        
-        //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
-        //Appmain.appui.mainCamera3D.transform.localPosition = before;
 
         lastCallFrame = _info.frame;
 
@@ -365,24 +369,25 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
             if(_info.frame == lastCallFrame) return;
         }
-        //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
-        //Debug.Log("OnClickButton4Right() :: " + _how);
-        scrMedia.Right(_how);
-        //AppUI.mainCamera.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, (float)_info.channel * _cameraRotationSpeed, 0.0f));
+
+        StartCoroutine(_OnClickButton4Right(_how));
+    }
+
+
+    IEnumerator _OnClickButton4Right(bool _how) {
+
+        yield return new WaitForFixedUpdate();
+                
+        scrMedia.Right(_how);        
 
 #if UNITY_EDITOR
         _info.channel ++;
         _info.channel = Mathf.Clamp(_info.channel, 0, 45);
 #endif  
-
-        //_cameraY += Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
-        ////Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
-        
-        //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
-        //Appmain.appui.mainCamera3D.transform.localPosition = before;      
-        
+                
         lastCallFrame = _info.frame;
     }
+
 
     void OnClickButton4Left_Camera(GameObject go, bool press) {       
         
