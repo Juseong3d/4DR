@@ -1,0 +1,45 @@
+** 20200612_fdreplayer_unity_proto.apk
+* fdreplayer_unity : v.0.2.0.proto
+* video list에서 reload 부분 수정
+* camera channel 변경 요청을 frame당 1회만 하도록 수정
+
+** 20200611_fdreplayer_unity_proto.apk
+* fdreplayer_unity : v.0.2.0.proto
+-panel scale을 하지 않고 camera 기준으로 zoom in/out, move 처리
+-content list에서 "not_used" 적용
+-content list에서 "default_channel" 적용 : url의 target 값으로 시작 카메라 값
+-camera bloom 효과
+-sample effect 추가
+-기타 테스트용 판넬 추가
+
+** 20200603_fdreplayer_unity_proto.apk
+* Unity로 빌드한 android apk
+* 기본 해상도 1920 * 1080 기준
+* 4dp SDK 적용 기능
+: load / play
+: pause
+: channel change
+: timelapes f/r
+: seek
+
+* Scene
+: Intro
+: title
+: menu
+	menuList - webServer에서 리스트 받아옴
+	menuFull - menuList 중 선택 시 해당 video 전체화면
+
+* 간단 설명
+: 화면 터치시 particle effect 생성
+: 좌측 하단 left right 버튼으로 channel 변경 가능 - 따른 scene camera도 rotation
+: 우측 상단 Play / PAUSE / Clear - particle effect를 조정
+: 좌측 상단의 LOAD / PAUSE : 영상의 시작/정지
+: 우측 하단의 T_L T_R : 영상의 Pause 상태에서의 current time move
+: 우측 상단 x 버튼 : menuList로 돌아가기
+
+: 좌측 중앙의 C_LEFT / C_RIGHT : unity의 scene의 camera만 rotation
+
+:: proto version이라 full test는 되지 않음
+
+
+
