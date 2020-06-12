@@ -1,4 +1,5 @@
 ﻿//using NUnit.Framework;
+using FFmpeg.AutoGen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,6 +46,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public UILabel labelEffectName;
 
+    public int lastCallFrame;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -88,7 +91,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void LateUpdate() {
+    void Update() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
@@ -141,6 +144,26 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //    _contrlerStatusTime = 0.0f;
         //    tweenCtlPanel.PlayReverse();
         //}
+
+        if(Input.GetAxis("Horizontal") == 1.0f) {
+            OnClickButton4Right(false);
+        }else if(Input.GetAxis("Horizontal") == -1.0f) {
+            OnClickButton4Left(false);
+        }
+
+        if(Input.GetAxis("HorizontalTurn") == 1.0f) {
+            OnClickButton4Right(true);
+        }else if(Input.GetAxis("HorizontalTurn") == -1.0f) {
+            OnClickButton4Left(true);
+        }
+
+        if(Input.GetKeyDown("joystick button 0")) {
+            OnClickButton4Pause();
+        }
+
+        if(Input.GetKeyDown("joystick button 1")) {
+            OnClickButton4Load();
+        }
     }   
 
     public bool isPressPlayerBackButton;
@@ -315,6 +338,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4Left(bool _how) {
 
         if(_info.channel == 0) return;
+        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+            if(_info.frame == lastCallFrame) return;
+        }
 
         //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
         //Debug.Log("OnClickButton4Left() :: " + _how);
@@ -328,11 +354,17 @@ public class isoFdPlayerCtl : MonoBehaviour {
         
         //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
         //Appmain.appui.mainCamera3D.transform.localPosition = before;
+
+        lastCallFrame = _info.frame;
+
     }
 
 
     public void OnClickButton4Right(bool _how) {
 
+        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+            if(_info.frame == lastCallFrame) return;
+        }
         //Vector3 before = Appmain.appui.mainCamera3D.transform.localPosition;
         //Debug.Log("OnClickButton4Right() :: " + _how);
         scrMedia.Right(_how);
@@ -347,7 +379,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
         ////Appmain.appui.mainCamera3D.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
         
         //Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
-        //Appmain.appui.mainCamera3D.transform.localPosition = before;
+        //Appmain.appui.mainCamera3D.transform.localPosition = before;      
+        
+        lastCallFrame = _info.frame;
     }
 
     void OnClickButton4Left_Camera(GameObject go, bool press) {       

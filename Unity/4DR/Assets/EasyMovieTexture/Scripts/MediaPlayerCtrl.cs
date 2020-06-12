@@ -884,23 +884,25 @@ public class MediaPlayerCtrl : MonoBehaviour
     }
 
 
-	public void Left(bool _how) {
+	public int Left(bool _how) {
 
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
 #if UNITY_ANDROID
 		Call_Left(_how);
 #endif
 #endif
+		return 0;
 
 	}
 
 
-	public void Right(bool _how) {
+	public int Right(bool _how) {
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
 #if UNITY_ANDROID
 		Call_Right(_how);
 #endif
-#endif		
+#endif
+		return 0;
 	}
 
     public void Load(string strFileName)

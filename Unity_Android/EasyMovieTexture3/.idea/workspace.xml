@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_icon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_icon.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/Popup/_pfb_POPUP_BOX_BACK_9000.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/Popup/_pfb_POPUP_BOX_BACK_9000.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager_Mini2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager_Mini2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appimg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appimg.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_FreeButtonSet/Textures/controls/radio_200.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_FreeButtonSet/Textures/controls/radio_200.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +80,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Unity_Android/Bell_20200305/FDLivePlayerSampleApp" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />

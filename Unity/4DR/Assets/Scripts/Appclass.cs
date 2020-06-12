@@ -46,6 +46,10 @@ public class APP_INFO {
 public class  LIST_CONTENT_FDLIVE {
 
 	public List<LIST_CONTENT_FDLIVE_ITEM> result;
+
+	~LIST_CONTENT_FDLIVE() {
+
+	}
 }
 
 

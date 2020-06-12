@@ -114,7 +114,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void _LEFT(boolean isTime) {
 
-        int _result;
+        int _result = -1;
 
         if(m4DLivePlayer != null) {
             if(isTime == false) {
@@ -136,7 +136,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void _RIGHT(boolean isTime) {
 
-        int _result;
+        int _result = -1;
 
         if(m4DLivePlayer != null) {
             if (isTime == false) {
@@ -153,7 +153,6 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         }else {
             Log.d(TAG, "player nulllll");
         }
-
     }
 
 
@@ -764,7 +763,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         public void getError(int code, String msg, String ls_ip)
         {
             Log.e(TAG, "getError " + code + " , " + msg + " , " + ls_ip);
-            final String str = "getError " + code + " , " + msg + " , " + ls_ip;
+            final String str = "getError," + code + "," + msg + "," + ls_ip;
             final int err_code = code;
 
             UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "CallBackFromFDPlayer", str);
