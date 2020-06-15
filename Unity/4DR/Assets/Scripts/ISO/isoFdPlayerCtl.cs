@@ -164,6 +164,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if(Input.GetKeyDown("joystick button 1")) {
             OnClickButton4Load();
         }
+
+#if UNITY_EDITOR
+        lastCallFrame = -999;
+#endif
     }   
 
     public bool isPressPlayerBackButton;

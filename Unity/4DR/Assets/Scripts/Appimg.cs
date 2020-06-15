@@ -114,6 +114,9 @@ public class Appimg : MonoBehaviour {
 		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();					
 
 		GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
+
+		
+
 		_instan.transform.SetParent(mainMenu._gridMain.transform);
 		_instan.transform.localScale = new Vector3(1, 1, 1);		
 
@@ -123,14 +126,24 @@ public class Appimg : MonoBehaviour {
 		
 		uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
 		MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
-
-		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);
+		
+		Appmain.appclass._list_conent_fdlist.result[i].controler = _ctl;
+		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);		
 
 		_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();		
 
 	}
 
 	public void LOAD_FULL_SCREEN_VIDEO(string _url) {
+
+		Debug.Log("LOAD_FULL_SCREEN_VIDEO :: " + _url);
+
+		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
+
+			if(Appmain.appclass._list_conent_fdlist.result[i].controler != null) 
+				Appmain.appclass._list_conent_fdlist.result[i].controler.Pause();			
+					
+		}
 
 		{
             GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
@@ -152,7 +165,7 @@ public class Appimg : MonoBehaviour {
             //_playerCtl.scrMedia = _ctl;
 
 			_nowFullCtl.beforeParent = _videoManager.gameObject.transform;
-			_nowFullCtl.transform.SetParent(Appmain.appui.transform);
+			_nowFullCtl.transform.SetParent(Appmain.appui.transform);			
 
 			mainUIPrefab.SetActive(false);
         }

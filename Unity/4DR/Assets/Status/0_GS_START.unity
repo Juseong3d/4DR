@@ -931,6 +931,11 @@ MonoBehaviour:
   zoomOutMin: 0.1
   zoomOutMax: 1
   doubleTouchCnt: 0
+  _callback: {fileID: 0}
+  startPoint: {x: 0, y: 0, z: 0}
+  distPoint: {x: 0, y: 0, z: 0}
+  nowPoint: {x: 0, y: 0, z: 0}
+  oldDist: 0
 --- !u!20 &507854230
 Camera:
   m_ObjectHideFlags: 0

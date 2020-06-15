@@ -64,8 +64,11 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public string type;
 	public int default_channel;
 
+	public MediaPlayerCtrl controler;
+
 	public LIST_CONTENT_FDLIVE_ITEM() {
 
+		//_prefab = new GameObject();
 	}
 
 	internal string GETURL() {
