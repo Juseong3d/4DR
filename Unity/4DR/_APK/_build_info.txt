@@ -1,3 +1,6 @@
+** 20200616_fdreplater_unity_proto_v.0.2.1.apk
+* 카메라 회전각도에 의해 z축 drag 값이 적용안되던 부분 수정
+
 ** 20200612_fdreplayer_unity_proto.apk
 * fdreplayer_unity : v.0.2.0.proto
 * video list에서 reload 부분 수정

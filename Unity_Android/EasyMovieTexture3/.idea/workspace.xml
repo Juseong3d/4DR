@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="unity" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Standard Assets/Prototyping/Prefabs/CubePrototype02x02x02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Standard Assets/Prototyping/Prefabs/CubePrototype02x02x02.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Standard Assets/Prototyping/Prefabs/CubePrototype02x02x02.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Standard Assets/Prototyping/Prefabs/CubePrototype02x02x02.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_SampleScenes/Models/Cube.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_SampleScenes/Models/Cube.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_SampleScenes/Models/Cube.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/_S_SampleScenes/Models/Cube.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/_APK/build_info.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/constraint/group-index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/constraint/group-index.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/master-index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/master-index.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

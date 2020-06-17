@@ -2759,6 +2759,7 @@ MonoBehaviour:
   tweenPosition4LeftMenu: {fileID: 6356523667177259751}
   isLeftMenu: 0
   labelEffectName: {fileID: 468424890137047339}
+  lastCallFrame: 0
   isPressPlayerBackButton: 0
   tweenCtlPanel: {fileID: 3575581813352422979}
 --- !u!54 &4259189132329558024

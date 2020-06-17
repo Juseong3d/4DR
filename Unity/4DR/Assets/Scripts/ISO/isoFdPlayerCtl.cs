@@ -145,24 +145,56 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //    tweenCtlPanel.PlayReverse();
         //}
 
-        if(Input.GetAxis("Horizontal") == 1.0f) {
+        if(Input.GetAxis("Horizontal") > 0.5f) {
             OnClickButton4Right(false);
-        }else if(Input.GetAxis("Horizontal") == -1.0f) {
+        }else if(Input.GetAxis("Horizontal") < -0.5f) {
             OnClickButton4Left(false);
         }
 
-        if(Input.GetAxis("HorizontalTurn") == 1.0f) {
-            OnClickButton4Right(true);
-        }else if(Input.GetAxis("HorizontalTurn") == -1.0f) {
-            OnClickButton4Left(true);
-        }
-
-        if(Input.GetKeyDown("joystick button 0")) {
-            OnClickButton4Pause();
-        }
-
-        if(Input.GetKeyDown("joystick button 1")) {
+        if(Input.GetAxis("axis7") != 0.0f) {
             OnClickButton4Load();
+        }
+
+        if(Input.GetAxis("axis8") != 0.0f) {
+            scrMedia.PlayToNow();
+        }
+
+        for(int i = 0; i<10; i++) {
+            string tmp = string.Format("joystick button {0}", i);            
+
+            if(Input.GetKeyDown(tmp)) {
+
+                Debug.Log(tmp);
+
+                switch((XOBX_ONE_BUTTON)i) {
+                    case XOBX_ONE_BUTTON.LB:
+                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                            OnClickButton4Pause();
+                        }
+                        break;
+                    case XOBX_ONE_BUTTON.RB:
+                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                            OnClickButton4Pause();
+                        }
+                        break;
+                    case XOBX_ONE_BUTTON.RS_B:
+                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                            OnClickButton4Pause();
+                        }else if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                            OnClickButton4Load();
+                        }
+                        break;
+                }
+            }else if(Input.GetKey(tmp)) {
+                switch((XOBX_ONE_BUTTON)i) {
+                    case XOBX_ONE_BUTTON.LB:                        
+                        OnClickButton4Left(true);
+                        break;
+                    case XOBX_ONE_BUTTON.RB:
+                        OnClickButton4Right(true);
+                        break;
+                }
+            }
         }
 
 #if UNITY_EDITOR

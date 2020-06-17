@@ -79,27 +79,44 @@ public class isoCameraZoom : MonoBehaviour
 
             if (doubleTouchCnt == 0) {
                 Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
+
                 Appmain.appui.mainCamera3D.transform.position += direction;
-
-                //if(_callback.isErrorPopup == true) {
-                //    float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
-                //    float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
-
-                //    float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
-                //    float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
-
-                //    Debug.Log("minX : " + minX + "/maxX : " + maxX + "/" + Appmain.appui.mainCamera3D.transform.position.x);
-
-                //    float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
-                //    float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
-
-                //    Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
-                //}
             }
 
         }
+              
+
+        if(Input.GetAxis("HorizontalTurn") > 0.5f) {
+            float _value = Input.GetAxis("HorizontalTurn") * Time.deltaTime;
+
+            Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
+        }else if(Input.GetAxis("HorizontalTurn") < -0.5f) {
+            float _value = Input.GetAxis("HorizontalTurn") * Time.deltaTime;
+
+            Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
+        }
+
+        if(Input.GetAxis("VerticalTurn") > 0.5f) {
+            float _value = Input.GetAxis("VerticalTurn") * Time.deltaTime;
+
+            Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
+        }else if(Input.GetAxis("VerticalTurn") < -0.5f) {
+            float _value = Input.GetAxis("VerticalTurn") * Time.deltaTime;
+
+            Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
+        } 
 
         zoom(Input.GetAxis("Mouse ScrollWheel"));
+
+        if(Input.GetAxis("Vertical") > 0.5f) {
+            zoom((-Input.GetAxis("Vertical")) * 0.01f);
+        }else  if(Input.GetAxis("Vertical") < -0.5f) {
+            zoom((-Input.GetAxis("Vertical")) * 0.01f);
+        }
+
+        if(Input.GetKeyDown("joystick button 8")) {
+            zoom(-zoomOutMax);
+        }
 
         if(Input.touchCount == 0) {
             doubleTouchCnt = 0;
@@ -109,7 +126,6 @@ public class isoCameraZoom : MonoBehaviour
 
     void LateUpdate() {
         {
-
 			//if(Input.touchCount <= 1) 
             {
 				nowPoint = getInputMouse(Input.mousePosition);

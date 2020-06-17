@@ -63,3 +63,12 @@ public enum GAME_STATUS_NEXT_STATUS {
 	START_STATUS
 
 }
+
+
+public enum XOBX_ONE_BUTTON {
+
+	LB = 4,
+	RB = 5,
+	RS_B = 9
+
+}

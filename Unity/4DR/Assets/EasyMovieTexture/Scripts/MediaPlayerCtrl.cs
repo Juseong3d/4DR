@@ -905,6 +905,16 @@ public class MediaPlayerCtrl : MonoBehaviour
 		return 0;
 	}
 
+
+	public void PlayToNow() {
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		Call_PlayToNow();
+#endif
+#endif
+
+	}
+
     public void Load(string strFileName)
     {
         if (GetCurrentState() != MEDIAPLAYER_STATE.NOT_READY)
@@ -1280,6 +1290,11 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void Call_Right(bool _how)
 	{
 		GetJavaObject().Call("_RIGHT", new object[] { _how });
+	}
+
+	private void Call_PlayToNow()
+	{
+		GetJavaObject().Call("_PLAY_TO_NOW");
 	}
 
 	

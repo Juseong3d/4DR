@@ -156,6 +156,14 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
     }
 
 
+    public void _PLAY_TO_NOW() {
+
+        if(m4DLivePlayer != null) {
+            m4DLivePlayer.playToNow();
+        }
+    }
+
+
     public void UnLoad() {
 
         Log.d(TAG, "###################### UnLoad() ");
