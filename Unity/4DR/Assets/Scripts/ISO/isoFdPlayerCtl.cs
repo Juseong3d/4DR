@@ -163,9 +163,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
             string tmp = string.Format("joystick button {0}", i);            
 
             if(Input.GetKeyDown(tmp)) {
-
-                Debug.Log(tmp);
-
+                //Debug.Log(tmp);
                 switch((XOBX_ONE_BUTTON)i) {
                     case XOBX_ONE_BUTTON.LB:
                         if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {

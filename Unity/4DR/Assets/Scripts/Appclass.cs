@@ -33,7 +33,7 @@ public class APP_INFO {
 		phoneNumber = "UNKNOW";
 
 		version0 = "0";
-		version1 = "2";
+		version1 = "3";
 		version2 = "1";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;

@@ -364,7 +364,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 #elif UNITY_ANDROID
 
 #if UNITY_EDITOR
-			strName = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";//"rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";
+			//strName = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";//"rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";
+			strName = "https://4dreplaykorea.sharepoint.com/:v:/s/4DReplay/EYSjW7KYCTpLs63HkNTViJcBjYbXMn-4YbTWPZ8XNORDcA?e=ADWMoA";
 #endif
 
 			if(m_bSupportRockchip)

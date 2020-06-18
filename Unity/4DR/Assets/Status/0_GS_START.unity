@@ -1444,8 +1444,8 @@ MonoBehaviour:
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
-  from: {x: 0, y: 409, z: 0}
-  to: {x: 0, y: 309, z: 0}
+  from: {x: 0, y: 309, z: 0}
+  to: {x: 0, y: 409, z: 0}
   worldSpace: 0
 --- !u!65 &698620335
 BoxCollider:

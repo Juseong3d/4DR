@@ -1,3 +1,10 @@
+** 20200618_fdreplater_unity_proto_v.0.3.1.apk
+* bluetooth wireless controller 연동 추가
+:: zoom position 좌우 방향 반대로 수정(v.0.3.0의 반대)
+
+** 20200618_fdreplater_unity_proto_v.0.3.0.apk
+* bluetooth wireless controller 연동 추가
+
 ** 20200616_fdreplater_unity_proto_v.0.2.1.apk
 * 카메라 회전각도에 의해 z축 drag 값이 적용안되던 부분 수정
 
