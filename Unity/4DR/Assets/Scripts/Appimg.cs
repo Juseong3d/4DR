@@ -70,9 +70,12 @@ public class Appimg : MonoBehaviour {
 			case GAME_STATUS.GS_MENU :
 				{
 					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_MAIN_MENU, true);
-					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();										
-
-					_SET_MINI_VIDEO_GRID();
+					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();
+#if _DIRECT_URL_
+				LOAD_FULL_SCREEN_VIDEO(DEFINE.DIRECT_TEST_URL);
+#else
+				_SET_MINI_VIDEO_GRID();
+#endif
 
 				}
 				break;
@@ -220,10 +223,56 @@ public class Appimg : MonoBehaviour {
 		}else {
 			instan = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
 		}
-#endif	
+#endif
 
 		instan.transform.SetParent(Appmain.appui.mainCamera2D.transform);
 		instan.transform.localScale = new Vector3(1, 1, 1);
+
+		return instan;
+	}
+
+
+	public static GameObject LoadResources4PrefabOnly(string path) {
+
+		GameObject prefab = (GameObject)Resources.Load(path);
+
+		return prefab;
+
+	}
+
+
+	public static GameObject _INSTANTIATE4UI(GameObject prefab, bool ischeck = false) {
+
+		GameObject instan = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+		//instan.transform.SetParent(Appmain.appui.mainCamera2D.transform);
+		instan.transform.localScale = new Vector3(1, 1, 1);
+
+        if( ischeck == true)
+        {
+            UISprite[] sprite;
+
+            sprite = instan.GetComponentsInChildren<UISprite>(true);
+            
+            for(int i = 0; i < sprite.Length; i++) {
+
+                sprite[i].atlas = UIDEFINE.getProjectAtlas(Appmain.appmain.projectType, sprite[i].atlas.name);
+
+            }
+
+            {
+                UILabel[] label;
+
+                label = instan.GetComponentsInChildren<UILabel>(true);
+
+                for(int i = 0; i < label.Length; i++) {
+
+                    label[i].trueTypeFont = UIDEFINE.setProjectFont(Appmain.appmain.projectType);
+
+                }
+
+            }
+        }
 
 		return instan;
 	}

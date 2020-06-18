@@ -1,3 +1,7 @@
+** 20200618_fdreplater_unity_proto_v.0.3.2.D.apk
+* title에서 영상을 바로 플레이 하는 버전
+:: US AWS url :  rtsp://app.4dlive.com/mbc_test01.4ds?type=vod
+
 ** 20200618_fdreplater_unity_proto_v.0.3.1.apk
 * bluetooth wireless controller 연동 추가
 :: zoom position 좌우 방향 반대로 수정(v.0.3.0의 반대)
