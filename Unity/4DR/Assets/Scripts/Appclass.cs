@@ -66,6 +66,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public string url;
 	public string type;
 	public int default_channel;
+	public int max_channel;
 
 	public MediaPlayerCtrl controler;
 

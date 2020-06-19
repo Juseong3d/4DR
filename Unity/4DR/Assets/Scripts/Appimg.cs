@@ -232,7 +232,20 @@ public class Appimg : MonoBehaviour {
 
 	public void LOAD_FULL_SCREEN_VIDEO(string _url) {
 
-		Debug.Log("LOAD_FULL_SCREEN_VIDEO :: " + _url);
+		LIST_CONTENT_FDLIVE_ITEM _vaule = new LIST_CONTENT_FDLIVE_ITEM();
+
+		_vaule.url = _url;
+
+		LOAD_FULL_SCREEN_VIDEO(_vaule);
+
+	}
+
+
+	public void LOAD_FULL_SCREEN_VIDEO(LIST_CONTENT_FDLIVE_ITEM __info) {
+
+		string _url = __info.GETURL();
+
+		Debug.Log("LOAD_FULL_SCREEN_VIDEO :: " + _url);;
 
 		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
 
@@ -245,9 +258,10 @@ public class Appimg : MonoBehaviour {
             GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
             MediaPlayerCtrl _ctl = _videoManager.GetComponentInChildren<MediaPlayerCtrl>();
 
-			_nowFullVideo = _ctl;
+			_nowFullVideo = _ctl;			
 			_nowFullCtl = _videoManager.GetComponentInChildren<isoFdPlayerCtl>();			
 
+			_nowFullCtl.max_channel = __info.max_channel;
 			_ctl.m_strFileName = _url;
             _videoManager.transform.SetParent(Appmain.appui.transform);
 			_videoManager.transform.localScale = new Vector3(1, 1, 1);

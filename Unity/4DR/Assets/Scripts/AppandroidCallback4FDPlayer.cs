@@ -14,6 +14,8 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     public long time;
     public string utc;
 
+    public int max_channel;
+
     public bool isErrorPopup;
 
     // Start is called before the first frame update

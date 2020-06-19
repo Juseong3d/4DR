@@ -59,6 +59,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public bool isPressed_AX7;
     public bool isPressed_AX8;
 
+    public int max_channel;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -464,6 +466,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4Right(bool _how) {
 
         if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
+            if(max_channel != 0) {
+                if(_info.channel == max_channel) return;
+            }
+
             if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                 if(_info.frame == lastCallFrame) return;
             }

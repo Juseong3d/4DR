@@ -52,7 +52,7 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
 
     public void OnClickButton4FullScreen() {
         
-        Appmain.appimg.LOAD_FULL_SCREEN_VIDEO(__info.GETURL());
+        Appmain.appimg.LOAD_FULL_SCREEN_VIDEO(__info);//.GETURL());
 
     }
 
