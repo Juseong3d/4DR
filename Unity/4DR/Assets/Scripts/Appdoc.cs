@@ -125,6 +125,9 @@ public class Appdoc : MonoBehaviour {
 			case GAME_STATUS.GS_INTRO :
 
 				break;
+			case GAME_STATUS.GS_MENU:
+
+				break;
 		}		
 	}
 

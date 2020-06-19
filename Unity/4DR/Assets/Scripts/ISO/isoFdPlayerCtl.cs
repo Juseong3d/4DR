@@ -39,14 +39,25 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public float _contrlerStatusTime;
 
+
+    public TweenAlpha tweenCtlPanel;
+
+
     public TweenPosition tweenPosition4RightMenu;
     public bool isRightMenu = true;
     public TweenPosition tweenPosition4LeftMenu;
     public bool isLeftMenu = true;
+    public TweenPosition tweenPosition4BottomMenu;
+    public bool isBottomMenu = true;
 
     public UILabel labelEffectName;
 
     public int lastCallFrame;
+
+    public bool isPressed;
+
+    public bool isPressed_AX7;
+    public bool isPressed_AX8;
 
     // Start is called before the first frame update
     void Start() {
@@ -80,6 +91,11 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         labelEffectName.text = GET_EFFECT_NAME(_idx, true);
 
+        isPressed = false;
+        isPressed_AX7 = false;
+        isPressed_AX8 = false;
+
+        isBottomMenu = true;
     }
 
     private void onDragFinished() {
@@ -145,26 +161,71 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //    tweenCtlPanel.PlayReverse();
         //}
 
-        if(Input.GetAxis("Horizontal") > 0.5f) {
-            OnClickButton4Right(false);
-        }else if(Input.GetAxis("Horizontal") < -0.5f) {
-            OnClickButton4Left(false);
+        //if(Input.GetAxis("Vertical") < 0.5f && Input.GetAxis("Vertical") > -0.5f) 
+            {
+            if(Input.GetAxis("Horizontal") > 0.5f) {
+                OnClickButton4Right(false);
+            }else if(Input.GetAxis("Horizontal") < -0.5f) {
+                OnClickButton4Left(false);
+            }
+        }
+
+        if(Input.GetAxis("DPAD_h") != 0.0f) {
+
+            //Debug.Log("DPAD_H : " + Input.GetAxis("DPAD_h"));
+
+        }
+
+        if(Input.GetAxis("DPAD_v") != 0.0f) {
+            //Debug.Log("DPAD_V : " + Input.GetAxis("DPAD_v"));
+            if(isPressed == false) {
+                if(Input.GetAxis("DPAD_v") > 0.0f) {
+                    OnClickButton4Right(false);
+                }else {
+                    OnClickButton4Left(false);
+                }
+            }
+            isPressed = true;
+        }else if(Input.GetAxis("DPAD_v") == 0.0f) {
+            isPressed = false;
         }
 
         if(Input.GetAxis("axis7") != 0.0f) {
-            OnClickButton4Load();
+            if(isPressed_AX7 == false) {
+                //OnClickButton4Load();
+                OnClickButton4Left(false);
+            }
+            isPressed_AX7 = true;
+        }else if(Input.GetAxis("axis7") == 0.0f) {
+            isPressed_AX7 = false;
         }
 
         if(Input.GetAxis("axis8") != 0.0f) {
-            scrMedia.PlayToNow();
+            if(isPressed_AX8 == false) {
+                //scrMedia.PlayToNow();
+                OnClickButton4Right(false);
+            }
+            isPressed_AX8 = true;
+        }else if(Input.GetAxis("axis8") == 0.0f) {
+            isPressed_AX8 = false;
         }
 
         for(int i = 0; i<10; i++) {
             string tmp = string.Format("joystick button {0}", i);            
 
             if(Input.GetKeyDown(tmp)) {
+
                 //Debug.Log(tmp);
+
                 switch((XOBX_ONE_BUTTON)i) {
+                    case XOBX_ONE_BUTTON.BUTTON_A:
+                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                            OnClickButton4Load();
+                        }
+                        break;
+                    case XOBX_ONE_BUTTON.BUTTON_B:
+                        scrMedia.PlayToNow();
+                        break;
                     case XOBX_ONE_BUTTON.LB:
                         if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                             OnClickButton4Pause();
@@ -371,10 +432,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Left(bool _how) {
 
-        if(_info.channel == 0) return;
+        if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
+            if(_info.channel == 0) return;
 
-        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
-            if(_info.frame == lastCallFrame) return;
+            if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                if(_info.frame == lastCallFrame) return;
+            }
         }
 
        StartCoroutine(_OnClickButton4Left(_how));
@@ -400,8 +463,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Right(bool _how) {
 
-        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
-            if(_info.frame == lastCallFrame) return;
+        if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
+            if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                if(_info.frame == lastCallFrame) return;
+            }
         }
 
         StartCoroutine(_OnClickButton4Right(_how));
@@ -558,7 +623,20 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
 
-    public TweenAlpha tweenCtlPanel;
+    public void OnClickButton4BottomMenu() {
+
+        if(isBottomMenu == true) {
+            tweenPosition4BottomMenu.PlayForward();
+        }else {
+            tweenPosition4BottomMenu.PlayReverse();
+        }
+
+        isBottomMenu = !isBottomMenu;
+
+    }
+
+
+    
 
 
 

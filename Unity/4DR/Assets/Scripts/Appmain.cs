@@ -37,8 +37,10 @@ public class Appmain : MonoBehaviour {
 	public static int gameStatusCnt;
 	public static float gameStatusTime;
 
-	public bool isErrorPopup;
 
+	[Header(" * CUSTOM ------------")]
+	public bool isErrorPopup;	
+	public VIDEO_TYPE selectVideoType;
 
 	void Start() {
 

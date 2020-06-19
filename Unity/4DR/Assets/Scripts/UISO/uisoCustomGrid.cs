@@ -42,7 +42,7 @@ public class uisoCustomGrid : MonoBehaviour
         _grids = GetComponentsInChildren<UIGrid>();
 
         _grids[0].repositionNow = true;
-        
+                
     }
 
     // Update is called once per frame

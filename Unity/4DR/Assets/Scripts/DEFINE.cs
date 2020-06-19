@@ -24,6 +24,13 @@ public class DEFINE : MonoBehaviour {
 	public const float CONTRLER_STATUS_TIME = 5.0f;
 
 	public const string DIRECT_TEST_URL = "rtsp://app.4dlive.com/mbc_test01.4ds?type=vod";
+	public const string LOCAL_FOLDER_PATH = "/4DLocal";
+
+	static public string GET_LOCAL_FOLDER_PATH() {
+
+		return Application.persistentDataPath + "" + "/4DLocal/";
+
+	}
 }
 
 public enum PROJECT_TYPE {
@@ -69,8 +76,19 @@ public enum GAME_STATUS_NEXT_STATUS {
 
 public enum XOBX_ONE_BUTTON {
 
+	BUTTON_A = 0,
+	BUTTON_B = 1,
 	LB = 4,
 	RB = 5,
 	RS_B = 9
+
+}
+
+
+public enum VIDEO_TYPE {
+
+	WEB_SERVER_LIST,
+	DIRECT_URL,
+	LOCAL_LIST
 
 }

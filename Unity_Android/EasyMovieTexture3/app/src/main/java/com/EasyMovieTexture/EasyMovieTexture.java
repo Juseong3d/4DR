@@ -17,6 +17,8 @@ import android.content.res.AssetManager;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.media.AudioManager;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.Uri;
@@ -27,6 +29,8 @@ import android.view.Surface;
 
 import com.FDReplay.FDLivePlayerLib.FDLivePlayer;
 import com.FDReplay.FDLivePlayerLib.FDLivePlayerCallback;
+
+import com.FDReplay.FDMediaPlayerLib.FDMediaPlayer;
 
 import com.unity3d.player.UnityPlayer;
 import com.unity3d.player.UnityPlayerActivity;
@@ -43,6 +47,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
     private int m_iVideoWidth = 1920;
     private int m_iVideoheight = 1080;
     private int m_iDuration = 0;
+
+
+    private FDMediaPlayer fdLocalPlayer = null;
+    private int startVideoTrack;
+    private int videoTrack;
+    private int audioTrack;
 
     /////////////////////////////////////////////////
     private Activity        m_UnityActivity = null;
@@ -131,6 +141,14 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         }else {
             Log.d(TAG, "player nulllll");
         }
+
+        if(fdLocalPlayer != null) {
+            if(isTime == false) {
+                onChangeChannelFrameLeft();
+            }else {
+                onTimeShiftRewind();
+            }
+        }
     }
 
 
@@ -153,6 +171,15 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         }else {
             Log.d(TAG, "player nulllll");
         }
+
+        if(fdLocalPlayer != null) {
+            if(isTime == false) {
+                onChangeChannelFrameRight();
+            }else {
+                onTimeShiftForward();
+            }
+        }
+
     }
 
 
@@ -160,6 +187,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         if(m4DLivePlayer != null) {
             m4DLivePlayer.playToNow();
+        }
+
+        if(fdLocalPlayer != null) {
+            //nothing
         }
     }
 
@@ -195,6 +226,11 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 Log.d(TAG, "################# 4dPlayer nulllllllllllllllllllllll 2");
                 m4DLivePlayer = null;
             }
+        }
+
+        if(fdLocalPlayer != null) {
+            stop();
+            fdLocalPlayer = null;
         }
 
         if(m_MediaPlayer!=null) {
@@ -293,7 +329,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 }
             }
         }else {
-            if(m_bSplitOBB) {
+            if(m_strFileName.contains(".mp4") == true) {
+                Log.d(TAG, "########## ok check mp4");
+            }else if(m_bSplitOBB) {
                 try {
                     ZipResourceFile expansionFile = new ZipResourceFile(m_strOBBName);
 
@@ -342,6 +380,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         if(m_strFileName.contains(".4ds") == true) {
             //Log.d(TAG, "m_strFileName ::::::: " + m_strFileName);
             open1(m_strFileName, m_bTcp, m_bHWDec, m_iRESTFul_Port);
+
+            m_MediaPlayer.release();
+            m_MediaPlayer = null;
+        }else if(m_strFileName.contains(".mp4") == true) {
+
+            startRendering(m_strFileName);
 
             m_MediaPlayer.release();
             m_MediaPlayer = null;
@@ -404,6 +448,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         if(m_MediaPlayer != null)
             m_MediaPlayer.setLooping(bLoop);
 
+        if(fdLocalPlayer != null)
+            fdLocalPlayer.setLooping(bLoop);
+
         if(m4DLivePlayer != null)
             m4DLivePlayer.setLooping(bLoop);
     }
@@ -429,6 +476,12 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 m4DLivePlayer.seek(iSeek);
             }
         }
+
+        if(fdLocalPlayer != null) {
+            if (m_iCurrentState == MEDIAPLAYER_STATE.READY || m_iCurrentState == MEDIAPLAYER_STATE.PLAYING || m_iCurrentState == MEDIAPLAYER_STATE.PAUSED) {
+                fdLocalPlayer.seekTo(iSeek);
+            }
+        }
     }
 
     public int GetSeekPosition() {
@@ -449,6 +502,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         if(m4DLivePlayer != null) {
             //callback에서 처리 중..
+            //m_iCurrentSeekPosition = frame;
+        }
+
+        if(fdLocalPlayer != null) {
             //m_iCurrentSeekPosition = frame;
         }
 
@@ -480,6 +537,14 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
             }
         }
+
+        if(fdLocalPlayer != null) {
+            if(m_iCurrentState == MEDIAPLAYER_STATE.READY || m_iCurrentState == MEDIAPLAYER_STATE.PAUSED || m_iCurrentState == MEDIAPLAYER_STATE.END ) {
+                //fdLocalPlayer.start(null);
+                play();
+                m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
+            }
+        }
     }
 
     public void Reset() {
@@ -490,9 +555,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             }
         }
 
-        if(m4DLivePlayer != null) {
+        if(m4DLivePlayer != null || fdLocalPlayer != null) {
             Log.d(TAG, "Need Check :: have not Reset funciton");
         }
+
         m_iCurrentState = MEDIAPLAYER_STATE.NOT_READY;
     }
 
@@ -528,12 +594,26 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
             }
         }
+
+        if(fdLocalPlayer != null) {
+            if(m_iCurrentState == MEDIAPLAYER_STATE.PLAYING) {
+                play();
+                m_iCurrentState = MEDIAPLAYER_STATE.PAUSED;
+            }
+        }
     }
 
     public void Pause() {
         if(m_MediaPlayer != null) {
             if(m_iCurrentState == MEDIAPLAYER_STATE.PLAYING) {
                 m_MediaPlayer.pause();
+                m_iCurrentState = MEDIAPLAYER_STATE.PAUSED;
+            }
+        }
+
+        if(fdLocalPlayer != null) {
+            if(m_iCurrentState == MEDIAPLAYER_STATE.PLAYING) {
+                pause();
                 m_iCurrentState = MEDIAPLAYER_STATE.PAUSED;
             }
         }
@@ -553,7 +633,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             return m_MediaPlayer.getVideoWidth();
         }
 
-        if(m4DLivePlayer != null) {
+        if(m4DLivePlayer != null || fdLocalPlayer != null) {
             return m_iVideoWidth;
         }
 
@@ -566,7 +646,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             return m_MediaPlayer.getVideoHeight();
         }
 
-        if(m4DLivePlayer != null) {
+        if(m4DLivePlayer != null || fdLocalPlayer != null) {
             return m_iVideoheight;
         }
 
@@ -607,7 +687,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             return m_MediaPlayer.getDuration();
         }
 
-        if(m4DLivePlayer != null) {
+        if(m4DLivePlayer != null || fdLocalPlayer != null) {
             return m_iDuration;
         }
 
@@ -973,9 +1053,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             String sub2 = sub1.substring(sub1.lastIndexOf("/")+1);
             String sub3 = sub2.substring(sub2.lastIndexOf("?")+1);
 
-            Log.d(TAG, "sub1 : " + sub1);
-            Log.d(TAG, "sub2 : " + sub2);
-            Log.d(TAG, "sub3 : " + sub3);
+            //Log.d(TAG, "sub1 : " + sub1);
+            //Log.d(TAG, "sub2 : " + sub2);
+            //Log.d(TAG, "sub3 : " + sub3);
 
             String ss_ip = sub1.substring(0, sub1.indexOf("/"));
             if (ss_ip.indexOf(":") > 0)
@@ -999,6 +1079,175 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         //m4DLivePlayer.pause();
 
+    }
+
+
+    //////local
+    protected void startRendering(String filePath) {
+
+        int numTracks;
+        //int startVideoTrack; // start video track
+        int numVideoTracks = 0; // video track count
+        //int audioTrack; // current audio track
+
+        MediaExtractor extractor = new MediaExtractor();
+
+        try {
+            extractor.setDataSource(filePath);
+
+            numTracks = extractor.getTrackCount();
+            startVideoTrack = -1;
+            numVideoTracks = 0;
+            audioTrack = -1;
+
+            for (int i = 0; i < numTracks; ++i) {
+                MediaFormat format = extractor.getTrackFormat(i);
+                String mime = format.getString(MediaFormat.KEY_MIME);
+                if (mime.startsWith("video/")) {
+                    if (startVideoTrack == -1) {
+                        startVideoTrack = i;
+                    }
+                    numVideoTracks++;
+                } else if (mime.startsWith("audio/")) {
+                    audioTrack = i;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            extractor.release();
+            extractor = null;
+        }
+
+        //startVideoTrack = startVideoTrack;
+        videoTrack = numVideoTracks;
+        //audioTrack = 0;
+
+        fdLocalPlayer = new FDMediaPlayer(new File(filePath), m_Surface, startVideoTrack, videoTrack - 1, videoTrack / 2, audioTrack);
+        if (fdLocalPlayer != null) {
+            fdLocalPlayer.setCallback(fdLocalPlayerCallback);
+            fdLocalPlayer.setLooping(false);
+        }
+
+        play();
+    }
+
+    private FDMediaPlayer.Callback fdLocalPlayerCallback = new FDMediaPlayer.Callback() {
+        @Override
+        public void onStart() {
+            //Log.d(TAG, "onStart()");
+            m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
+        }
+
+        @Override
+        public void onStop() {
+            //Log.d(TAG, "onStop()");
+            m_iCurrentState = MEDIAPLAYER_STATE.STOPPED;
+        }
+
+        @Override
+        public void onPause() {
+            //Log.d(TAG, "onPause()");
+            m_iCurrentState = MEDIAPLAYER_STATE.PAUSED;
+        }
+
+        @Override
+        public void onVideoCurrentPosition(long pos) {
+            //Log.d(TAG, "onVideoCurrentPosition() = " + pos);
+            m_iCurrentSeekPosition = (int)pos;
+
+            int channel = -1;
+            int frame = -1;
+            int frame_cycle = -1;
+            int time = m_iCurrentSeekPosition;
+            String utc = "";
+
+            String _value = "getCurrentPlayInfo," + channel + "," + frame + "," + frame_cycle + "," + time + "," + utc;
+
+            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getCurrentPlayInfo", _value);
+        }
+
+        @Override
+        public void onVideoResolution(int width, int height) {
+            //Log.d(TAG, "onVideoResolution() width = " + width +  " / height = " + height);
+            m_iVideoWidth = width;
+            m_iVideoheight = height;
+
+            String _value = "getVideoStreamInfo," + width + "," + height + "," + m_iDuration;
+
+            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getVideoStreamInfo", _value);
+        }
+
+        @Override
+        public void onDuration(long duration) {
+            //Log.d(TAG, "onDuration() = " + duration);
+            m_iDuration = (int)duration;
+
+
+        }
+
+        @Override
+        public void onCompletion() {
+            //Log.d(TAG, "onCompletion()");
+            m_iCurrentState = MEDIAPLAYER_STATE.END;
+        }
+
+    };
+
+    /* ====================== Play Control ====================== */
+
+    public void play() {
+        if (fdLocalPlayer != null && !fdLocalPlayer.isPlaying()) {
+            fdLocalPlayer.start(null);
+        }
+    }
+
+    public void pause() {
+        if (fdLocalPlayer != null && fdLocalPlayer.isPlaying()) {
+            fdLocalPlayer.pause();
+        }
+    }
+
+    public void stop() {
+        if (fdLocalPlayer != null) {
+            fdLocalPlayer.stop();
+        }
+    }
+
+    public void seekTo(long time) {
+        if (fdLocalPlayer != null) {
+            fdLocalPlayer.seekTo(time);
+        }
+    }
+
+    /* ====================== Interactive 제어 ====================== */
+
+    public void onChangeChannelFrameLeft() {
+        if (fdLocalPlayer != null) {
+            //Log.d(TAG, "onChangeChannelFrameLeft");
+            fdLocalPlayer.setChangeChannelFrame(1, 0, 0);
+        }
+    }
+
+    public void onChangeChannelFrameRight() {
+        if (fdLocalPlayer != null) {
+            //Log.d(TAG, "onChangeChannelFrameRight");
+            fdLocalPlayer.setChangeChannelFrame(-1, 0, 0);
+        }
+    }
+
+    public void onTimeShiftRewind() {
+        if (fdLocalPlayer != null) {
+            //Log.d(TAG, "onTimeShiftRewind");
+            fdLocalPlayer.setChangeChannelFrame(0, -1, 0);
+        }
+    }
+
+    public void onTimeShiftForward() {
+        if (fdLocalPlayer != null) {
+            //Log.d(TAG, "onTimeShiftForward");
+            fdLocalPlayer.setChangeChannelFrame(0, 1, 0);
+        }
     }
 
 }

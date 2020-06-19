@@ -120,6 +120,10 @@
         "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\f1874e0f0dbf11a49aa8731cd4658266\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
+        "merged": "D:\\Project\\_GITHUB\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\res\\merged\\release\\drawable\\ic_launcher_background.xml",
+        "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\c95573ffccf31835adea48066ceb3748\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
         "merged": "D:\\Project\\_GITHUB\\4DR\\Unity_Android\\EasyMovieTexture3\\app\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
         "source": "C:\\Users\\4DReplay\\.gradle\\caches\\transforms-2\\files-2.1\\d2edfa9876d19d957ca6de68fe61ce4e\\res\\drawable\\notification_bg.xml"
     },

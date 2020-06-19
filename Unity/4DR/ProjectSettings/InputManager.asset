@@ -294,7 +294,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: LT
+    m_Name: DPAD_h
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -307,10 +307,10 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 8
+    axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: RT
+    m_Name: DPAD_v
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -323,7 +323,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 4
     joyNum: 0
   - serializedVersion: 3
     m_Name: axis7

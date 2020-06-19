@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 
 public class uisoITEM_VIDEO_MINI : MonoBehaviour
@@ -35,6 +36,17 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
             labelType.color = Color.red;
         }
 
+    }
+
+
+    public void SET_INFO(string _info) {
+
+        string _tmp = string.Format("{0}", _info);
+
+        labelInfo.text = _tmp;
+        labelType.text = "LOCAL";
+
+        __info.url = DEFINE.GET_LOCAL_FOLDER_PATH() +  _info;
     }
 
 

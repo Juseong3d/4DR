@@ -27,4 +27,12 @@ public class uisoTITLE : MonoBehaviour
         Appmain.appdoc.setGameStatus(GAME_STATUS.GS_MENU);
 
     }
+
+
+    public void OnClcikButtonSelectVideoType(GameObject _obj) {
+
+        Appmain.appmain.selectVideoType = (VIDEO_TYPE)int.Parse(_obj.name);
+        OnClickButton4Title();
+
+    }
 }

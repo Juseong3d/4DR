@@ -21,7 +21,20 @@ public class uisoMainMenu : MonoBehaviour
 
     public void OnClickButton4Reflash() {
 
-        Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);        
+        switch(Appmain.appmain.selectVideoType) {
+            case VIDEO_TYPE.WEB_SERVER_LIST:
+                Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);        
+                break;
+            case VIDEO_TYPE.LOCAL_LIST:
+                Appmain.appimg._SET_LOCAL_LIST_GRID();
+                break;
+        }
+    }
+
+
+    public void OnClcickButton4Back() {
+
+        Appmain.appdoc.setGameStatus(GAME_STATUS.GS_TITLE);
 
     }
 }

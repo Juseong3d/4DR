@@ -7,8 +7,4 @@
 package com.a4dreplay.esm4dliveplayerlib;
 
 public final class R {
-    public static final class string {
-        public static int lib_name = 0x7f150029;
-        public static int lib_version = 0x7f15002a;
-    }
 }

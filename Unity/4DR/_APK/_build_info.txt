@@ -1,3 +1,8 @@
+** 20200618_fdreplater_unity_proto_v.0.3.3.apk
+* title에 video type 분기(local file / direct / connect server)
+* fdplayer local sdk 연동
+* controller key 일부분 수정
+
 ** 20200618_fdreplater_unity_proto_v.0.3.2.D.apk
 * title에서 영상을 바로 플레이 하는 버전
 :: US AWS url :  rtsp://app.4dlive.com/mbc_test01.4ds?type=vod

@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6
 Transform:
   m_ObjectHideFlags: 0
@@ -250,6 +250,8 @@ MonoBehaviour:
   mainUIPrefab: {fileID: 0}
   _nowFullCtl: {fileID: 0}
   _nowFullVideo: {fileID: 0}
+  FilePathList: []
+  CoverPathList: []
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +296,7 @@ MonoBehaviour:
   serverTime: 0
   tmpStartToLogin: 0
   isErrorPopup: 0
+  selectVideoType: 0
 --- !u!81 &17
 AudioListener:
   m_ObjectHideFlags: 0
@@ -361,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &33662853
 Transform:
   m_ObjectHideFlags: 0
@@ -584,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &221536736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,7 +777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &361418012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,7 +1262,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 1920, w: 1080}
@@ -1748,7 +1751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &912019295
 MonoBehaviour:
   m_ObjectHideFlags: 0

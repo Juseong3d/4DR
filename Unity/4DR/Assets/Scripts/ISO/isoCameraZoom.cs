@@ -27,6 +27,10 @@ public class isoCameraZoom : MonoBehaviour
         
     }
 
+    public void INIT_CAMERA() {
+        zoom(-zoomOutMax);
+    }
+
     // Update is called once per frame
     void FixedUpdate () {
         
@@ -108,10 +112,13 @@ public class isoCameraZoom : MonoBehaviour
 
         zoom(Input.GetAxis("Mouse ScrollWheel"));
 
-        if(Input.GetAxis("Vertical") > 0.5f) {
-            zoom((-Input.GetAxis("Vertical")) * 0.01f);
-        }else  if(Input.GetAxis("Vertical") < -0.5f) {
-            zoom((-Input.GetAxis("Vertical")) * 0.01f);
+        if(Input.GetAxis("HorizontalTurn") < 0.5f && Input.GetAxis("HorizontalTurn") > -0.5f) 
+            {
+            if(Input.GetAxis("Vertical") > 0.5f) {
+                zoom((-Input.GetAxis("Vertical")) * 0.01f);
+            }else  if(Input.GetAxis("Vertical") < -0.5f) {
+                zoom((-Input.GetAxis("Vertical")) * 0.01f);
+            }
         }
 
         if(Input.GetKeyDown("joystick button 8")) {

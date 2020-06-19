@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
+using System.Collections.Generic;
 
 public class Appimg : MonoBehaviour {
 
@@ -9,6 +11,10 @@ public class Appimg : MonoBehaviour {
 	public GameObject mainUIPrefab;
 	public isoFdPlayerCtl _nowFullCtl;
 	public MediaPlayerCtrl _nowFullVideo;
+
+
+	public List<string> FilePathList;
+    public List<string> CoverPathList;
 
 	// Use this for initialization
 	void Start () {
@@ -74,11 +80,69 @@ public class Appimg : MonoBehaviour {
 #if _DIRECT_URL_
 				LOAD_FULL_SCREEN_VIDEO(DEFINE.DIRECT_TEST_URL);
 #else
-				_SET_MINI_VIDEO_GRID();
-#endif
 
+				switch(appmain.selectVideoType) {
+					case VIDEO_TYPE.WEB_SERVER_LIST:
+						_SET_MINI_VIDEO_GRID();
+						break;
+					case VIDEO_TYPE.DIRECT_URL:
+						LOAD_FULL_SCREEN_VIDEO(DEFINE.DIRECT_TEST_URL);
+						break;
+					case VIDEO_TYPE.LOCAL_LIST:
+						_SET_LOCAL_LIST_GRID();
+						break;
+				}
+#endif
+					{
+						isoCameraZoom cameractl = Appmain.appui.mainCamera3D.GetComponent<isoCameraZoom>();
+						cameractl.INIT_CAMERA();
+					}
 				}
 				break;
+		}
+	}
+
+
+	public void _SET_LOCAL_LIST_GRID() {
+
+
+		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();	
+		BetterList<Transform> _gridC = mainMenu._gridMain.GetChildList();
+
+		for(int i = 0; i<_gridC.size; i++) {			
+
+			NGUITools.Destroy(_gridC[i].gameObject);
+			//NGUITools.SetActive(_gridC[i].gameObject, false);
+		}
+
+		_gridC.Clear();
+		//////////////
+
+		string filepath;
+		string _path = DEFINE.GET_LOCAL_FOLDER_PATH();
+
+		var folder = Directory.CreateDirectory(_path); // returns a DirectoryInfo object
+
+		Debug.Log("_SET_LOCAL_LIST_GRID() " + _path);
+		DirectoryInfo directoryInfo = new DirectoryInfo(_path);
+		//FileInfo[] files = directoryInfo.GetFiles();
+		Debug.Log("_SET_LOCAL_LIST_GRID() ");
+
+		//각 비디오의 패스(URL) 리스트 만들기
+        foreach (var file in directoryInfo.GetFiles()) {
+            if (file.Extension != ".meta" && file.Extension != ".DS_Store") { //비디오 이외의 확장자를 가진 파일 제외시키기
+                filepath = _path + "/" + file.Name;
+
+				Debug.Log("ppppp : " + filepath);
+                if (!filepath.Contains ("._")) { //파일명 에러 수정해주기
+                    // filepath = filepath.Replace ("._", "");
+                    if (filepath.Contains (".mp4")) { //비디오 파일 add 리스트
+						Debug.Log("filepath : " + filepath);
+                        FilePathList.Add (file.Name); 
+						StartCoroutine(_LOAD_MINI_VIDEO_FOR_LOCAL(file.Name));
+					}
+                }
+            }
 		}
 	}
 
@@ -134,6 +198,35 @@ public class Appimg : MonoBehaviour {
 		_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);		
 
 		_ctl.m_strFileName = Appmain.appclass._list_conent_fdlist.result[i].GETURL();		
+
+	}
+
+
+	IEnumerator _LOAD_MINI_VIDEO_FOR_LOCAL(string _path, float _delay = 0.5f) {
+
+		Debug.Log("_path ::: " + _path);
+		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();					
+
+		GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
+		
+
+		_instan.transform.SetParent(mainMenu._gridMain.transform);
+		_instan.transform.localScale = new Vector3(1, 1, 1);		
+
+		mainMenu._gridMain.repositionNow = true;
+
+		yield return new WaitForSeconds(_delay);		
+		
+		uisoITEM_VIDEO_MINI _info = _instan.GetComponentInChildren<uisoITEM_VIDEO_MINI>();
+		MediaPlayerCtrl _ctl = _instan.GetComponentInChildren<MediaPlayerCtrl>();
+		
+		//Appmain.appclass._list_conent_fdlist.result[i].controler = _ctl;
+		//_info.SET_INFO(Appmain.appclass._list_conent_fdlist.result[i]);		
+
+		_info.SET_INFO(_path);
+
+		//_ctl.m_strFileName = _path;//Appmain.appclass._list_conent_fdlist.result[i].GETURL();		
+		_ctl.enabled = false;
 
 	}
 
