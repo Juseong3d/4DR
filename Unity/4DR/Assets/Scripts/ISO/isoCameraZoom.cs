@@ -6,10 +6,10 @@ public class isoCameraZoom : MonoBehaviour
 {
     
     Vector3 touchStart;
-    public float zoomOutMin = 0.1f;
-    public float zoomOutMax = 8.0f;
+    public float zoomOutMin;
+    public float zoomOutMax;
 
-    public int doubleTouchCnt = 0;
+    public int doubleTouchCnt;
 
     public AppandroidCallback4FDPlayer _callback;
 
@@ -183,8 +183,7 @@ public class isoCameraZoom : MonoBehaviour
 
 
     internal Vector3 getInputMouse(Vector3 inputMouse) {
-
-		
+        		
 		float perX = (DEFINE.BASE_SCREEN_WIDTH * inputMouse.x) / Screen.width;
 		float perY = (DEFINE.BASE_SCREEN_HEIGHT * inputMouse.y) / Screen.height;
 		Vector3 rtn = new Vector3(perX, perY, 0.0f);
