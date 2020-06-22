@@ -112,7 +112,7 @@ public class isoCameraZoom : MonoBehaviour
 
         zoom(Input.GetAxis("Mouse ScrollWheel"));
 
-        if(Input.GetAxis("HorizontalTurn") < 0.5f && Input.GetAxis("HorizontalTurn") > -0.5f) 
+        //if(Input.GetAxis("Horizontal") < 0.5f && Input.GetAxis("Horizontal") > -0.5f) 
             {
             if(Input.GetAxis("Vertical") > 0.5f) {
                 zoom((-Input.GetAxis("Vertical")) * 0.01f);
@@ -173,7 +173,7 @@ public class isoCameraZoom : MonoBehaviour
 
             //Debug.Log("minX : " + minX + "/maxX : " + maxX + "/" + Appmain.appui.mainCamera3D.transform.position.x);
 
-            float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x - Appmain.appui.mainCamera3D.transform.position.z, minX, maxX);
+            float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
             float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
 
             Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);

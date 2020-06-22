@@ -148,7 +148,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
             if (isPressRightCamera == false && isPressLeftCamera == false) {
 
-                Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+                Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
 
                 _cameraY = _info.channel * _cameraRotationSpeed;
             }
@@ -163,7 +163,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //    tweenCtlPanel.PlayReverse();
         //}
 
-        //if(Input.GetAxis("Vertical") < 0.5f && Input.GetAxis("Vertical") > -0.5f) 
+        if(Input.GetAxis("Vertical") < 0.5f && Input.GetAxis("Vertical") > -0.5f) 
             {
             if(Input.GetAxis("Horizontal") > 0.5f) {
                 OnClickButton4Right(false);
@@ -282,7 +282,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
             //Debug.DrawRay(_ray, Vector3.forward);
 			if(Physics.Raycast(_ray, out _hit)) {
 				GameObject prefab = Appimg.LoadResource4Prefab(_path);
-				prefab.transform.SetParent(Appmain.appui.transform);                
+				prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                
                 				
 				prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
 				prefab.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
@@ -497,10 +497,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
     void OnClickButton4Left_Camera(GameObject go, bool press) {       
         
         if(press == true) {
-            float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
+            float now = Appmain.appui._EFFECT_MAIN.transform.localRotation.y;
             
             //Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
-            Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
             _cameraY -= Time.fixedDeltaTime * (_cameraRotationSpeed * 4);
@@ -513,10 +513,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
     void OnClickButton4Right_Camera(GameObject go, bool press) {
         
         if(press == true) {
-            float now = Appmain.appui.mainCamera3D.transform.localRotation.y;
+            float now = Appmain.appui._EFFECT_MAIN.transform.localRotation.y;
 
             //Appmain.appui.mainCamera3D.transform.localPosition = new Vector3(0, 0, 0);
-            Appmain.appui.mainCamera3D.transform.parent.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
+            Appmain.appui._EFFECT_MAIN.transform.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));
             //AppUI.mainCamera.transform.localEulerAngles += new Vector3(0.0f, _cameraY, 0.0f);
 
             _cameraY += Time.fixedDeltaTime * (_cameraRotationSpeed * 4);

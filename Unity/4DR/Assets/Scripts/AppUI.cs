@@ -14,6 +14,8 @@ public class AppUI : MonoBehaviour {
 	public TweenPosition tweenPosition;
 	public bool isTopLabel;
 
+	public GameObject _EFFECT_MAIN;
+
 	void Awake() {
 
 		uiRoot = (UIRoot)FindObjectOfType<UIRoot>();
