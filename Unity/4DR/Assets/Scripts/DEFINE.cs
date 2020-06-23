@@ -87,6 +87,7 @@ public enum XOBX_ONE_BUTTON {
 
 public enum VIDEO_TYPE {
 
+	NONE = -1,
 	WEB_SERVER_LIST,
 	DIRECT_URL,
 	LOCAL_LIST

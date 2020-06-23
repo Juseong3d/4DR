@@ -45,22 +45,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 6ddff873b9d9a424ca9b065c8e6ff3eb, type: 2}
   mSprites:
-  - name: arrow_left
-    x: 750
-    y: 604
-    width: 112
-    height: 108
+  - name: arrow_down
+    x: 315
+    y: 12
+    width: 54
+    height: 56
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 8
-    paddingRight: 8
-    paddingTop: 8
-    paddingBottom: 12
+    paddingLeft: 6
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
+  - name: arrow_left
+    x: 401
+    y: 1
+    width: 56
+    height: 54
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 6
+  - name: arrow_right
+    x: 458
+    y: 1
+    width: 56
+    height: 54
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 6
+    paddingBottom: 4
+  - name: arrow_up
+    x: 922
+    y: 456
+    width: 54
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: button_100
     x: 0
-    y: 10
+    y: 15
     width: 200
     height: 110
     borderLeft: 0
@@ -72,8 +111,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button_150
-    x: 401
-    y: 859
+    x: 0
+    y: 126
     width: 300
     height: 165
     borderLeft: 75
@@ -86,7 +125,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: button_200
     x: 0
-    y: 804
+    y: 292
     width: 400
     height: 220
     borderLeft: 0
@@ -98,8 +137,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button_round_130
-    x: 619
-    y: 572
+    x: 401
+    y: 56
     width: 130
     height: 140
     borderLeft: 0
@@ -110,48 +149,139 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: menu
-    x: 702
-    y: 816
-    width: 224
-    height: 208
+  - name: checkmark
+    x: 602
+    y: 176
+    width: 56
+    height: 44
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 16
-    paddingRight: 16
-    paddingTop: 24
-    paddingBottom: 24
-  - name: pause
-    x: 442
-    y: 488
-    width: 176
-    height: 224
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 10
+    paddingBottom: 10
+  - name: heart
+    x: 301
+    y: 129
+    width: 56
+    height: 44
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 40
-    paddingRight: 40
-    paddingTop: 16
-    paddingBottom: 16
-  - name: play
-    x: 233
-    y: 488
-    width: 208
-    height: 224
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 10
+    paddingBottom: 10
+  - name: help
+    x: 360
+    y: 235
+    width: 40
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 12
+    paddingTop: 4
+    paddingBottom: 4
+  - name: info
+    x: 358
+    y: 176
+    width: 16
+    height: 56
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
     paddingLeft: 24
     paddingRight: 24
-    paddingTop: 16
-    paddingBottom: 16
+    paddingTop: 4
+    paddingBottom: 4
+  - name: menu
+    x: 532
+    y: 89
+    width: 56
+    height: 52
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 6
+    paddingBottom: 6
+  - name: message
+    x: 659
+    y: 178
+    width: 56
+    height: 42
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 10
+    paddingBottom: 12
+  - name: minus
+    x: 532
+    y: 15
+    width: 56
+    height: 16
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 24
+    paddingBottom: 24
+  - name: pause
+    x: 977
+    y: 456
+    width: 44
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 10
+    paddingRight: 10
+    paddingTop: 4
+    paddingBottom: 4
+  - name: play
+    x: 532
+    y: 32
+    width: 52
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 6
+    paddingRight: 6
+    paddingTop: 4
+    paddingBottom: 4
+  - name: plus
+    x: 201
+    y: 69
+    width: 56
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: radio_200
-    x: 233
-    y: 62
+    x: 602
+    y: 221
     width: 200
     height: 200
     borderLeft: 0
@@ -163,34 +293,73 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: repeat
-    x: 0
-    y: 346
-    width: 224
-    height: 224
+    x: 315
+    y: 69
+    width: 56
+    height: 56
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 16
-    paddingRight: 16
-    paddingTop: 16
-    paddingBottom: 16
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: settings
-    x: 0
-    y: 121
-    width: 224
-    height: 224
+    x: 201
+    y: 12
+    width: 56
+    height: 56
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 16
-    paddingRight: 16
-    paddingTop: 16
-    paddingBottom: 16
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
+  - name: share
+    x: 258
+    y: 69
+    width: 56
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
+  - name: speaker
+    x: 258
+    y: 12
+    width: 56
+    height: 56
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
+  - name: star
+    x: 532
+    y: 142
+    width: 56
+    height: 54
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 6
   - name: toggle_bg_200
-    x: 233
-    y: 263
+    x: 401
+    y: 197
     width: 200
     height: 224
     borderLeft: 40
@@ -202,8 +371,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: universal_panel_10
-    x: 233
-    y: 713
+    x: 401
+    y: 422
     width: 520
     height: 90
     borderLeft: 15
@@ -214,19 +383,32 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: x
-    x: 0
-    y: 571
-    width: 232
-    height: 232
+  - name: user
+    x: 301
+    y: 174
+    width: 56
+    height: 58
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 8
-    paddingRight: 16
-    paddingTop: 8
-    paddingBottom: 16
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 2
+    paddingBottom: 4
+  - name: x
+    x: 301
+    y: 233
+    width: 58
+    height: 58
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 4
+    paddingTop: 2
+    paddingBottom: 4
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0
