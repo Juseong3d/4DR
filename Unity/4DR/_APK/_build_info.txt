@@ -1,3 +1,6 @@
+2020-06-24 수요일 오후 4:51
+* Content list에 EMPTY 상태에 Label 표시
+
 ** 20200622_fdreplater_unity_proto_v.0.3.41.apk
 * 3d camera rotation 이 후 특정각도와 x, z 좌표계의 이동계로 영역 컷팅 부분에서 문제가 되는 증상 수정
 :: effect의 주 parent 변경으로 카메라 로테이션 수정

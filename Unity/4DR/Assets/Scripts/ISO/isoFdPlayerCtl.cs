@@ -137,9 +137,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
             OnClickButton4Right_Camera(this.gameObject, true);
         }
 
-        //if(isPressPlayerBackButton == true) {
-        //    OnClickButton4Player(this.gameObject, true);
-        //}
+        if(isPressPlayerBackButton == true) {
+            OnClickButton4Player(this.gameObject, true);
+        }
         
         if(_info.duration != 0) {
             
@@ -328,7 +328,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
                     "Common/_Default_effect_3/CFX3_Fire_Explosion",
                     "Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
                     "Common/_Default_effect_3/CFX3_Snow_Dense",
-                    "Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+                    "Common/_Default_effect_3/CFX4 Environment Bubbles Denser",
+                    "Common/_Default_effect_3/pfb_TEST"
 
 				};
         
@@ -370,8 +371,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
                     50,//"Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
                     100,//"Common/_Default_effect_3/CFX3_Snow_Dense",
                     200,//"Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+                    1,
 
 				};
+
+        if(_index >= _effects_scale_size.Length)
+            return 1;
 
         return _effects_scale_size[_index];
     }

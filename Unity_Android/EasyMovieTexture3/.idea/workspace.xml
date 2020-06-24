@@ -5,7 +5,23 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="" />
+    <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX2_BrokenHeart.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX2_BrokenHeart.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Fire_Explosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Fire_Explosion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Hit_Light_C_Air.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Hit_Light_C_Air.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Snow_Dense.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX3_Snow_Dense.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX4 Environment Bubbles Denser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX4 Environment Bubbles Denser.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX_Hit_A Red+RandomText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX_Hit_A Red+RandomText.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX_MagicPoof.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Effect_3/CFX_MagicPoof.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_MAIN_MENU.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_MAIN_MENU.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appimg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appimg.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/UISO/uisoMainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/UISO/uisoMainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

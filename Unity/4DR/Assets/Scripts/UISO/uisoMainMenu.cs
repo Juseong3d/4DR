@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class uisoMainMenu : MonoBehaviour
 {
     public UIGrid _gridMain;
+    public UILabel _label;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,16 @@ public class uisoMainMenu : MonoBehaviour
                 Appmain.appimg._SET_LOCAL_LIST_GRID();
                 break;
         }
+    }
+
+    public void SET_GRID_EMPTY(string _value) {
+
+        if(string.IsNullOrEmpty(_value)) {
+            _label.text = string.Empty;
+        }else {
+            _label.text = string.Format("EMPTY\nCopy to [{0}]", _value);
+        }
+
     }
 
 
