@@ -91,11 +91,22 @@ public class isoCameraZoom : MonoBehaviour
               
 
         if(Input.GetAxis("HorizontalTurn") > 0.5f) {
-            float _value = (-Input.GetAxis("HorizontalTurn")) * Time.deltaTime;
+            
+            float _r = 1f;
+
+            if(_callback.isZoomMoveR != true)
+                _r = -1f;
+
+            float _value = (Input.GetAxis("HorizontalTurn")) * Time.deltaTime * _r;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
         }else if(Input.GetAxis("HorizontalTurn") < -0.5f) {
-            float _value = (-Input.GetAxis("HorizontalTurn")) * Time.deltaTime;
+            float _r = 1f;
+
+            if(_callback.isZoomMoveR != true)
+                _r = -1f;
+
+            float _value = (Input.GetAxis("HorizontalTurn")) * Time.deltaTime * _r;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
         }

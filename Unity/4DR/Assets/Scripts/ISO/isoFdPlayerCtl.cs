@@ -373,6 +373,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 				};
 
+        if(_index >= _effects_scale_size.Length) {
+            return 1;
+        }
+
         return _effects_scale_size[_index];
     }
 

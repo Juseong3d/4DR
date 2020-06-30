@@ -17,12 +17,14 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     public int max_channel;
 
     public bool isErrorPopup;
+    public bool isZoomMoveR;
 
     // Start is called before the first frame update
     void Start()
     {
         duration = 999999;
         isErrorPopup = false;
+        isZoomMoveR = true;
     }
 
     // Update is called once per frame
@@ -34,6 +36,13 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     public void IS_CHANGE_POPUP(UIToggle _value) {
 
         isErrorPopup = _value.value;
+    }
+
+
+    public void IS_CHANGE_ZOOM_MOVE_R(UIToggle _value) {
+
+        isZoomMoveR = _value.value;
+
     }
 
 

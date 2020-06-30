@@ -1,3 +1,7 @@
+** 20200630_fdreplater_unity_proto_v.0.3.42.apk
+* zoom 상태에서 이동 방향값 반대로 수정
+* 상단 app status info 슬라이드 다운 메뉴에 zoom 상태 이동 방향값 반대로 바꾸는 버튼 추가
+
 ** 20200622_fdreplater_unity_proto_v.0.3.41.apk
 * 3d camera rotation 이 후 특정각도와 x, z 좌표계의 이동계로 영역 컷팅 부분에서 문제가 되는 증상 수정
 :: effect의 주 parent 변경으로 카메라 로테이션 수정
