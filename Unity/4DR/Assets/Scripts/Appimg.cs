@@ -125,14 +125,11 @@ public class Appimg : MonoBehaviour {
 
 		Debug.Log("_SET_LOCAL_LIST_GRID() " + _path);
 		DirectoryInfo directoryInfo = new DirectoryInfo(_path);
-		FileInfo[] files = directoryInfo.GetFiles();
+		//FileInfo[] files = directoryInfo.GetFiles();
 		Debug.Log("_SET_LOCAL_LIST_GRID() ");
 
 		//각 비디오의 패스(URL) 리스트 만들기
-        for(int i = 0; i<files.Length; i++) {
-			
-			FileInfo file = files[i];
-
+        foreach (var file in directoryInfo.GetFiles()) {
             if (file.Extension != ".meta" && file.Extension != ".DS_Store") { //비디오 이외의 확장자를 가진 파일 제외시키기
                 filepath = _path + "/" + file.Name;
 
@@ -146,12 +143,6 @@ public class Appimg : MonoBehaviour {
 					}
                 }
             }
-		}
-
-		if(FilePathList.Count == 0) {
-			mainMenu.SET_GRID_EMPTY(_path);
-		}else {
-			mainMenu.SET_GRID_EMPTY(string.Empty);
 		}
 	}
 
@@ -181,10 +172,6 @@ public class Appimg : MonoBehaviour {
 
 				_delay += 0.01f;
 			}
-		}
-
-		if(Appmain.appclass._list_conent_fdlist.result.Count != 0) {
-			mainMenu.SET_GRID_EMPTY(string.Empty);
 		}
 	}
 
