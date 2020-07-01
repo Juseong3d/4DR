@@ -1,3 +1,6 @@
+** 20200630_fdreplater_unity_proto_v.0.3.44.apk
+* zoom이 2배가 아닌 경우 double touch 시 zoom 2배 + camera focus move 하도록 처리
+
 ** 20200630_fdreplater_unity_proto_v.0.3.42.apk
 * zoom 상태에서 이동 방향값 반대로 수정
 * 상단 app status info 슬라이드 다운 메뉴에 zoom 상태 이동 방향값 반대로 바꾸는 버튼 추가

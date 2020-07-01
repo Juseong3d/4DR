@@ -604,6 +604,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
         NGUITools.Destroy(this.transform.gameObject);
 #endif
 
+        OnClickButton4ClearParticle();
+
     }
         
 

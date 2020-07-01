@@ -9,6 +9,8 @@ public class DEFINE : MonoBehaviour {
 	public const float BASE_SCREEN_WIDTH = 1920;
 	public const float BASE_SCREEN_HEIGHT = 1080;
 
+	public const float DOUBLE_TOUCH_TIME = 1.0f;
+
 	public const string KEY_OPTION_BGM = "KEY_OPTION_BGM";
 	public const string KEY_OPTION_EFFECT_SOUND = "KEY_OPTION_EFFECT_SOUND";
 

@@ -13,18 +13,27 @@ public class isoCameraZoom : MonoBehaviour
 
     public AppandroidCallback4FDPlayer _callback;
 
+    public Vector3 prevStartPoint;
     public Vector3 startPoint;
     public Vector3 distPoint;
     public Vector3 nowPoint;
 
+    public Vector3 _distDouble;
+
     public int oldDist;
+
+    public Vector3 _target;
+    public bool isDoubleTouch;
+
+    public float lastTouchTime;
 
     private void Start() {
 
         //zoomOutMin = 0.1f;
         //zoomOutMax = 8.0f;
         _callback = FindObjectOfType<AppandroidCallback4FDPlayer>();
-        
+        isDoubleTouch = false;
+        lastTouchTime = 0.0f;
     }
 
     public void INIT_CAMERA() {
@@ -58,7 +67,18 @@ public class isoCameraZoom : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0)){
             touchStart = Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition);
+            prevStartPoint = startPoint;
             startPoint = getInputMouse(Input.mousePosition);
+
+            _target = Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition);
+
+            _distDouble = prevStartPoint - startPoint;
+
+            if(Mathf.Abs(_distDouble.x) < 20.0f && Mathf.Abs(_distDouble.x) < 20.0f) {
+                isDoubleTouch = true;
+            }
+
+            lastTouchTime = DEFINE.DOUBLE_TOUCH_TIME;
         }
         if(Input.touchCount == 2){
             Touch touchZero = Input.GetTouch(0);
@@ -121,6 +141,30 @@ public class isoCameraZoom : MonoBehaviour
             Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
         } 
 
+        if(Mathf.Abs(distPoint.x) > 10.0f || Mathf.Abs(distPoint.y) > 10.0f || Mathf.Abs(distPoint.z) > 10.0f) {
+            _target = new Vector3();
+        }
+
+        if(isDoubleTouch == true) {
+            if((_target.x != 0f) || (_target.y != 0f) || Appmain.appui.mainCamera3D.orthographicSize > 0.5f) {
+                Vector3 _tmpTarget = new Vector3(
+                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.x, _target.x, Time.deltaTime * 5f),
+                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.y, _target.y, Time.deltaTime * 5f),
+                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.z, _target.z, Time.deltaTime * 5f)
+                    );
+        
+                Appmain.appui.mainCamera3D.transform.position = _tmpTarget;
+                zoom(0.01f);
+
+                Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.position - _tmpTarget;
+
+                if(Mathf.Abs(___ddddd.x) < 0.01f && Mathf.Abs(___ddddd.y) < 0.01f && Appmain.appui.mainCamera3D.orthographicSize <= 0.5f) {
+                    _target = new Vector3();
+                    isDoubleTouch = false;
+                }
+            }
+        }
+
         zoom(Input.GetAxis("Mouse ScrollWheel"));
 
         //if(Input.GetAxis("Horizontal") < 0.5f && Input.GetAxis("Horizontal") > -0.5f) 
@@ -137,21 +181,34 @@ public class isoCameraZoom : MonoBehaviour
         }
 
         if(Input.touchCount == 0) {
-            doubleTouchCnt = 0;
+            doubleTouchCnt = 0;            
         }
+
+        if(lastTouchTime > 0f) {
+            lastTouchTime -= Time.deltaTime;
+        }else {
+            lastTouchTime = 0f;
+            _distDouble = new Vector3();            
+            nowPoint = new Vector3();
+            startPoint = new Vector3();
+            prevStartPoint = new Vector3(999999, 999999);
+        }
+
 	}
 
 
     void LateUpdate() {
         {
-			//if(Input.touchCount <= 1) 
+			if(Input.GetMouseButton(0))
             {
 				nowPoint = getInputMouse(Input.mousePosition);
 				
 				distPoint = nowPoint - startPoint;
 
 				//appmain.startPoint += (appmain.distPoint / 6);
-			}
+			}else if(Input.GetMouseButtonUp(0)) {
+                distPoint = new Vector3();
+            }
 		}
     }
 
