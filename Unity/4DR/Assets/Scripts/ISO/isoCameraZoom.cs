@@ -109,34 +109,39 @@ public class isoCameraZoom : MonoBehaviour
 
         }
               
+        float htValue = Input.GetAxis("HorizontalTurn");
+        htValue = Input.GetAxis("axis14");
 
-        if(Input.GetAxis("HorizontalTurn") > 0.5f) {
+        if(htValue > 0.5f) {
             
             float _r = 1f;
 
             if(_callback.isZoomMoveR != true)
                 _r = -1f;
 
-            float _value = (Input.GetAxis("HorizontalTurn")) * Time.deltaTime * _r;
+            float _value = (htValue) * Time.deltaTime * _r;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
-        }else if(Input.GetAxis("HorizontalTurn") < -0.5f) {
+        }else if(htValue < -0.5f) {
             float _r = 1f;
 
             if(_callback.isZoomMoveR != true)
                 _r = -1f;
 
-            float _value = (Input.GetAxis("HorizontalTurn")) * Time.deltaTime * _r;
+            float _value = (htValue) * Time.deltaTime * _r;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(_value, 0, 0);
         }
 
-        if(Input.GetAxis("VerticalTurn") > 0.5f) {
-            float _value = Input.GetAxis("VerticalTurn") * Time.deltaTime;
+        float vtValue = Input.GetAxis("VerticalTurn");
+        vtValue = Input.GetAxis("axis15");
+
+        if(vtValue > 0.5f) {
+            float _value = vtValue * Time.deltaTime;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
-        }else if(Input.GetAxis("VerticalTurn") < -0.5f) {
-            float _value = Input.GetAxis("VerticalTurn") * Time.deltaTime;
+        }else if(vtValue < -0.5f) {
+            float _value = vtValue * Time.deltaTime;
 
             Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
         } 

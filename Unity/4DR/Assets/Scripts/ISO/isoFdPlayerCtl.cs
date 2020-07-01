@@ -109,7 +109,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void LateUpdate() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
@@ -192,24 +192,34 @@ public class isoFdPlayerCtl : MonoBehaviour {
             isPressed = false;
         }
 
-        if(Input.GetAxis("axis7") != 0.0f) {
+        if((Input.GetAxis("axis7") != 0.0f) || (Input.GetAxis("axis13") != 0.0f)) {
             if(isPressed_AX7 == false) {
                 //OnClickButton4Load();
                 OnClickButton4Left(false);
             }
             isPressed_AX7 = true;
-        }else if(Input.GetAxis("axis7") == 0.0f) {
+        }else if((Input.GetAxis("axis7") == 0.0f) || (Input.GetAxis("axis13") == 0.0f)) {
             isPressed_AX7 = false;
         }
 
-        if(Input.GetAxis("axis8") != 0.0f) {
+        if((Input.GetAxis("axis8") != 0.0f) || (Input.GetAxis("axis12") != 0.0f)) {
             if(isPressed_AX8 == false) {
                 //scrMedia.PlayToNow();
                 OnClickButton4Right(false);
             }
             isPressed_AX8 = true;
-        }else if(Input.GetAxis("axis8") == 0.0f) {
+        }else if((Input.GetAxis("axis8") == 0.0f) || (Input.GetAxis("axis12") == 0.0f)) {
             isPressed_AX8 = false;
+        }
+
+        for(int i = 5; i<20; i++) {
+            
+            string tmp = string.Format("axis{0}", i);
+            float _value = Input.GetAxis(tmp);
+
+            if(_value != 0.0f) {
+                Debug.Log(tmp + "::: " + _value);
+            }
         }
 
         for(int i = 0; i<10; i++) {
@@ -217,7 +227,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
             if(Input.GetKeyDown(tmp)) {
 
-                //Debug.Log(tmp);
+                Debug.Log(tmp);
 
                 switch((XOBX_ONE_BUTTON)i) {
                     case XOBX_ONE_BUTTON.BUTTON_A:
@@ -227,6 +237,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
                         break;
                     case XOBX_ONE_BUTTON.BUTTON_B:
                         scrMedia.PlayToNow();
+                        break;
+                    case XOBX_ONE_BUTTON.BUTTON_X:
+                        OnClickButtonExit();
                         break;
                     case XOBX_ONE_BUTTON.LB:
                         if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {

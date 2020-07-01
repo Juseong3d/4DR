@@ -80,6 +80,8 @@ public enum XOBX_ONE_BUTTON {
 
 	BUTTON_A = 0,
 	BUTTON_B = 1,
+	BUTTON_X = 2,
+	BUTTON_Y = 3,
 	LB = 4,
 	RB = 5,
 	RS_B = 9

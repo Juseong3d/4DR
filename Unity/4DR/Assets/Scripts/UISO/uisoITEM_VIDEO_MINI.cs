@@ -10,10 +10,12 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
 
     public LIST_CONTENT_FDLIVE_ITEM __info;
 
+    public UISprite _cursor;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _cursor.enabled = false;
     }
 
     // Update is called once per frame
@@ -53,6 +55,13 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
     public void OnClickButton4FullScreen() {
         
         Appmain.appimg.LOAD_FULL_SCREEN_VIDEO(__info);//.GETURL());
+
+    }
+
+
+    public void SET_CURSOR(bool _how) {
+
+        _cursor.enabled = _how;
 
     }
 

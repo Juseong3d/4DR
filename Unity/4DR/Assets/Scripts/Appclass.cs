@@ -34,10 +34,10 @@ public class APP_INFO {
 
 		version0 = "0";
 		version1 = "3";
-		version2 = "4";
+		version2 = "5";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += "4.PROTO";
+		appVersion += "1.PROTO";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
