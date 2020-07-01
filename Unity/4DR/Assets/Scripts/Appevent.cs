@@ -92,6 +92,9 @@ public class Appevent : MonoBehaviour {
 
 			}
 		}
+
+		//if(Input.anyKeyDown)
+		//	Debug.Log(Input.inputString);
 	}
 
 

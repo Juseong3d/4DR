@@ -13,6 +13,7 @@ public class uisoTITLE : MonoBehaviour
     public TweenPosition tweenPositionR;
     public TweenPosition tweenPosotionL;
 
+    public bool isPressedDPadH;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,43 +23,55 @@ public class uisoTITLE : MonoBehaviour
 
         labelVersion.text = Appmain.appmain.appInfo.appVersion;
 
+        isPressedDPadH = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxisRaw("DPAD_h") == 0.0f) {
-            //Debug.Log("DPAD_H : " + Input.GetAxis("DPAD_h"));
-
-        }
+        
 
 
         if(Input.GetAxisRaw("DPAD_h") == 1.0f || Input.GetKeyDown(KeyCode.DownArrow)) {
-            if(nowSelectVideoType < VIDEO_TYPE.LOCAL_LIST) {
-                nowSelectVideoType ++;
+            if(isPressedDPadH == false) {
+                if(nowSelectVideoType < VIDEO_TYPE.LOCAL_LIST) {
+                    nowSelectVideoType ++;
 
-                gameObjectMenuCursor.SetActive(true);
+                    gameObjectMenuCursor.SetActive(true);
 
-                tweenPosotionL.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
-                tweenPosotionL.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPosotionL.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPosotionL.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
 
-                tweenPositionR.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
-                tweenPositionR.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPositionR.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPositionR.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                }
             }
+
+            isPressedDPadH = true;
         }
 
         if(Input.GetAxisRaw("DPAD_h") == -1.0f || Input.GetKeyDown(KeyCode.UpArrow)) {
-            if(nowSelectVideoType > VIDEO_TYPE.WEB_SERVER_LIST) {
-                nowSelectVideoType --;
+            if(isPressedDPadH == false) {
+                if(nowSelectVideoType > VIDEO_TYPE.WEB_SERVER_LIST) {
+                    nowSelectVideoType --;
 
-                gameObjectMenuCursor.SetActive(true);
+                    gameObjectMenuCursor.SetActive(true);
 
-                tweenPosotionL.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
-                tweenPosotionL.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPosotionL.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPosotionL.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
 
-                tweenPositionR.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
-                tweenPositionR.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPositionR.from.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                    tweenPositionR.to.y = gameObjectMenu[(int)nowSelectVideoType].transform.localPosition.y;
+                }
             }
+
+            isPressedDPadH = true;
+        }
+
+        if(Input.GetAxisRaw("DPAD_h") == 0.0f) {
+            //Debug.Log("DPAD_H : " + Input.GetAxis("DPAD_h"));
+            isPressedDPadH = false;
         }
 
         

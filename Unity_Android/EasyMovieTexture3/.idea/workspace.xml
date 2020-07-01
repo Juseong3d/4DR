@@ -6,13 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/AppandroidCallback4FDPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/AppandroidCallback4FDPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appclass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appclass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoCameraZoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoCameraZoom.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/_APK/_build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/_APK/_build_info.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +16,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="R3CM802LHLY" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
