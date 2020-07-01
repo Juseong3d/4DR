@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552024248566105290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04d1b7c9e9a19a24ab67123a43c6544b, type: 3}
   m_Name: 
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552024248566105290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e75ec622a7840b4c9cc131ff62a1c57, type: 3}
   m_Name: 
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   gameObjectMenuCursor: {fileID: 911103363}
   tweenPositionR: {fileID: 287220200}
   tweenPosotionL: {fileID: 1611594888}
+  isPressedDPadH: 0
 --- !u!1 &5664267109607684173
 GameObject:
   m_ObjectHideFlags: 0
