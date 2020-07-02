@@ -61,10 +61,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public int max_channel;
 
+    isoShakeCamera camerashake;
+
     // Start is called before the first frame update
     void Start() {
 
         _info = FindObjectOfType<AppandroidCallback4FDPlayer>();
+        camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
 
         isRight = false;
         isLeft = false;
@@ -212,15 +215,15 @@ public class isoFdPlayerCtl : MonoBehaviour {
             isPressed_AX8 = false;
         }
 
-        for(int i = 5; i<20; i++) {
+        //for(int i = 5; i<16; i++) {
             
-            string tmp = string.Format("axis{0}", i);
-            float _value = Input.GetAxis(tmp);
+        //    string tmp = string.Format("axis{0}", i);            
+        //    float _value = Input.GetAxis(tmp);
 
-            if(_value != 0.0f) {
-                Debug.Log(tmp + "::: " + _value);
-            }
-        }
+        //    if(_value != 0.0f) {
+        //        Debug.Log(tmp + "::: " + _value);
+        //    }
+        //}
 
         for(int i = 0; i<10; i++) {
             string tmp = string.Format("joystick button {0}", i);            
@@ -288,28 +291,52 @@ public class isoFdPlayerCtl : MonoBehaviour {
             string _path = GET_EFFECT_NAME(_idx);			
             int scaleSize = GET_EFFECT_SCALE_SIZE(_idx);
 
-			RaycastHit _hit;
+            Debug.Log("_path :: " + _path);
 
-			Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
+            if(_path.Contains("CameraShakeLeftRight") == true) {
+                //isoShakeCamera camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
 
-            //Debug.DrawRay(_ray, Vector3.forward);
-			if(Physics.Raycast(_ray, out _hit)) {
-				GameObject prefab = Appimg.LoadResource4Prefab(_path);
-				prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                
+                camerashake.StartLeftRightShake(1.0f);
+                //camerashake.StartUpDownShake(0.5f);
+
+            }else if(_path.Contains("CameraShakeUpDown") == true) {
+
+                //isoShakeCamera camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
+
+                //camerashake.StartLeftRightShake(0.5f);
+                camerashake.StartUpDownShake(1.0f);
+
+            }else if(_path.Contains("CamearShakeLRUP") == true) {
+
+                //isoShakeCamera camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
+
+                camerashake.StartLeftRightShake(1.0f);
+                camerashake.StartUpDownShake(1.0f);
+
+            }else {
+
+			    RaycastHit _hit;
+
+			    Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
+
+                //Debug.DrawRay(_ray, Vector3.forward);
+			    if(Physics.Raycast(_ray, out _hit)) {
+				    GameObject prefab = Appimg.LoadResource4Prefab(_path);
+				    prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                
                 				
-				prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
-				prefab.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
-			}
+				    prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
+				    prefab.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
+			    }
 
-			//GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
+			    //GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
 			
-			//prefab.transform.SetParent(Appmain.appui.transform);
-			//prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
-			//prefab.transform.localScale = new Vector3(150, 150, 150);
+			    //prefab.transform.SetParent(Appmain.appui.transform);
+			    //prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
+			    //prefab.transform.localScale = new Vector3(150, 150, 150);
 
-            tweenCtlPanel.PlayForward();
-            _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
-
+                tweenCtlPanel.PlayForward();
+                _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;           
+            }
         }
 
         isPressPlayerBackButton = isPress;
@@ -341,7 +368,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
                     "Common/_Default_effect_3/CFX3_Fire_Explosion",
                     "Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
                     "Common/_Default_effect_3/CFX3_Snow_Dense",
-                    "Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+                    "Common/_Default_effect_3/CFX4 Environment Bubbles Denser",
+                    "c/_d/CameraShakeLeftRight",
+                    "c/_d/CameraShakeUpDown",
+                    "c/_d/CamearShakeLRUP"
 
 				};
         
@@ -382,7 +412,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
                     50,//"Common/_Default_effect_3/CFX3_Fire_Explosion",
                     50,//"Common/_Default_effect_3/CFX3_Hit_Light_C_Air",
                     100,//"Common/_Default_effect_3/CFX3_Snow_Dense",
-                    200,//"Common/_Default_effect_3/CFX4 Environment Bubbles Denser"
+                    200,//"Common/_Default_effect_3/CFX4 Environment Bubbles Denser",
+                    1,
+                    1,
+                    1
 
 				};
 

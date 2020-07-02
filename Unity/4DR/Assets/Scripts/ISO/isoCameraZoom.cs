@@ -27,10 +27,11 @@ public class isoCameraZoom : MonoBehaviour
 
     public float lastTouchTime;
 
+    isoShakeCamera camerashake;
+
     private void Start() {
 
-        //zoomOutMin = 0.1f;
-        //zoomOutMax = 8.0f;
+        camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
         _callback = FindObjectOfType<AppandroidCallback4FDPlayer>();
         isDoubleTouch = false;
         lastTouchTime = 0.0f;
@@ -110,7 +111,10 @@ public class isoCameraZoom : MonoBehaviour
         }
               
         float htValue = Input.GetAxis("HorizontalTurn");
-        htValue = Input.GetAxis("axis14");
+
+        if(Input.GetAxis("axis14") != 0) {
+            htValue = Input.GetAxis("axis14");
+        }
 
         if(htValue > 0.5f) {
             
@@ -134,7 +138,10 @@ public class isoCameraZoom : MonoBehaviour
         }
 
         float vtValue = Input.GetAxis("VerticalTurn");
-        vtValue = Input.GetAxis("axis15");
+        
+        if(Input.GetAxis("axis15") != 0) {
+            vtValue = Input.GetAxis("axis15");
+        }
 
         if(vtValue > 0.5f) {
             float _value = vtValue * Time.deltaTime;
@@ -146,29 +153,29 @@ public class isoCameraZoom : MonoBehaviour
             Appmain.appui.mainCamera3D.transform.position += new Vector3(0, _value, 0);
         } 
 
-        if(Mathf.Abs(distPoint.x) > 10.0f || Mathf.Abs(distPoint.y) > 10.0f || Mathf.Abs(distPoint.z) > 10.0f) {
-            _target = new Vector3();
-        }
+        //if(Mathf.Abs(distPoint.x) > 10.0f || Mathf.Abs(distPoint.y) > 10.0f || Mathf.Abs(distPoint.z) > 10.0f) {
+        //    _target = new Vector3();
+        //}
 
-        if(isDoubleTouch == true) {
-            if((_target.x != 0f) || (_target.y != 0f) || Appmain.appui.mainCamera3D.orthographicSize > 0.5f) {
-                Vector3 _tmpTarget = new Vector3(
-                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.x, _target.x, Time.deltaTime * 5f),
-                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.y, _target.y, Time.deltaTime * 5f),
-                        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.z, _target.z, Time.deltaTime * 5f)
-                    );
+        //if(isDoubleTouch == true) {
+        //    if((_target.x != 0f) || (_target.y != 0f) || Appmain.appui.mainCamera3D.orthographicSize > 0.5f) {
+        //        Vector3 _tmpTarget = new Vector3(
+        //                Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.x, _target.x, Time.deltaTime * 5f),
+        //                Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.y, _target.y, Time.deltaTime * 5f),
+        //                Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position.z, _target.z, Time.deltaTime * 5f)
+        //            );
         
-                Appmain.appui.mainCamera3D.transform.position = _tmpTarget;
-                zoom(0.01f);
+        //        Appmain.appui.mainCamera3D.transform.position = _tmpTarget;
+        //        zoom(0.01f);
 
-                Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.position - _tmpTarget;
+        //        Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.position - _tmpTarget;
 
-                if(Mathf.Abs(___ddddd.x) < 0.01f && Mathf.Abs(___ddddd.y) < 0.01f && Appmain.appui.mainCamera3D.orthographicSize <= 0.5f) {
-                    _target = new Vector3();
-                    isDoubleTouch = false;
-                }
-            }
-        }
+        //        if(Mathf.Abs(___ddddd.x) < 0.01f && Mathf.Abs(___ddddd.y) < 0.01f && Appmain.appui.mainCamera3D.orthographicSize <= 0.5f) {
+        //            _target = new Vector3();
+        //            isDoubleTouch = false;
+        //        }
+        //    }
+        //}
 
         zoom(Input.GetAxis("Mouse ScrollWheel"));
 
@@ -238,19 +245,20 @@ public class isoCameraZoom : MonoBehaviour
 
             //Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
 
-            float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
-            float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
+            if(camerashake.leftright == false && camerashake.updown == false) {
+                float minX = -((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
+                float maxX = ((1.0f - (Appmain.appui.mainCamera3D.orthographicSize * 1.0f)) * (1.6f / 0.9f));
 
-            float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
-            float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
+                float minY = -(1.0f - Appmain.appui.mainCamera3D.orthographicSize);
+                float maxY = (1.0f - Appmain.appui.mainCamera3D.orthographicSize);
 
-            //Debug.Log("minX : " + minX + "/maxX : " + maxX + "/" + Appmain.appui.mainCamera3D.transform.position.x);
+                //Debug.Log("minX : " + minX + "/maxX : " + maxX + "/" + Appmain.appui.mainCamera3D.transform.position.x);
 
-            float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
-            float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
+                float _x = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.x, minX, maxX);
+                float _y = Mathf.Clamp(Appmain.appui.mainCamera3D.transform.position.y, minY, maxY);
 
-            Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
-
+                Appmain.appui.mainCamera3D.transform.position = new Vector3(_x, _y, 0);
+            }
         }
     }
 

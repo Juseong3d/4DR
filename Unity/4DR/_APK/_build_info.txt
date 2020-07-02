@@ -1,5 +1,11 @@
-** 20200701_fdreplater_unity_proto_v.0.3.51.apk
+** 20200702_fdreplater_unity_proto_v.0.3.52.apk
+* xbox / ps2 키 값이 덮히는 증상 수정
+* camera shake 추가
+:: nvidia controller는 LT/RT 사용 후 특정키가 계속 눌리는 증상 발생
+
+** 20200702_fdreplater_unity_proto_v.0.3.51.apk
 * nvidia controller 키 xbox이랑 동일하도록 적용
+* double touch 삭제
 
 ** 20200701_fdreplater_unity_proto_v.0.3.5.apk
 * title / menu에 controller 키 및 커서 적용
