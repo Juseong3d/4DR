@@ -37,6 +37,10 @@ public class Appmain : MonoBehaviour {
 	public static int gameStatusCnt;
 	public static float gameStatusTime;
 
+	[Header(" * Default Table & List ------------")]
+	public DEFAULT_EFFECT_LIST[] defaultEffectList;
+	public DEFAULT_EFFECT_TABLE[] defaultEffectTable;
+
 
 	[Header(" * CUSTOM ------------")]
 	public bool isErrorPopup;	

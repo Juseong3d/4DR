@@ -68,6 +68,8 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public int default_channel;
 	public int max_channel;
 
+	public sub_category category;
+
 	public MediaPlayerCtrl controler;
 
 	public LIST_CONTENT_FDLIVE_ITEM() {
@@ -85,6 +87,67 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 
 		throw new NotImplementedException();
 	}
+
+	[Serializable]
+	public class sub_category {
+		public int id;
+		public string name;
+	}
+}
+
+
+[Serializable]
+public class DEFAULT_EFFECT_LIST {
+
+	public int index;
+	public string resources_path;
+	public string pfb_name;
+	public string etc;
+
+	public DEFAULT_EFFECT_LIST(string[] tableData) {
+
+		int j = 0;
+
+		this.index = Convert.ToInt32(tableData[j ++]);
+		this.resources_path = tableData[j ++];
+		this.pfb_name = tableData[j ++];
+		this.etc = tableData[j ++];
+
+	}
+}
+
+
+[Serializable]
+public class DEFAULT_EFFECT_TABLE {
+
+	public int index;
+	public int power_min;
+	public int power_max;
+	public int effect_index;
+	public DEFAULT_EFFECT_LIST _effect_index;
+	public float scaleX;
+	public float scaleY;
+	public float scaleZ;
+	public string etc;
+
+
+	public DEFAULT_EFFECT_TABLE(string[] tableData) {
+		
+		int j = 0;
+
+		this.index = Convert.ToInt32(tableData[j ++]);
+		this.power_min = Convert.ToInt32(tableData[j ++]);
+		this.power_max = Convert.ToInt32(tableData[j ++]);
+		this.effect_index = Convert.ToInt32(tableData[j ++]);
+
+		this.scaleX = Convert.ToSingle(tableData[j ++]);
+		this.scaleY = Convert.ToSingle(tableData[j ++]);
+		this.scaleZ = Convert.ToSingle(tableData[j ++]);
+
+		this.etc = tableData[j ++];
+
+	}
+
 }
 
 //MAP

@@ -1,5 +1,4 @@
-﻿//using NUnit.Framework;
-using FFmpeg.AutoGen;
+﻿using FFmpeg.AutoGen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,6 +61,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public int max_channel;
 
     isoShakeCamera camerashake;
+
+
+    public UILabel labelFrameInfo;
 
     // Start is called before the first frame update
     void Start() {
@@ -147,7 +149,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if(_info.duration != 0) {
             
             float _value = (float)_info.time / (float)_info.duration;
-            slider.value = _value;
+            labelFrameInfo.text = string.Format("Time {0}/{1}  Frame {2}", _info.time, _info.duration, _info.frame);
+            slider.value = _value;           
 
             if (isPressRightCamera == false && isPressLeftCamera == false) {
 
@@ -319,6 +322,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 			    Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
 
+                Debug.Log("Input.mousePosition :: " + Input.mousePosition);
+
                 //Debug.DrawRay(_ray, Vector3.forward);
 			    if(Physics.Raycast(_ray, out _hit)) {
 				    GameObject prefab = Appimg.LoadResource4Prefab(_path);
@@ -326,6 +331,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
                 				
 				    prefab.transform.position = _hit.point;//Appmain.appui.mainCamera3D.WorldToScreenPoint(_hit.point);
 				    prefab.transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
+
+                    Debug.Log("hit point == " + _hit.point);
 			    }
 
 			    //GameObject prefab = Appimg.LoadResource4Prefab(_effects_path[_idx]);
@@ -692,10 +699,4 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isBottomMenu = !isBottomMenu;
 
     }
-
-
-    
-
-
-
 }

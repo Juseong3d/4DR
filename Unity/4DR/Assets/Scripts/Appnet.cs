@@ -88,6 +88,8 @@ public class Appnet : MonoBehaviour {
 		initNetwork();
 
 		_URL = "https://work.muteklab.com:50443/admin/content/unity/api";
+
+		//_URL = "https://work.muteklab.com:50443/admin/content/unitycategory/api";
 		__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);		
 
 		//appclass._list_conent_fdlist = new LIST_CONTENT_FDLIVE();

@@ -6,13 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Scene/2D UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_Scene/2D UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appclass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appclass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appnet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/Appnet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoCameraZoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoCameraZoom.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/_APK/_build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/_APK/_build_info.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/_APK/mmm.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/_APK/mmm.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -22,7 +20,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="LGF800Se84985c0" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -227,6 +225,11 @@
           <url>jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f3eda5e4feca4bc99d51faa397ce4f6b/jars/classes.jar!/com/FDReplay/FDLivePlayerLib/RESTful/FDRetrofitController.class</url>
           <line>88</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java</url>
+          <line>1247</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
