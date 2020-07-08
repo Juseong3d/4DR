@@ -160,4 +160,17 @@ public class Appmain : MonoBehaviour {
 		}
 
 	}
+
+
+	public DEFAULT_EFFECT_LIST GET_DEFAULT_EFFECT(int _index) {
+
+		for(int i = 0; i<defaultEffectList.Length; i++) {
+			if(defaultEffectList[i].index == _index) {
+				return defaultEffectList[i];
+			}
+		}
+
+		return null;
+
+	}
 }

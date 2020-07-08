@@ -114,6 +114,11 @@ public class DEFAULT_EFFECT_LIST {
 		this.etc = tableData[j ++];
 
 	}
+
+
+	public string GET_PATH() {
+		return string.Format("{0}{1}", resources_path, pfb_name);
+	}
 }
 
 

@@ -883,6 +883,13 @@ public class MediaPlayerCtrl : MonoBehaviour
         m_CurrentState = MEDIAPLAYER_STATE.PAUSED;
     }
 
+	public void Speed(float _value)
+    {
+        if (m_CurrentState == MEDIAPLAYER_STATE.PLAYING)
+            Call_Speed(_value);
+
+        m_CurrentState = MEDIAPLAYER_STATE.PAUSED;
+    }
 
 	public int Left(bool _how) {
 
@@ -1054,6 +1061,17 @@ public class MediaPlayerCtrl : MonoBehaviour
         m_CurrentState = MEDIAPLAYER_STATE.NOT_READY;
 
     }
+
+
+	private void Call_Speed(float _value) {
+
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		GetJavaObject().Call("Speed", _value);
+#endif
+#endif
+
+	}
 
 
 

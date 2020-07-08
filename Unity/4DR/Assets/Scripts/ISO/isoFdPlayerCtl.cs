@@ -64,6 +64,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 
     public UILabel labelFrameInfo;
+    public UILabel labelCommandList;
 
     // Start is called before the first frame update
     void Start() {
@@ -149,7 +150,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if(_info.duration != 0) {
             
             float _value = (float)_info.time / (float)_info.duration;
-            labelFrameInfo.text = string.Format("Time {0}/{1}  Frame {2}", _info.time, _info.duration, _info.frame);
+            labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
             slider.value = _value;           
 
             if (isPressRightCamera == false && isPressLeftCamera == false) {
