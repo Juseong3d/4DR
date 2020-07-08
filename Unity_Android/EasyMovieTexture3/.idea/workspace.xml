@@ -6,12 +6,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Scripts/ISO/isoFdPlayerCtl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java" afterDir="false" />
-    </list>
+    <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +220,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/EasyMovieTexture/EasyMovieTexture.java</url>
-          <line>1255</line>
+          <line>1256</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
