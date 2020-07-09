@@ -27,7 +27,6 @@ public class AppCommandCtlCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         _mainCamera = Appmain.appui.mainCamera3D;
         _cameraCtl = _mainCamera.GetComponent<isoCameraZoom>();
         _cameraShake = _mainCamera.GetComponent<isoShakeCamera>();
@@ -54,6 +53,21 @@ public class AppCommandCtlCamera : MonoBehaviour
         _baseSpeed = 2f;
         _lastCallChangeChannelFrame = 0;
         _lastCallChangeTimeMove = 0;
+
+        _mediaMain.OnEnd += OnEndSoInitCommandStatus;
+    }
+
+    private void OnEndSoInitCommandStatus() {
+
+        _commandes.Clear();
+
+        foreach(uisoITEM_CameraScript _script in Appmain.appmain._selectCameraScript) {
+            string path = string.Format("{0}/{1}", UIDEFINE.PATH_CAMERA_SCRIPT_ALL, _script._label.text.Trim());
+
+            Debug.Log("path ::: " + path);
+            LOAD_COMMANDS_4_TABLE(path);
+        }
+        Debug.Log("OnEndSoInitCommandStatus()");
     }
 
 
@@ -126,7 +140,10 @@ public class AppCommandCtlCamera : MonoBehaviour
 
             if(_cmd._frame > _frameTime * 1000f) continue;
         #else
-            if(_cmd._frame > _videoInfo.time) continue;
+            if(_cmd._frame > _videoInfo.time) {
+                _cmd.status = COMMAND_STATUS.WAIT;
+                continue;
+            }
         #endif
             
             if(_cmd.status == COMMAND_STATUS.DONE || _cmd.status == COMMAND_STATUS.NONE) {
@@ -219,33 +236,44 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.CHANNEL :
-                if(_lastCallChangeChannelFrame != _videoInfo.frame) {
-                    //time은 pause만 되는거라함 그래서 
-                    bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
 
-                    //for(int i = 0; i<Mathf.Abs(_cmd._channel_index); i++) 
-                    //{
-                    //    if (_cmd._channel_index < 0) {
-                    //        _mediaMain.Left(!isPlaying);                            
-                    //    }else if (_cmd._channel_index > 0) {
-                    //        _mediaMain.Right(!isPlaying);                         
-                    //    }
-                    //}
+                 {
+                    bool isCheckType = true;
 
-                    //_cmd.Clear();
-
-                    if(_cmd._channel_index == 0) {
-                        _cmd.Clear();
-                    }else if(_cmd._channel_index < 0) {
-                        _mediaMain.Left(!isPlaying);
-                        _lastCallChangeChannelFrame = _videoInfo.frame;
-                        _cmd._channel_index ++;
-                    }else if(_cmd._channel_index > 0) {
-                        _mediaMain.Right(!isPlaying);
-                        _lastCallChangeChannelFrame = _videoInfo.frame;
-                        _cmd._channel_index --;
+                    if(Appmain.appmain.selectVideoType == VIDEO_TYPE.WEB_SERVER_LIST) {
+                        isCheckType = (_lastCallChangeChannelFrame != _videoInfo.frame);
+                    }else if(Appmain.appmain.selectVideoType == VIDEO_TYPE.LOCAL_LIST) {
+                        if(_cmd.statusCnt % 3 != 0) break;
                     }
-                }                
+                        
+                    if(isCheckType) {
+                        //time은 pause만 되는거라함 그래서 
+                        bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
+
+                        //for(int i = 0; i<Mathf.Abs(_cmd._channel_index); i++) 
+                        //{
+                        //    if (_cmd._channel_index < 0) {
+                        //        _mediaMain.Left(!isPlaying);                            
+                        //    }else if (_cmd._channel_index > 0) {
+                        //        _mediaMain.Right(!isPlaying);                         
+                        //    }
+                        //}
+
+                        //_cmd.Clear();
+
+                        if(_cmd._channel_index == 0) {
+                            _cmd.Clear();
+                        }else if(_cmd._channel_index < 0) {
+                            _mediaMain.Left(!isPlaying);
+                            _lastCallChangeChannelFrame = _videoInfo.frame;
+                            _cmd._channel_index ++;
+                        }else if(_cmd._channel_index > 0) {
+                            _mediaMain.Right(!isPlaying);
+                            _lastCallChangeChannelFrame = _videoInfo.frame;
+                            _cmd._channel_index --;
+                        }
+                    }
+                }
                 break;
             case COMMAND_CTL_CAMERA.EFFECT :
                 {
@@ -351,9 +379,11 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
 
             }
+
+            _cmd.statusCnt ++;
         }
 
-        _frameTime += Time.deltaTime;
+        _frameTime += Time.deltaTime;        
 
     }
 }
@@ -401,6 +431,8 @@ public class Q_COMMAND_CTL_CAMERA {
     public int _time_forward;
 
     public float _speed;
+
+    public int statusCnt;
 
     //table parsing용
     public Q_COMMAND_CTL_CAMERA(string _ori) {
