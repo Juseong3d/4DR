@@ -630,8 +630,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void Speed(float _value) {
 
+        Log.d(TAG, "speed set " + _value);
         if(m4DLivePlayer != null) {
             m4DLivePlayer.speed(_value);
+            Log.d(TAG, "speed set in" + _value);
         }
 
     }

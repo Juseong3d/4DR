@@ -659,6 +659,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 #endif
 
         OnClickButton4ClearParticle();
+        Appmain.appui.mainCamera3D.orthographicSize = 1f;
 
     }
         

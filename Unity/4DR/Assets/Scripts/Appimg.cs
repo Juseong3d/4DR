@@ -10,6 +10,9 @@ public class Appimg : MonoBehaviour {
 	Appandroid appandroid;
 
 	public GameObject mainUIPrefab;
+
+	public uisoMainMenu imgMainMenu;
+
 	public isoFdPlayerCtl _nowFullCtl;
 	public MediaPlayerCtrl _nowFullVideo;
 
@@ -82,7 +85,7 @@ public class Appimg : MonoBehaviour {
 			case GAME_STATUS.GS_MENU :
 				{
 					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_MAIN_MENU, true);
-					uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();
+					imgMainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();
 #if _DIRECT_URL_
 				LOAD_FULL_SCREEN_VIDEO(DEFINE.DIRECT_TEST_URL);
 #else
@@ -90,6 +93,35 @@ public class Appimg : MonoBehaviour {
 				switch(appmain.selectVideoType) {
 					case VIDEO_TYPE.WEB_SERVER_LIST:
 						_SET_MINI_VIDEO_GRID();
+						{
+							BetterList<Transform> _gridrightcs = imgMainMenu._gridRightMain.GetChildList();
+
+							for(int i = 0; i<_gridrightcs.size; i++) {
+								NGUITools.Destroy(_gridrightcs[i]);
+							}
+
+
+							string[] _tmpcslist = {
+								"t_unity_cv_ctl_test_MBC_TEST03"
+							};
+
+							GameObject _prefab = Appimg.LoadResources4PrefabOnly(UIDEFINE.PATH_CAMERA_SCRIPT_ITEM);
+
+							for(int i = 0; i<_tmpcslist.Length; i++) {
+								
+								GameObject _instan = Appimg._INSTANTIATE4UI(_prefab);
+								uisoITEM_CameraScript _info = _instan.GetComponent<uisoITEM_CameraScript>();
+
+								_info.SET_LABEL(_tmpcslist[i]);
+
+								_instan.transform.SetParent(imgMainMenu._gridRightMain.transform);
+
+								_instan.transform.localScale = new Vector3(1, 1, 1);
+								
+							}
+
+							imgMainMenu._gridRightMain.repositionNow = true;
+						}
 						break;
 					case VIDEO_TYPE.DIRECT_URL:
 						LOAD_FULL_SCREEN_VIDEO(DEFINE.DIRECT_TEST_URL);
@@ -281,7 +313,25 @@ public class Appimg : MonoBehaviour {
             //_playerCtl.scrMedia = _ctl;
 
 			_nowFullCtl.beforeParent = _videoManager.gameObject.transform;
-			_nowFullCtl.transform.SetParent(Appmain.appui.transform);			
+			_nowFullCtl.transform.SetParent(Appmain.appui.transform);
+
+
+			{
+				appmain._selectCameraScript.Clear();
+				appmain._selectCameraScript = new List<uisoITEM_CameraScript>();
+
+				BetterList<Transform> ccc = imgMainMenu._gridRightMain.GetChildList();
+				
+
+				foreach(Transform obj in ccc) {
+					uisoITEM_CameraScript _tmp = obj.GetComponent<uisoITEM_CameraScript>();
+
+					if(_tmp._toggle.value == true) {
+						appmain._selectCameraScript.Add(_tmp);
+					}
+				}
+
+			}
 
 			mainUIPrefab.SetActive(false);
         }

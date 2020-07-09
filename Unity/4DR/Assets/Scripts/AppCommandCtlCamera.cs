@@ -41,7 +41,14 @@ public class AppCommandCtlCamera : MonoBehaviour
         //_commandes.Add(new Q_COMMAND_CTL_CAMERA("test") { _frame = 9999 });
 
         //Common/_Default_Table/t_unity_cv_ctl_test_MBC_TEST03
-        LOAD_COMMANDS_4_TABLE("Common/_Default_Table/t_unity_cv_ctl_test_MBC_TEST03");
+
+        foreach(uisoITEM_CameraScript _script in Appmain.appmain._selectCameraScript) {
+            string path = string.Format("{0}/{1}", UIDEFINE.PATH_CAMERA_SCRIPT_ALL, _script._label.text.Trim());
+
+            Debug.Log("path ::: " + path);
+            LOAD_COMMANDS_4_TABLE(path);
+        }
+        //LOAD_COMMANDS_4_TABLE("Common/_Default_Table/t_unity_cv_ctl_test_MBC_TEST03");
 
         _frameTime = 0f;
         _baseSpeed = 2f;
@@ -385,8 +392,8 @@ public class Q_COMMAND_CTL_CAMERA {
     public float _life_time;
 
     //camera shake
-    public flaot _cameraShake_ud;
-    public flaot _cameraShake_lr;
+    public float _cameraShake_ud;
+    public float _cameraShake_lr;
     public float _camera_amp;
     public float _camera_freq;
 

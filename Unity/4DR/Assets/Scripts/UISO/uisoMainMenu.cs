@@ -15,6 +15,12 @@ public class uisoMainMenu : MonoBehaviour
     public bool isPressedDPADV;
     public bool isPressedDPADH;
 
+    
+    [Header("* Right Select Camera Script ----")]
+    public UIGrid _gridRightMain;
+    public TweenPosition _tweenPosition;
+    public bool isRightmenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,9 @@ public class uisoMainMenu : MonoBehaviour
 
         isPressedDPADV = false;
         isPressedDPADH = false;
+
+
+        isRightmenu = false;
     }
 
     // Update is called once per frame
@@ -157,5 +166,17 @@ public class uisoMainMenu : MonoBehaviour
 
         maxCnt = _gridMain.GetChildList().size - 1;
 
+    }
+
+
+    public void OnClickButton4RightMenu() {
+        
+        if(isRightmenu == false) {
+            _tweenPosition.PlayForward();
+        }else {
+            _tweenPosition.PlayReverse();    
+        }
+
+        isRightmenu = !isRightmenu;
     }
 }

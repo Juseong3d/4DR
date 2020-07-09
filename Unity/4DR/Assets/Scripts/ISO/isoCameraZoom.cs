@@ -31,7 +31,9 @@ public class isoCameraZoom : MonoBehaviour
 
     private void Start() {
 
-        camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
+        if(Appmain.appui != null) {
+            camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
+        }
         _callback = FindObjectOfType<AppandroidCallback4FDPlayer>();
         isDoubleTouch = false;
         lastTouchTime = 0.0f;

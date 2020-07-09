@@ -885,10 +885,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 	public void Speed(float _value)
     {
-        if (m_CurrentState == MEDIAPLAYER_STATE.PLAYING)
-            Call_Speed(_value);
-
-        m_CurrentState = MEDIAPLAYER_STATE.PAUSED;
+        Debug.Log("call speed");
+        Call_Speed(_value);
+		//Time.timeScale = _value;
+        
     }
 
 	public int Left(bool _how) {

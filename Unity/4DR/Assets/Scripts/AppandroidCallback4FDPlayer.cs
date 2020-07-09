@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,8 +50,13 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     void CallBackFromFDPlayer(string _value) {
 
         //Debug.Log("CallBackFromFDPlayer ::: " + _value);
-        if(isErrorPopup == true)
+        if(isErrorPopup == true) {
             PopupBox.Create(_value);        
+        }
+
+        string[] _tmp = _value.Split(","[0]);
+
+        int code = Convert.ToInt32(_tmp[1]);
     }
 
 

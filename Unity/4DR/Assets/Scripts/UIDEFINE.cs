@@ -23,6 +23,10 @@ internal class UIDEFINE {
 
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
 
+	public const string PATH_CAMERA_SCRIPT_ALL = "Common/_Default_Table/CameraScript";
+
+    public const string PATH_CAMERA_SCRIPT_ITEM = "Common/_Default_GUI/pfb_ITEM_Camera_Script";
+	
 
 	static public UIAtlas getProjectAtlas(PROJECT_TYPE type, string str){
     

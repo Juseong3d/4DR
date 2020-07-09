@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Appmain : MonoBehaviour {
 
@@ -45,6 +46,8 @@ public class Appmain : MonoBehaviour {
 	[Header(" * CUSTOM ------------")]
 	public bool isErrorPopup;	
 	public VIDEO_TYPE selectVideoType;
+
+	public List<uisoITEM_CameraScript> _selectCameraScript;
 
 	void Start() {
 

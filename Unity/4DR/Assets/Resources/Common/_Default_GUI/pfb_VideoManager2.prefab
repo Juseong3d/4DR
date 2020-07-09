@@ -3911,7 +3911,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3012
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -4046,6 +4046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cameraCtl: {fileID: 0}
+  _cameraShake: {fileID: 0}
   _mediaMain: {fileID: 0}
   _videoInfo: {fileID: 0}
   _fdPlayerCTLUI: {fileID: 0}
@@ -4053,6 +4054,7 @@ MonoBehaviour:
   _baseSpeed: 0
   _frameTime: 0
   _lastCallChangeChannelFrame: 0
+  _lastCallChangeTimeMove: 0
 --- !u!1 &4825171232540429394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,7 +4406,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3003
+  startingRenderQueue: 3007
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -4853,7 +4855,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3012
+  startingRenderQueue: 3003
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
