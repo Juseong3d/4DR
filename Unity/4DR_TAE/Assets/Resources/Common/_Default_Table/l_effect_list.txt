@@ -1,0 +1,15 @@
+﻿14,1
+0,Common/_Default_Effect/TAE/,pfb_effect_test,임시 테스트용
+1,Common/_Default_Effect/TAE/,ROUND1,1라운드 시작
+2,Common/_Default_Effect/TAE/,ROUND2,2라운드 시작
+3,Common/_Default_Effect/TAE/,ROUND3,3라운드 시작
+4,Common/_Default_Effect/TAE/,BLUE_WIN,블루 승리
+5,Common/_Default_Effect/TAE/,BLUE_LOSE,블루 패배
+6,Common/_Default_Effect/TAE/,RED_WIN,레드 승리
+7,Common/_Default_Effect/TAE/,RED_LOSE,레드 패배
+8,Common/_Default_Effect/TAE/,HIT_HEAD,머리 타격
+9,Common/_Default_Effect/TAE/,HIT_HAND,주먹 타격
+10,Common/_Default_Effect/TAE/,HIT_BODY_LOW,몸통 약한 타격
+11,Common/_Default_Effect/TAE/,HIT_BODY_MIDDLE,몸통 중간 타격
+12,Common/_Default_Effect/TAE/,HIT_BODY_STRONG,몸통 강한 타격
+13,Common/_Default_Effect/TAE/,HIT_BODY_AWESOME,몸통 추가 강한 타격
