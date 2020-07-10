@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: :FDLivePlayerLib-release:@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/78709766aead97e38cb7267af5394480/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/78709766aead97e38cb7267af5394480/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/955ccd791e52299a941663377411f1ae/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/955ccd791e52299a941663377411f1ae/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
