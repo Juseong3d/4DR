@@ -197,6 +197,9 @@ MonoBehaviour:
     type: 
     default_channel: 0
     max_channel: 0
+    category:
+      id: 0
+      name: 
     controler: {fileID: 0}
   _cursor: {fileID: 2097746068516282525}
 --- !u!114 &7704883982773001243
@@ -749,6 +752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_strFileName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681947072294644477, guid: 51aa65c7f5310b14bab601eb6edd045f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3681947071387257350, guid: 51aa65c7f5310b14bab601eb6edd045f, type: 3}

@@ -28,6 +28,10 @@ public class DEFINE : MonoBehaviour {
 	public const string DIRECT_TEST_URL = "rtsp://app.4dlive.com/mbc_test01.4ds?type=vod";
 	public const string LOCAL_FOLDER_PATH = "/4DLocal";
 
+	public const string VOD_TYPE_NOT_USE = "not_used";
+
+	public const string CATAGORI_TAE = "태권도";
+
 	static public string GET_LOCAL_FOLDER_PATH() {
 
 		return Application.persistentDataPath + "" + "/4DLocal/";

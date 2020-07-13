@@ -2,30 +2,30 @@
 
 internal class UIDEFINE {
 
-	public const string PATH_POPUP_BOX_BACK = "Common/_Default_GUI/Popup/_pfb_POPUP_BOX_BACK";
-    public const string PATH_POPUP_BOX_BACK_9000 = "Common/_Default_GUI/Popup/_pfb_POPUP_BOX_BACK_9000";
-    public const string PATH_POPUP_BOX = "Common/_Default_GUI/Popup/_pfb_POPUP_BOX";
+	public const string PATH_POPUP_BOX_BACK = "Common/_Default_GUI_TAE/Popup/_pfb_POPUP_BOX_BACK";
+    public const string PATH_POPUP_BOX_BACK_9000 = "Common/_Default_GUI_TAE/Popup/_pfb_POPUP_BOX_BACK_9000";
+    public const string PATH_POPUP_BOX = "Common/_Default_GUI_TAE/Popup/_pfb_POPUP_BOX";
 
     //font
     public const string FONT_GODAB = "Common/_FONT/fnt_GODAB";
 
 	//prefab
-	internal static readonly string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
+	internal static readonly string PATH_INTRO = "Common/_Default_GUI_TAE/pfb_Intro";
 
 
     public const string TEST_EFFECT = "Common/_Default_Effect/pfb_Effect_Touch";
 
-    public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI/pfb_VideoManager2";
-    public const string PATH_VIDEO_CTL = "Common/_Default_GUI/pfb_FDPlayerCTL";
+    public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI_TAE/pfb_VideoManager2";
+    public const string PATH_VIDEO_CTL = "Common/_Default_GUI_TAE/pfb_FDPlayerCTL";
 
-    public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";
-    public const string PATH_MAIN_MENU = "Common/_Default_GUI/pfb_MAIN_MENU";
+    public const string PATH_TITLE = "Common/_Default_GUI_TAE/pfb_TITLE";
+    public const string PATH_MAIN_MENU = "Common/_Default_GUI_TAE/pfb_MAIN_MENU";
 
-    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
+    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI_TAE/pfb_VideoManager_Mini2";
 
 	public const string PATH_CAMERA_SCRIPT_ALL = "Common/_Default_Table/CameraScript";
 
-    public const string PATH_CAMERA_SCRIPT_ITEM = "Common/_Default_GUI/pfb_ITEM_Camera_Script";
+    public const string PATH_CAMERA_SCRIPT_ITEM = "Common/_Default_GUI_TAE/pfb_ITEM_Camera_Script";
 	
 
 	static public UIAtlas getProjectAtlas(PROJECT_TYPE type, string str){

@@ -35,6 +35,7 @@ public class AppCommandCtlCamera : MonoBehaviour
         
         _videoInfo = FindObjectOfType<AppandroidCallback4FDPlayer>();        
 
+        _commandes.Clear();
         _commandes = new List<Q_COMMAND_CTL_CAMERA>();
 
         //_commandes.Add(new Q_COMMAND_CTL_CAMERA("test") { _frame = 9999 });
@@ -281,7 +282,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                     Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
 
                     _prefab.transform.localPosition = _position;
-                    _prefab.transform.localScale = new Vector3(1, 1, 1);
+                    _prefab.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
                     _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
 
@@ -291,9 +292,11 @@ public class AppCommandCtlCamera : MonoBehaviour
             case COMMAND_CTL_CAMERA.TEXT :
                 {
                     GameObject _prefab = Appimg.LoadResource4Prefab4UI(PATH_EFFECT_TEXT);
-                    Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+                    //Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+                    Vector3 _position = new Vector3(_cmd._x, _cmd._y);
 
                     _prefab.transform.localPosition = _position;
+                    _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
                     _prefab.transform.localScale = new Vector3(1, 1, 1);
 
                     uisoEffectText _text = _prefab.GetComponent<uisoEffectText>();
@@ -403,7 +406,7 @@ public class Q_COMMAND_CTL_CAMERA {
     public COMMAND_STATUS status;
     public COMMAND_CTL_CAMERA cmd;
 
-    public long _frame { get; set; }
+    public double _frame { get; set; }
 
     public float _x;
     public float _y;
@@ -443,7 +446,7 @@ public class Q_COMMAND_CTL_CAMERA {
         _ori_command = _ori;
 
         index = Convert.ToInt32(_tmp[i++]);
-        _frame = Convert.ToInt64(_tmp[i++]);
+        _frame = Convert.ToDouble(_tmp[i++]);
 
         //COMMAND_CTL_CAMERA out _tmpCmd;
         bool _result = Enum.TryParse<COMMAND_CTL_CAMERA>(_tmp[i++], out cmd);

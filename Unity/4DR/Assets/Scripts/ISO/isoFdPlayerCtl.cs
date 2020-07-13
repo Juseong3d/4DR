@@ -661,6 +661,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
         OnClickButton4ClearParticle();
         Appmain.appui.mainCamera3D.orthographicSize = 1f;
 
+        {
+            uisoEffectText[] _tmp = Appmain.appui._EFFECT_MAIN.GetComponentsInChildren<uisoEffectText>();
+
+            for(int i = 0; i<_tmp.Length; i++) {
+
+                NGUITools.Destroy(_tmp[i].gameObject);
+
+            }
+        }
+
     }
         
 

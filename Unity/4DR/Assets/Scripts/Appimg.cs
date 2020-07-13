@@ -207,8 +207,19 @@ public class Appimg : MonoBehaviour {
 		float _delay = 0.01f;
 
 		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
-			if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals("not_used")) {
+			if(!Appmain.appclass._list_conent_fdlist.result[i].type.Equals(DEFINE.VOD_TYPE_NOT_USE)) {
+
+			#if _TAE_
+				if((Appmain.appclass._list_conent_fdlist.result[i].category != null) && (!string.IsNullOrEmpty(Appmain.appclass._list_conent_fdlist.result[i].category.name))) {
+
+					Debug.Log("Appmain.appclass._list_conent_fdlist.result[i].category.name : " + Appmain.appclass._list_conent_fdlist.result[i].category.name);
+					if(Appmain.appclass._list_conent_fdlist.result[i].category.name.Equals(DEFINE.CATAGORI_TAE)) {
+						StartCoroutine(_LOAD_MINI_VIDEO(i, _delay));
+					}
+				}
+			#else 
 				StartCoroutine(_LOAD_MINI_VIDEO(i, _delay));
+			#endif
 
 				_delay += 0.01f;
 			}
