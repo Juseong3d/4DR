@@ -640,7 +640,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: CROSS_PLATFORM_INPUT
     4: CROSS_PLATFORM_INPUT;MOBILE_INPUT
-    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;_TAE__
+    7: CROSS_PLATFORM_INPUT;MOBILE_INPUT;_TAE_
     14: MOBILE_INPUT
   platformArchitecture: {}
   scriptingBackend:

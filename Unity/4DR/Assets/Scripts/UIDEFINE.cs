@@ -10,26 +10,24 @@ internal class UIDEFINE {
     public const string FONT_GODAB = "Common/_FONT/fnt_GODAB";
 
 
-    #if _TAE_
-    internal static readonly string PATH_INTRO = "Common/_Default_GUI/TAE/pfb_Intro";
+#if _TAE_
+    public const string PATH_INTRO = "Common/_Default_GUI/TAE/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/TAE/pfb_TITLE";
-    #else
-	//prefab
+    public const string PATH_MAIN_MENU = "Common/_Default_GUI/TAE/pfb_MAIN_MENU";
+    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE/pfb_VideoManager_Mini2";
+#else	
 	internal static readonly string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";
-    #endif
+    public const string PATH_MAIN_MENU = "Common/_Default_GUI/pfb_MAIN_MENU";
+    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
+#endif
 
 
     public const string TEST_EFFECT = "Common/_Default_Effect/pfb_Effect_Touch";
 
     public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI/pfb_VideoManager2";
-    public const string PATH_VIDEO_CTL = "Common/_Default_GUI/pfb_FDPlayerCTL";
-
+    public const string PATH_VIDEO_CTL = "Common/_Default_GUI/pfb_FDPlayerCTL";    
     
-    public const string PATH_MAIN_MENU = "Common/_Default_GUI/pfb_MAIN_MENU";
-
-    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
-
 	public const string PATH_CAMERA_SCRIPT_ALL = "Common/_Default_Table/CameraScript";
 
     public const string PATH_CAMERA_SCRIPT_ITEM = "Common/_Default_GUI/pfb_ITEM_Camera_Script";
