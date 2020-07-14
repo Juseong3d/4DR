@@ -16,12 +16,11 @@ internal class UIDEFINE {
     public const string PATH_MAIN_MENU = "Common/_Default_GUI/TAE/pfb_MAIN_MENU";
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE/pfb_VideoManager_Mini2";
 #else	
-	internal static readonly string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
+	public const string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";
     public const string PATH_MAIN_MENU = "Common/_Default_GUI/pfb_MAIN_MENU";
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
 #endif
-
 
     public const string TEST_EFFECT = "Common/_Default_Effect/pfb_Effect_Touch";
 
