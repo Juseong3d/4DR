@@ -8,6 +8,8 @@ public class uisoITEM_CameraScript : MonoBehaviour
     public UIToggle _toggle;
     public UILabel _label;
 
+    public LIST_SCRIPT_LIST_ITEM _info;
+
     // Start is called before the first frame update
     void Start()
     {

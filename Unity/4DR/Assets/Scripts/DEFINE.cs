@@ -101,3 +101,13 @@ public enum VIDEO_TYPE {
 	LOCAL_LIST
 
 }
+
+
+public enum RECV_TYPE {
+
+	NONE = -1,
+	TABLE,
+	LIST,
+	CAMERA_SCRIPT
+
+}

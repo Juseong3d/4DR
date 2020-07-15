@@ -81,20 +81,13 @@ public class Appnet : MonoBehaviour {
 		appevent = (Appevent)GetComponent<Appevent>();
 		appclass = GetComponent<Appclass>();
 
-		_IP = "110.45.132.199:7888/web_api.php?xml=";
+		//_IP = "110.45.132.199:7888/web_api.php?xml=";
 		
-		_URL = "http://" + _IP;
+		_URL = "https://work.muteklab.com:50443/unity/api/";
 
-		initNetwork();
+		initNetwork();	
 
-		//기존
-		//_URL = "https://work.muteklab.com:50443/admin/content/unity/api";		
-		//_URL = "https://work.muteklab.com:50443/admin/content/unitycategory/api";		
-
-		_URL = "https://work.muteklab.com:50443/admin/unity/video/api";
-		//_URL = "https://work.muteklab.com:50443/admin/unity/category/api";
-
-		__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);		
+		//__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);		
 
 		//appclass._list_conent_fdlist = new LIST_CONTENT_FDLIVE();
 
@@ -153,73 +146,111 @@ public class Appnet : MonoBehaviour {
 	}
 
 
-	public WWW GET(string url) {
+//	public WWW GET(string url) {
 
-		//string url = WWW.EscapeURL(_url);		
-		WWW www = new WWW (url);		
+//		//string url = WWW.EscapeURL(_url);		
+//		WWW www = new WWW (url);		
 
-#if UNITY_EDITOR
-		Debug.Log("SEND GET :\n" + url);
-#endif
-		StartCoroutine (WaitForRequest (www));
+//#if UNITY_EDITOR
+//		Debug.Log("SEND GET :\n" + url);
+//#endif
+//		StartCoroutine (WaitForRequest (www));
 
-		return www; 
-    }
+//		return www; 
+//    }
 
 
-	 private IEnumerator WaitForRequest(WWW www) {
+	 private IEnumerator WaitForRequest(WWW www, NETWORK_DATA networkData) {
+
         yield return www;
 
         // check for errors
-        if (www.error == null) {
-			NETWORK_DATA networkData = new NETWORK_DATA();
-
-			//if (www.responseHeaders.ContainsKey("SET-COOKIE")){
-			//	_COOKIE_ID = www.responseHeaders["SET-COOKIE"];
-			//}
-
-            //Debug.Log("WWW Ok!: " + www.text);
+        if (www.error == null) {			
 			networkData.tmpRecvData = www.text;
 
 #if UNITY_EDITOR
 			Debug.Log("RECV TEXT :\n" + www.text);
-#endif
-			//{
-			//	int cnt = __GET_XML_COUNT(networkData.tmpRecvData);
-			//	int i = 0;
+#endif		
 
-			//	networkData.recvData = new XML_DATA[cnt];
-			//	for (i = 0; i < cnt; i++) {
-			//		string tmpcutString = __CUT_XML(networkData.tmpRecvData, i + 1);
-
-			//		//Debug.Log("-----------" + i);
-			//		//Debug.Log(tmpcutString);
-			//		networkData.recvData[i] = new XML_DATA(tmpcutString);
-			//	}
-			//}	
-
-			//recvCompleate4Web(networkData);
-			appclass._list_conent_fdlist.result.Clear();
-			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + www.text + "}");
-
-			if(Appmain.gameStatus == GAME_STATUS.GS_MENU) {
-				Appmain.appimg._SET_MINI_VIDEO_GRID();
-			}
 			
-			tmpNetWorkData = networkData;
+			//appclass._list_conent_fdlist.result.Clear();
+			//appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + www.text + "}");
+
+			//if(Appmain.gameStatus == GAME_STATUS.GS_MENU) {
+			//	Appmain.appimg._SET_MINI_VIDEO_GRID();
+			//}
+			
+			//tmpNetWorkData = networkData;
 			this.netStatus = NET_STATUS.NONE;
+			recvComplete(networkData);
 
         } else {
-			string _tmp = 
-				//"[{\"id\":9,\"title\":\"LGU+_Baseball\",\"url\":\"rtsp://app.4dlive.kr/vod_test01.4ds\",\"type\":\"vod\"},{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"},{\"id\":11,\"title\":\"Golf\",\"url\":\"rtsp://app.4dlive.kr/Golf_20Mbps.4ds\",\"type\":\"vod\"},{\"id\":12,\"title\":\"JUDO\",\"url\":\"rtsp://app.4dlive.kr/judo_4k_30p.4ds\",\"type\":\"vod\"},{\"id\":13,\"title\":\"mbc_test01\",\"url\":\"rtsp://app.4dlive.kr/mbc_test01.4ds\",\"type\":\"vod\"},{\"id\":14,\"title\":\"vod_test02\",\"url\":\"rtsp://app.4dlive.kr/vod_test02.4ds\",\"type\":\"vod\"}]";
-				"[{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"}]";
+			//string _tmp = 
+			//	//"[{\"id\":9,\"title\":\"LGU+_Baseball\",\"url\":\"rtsp://app.4dlive.kr/vod_test01.4ds\",\"type\":\"vod\"},{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"},{\"id\":11,\"title\":\"Golf\",\"url\":\"rtsp://app.4dlive.kr/Golf_20Mbps.4ds\",\"type\":\"vod\"},{\"id\":12,\"title\":\"JUDO\",\"url\":\"rtsp://app.4dlive.kr/judo_4k_30p.4ds\",\"type\":\"vod\"},{\"id\":13,\"title\":\"mbc_test01\",\"url\":\"rtsp://app.4dlive.kr/mbc_test01.4ds\",\"type\":\"vod\"},{\"id\":14,\"title\":\"vod_test02\",\"url\":\"rtsp://app.4dlive.kr/vod_test02.4ds\",\"type\":\"vod\"}]";
+			//	"[{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"}]";
 
-			appclass._list_conent_fdlist.result.Clear();			
-			appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
+			//appclass._list_conent_fdlist.result.Clear();			
+			//appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
             Debug.Log("WWW Error: "+ www.error);
 			PopupBox.Create("plz check web server : " + www.error);
         }    
     }
+
+
+	private void recvComplete(NETWORK_DATA networkData) {
+		
+		NET_WEB_API_CMD cmd = (NET_WEB_API_CMD)Enum.Parse(typeof(NET_WEB_API_CMD), networkData.functionName);
+
+		switch(cmd) {
+
+		case NET_WEB_API_CMD.script:
+			{
+				appclass._list_script_list.result.Clear();
+				appclass._list_script_list = JsonUtility.FromJson<LIST_SCRIPT_LIST>("{\"result\":" + networkData.tmpRecvData + "}");
+
+				foreach(LIST_SCRIPT_LIST_ITEM _item in appclass._list_script_list.result) {
+
+					_item.SET_TYPE();
+
+					switch(_item.type) {
+						case RECV_TYPE.CAMERA_SCRIPT:
+						__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.script_sub, _item.id);
+						break;
+					}
+				}
+			}
+			break;
+		case NET_WEB_API_CMD.script_sub:
+			{
+				LIST_SCRIPT_LIST_ITEM_SUB recvValue = JsonUtility.FromJson<LIST_SCRIPT_LIST_ITEM_SUB>(networkData.tmpRecvData);
+
+				foreach(LIST_SCRIPT_LIST_ITEM _item in appclass._list_script_list.result) {
+					
+					if(_item.id == recvValue.id) {
+						_item.cs_commands_data = recvValue.content;
+						break;
+					}
+				}
+
+				if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
+					Appmain.appimg._SET_CAMERA_SCRIPT();
+				}
+			}
+			break;
+		case NET_WEB_API_CMD.video:
+			{
+				appclass._list_conent_fdlist.result.Clear();
+				appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + networkData.tmpRecvData + "}");
+
+				if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
+					Appmain.appimg._SET_MINI_VIDEO_GRID();
+				}
+			}
+			break;
+
+		}
+
+	}
 
 
 	IEnumerator __WEB_CONNECT_AND_SEND_RECV(NETWORK_DATA netData = null, string anotherURL = "") {
@@ -316,12 +347,13 @@ public class Appnet : MonoBehaviour {
 	}
 
 
-	internal void __WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string sendData) {
+	internal void __WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD sendData, int _index = -1) {
 
 		NETWORK_DATA networkData = new NETWORK_DATA();
 		networkData.init();
 
-		networkData.sendDataStr = sendData;
+		networkData.functionName = sendData.ToString();
+		//networkData.sendDataStr = sendData;
 		//networkData.sendData = new XML_DATA(sendData);
 		//networkData.functionName = networkData.sendData.getValue("cmd");
 		
@@ -333,7 +365,7 @@ public class Appnet : MonoBehaviour {
 			//_form.headers.Add("Content-Length", networkData.sendDataStr.Length.ToString());
 			//_form.headers.Add("Host", _URL);
 
-			//Debug.Log("_URL : " + _URL);
+			//Debug.Log("_URL : " + _URL + networkData.functionName);
 			//www = new WWW(_URL, _form);
 
 			//StartCoroutine (WaitForRequest (www));
@@ -341,9 +373,17 @@ public class Appnet : MonoBehaviour {
 			Dictionary<string, string> headers = new Dictionary<string,string>();
 			headers.Add("Accept", "application/json");
 
-			WWW www = new WWW(_URL, null, headers);
+			string _last_url = _URL + networkData.functionName;
 
-			StartCoroutine (WaitForRequest (www));			
+			if(_index != -1) {
+				_last_url = _last_url.Replace("_sub", string.Empty);
+				_last_url += string.Format(":{0}", _index);				
+			}
+
+			Debug.Log("URL :: " + _last_url);
+			WWW www = new WWW(_last_url, null, headers);
+
+			StartCoroutine (WaitForRequest (www, networkData));			
 		}		
 	}
 
@@ -965,4 +1005,16 @@ public class NETWORK_DATA {
 		eventReceiver = Appmain.MAIN_GAMEOBJECT;
 		eventFuncName = "onRecvNetErrorFunc";
 	}
+}
+
+
+//1차는 이렇게 매칭을 시도
+public enum NET_WEB_API_CMD {
+
+	none = -1,
+	video,
+	category,
+	script,
+	script_sub
+
 }

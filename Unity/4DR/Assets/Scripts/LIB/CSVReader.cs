@@ -49,6 +49,41 @@ public class CSVReader
 	}
 
 
+	static public string[] ReadFileFromString(string RF, bool loadAssetBundle = true)
+	{
+		try
+		{
+			if (RF == null)
+			{
+				return null;
+			}
+			
+			string[] bufferArray = RF.Split("\n"[0]);
+
+			string[] baseHeader = bufferArray[0].Split(","[0]);			
+			//int line = Convert.ToInt32(baseHeader[0].Trim());
+
+			Debug.Log("baseHeader[0] ::: " + baseHeader[0]);
+			string what = baseHeader[0].Trim();
+
+			int line = int.Parse(what);
+			string[] allData = new string[line + 1];
+
+			for (int i = 0; i < line+1; ++i)
+			{
+				allData[i] = bufferArray[i];//.Replace("|", "\u000A\u000D"); 
+			}
+			Debug.Log("readFile :: " + RF);
+			return allData;
+		}
+		catch(System.Exception ex)
+		{
+			Debug.Log("Exception  : " + ex);
+			return null;
+		}
+	}
+
+
 	static public TextAsset GetText2ReadFile(string path)
 	{
 		try

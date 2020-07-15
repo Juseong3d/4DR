@@ -35,38 +35,28 @@ public class AppCommandCtlCamera : MonoBehaviour
         
         _videoInfo = FindObjectOfType<AppandroidCallback4FDPlayer>();        
 
-        _commandes.Clear();
-        _commandes = new List<Q_COMMAND_CTL_CAMERA>();
-
-        //_commandes.Add(new Q_COMMAND_CTL_CAMERA("test") { _frame = 9999 });
-
-        //Common/_Default_Table/t_unity_cv_ctl_test_MBC_TEST03
-
-        foreach(uisoITEM_CameraScript _script in Appmain.appmain._selectCameraScript) {
-            string path = string.Format("{0}/{1}", UIDEFINE.PATH_CAMERA_SCRIPT_ALL, _script._label.text.Trim());
-
-            Debug.Log("path ::: " + path);
-            LOAD_COMMANDS_4_TABLE(path);
-        }
-        //LOAD_COMMANDS_4_TABLE("Common/_Default_Table/t_unity_cv_ctl_test_MBC_TEST03");
+        initEndSoInitCommandStatus();
 
         _frameTime = 0f;
         _baseSpeed = 2f;
         _lastCallChangeChannelFrame = 0;
         _lastCallChangeTimeMove = 0;
 
-        _mediaMain.OnEnd += OnEndSoInitCommandStatus;
+        _mediaMain.OnEnd += initEndSoInitCommandStatus;
     }
 
-    private void OnEndSoInitCommandStatus() {
+    private void initEndSoInitCommandStatus() {
 
         _commandes.Clear();
+        _commandes = new List<Q_COMMAND_CTL_CAMERA>();
 
         foreach(uisoITEM_CameraScript _script in Appmain.appmain._selectCameraScript) {
-            string path = string.Format("{0}/{1}", UIDEFINE.PATH_CAMERA_SCRIPT_ALL, _script._label.text.Trim());
+            //string path = string.Format("{0}/{1}", UIDEFINE.PATH_CAMERA_SCRIPT_ALL, _script._label.text.Trim());
 
-            Debug.Log("path ::: " + path);
-            LOAD_COMMANDS_4_TABLE(path);
+            //Debug.Log("path ::: " + path);
+            //LOAD_COMMANDS_4_TABLE(path);
+
+            LOAD_COMMANDS_4_TABLE(_script._info);
         }
         Debug.Log("OnEndSoInitCommandStatus()");
     }
@@ -92,7 +82,28 @@ public class AppCommandCtlCamera : MonoBehaviour
             _commandes.Add(new Q_COMMAND_CTL_CAMERA(allData[i + 1]));
 		}
 
-        int a = 0;
+    }
+
+
+    public void LOAD_COMMANDS_4_TABLE(LIST_SCRIPT_LIST_ITEM _value) {
+
+		int totalCnt = 0;
+		int i = 0;
+		string[] allData = null;
+
+		allData = CSVReader.ReadFileFromString(_value.cs_commands_data, false);
+
+		if (allData == null) {
+			Debug.Log(_value + " :: allData is null");
+			return;
+		}
+
+		string[] tmp = allData[0].Split(","[0]);
+		totalCnt = Convert.ToInt32(tmp[0]);		
+
+		for (i = 0; i < totalCnt; i++) {
+            _commandes.Add(new Q_COMMAND_CTL_CAMERA(allData[i + 1]));
+		}
     }
 
 

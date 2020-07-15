@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Appclass : MonoBehaviour {
 
 	public LIST_CONTENT_FDLIVE _list_conent_fdlist;
-
+	public LIST_SCRIPT_LIST _list_script_list;
 }
 
 
@@ -57,6 +57,14 @@ public class  LIST_CONTENT_FDLIVE {
 
 
 [Serializable]
+public class LIST_SCRIPT_LIST {
+
+	public List<LIST_SCRIPT_LIST_ITEM> result;
+
+}
+
+
+[Serializable]
 public class LIST_CONTENT_FDLIVE_ITEM {
 
 	const string _4DREPLAY_TYPE_ = ".4ds";
@@ -93,6 +101,47 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 		public int id;
 		public string name;
 	}
+}
+
+
+[Serializable]
+public class LIST_SCRIPT_LIST_ITEM_SUB {
+
+	public int id;
+	public string name;
+	public string content;
+	public string filename;
+}
+
+[Serializable]
+public class LIST_SCRIPT_LIST_ITEM {
+
+	public RECV_TYPE type;
+	public int id;
+	public string name;
+	public string filename;
+
+	public string cs_commands_data;
+
+	public LIST_SCRIPT_LIST_ITEM() {
+		
+	}
+
+
+	public void SET_TYPE() {
+		if(!string.IsNullOrEmpty(filename)) {
+			string[] _tmp = filename.Split("_"[0]);
+
+			if(_tmp[0].Equals("cs")) {
+				type = RECV_TYPE.CAMERA_SCRIPT;
+			}else if(_tmp[0].Equals("tb")) {
+				type = RECV_TYPE.TABLE;
+			}else if(_tmp[0].Equals("l")) {
+				type = RECV_TYPE.LIST;
+			}
+		}
+	}
+
 }
 
 

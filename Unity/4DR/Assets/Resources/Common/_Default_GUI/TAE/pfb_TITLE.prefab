@@ -810,7 +810,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 914
   mHeight: 164
-  mDepth: 4
+  mDepth: 7
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3006
+  startingRenderQueue: 3003
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -1799,7 +1799,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 1000
   mHeight: 40
-  mDepth: 1
+  mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 1332
   mHeight: 502
-  mDepth: 3
+  mDepth: 6
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2769,7 +2769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7654251538223654917
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,7 +2817,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 1516
   mHeight: 798
-  mDepth: 12
+  mDepth: 3
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 1
@@ -3031,7 +3031,7 @@ MonoBehaviour:
   mPivot: 5
   mWidth: 200
   mHeight: 40
-  mDepth: 1
+  mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0

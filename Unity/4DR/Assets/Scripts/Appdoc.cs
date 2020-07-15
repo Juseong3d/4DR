@@ -120,7 +120,8 @@ public class Appdoc : MonoBehaviour {
 
 				break;
 			case GAME_STATUS.GS_INIT :
-
+				Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.video);
+				Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.script);
 				break;
 			case GAME_STATUS.GS_INTRO :
 

@@ -158,7 +158,7 @@ MonoBehaviour:
   mClipping: 0
   mClipRange: {x: -62, y: -300, z: 430, w: 1032}
   mClipSoftness: {x: 0, y: 0}
-  mDepth: 4
+  mDepth: 40
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
 --- !u!54 &7807267668914879921
@@ -1355,7 +1355,7 @@ MonoBehaviour:
   mClipping: 3
   mClipRange: {x: -62, y: -339, z: 424, w: 918}
   mClipSoftness: {x: 0, y: 0}
-  mDepth: 5
+  mDepth: 45
   mSortingOrder: 0
   mClipOffset: {x: 0, y: -24}
 --- !u!54 &251973139

@@ -107,39 +107,48 @@ public class Appimg : MonoBehaviour {
 						cameractl.INIT_CAMERA();
 					}
 				}
-
-				{
-					BetterList<Transform> _gridrightcs = imgMainMenu._gridRightMain.GetChildList();
-
-					for(int i = 0; i<_gridrightcs.size; i++) {
-						NGUITools.Destroy(_gridrightcs[i]);
-					}
-
-
-					string[] _tmpcslist = {
-						"t_unity_cv_ctl_test_MBC_TEST03",
-						"t_cs_channel_change"
-					};
-
-					GameObject _prefab = Appimg.LoadResources4PrefabOnly(UIDEFINE.PATH_CAMERA_SCRIPT_ITEM);
-
-					for(int i = 0; i<_tmpcslist.Length; i++) {
-								
-						GameObject _instan = Appimg._INSTANTIATE4UI(_prefab);
-						uisoITEM_CameraScript _info = _instan.GetComponent<uisoITEM_CameraScript>();
-
-						_info.SET_LABEL(_tmpcslist[i]);
-
-						_instan.transform.SetParent(imgMainMenu._gridRightMain.transform);
-
-						_instan.transform.localScale = new Vector3(1, 1, 1);
-								
-					}
-
-					imgMainMenu._gridRightMain.repositionNow = true;
-				}
+				
+				_SET_CAMERA_SCRIPT();
 				break;
 		}
+	}
+
+
+	public void _SET_CAMERA_SCRIPT() {
+
+		{
+			BetterList<Transform> _gridrightcs = imgMainMenu._gridRightMain.GetChildList();
+
+			for(int i = 0; i<_gridrightcs.size; i++) {
+				NGUITools.Destroy(_gridrightcs[i].gameObject);
+			}
+
+
+			//string[] _tmpcslist = {
+			//	"t_unity_cv_ctl_test_MBC_TEST03",
+			//	"t_cs_channel_change"
+			//};
+
+			GameObject _prefab = Appimg.LoadResources4PrefabOnly(UIDEFINE.PATH_CAMERA_SCRIPT_ITEM);
+
+			for(int i = 0; i<Appmain.appclass._list_script_list.result.Count; i++) {
+								
+				if(Appmain.appclass._list_script_list.result[i].type == RECV_TYPE.CAMERA_SCRIPT) {
+					GameObject _instan = Appimg._INSTANTIATE4UI(_prefab);
+					uisoITEM_CameraScript _info = _instan.GetComponent<uisoITEM_CameraScript>();
+
+					_info._info = Appmain.appclass._list_script_list.result[i];
+					_info.SET_LABEL(Appmain.appclass._list_script_list.result[i].name);
+
+					_instan.transform.SetParent(imgMainMenu._gridRightMain.transform);
+
+					_instan.transform.localScale = new Vector3(1, 1, 1);
+				}								
+			}
+
+			imgMainMenu._gridRightMain.repositionNow = true;
+		}
+
 	}
 
 

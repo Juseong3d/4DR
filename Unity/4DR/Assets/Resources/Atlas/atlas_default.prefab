@@ -45,8 +45,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 9783bc9e6ceeeb2408f928c3857a78ea, type: 2}
   mSprites:
-  - name: logo
+  - name: 4D_CI_500W_Background Color - Black
+    x: 1362
+    y: 738
+    width: 499
+    height: 64
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 218
+    paddingBottom: 218
+  - name: 4D_CI_500W_Background Color - ColoredGradient
+    x: 1362
+    y: 673
+    width: 499
+    height: 64
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 218
+    paddingBottom: 218
+  - name: 4D_CI_500W_Background Color - White
+    x: 1362
+    y: 608
+    width: 499
+    height: 64
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 218
+    paddingBottom: 218
+  - name: KTA_CI_500W_Background Color - Black
     x: 0
+    y: 40
+    width: 496
+    height: 159
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 170
+    paddingBottom: 171
+  - name: KTA_CI_500W_Background Color - ColoredGradient
+    x: 865
+    y: 643
+    width: 496
+    height: 159
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 170
+    paddingBottom: 171
+  - name: KTA_CI_500W_Background Color - White
+    x: 865
+    y: 483
+    width: 496
+    height: 159
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 170
+    paddingBottom: 171
+  - name: logo
+    x: 500
     y: 183
     width: 233
     height: 238
@@ -84,19 +162,45 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: wt_logo
-    x: 511
-    y: 496
-    width: 338
-    height: 149
+  - name: WTF_CI_500W_Background Color - Black
+    x: 0
+    y: 200
+    width: 499
+    height: 221
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingRight: 1
+    paddingTop: 139
+    paddingBottom: 140
+  - name: WTF_CI_500W_Background Color - ColoredGradient
+    x: 865
+    y: 803
+    width: 499
+    height: 221
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 139
+    paddingBottom: 140
+  - name: WTF_CI_500W_Background Color - White
+    x: 1365
+    y: 803
+    width: 499
+    height: 221
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 1
+    paddingTop: 139
+    paddingBottom: 140
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0

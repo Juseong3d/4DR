@@ -1,4 +1,4 @@
-﻿14,3
+﻿14,4
 0,Common/_Default_Effect/TAE/,pfb_effect_test,임시 테스트용
 1,Common/_Default_Effect/TAE/,ROUND1,1라운드 시작
 2,Common/_Default_Effect/TAE/,ROUND2,2라운드 시작
