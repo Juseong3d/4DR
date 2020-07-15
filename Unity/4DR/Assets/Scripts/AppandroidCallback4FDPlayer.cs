@@ -9,6 +9,7 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     public int videoHeight;
     public long duration;
 
+    public int prevChannel;
     public int channel;
     public int frame;
     public int frame_cycle;
@@ -19,6 +20,8 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
 
     public bool isErrorPopup;
     public bool isZoomMoveR;
+
+    public bool isChangeChannel;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,14 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
         string[] _tmp = _value.Split(","[0]);
 
         int code = Convert.ToInt32(_tmp[1]);
+
+        switch(code) {
+        case 2300:
+        case 2301:
+            //setStreamOpenStartTS(time);
+            break;
+
+        }
     }
 
 
@@ -75,6 +86,8 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
 
         string[] _tmp = _value.Split(","[0]);
 #if !UNITY_EDITOR
+        isChangeChannel = (prevChannel != channel);
+        prevChannel = channel;
         channel = int.Parse(_tmp[1]);
 #endif
         frame = int.Parse(_tmp[2]);

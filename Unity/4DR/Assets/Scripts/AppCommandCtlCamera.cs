@@ -24,6 +24,8 @@ public class AppCommandCtlCamera : MonoBehaviour
     public int _lastCallChangeChannelFrame;
     public int _lastCallChangeTimeMove;
 
+    public bool isChangeChannel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,13 @@ public class AppCommandCtlCamera : MonoBehaviour
         _lastCallChangeChannelFrame = 0;
         _lastCallChangeTimeMove = 0;
 
+        _videoInfo.time = 0;
+
         _mediaMain.OnEnd += initEndSoInitCommandStatus;
+    }
+
+    ~AppCommandCtlCamera() {
+        _commandes.Clear();
     }
 
     private void initEndSoInitCommandStatus() {
@@ -57,7 +65,7 @@ public class AppCommandCtlCamera : MonoBehaviour
             //LOAD_COMMANDS_4_TABLE(path);
 
             LOAD_COMMANDS_4_TABLE(_script._info);
-        }
+        }        
         Debug.Log("OnEndSoInitCommandStatus()");
     }
 
@@ -135,6 +143,8 @@ public class AppCommandCtlCamera : MonoBehaviour
 
     public void processingCommandCTLCamera() {
 
+        if(_commandes == null) return;
+
         if(_fdPlayerCTLUI != null) {
             _fdPlayerCTLUI.labelCommandList.text = GET_COMMANDS_STATUS();
         }
@@ -143,6 +153,7 @@ public class AppCommandCtlCamera : MonoBehaviour
         if(_mainCamera == null) return;
         if(_cameraCtl == null) return;
         if(_videoInfo == null) return;        
+        
 
         foreach(Q_COMMAND_CTL_CAMERA _cmd in _commandes) {
             
@@ -213,9 +224,9 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.ZOOM :
                 {
-                    _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);
+                    _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);                                        
 
-                    if(_mainCamera.orthographicSize - _cmd._zoom < 0.001f) {
+                    if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) < 0.001f) {
                         _cmd.Clear();
                     }
                 }
@@ -258,7 +269,13 @@ public class AppCommandCtlCamera : MonoBehaviour
                         if(_cmd.statusCnt % 3 != 0) break;
                     }
                         
-                    if(isCheckType) {
+                    if(_cmd.statusCnt == 0) {
+                        isChangeChannel = true;
+                        isCheckType = true;
+                    }
+
+                    //if(_videoInfo.isChangeChannel && isCheckType) 
+                    {
                         //time은 pause만 되는거라함 그래서 
                         bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
 
@@ -276,12 +293,14 @@ public class AppCommandCtlCamera : MonoBehaviour
                         if(_cmd._channel_index == 0) {
                             _cmd.Clear();
                         }else if(_cmd._channel_index < 0) {
-                            _mediaMain.Left(!isPlaying);
-                            _lastCallChangeChannelFrame = _videoInfo.frame;
+                            //_mediaMain.Left(!isPlaying);
+                            //_lastCallChangeChannelFrame = _videoInfo.frame;
+                            _fdPlayerCTLUI.OnClickButton4Left(!isPlaying);
                             _cmd._channel_index ++;
                         }else if(_cmd._channel_index > 0) {
-                            _mediaMain.Right(!isPlaying);
-                            _lastCallChangeChannelFrame = _videoInfo.frame;
+                            //_mediaMain.Right(!isPlaying);
+                            //_lastCallChangeChannelFrame = _videoInfo.frame;
+                            _fdPlayerCTLUI.OnClickButton4Right(!isPlaying);
                             _cmd._channel_index --;
                         }
                     }
@@ -322,20 +341,33 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.CHANNEL_TO :
-                if(_lastCallChangeChannelFrame != _videoInfo.frame) {
-                    bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
-                    int whereto = _cmd._channel_index - _videoInfo.channel;
+                {
+                    
+                    bool isCheckType = (_lastCallChangeChannelFrame != _videoInfo.frame);
 
-                    Debug.Log("whereto : " + whereto + "/" + _cmd._channel_index + "/vc: + " + _videoInfo.channel);
+                    if(_cmd.statusCnt == 0) {
+                        isChangeChannel = true;
+                        isCheckType = true;
+                    }
 
-                    if(whereto == 0) {
-                        _cmd.Clear();
-                    }else if(whereto > 0) {                        
-                        _mediaMain.Right(!isPlaying);
-                        _lastCallChangeChannelFrame = _videoInfo.frame;
-                    }else if(whereto < 0) {
-                        _mediaMain.Left(!isPlaying);
-                        _lastCallChangeChannelFrame = _videoInfo.frame;
+                    //if(_videoInfo.isChangeChannel && isCheckType) 
+                    {
+                        bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
+                        int whereto = _cmd._channel_index - _videoInfo.channel;
+
+                        //Debug.Log("whereto : " + whereto + "/" + _cmd._channel_index + "/vc: + " + _videoInfo.channel);
+
+                        if(whereto == 0) {
+                            _cmd.Clear();
+                        }else if(whereto > 0) {                        
+                            //_mediaMain.Right(!isPlaying);
+                            //_lastCallChangeChannelFrame = _videoInfo.frame;
+                            _fdPlayerCTLUI.OnClickButton4Right(!isPlaying);
+                        }else if(whereto < 0) {
+                            //_mediaMain.Left(!isPlaying);
+                            //_lastCallChangeChannelFrame = _videoInfo.frame;
+                            _fdPlayerCTLUI.OnClickButton4Left(!isPlaying);
+                        }
                     }
                 }
                 break;
@@ -424,6 +456,7 @@ public class Q_COMMAND_CTL_CAMERA {
 
     public float _pause_time;             //if.... pause sec have
 
+    public float _ori_zoom;
     public float _zoom;
 
     public int _prevChannel;
@@ -479,6 +512,7 @@ public class Q_COMMAND_CTL_CAMERA {
             break;
         case COMMAND_CTL_CAMERA.ZOOM :
             _zoom = Convert.ToSingle(_tmp[i]);
+            _ori_zoom = _zoom;
             break;
         case COMMAND_CTL_CAMERA.LOOKAT :
             _x = Convert.ToInt32(_tmp[i++]);
@@ -544,14 +578,14 @@ public enum COMMAND_CTL_CAMERA {
 
     NONE = -1,
     DEFAULT = 0,
-    PLAY = 1,
-    PAUSE = 2,
-    ZOOM = 3,
-    LOOKAT = 4,
-    CHANNEL = 5,    
-    EFFECT = 6,
-    TEXT = 7,
-    CHANNEL_TO = 8,
+    PLAY,
+    PAUSE,
+    ZOOM,
+    LOOKAT,
+    CHANNEL,    
+    EFFECT,
+    TEXT,
+    CHANNEL_TO,
     CAMERA_SHAKE,    
     TIME_REWIND,
     TIME_FORWARD,

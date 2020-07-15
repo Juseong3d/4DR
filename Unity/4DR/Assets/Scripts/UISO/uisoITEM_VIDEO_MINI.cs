@@ -12,6 +12,8 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
 
     public UISprite _cursor;
 
+    public UITexture textureMain;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,15 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
             labelType.color = Color.red;
         }
 
+        if(!string.IsNullOrEmpty(_info.thumbnail.url)) {
+            string url = string.Format("{0}{1}", DEFINE.THUMNAIL_IMG_DOWNLOAD_SERVER_URL, _info.thumbnail.url);
+            Debug.Log("url :::: " + url);
+            GameObject tmpObject = new GameObject("_TMP_DOWNLOAD_");
+		    ImageLoader imgLoader = tmpObject.AddComponent<ImageLoader>();
+        
+		    imgLoader.SET(url, textureMain, false, true);
+		    imgLoader.START();
+        }
     }
 
 

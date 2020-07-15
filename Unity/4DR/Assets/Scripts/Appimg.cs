@@ -20,6 +20,9 @@ public class Appimg : MonoBehaviour {
 	public List<string> FilePathList;
     public List<string> CoverPathList;
 
+
+	public TEMP_TEXTURE[] tempTexture;
+
 	// Use this for initialization
 	void Start () {
 
@@ -40,6 +43,14 @@ public class Appimg : MonoBehaviour {
 		
 		loadTable4EffectList();	
 		loadTable4EffectTable();	
+
+		tempTexture = null;//new TEMP_TEXTURE[1];
+
+		if(tempTexture != null) {
+			for(int i = 0; i<tempTexture.Length; i++) {
+				tempTexture[i] = new TEMP_TEXTURE();
+			}
+		}
 
 	}
 
@@ -240,9 +251,7 @@ public class Appimg : MonoBehaviour {
 
 		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();					
 
-		GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);
-
-		
+		GameObject _instan = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_ITEM_MINI, true);		
 
 		_instan.transform.SetParent(mainMenu._gridMain.transform);
 		_instan.transform.localScale = new Vector3(1, 1, 1);		
@@ -465,7 +474,7 @@ public class Appimg : MonoBehaviour {
 
 	internal void loadTable4EffectList() {
 
-		string path = "Common/_Default_Table/l_effect_list";
+		string path = "Common/_Default_Table/tb_effect_list";
 
 		int totalCnt = 0;
 		int i = 0;

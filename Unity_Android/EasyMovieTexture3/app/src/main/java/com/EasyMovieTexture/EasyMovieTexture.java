@@ -638,6 +638,17 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     }
 
+
+    public void setStreamOpenStartTS(int _value) {
+
+        if(m4DLivePlayer != null) {
+            m4DLivePlayer.setStreamOpenStartTS(_value);
+            Log.d(TAG, "setStreamOpenStartTS set in" + _value);
+        }
+
+    }
+
+
     public int GetVideoWidth() {
 
         if(m_MediaPlayer != null) {

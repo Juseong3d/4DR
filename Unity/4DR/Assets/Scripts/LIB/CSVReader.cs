@@ -63,7 +63,7 @@ public class CSVReader
 			string[] baseHeader = bufferArray[0].Split(","[0]);			
 			//int line = Convert.ToInt32(baseHeader[0].Trim());
 
-			Debug.Log("baseHeader[0] ::: " + baseHeader[0]);
+			//Debug.Log("baseHeader[0] ::: " + baseHeader[0]);
 			string what = baseHeader[0].Trim();
 
 			int line = int.Parse(what);
@@ -73,7 +73,7 @@ public class CSVReader
 			{
 				allData[i] = bufferArray[i];//.Replace("|", "\u000A\u000D"); 
 			}
-			Debug.Log("readFile :: " + RF);
+			//Debug.Log("readFile :: " + RF);
 			return allData;
 		}
 		catch(System.Exception ex)

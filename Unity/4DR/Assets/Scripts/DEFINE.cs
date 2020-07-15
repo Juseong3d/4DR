@@ -32,6 +32,8 @@ public class DEFINE : MonoBehaviour {
 
 	public const string CATAGORI_TAE = "태권도";
 
+	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://work.muteklab.com:50443";
+
 	static public string GET_LOCAL_FOLDER_PATH() {
 
 		return Application.persistentDataPath + "" + "/4DLocal/";

@@ -891,6 +891,17 @@ public class MediaPlayerCtrl : MonoBehaviour
         
     }
 
+
+	public void setStreamOpenStartTS(int _value) {
+
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		Call_setStreamOpenStartTS(_value);
+#endif
+#endif
+
+	}
+
 	public int Left(bool _how) {
 
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
@@ -1313,6 +1324,12 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void Call_PlayToNow()
 	{
 		GetJavaObject().Call("_PLAY_TO_NOW");
+	}
+
+	private void Call_setStreamOpenStartTS(int _value) {
+
+		GetJavaObject().Call("setStreamOpenStartTS", _value);
+
 	}
 
 	

@@ -77,6 +77,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public int max_channel;
 
 	public sub_category category;
+	public sub_thumbnail thumbnail;
 
 	public MediaPlayerCtrl controler;
 
@@ -100,6 +101,11 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public class sub_category {
 		public int id;
 		public string name;
+	}
+
+	[Serializable]
+	public class sub_thumbnail {
+		public string url;
 	}
 }
 
@@ -211,3 +217,16 @@ public class DEFAULT_EFFECT_TABLE {
 //Game Stage Info
 
 //User Info
+
+
+[Serializable]
+public class TEMP_TEXTURE {
+
+	public string url;
+	public Texture texture;
+
+	public TEMP_TEXTURE() {
+		url = string.Empty;		
+	}
+
+}
