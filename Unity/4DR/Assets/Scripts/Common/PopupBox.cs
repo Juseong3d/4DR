@@ -65,6 +65,14 @@ public class PopupBox : MonoBehaviour {
     }
 
 
+	private void LateUpdate() {
+		
+		if(Input.GetKeyDown(KeyCode.Return)) {
+			OnClickOk();
+		}
+	}
+
+
 	static public PopupBox Create(string content, string title = "", POPUPBOX_ACTION_TYPE actionType = POPUPBOX_ACTION_TYPE.OK, GameObject eventReciver = null, string funcName = "", bool alwaysOnTop = false, bool allowOverlap = true, SOUND_EFFECT_TYPE soundType = SOUND_EFFECT_TYPE.BUTTON,string key = "", bool localize = false) {
 
 		string path = UIDEFINE.PATH_POPUP_BOX;//string.Empty;

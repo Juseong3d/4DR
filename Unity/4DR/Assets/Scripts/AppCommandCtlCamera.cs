@@ -226,7 +226,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                 {
                     _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);                                        
 
-                    if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) < 0.001f) {
+                    if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) < 0.01f) {
+                        _mainCamera.orthographicSize = _cmd._zoom;
                         _cmd.Clear();
                     }
                 }
@@ -379,35 +380,55 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.TIME_REWIND:
-                if(_lastCallChangeTimeMove != _videoInfo.frame) {
+                //if(_lastCallChangeTimeMove != _videoInfo.frame) 
+                {
 
                     if(_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                         _mediaMain.Pause();
-                    }else {                    
-
-                        if(_cmd._time_rewind == 0) {
+                    }
+                    {
+                        //if(_cmd._time_rewind == 0) {
+                        //    _cmd.Clear();
+                        //}else if(_cmd._time_rewind > 0) {
+                        //    _mediaMain.Left(true);
+                        //    _lastCallChangeTimeMove = _videoInfo.frame;
+                        //    _cmd._time_rewind --;
+                        //}
+                        _fdPlayerCTLUI.OnClickButton4Left(true);
+                        _cmd._time_rewind -= Time.deltaTime;
+                           
+                        Debug.Log("_cmd._time_rewind : " + _cmd._time_rewind);
+                        if(_cmd._time_rewind <= 0f) {
                             _cmd.Clear();
-                        }else if(_cmd._time_rewind > 0) {
-                            _mediaMain.Left(true);
-                            _lastCallChangeTimeMove = _videoInfo.frame;
-                            _cmd._time_rewind --;
+
+                            if(_cmd._isReplay) _mediaMain.Play();
                         }
                     }
                 }  
                 break;
             case COMMAND_CTL_CAMERA.TIME_FORWARD:
-                if(_lastCallChangeTimeMove != _videoInfo.frame) {
-
+                //if(_lastCallChangeTimeMove != _videoInfo.frame) 
+                {
                     if(_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                         _mediaMain.Pause();
-                    }else {                    
+                    }
+                    {                    
 
-                        if(_cmd._time_forward == 0) {
+                        //if(_cmd._time_forward == 0) {
+                        //    _cmd.Clear();
+                        //}else if(_cmd._time_forward > 0) {
+                        //    _mediaMain.Right(true);
+                        //    _lastCallChangeTimeMove = _videoInfo.frame;
+                        //    _cmd._time_forward --;
+                        //}
+                        _fdPlayerCTLUI.OnClickButton4Right(true);
+                        _cmd._time_forward -= Time.deltaTime;
+
+                        Debug.Log("_cmd._time_forward : " + _cmd._time_forward);
+                        if(_cmd._time_forward <= 0f) {
+                            
                             _cmd.Clear();
-                        }else if(_cmd._time_forward > 0) {
-                            _mediaMain.Right(true);
-                            _lastCallChangeTimeMove = _videoInfo.frame;
-                            _cmd._time_forward --;
+                            if(_cmd._isReplay) _mediaMain.Play();
                         }
                     }
                 }  
@@ -416,6 +437,28 @@ public class AppCommandCtlCamera : MonoBehaviour
                 {
                     _mediaMain.Speed(_cmd._speed);
                     _cmd.Clear();
+                }
+                break;
+            case COMMAND_CTL_CAMERA.CHANNEL_LEFT:
+                {
+                    _fdPlayerCTLUI.OnClickButton4Left(false);
+                    _cmd._channel_time -= Time.deltaTime;
+                    
+                    //Debug.Log("_cmd._channel_time : " + _cmd._channel_time);
+                    if(_cmd._channel_time <= 0.0f) {
+                        _cmd.Clear();
+                    }
+                }
+                break;
+            case COMMAND_CTL_CAMERA.CHANNEL_RIGHT:
+                {
+                    _fdPlayerCTLUI.OnClickButton4Right(false);
+                    _cmd._channel_time -= Time.deltaTime;
+                    
+                    //Debug.Log("_cmd._channel_time : " + _cmd._channel_time);
+                    if(_cmd._channel_time <= 0.0f) {
+                        _cmd.Clear();
+                    }
                 }
                 break;
             
@@ -474,8 +517,10 @@ public class Q_COMMAND_CTL_CAMERA {
     public float _camera_amp;
     public float _camera_freq;
 
-    public int _time_rewind;
-    public int _time_forward;
+    public float _time_rewind;
+    public float _time_forward;
+    public bool _isReplay;
+    public float _channel_time;
 
     public float _speed;
 
@@ -545,13 +590,19 @@ public class Q_COMMAND_CTL_CAMERA {
             _camera_freq = Convert.ToSingle(_tmp[i++]);
             break;
         case COMMAND_CTL_CAMERA.TIME_REWIND:
-            _time_rewind = Convert.ToInt32(_tmp[i++]);
+            _time_rewind = Convert.ToSingle(_tmp[i++]) / 1000f;
+            _isReplay = (_tmp[i].Equals("1") == true);
             break;
         case COMMAND_CTL_CAMERA.TIME_FORWARD:
-            _time_forward = Convert.ToInt32(_tmp[i++]);
+            _time_forward = Convert.ToSingle(_tmp[i++]) / 1000f;
+            _isReplay = (_tmp[i].Equals("1") == true);
             break;
         case COMMAND_CTL_CAMERA.SPEED:
             _speed = Convert.ToSingle(_tmp[i++]);
+            break;
+        case COMMAND_CTL_CAMERA.CHANNEL_LEFT:
+        case COMMAND_CTL_CAMERA.CHANNEL_RIGHT:
+            _channel_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
         }
 
@@ -589,7 +640,9 @@ public enum COMMAND_CTL_CAMERA {
     CAMERA_SHAKE,    
     TIME_REWIND,
     TIME_FORWARD,
-    SPEED
+    SPEED,
+    CHANNEL_LEFT,
+    CHANNEL_RIGHT
 }
 
 
