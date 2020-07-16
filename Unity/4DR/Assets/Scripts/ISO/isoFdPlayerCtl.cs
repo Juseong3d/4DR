@@ -286,6 +286,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public bool isPressPlayerBackButton;
     public void OnClickButton4Player(GameObject obj, bool isPress) {
 
+#if _TAE_
+        return;
+#endif
+
         if(isPress == true) {
             float _x = Input.mousePosition.x - (Screen.width / 2);
 			float _y = Input.mousePosition.y - (Screen.height / 2);
@@ -321,9 +325,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 			    RaycastHit _hit;
 
-			    Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
-
-                Debug.Log("Input.mousePosition :: " + Input.mousePosition);
+			    Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);                
 
                 //Debug.DrawRay(_ray, Vector3.forward);
 			    if(Physics.Raycast(_ray, out _hit)) {
@@ -546,7 +548,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 #if UNITY_EDITOR
         _info.channel ++;
         _info.channel = Mathf.Clamp(_info.channel, 0, 45);
-#endif  
+#endif
                 
         lastCallFrame = _info.frame;
     }

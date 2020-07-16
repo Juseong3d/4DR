@@ -13,6 +13,9 @@ public class isoCameraZoom : MonoBehaviour
 
     public AppandroidCallback4FDPlayer _callback;
 
+    public isoFdPlayerCtl _fdPlayerCTLUI;
+    public MediaPlayerCtrl _mediaMain;
+
     public Vector3 prevStartPoint;
     public Vector3 startPoint;
     public Vector3 distPoint;
@@ -99,17 +102,78 @@ public class isoCameraZoom : MonoBehaviour
             //Appmain.appui.mainCamera3D.transform.position += direction * (Appmain.appui.mainCamera3D.orthographicSize + 1.0f);
             if(touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved) {
                 zoom(difference * 0.001f);
+
+#if _TAE_
+                Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition));                
+
+                Appmain.appui.mainCamera3D.transform.position += direction;
+#endif
+
             }
 
             doubleTouchCnt ++;
+
+
         }else if (Input.GetMouseButton(0)) {
 
+#if _TAE_
+            Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
+
+            //Debug.Log("direction.x :: " + direction.x);
+            if(Mathf.Abs(direction.x) > 0.05f) {
+
+                bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
+
+                if(direction.x > 0) {
+                    _fdPlayerCTLUI.OnClickButton4Left(!isPlaying);
+                }else if(direction.x < 0) {
+                    _fdPlayerCTLUI.OnClickButton4Right(!isPlaying);
+                }
+            }
+            
+#else
             if (doubleTouchCnt == 0) {
                 Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
+
+                Debug.Log("one touch :: " + direction);
 
                 Appmain.appui.mainCamera3D.transform.position += direction;
             }
 
+#endif
+
+        }else if(Input.GetMouseButtonUp(0)) {
+#if _TAE_
+            //RaycastHit _hit;
+            RaycastHit[] hithit;
+
+			Ray _ray = Appmain.appui.mainCamera3D.ScreenPointToRay(Input.mousePosition);
+
+            //Debug.Log("Input.mousePosition :: " + Input.mousePosition);
+
+            hithit = Physics.RaycastAll(_ray);
+
+            //for(int i = 0; i<hithit.Length; i++) {
+
+            //    Debug.Log(i + " #### " + hithit[i].collider.gameObject.name);
+
+            //}
+
+            //Debug.DrawRay(_ray, Vector3.forward);
+			//if(Physics.Raycast(_ray, out _hit)) 
+            if(hithit.Length <= 1) {
+
+                Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
+
+                if(Mathf.Abs(direction.x) < 0.05f && Mathf.Abs(direction.y) < 0.05f) {
+                    if(_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        _mediaMain.Pause();
+                    }else {
+                        _mediaMain.Play();
+                    }                
+                }
+            }
+#endif
         }
               
         float htValue = Input.GetAxis("HorizontalTurn");

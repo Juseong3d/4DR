@@ -34,6 +34,10 @@ public class AppCommandCtlCamera : MonoBehaviour
         _cameraShake = _mainCamera.GetComponent<isoShakeCamera>();
         _mediaMain = this.gameObject.GetComponentInChildren<MediaPlayerCtrl>();
         _fdPlayerCTLUI = this.gameObject.transform.parent.GetComponentInChildren<isoFdPlayerCtl>();
+
+
+        _cameraCtl._mediaMain = this._mediaMain;
+        _cameraCtl._fdPlayerCTLUI = this._fdPlayerCTLUI;
         
         _videoInfo = FindObjectOfType<AppandroidCallback4FDPlayer>();        
 
