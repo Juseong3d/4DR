@@ -41,6 +41,7 @@ public class Appmain : MonoBehaviour {
 	[Header(" * Default Table & List ------------")]
 	public DEFAULT_EFFECT_LIST[] defaultEffectList;
 	public DEFAULT_EFFECT_TABLE[] defaultEffectTable;
+	public DEFAULT_PLAYER_LIST[] defaultPlayList;
 
 
 	[Header(" * CUSTOM ------------")]

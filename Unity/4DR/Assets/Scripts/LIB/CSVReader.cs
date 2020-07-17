@@ -57,6 +57,9 @@ public class CSVReader
 			{
 				return null;
 			}
+
+
+			RF = RF.TrimStart(new char[] { '\uFEFF' });
 			
 			string[] bufferArray = RF.Split("\n"[0]);
 

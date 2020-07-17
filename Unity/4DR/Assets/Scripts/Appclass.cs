@@ -37,7 +37,7 @@ public class APP_INFO {
 		version2 = "6";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += ".PROTO";
+		appVersion += "1.PROTO";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -210,13 +210,41 @@ public class DEFAULT_EFFECT_TABLE {
 
 }
 
-//MAP
 
-//BLOCK
+[Serializable]
+public class DEFAULT_PLAYER_LIST {
+	
+	public int index;
+	public string country;
+	public string teamName;
+	public string playerName;
+	public int age;
+	public int tall;
+	public int weight;
+	public string s_skill;
+	public string spcial_info;
+	public string thumnail_url;
 
-//Game Stage Info
+	public DEFAULT_PLAYER_LIST(string[] tableData) {
 
-//User Info
+		int j = 0;
+
+		this.index = Convert.ToInt32(tableData[j ++]);
+		this.country = tableData[j ++];
+		this.teamName = tableData[j ++];
+		this.playerName = tableData[j ++];
+
+		this.age = Convert.ToInt32(tableData[j ++]);
+		this.tall = Convert.ToInt32(tableData[j ++]);
+		this.weight = Convert.ToInt32(tableData[j ++]);
+		this.s_skill = tableData[j ++];
+		this.s_skill = this.s_skill.Replace("|", "\n");
+		this.spcial_info = tableData[j ++];
+		this.spcial_info = this.spcial_info.Replace("|", "\n");
+		this.thumnail_url = tableData[j ++];
+
+	}
+}
 
 
 [Serializable]

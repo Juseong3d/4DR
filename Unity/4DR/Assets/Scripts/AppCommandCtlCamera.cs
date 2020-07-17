@@ -26,6 +26,10 @@ public class AppCommandCtlCamera : MonoBehaviour
 
     public bool isChangeChannel;
 
+
+    [Header("* TAE PROJECT --------------")]
+    public GameObject gameObjectPlayerInfoVs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -401,7 +405,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                         _fdPlayerCTLUI.OnClickButton4Left(true);
                         _cmd._time_rewind -= Time.deltaTime;
                            
-                        Debug.Log("_cmd._time_rewind : " + _cmd._time_rewind);
+                        //Debug.Log("_cmd._time_rewind : " + _cmd._time_rewind);
                         if(_cmd._time_rewind <= 0f) {
                             _cmd.Clear();
 
@@ -428,7 +432,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                         _fdPlayerCTLUI.OnClickButton4Right(true);
                         _cmd._time_forward -= Time.deltaTime;
 
-                        Debug.Log("_cmd._time_forward : " + _cmd._time_forward);
+                        //Debug.Log("_cmd._time_forward : " + _cmd._time_forward);
                         if(_cmd._time_forward <= 0f) {
                             
                             _cmd.Clear();
@@ -463,6 +467,38 @@ public class AppCommandCtlCamera : MonoBehaviour
                     if(_cmd._channel_time <= 0.0f) {
                         _cmd.Clear();
                     }
+                }
+                break;
+
+            case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
+                {
+                    gameObjectPlayerInfoVs = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_PLAYER_INFO);                    
+                    _cmd.Clear();
+
+
+                    uisoPlayersVS _info = gameObjectPlayerInfoVs.GetComponent<uisoPlayersVS>();
+                    
+                    _info._blue.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.blud_playerindex]);
+                    _info._red.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.red_playerindex]);
+
+                }
+                break;
+            case COMMAND_CTL_CAMERA.PLAYER_INFO_OFF:
+                {                    
+                    TweenPosition[] _tw =  gameObjectPlayerInfoVs.GetComponentsInChildren<TweenPosition>();
+                    TweenScale[] _tws = gameObjectPlayerInfoVs.GetComponentsInChildren<TweenScale>();
+
+                    for(int i = 0; i<_tw.Length; i++) {
+                        _tw[i].PlayReverse();
+                    }
+
+                    for(int i = 0; i<_tws.Length; i++) {
+                        _tws[i].PlayReverse();
+                    }
+
+                    isoDestoryTime idt = gameObjectPlayerInfoVs.AddComponent<isoDestoryTime>();
+                    idt.SET_DESTROY_TIMER(1f);
+                    _cmd.Clear();
                 }
                 break;
             
@@ -529,6 +565,11 @@ public class Q_COMMAND_CTL_CAMERA {
     public float _speed;
 
     public int statusCnt;
+
+
+    //////////
+    public int blud_playerindex;
+    public int red_playerindex;
 
     //table parsing용
     public Q_COMMAND_CTL_CAMERA(string _ori) {
@@ -608,6 +649,12 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.CHANNEL_RIGHT:
             _channel_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
+        case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
+            blud_playerindex = Convert.ToInt32(_tmp[i++]);
+            red_playerindex = Convert.ToInt32(_tmp[i++]);
+            break;
+        case COMMAND_CTL_CAMERA.PLAYER_INFO_OFF:
+            break;
         }
 
         status = COMMAND_STATUS.WAIT;
@@ -646,7 +693,10 @@ public enum COMMAND_CTL_CAMERA {
     TIME_FORWARD,
     SPEED,
     CHANNEL_LEFT,
-    CHANNEL_RIGHT
+    CHANNEL_RIGHT,
+
+    PLAYER_INFO_ON,
+    PLAYER_INFO_OFF
 }
 
 
