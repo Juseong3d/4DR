@@ -46,8 +46,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: aa8beb5b8a8ed8b4a9fa6c2f5cb2d290, type: 2}
   mSprites:
   - name: Background002
-    x: 721
-    y: 930
+    x: 0
+    y: 2
     width: 208
     height: 94
     borderLeft: 14
@@ -59,75 +59,75 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: Button_n_c
-    x: 852
-    y: 766
-    width: 142
-    height: 82
+    x: 721
+    y: 270
+    width: 207
+    height: 80
     borderLeft: 18
     borderRight: 18
     borderTop: 18
     borderBottom: 20
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: Button_n_n
     x: 721
-    y: 644
-    width: 142
-    height: 82
+    y: 189
+    width: 207
+    height: 80
     borderLeft: 18
     borderRight: 18
     borderTop: 18
     borderBottom: 18
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: Button_n_x
-    x: 864
-    y: 562
-    width: 142
-    height: 81
+    x: 417
+    y: 16
+    width: 207
+    height: 80
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 1
-    paddingBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: Button001_c
     x: 721
-    y: 561
-    width: 142
-    height: 82
+    y: 351
+    width: 207
+    height: 80
     borderLeft: 18
     borderRight: 18
     borderTop: 18
     borderBottom: 18
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: Button001_n
-    x: 864
-    y: 644
-    width: 142
-    height: 82
+    x: 209
+    y: 16
+    width: 207
+    height: 80
     borderLeft: 18
     borderRight: 18
     borderTop: 18
     borderBottom: 18
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 4
+    paddingRight: 4
+    paddingTop: 4
+    paddingBottom: 4
   - name: Popup_b
     x: 0
-    y: 508
+    y: 97
     width: 720
-    height: 516
+    height: 415
     borderLeft: 30
     borderRight: 30
     borderTop: 30
@@ -138,7 +138,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Popup_top
     x: 721
-    y: 727
+    y: 67
     width: 130
     height: 121
     borderLeft: 30
@@ -151,7 +151,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: Top_Tp_b
     x: 721
-    y: 849
+    y: 432
     width: 207
     height: 80
     borderLeft: 15

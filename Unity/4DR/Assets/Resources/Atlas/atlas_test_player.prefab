@@ -45,6 +45,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: ca5bf086026789046bd1896dc07177bc, type: 2}
   mSprites:
+  - name: test_bac
+    x: 595
+    y: 896
+    width: 962
+    height: 71
+    borderLeft: 50
+    borderRight: 50
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: test_back
     x: 0
     y: 968
@@ -52,6 +65,19 @@ MonoBehaviour:
     height: 1080
     borderLeft: 0
     borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: test_back_F
+    x: 595
+    y: 839
+    width: 904
+    height: 56
+    borderLeft: 50
+    borderRight: 50
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
