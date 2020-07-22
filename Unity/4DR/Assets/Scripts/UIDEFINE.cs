@@ -17,6 +17,7 @@ internal class UIDEFINE {
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE/pfb_VideoManager_Mini2";
 
     public const string PATH_PLAYER_INFO = "Common/_Default_GUI/TAE/pfb_player_vs";
+    public const string PATH_ROUND = "Common/_Defualt_GUI/TAE/pfb_round";
 #else	
 	public const string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";

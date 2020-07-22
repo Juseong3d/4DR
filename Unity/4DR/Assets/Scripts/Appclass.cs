@@ -10,7 +10,10 @@ public class Appclass : MonoBehaviour {
 	public LIST_SCRIPT_LIST _list_script_list;
 }
 
-
+/////////////////////////////////////
+/// Default class
+/////////////////////////////////////
+///
 [Serializable] 
 public class APP_INFO {
 
@@ -44,6 +47,24 @@ public class APP_INFO {
 
 	}
 }
+
+
+[Serializable]
+public class TEMP_TEXTURE {
+
+	public string url;
+	public Texture texture;
+
+	public TEMP_TEXTURE() {
+		url = string.Empty;		
+	}
+
+}
+
+
+/////////////////////////////////////
+/// Custom class
+/////////////////////////////////////
 
 [Serializable]
 public class  LIST_CONTENT_FDLIVE {
@@ -248,13 +269,47 @@ public class DEFAULT_PLAYER_LIST {
 
 
 [Serializable]
-public class TEMP_TEXTURE {
+public class GAME_INFO_TAE {
 
-	public string url;
-	public Texture texture;
+	public GAME_TYPE_TAE _type;	//득점제 실점제
 
-	public TEMP_TEXTURE() {
-		url = string.Empty;		
-	}
+	///////////////////////////
+	
+	public string gameName;
+	public string stadiumName;
+	public long gameStartTime;	//기간 : 경기 시작
+	public long gameEndTime;	//기간 : 경기 종료
+	///////////////////////////
+
+	public int maxStageCnt; //총 경기수
+	public int nowStageCnt;	//경기차수	
+	public int maxRoundCnt;	//총 라운드수 3판 2선승이면 3
+	public ROUND_INFO_TAE[] roundInfo;
+
+}
+
+
+[Serializable]
+public class ROUND_INFO_TAE {
+	
+	public int nowRoundCnt;	//진행중인 라운드 수
+
+	public int blueScore;
+	public int redScore;
+
+	public int blueWinCnt;
+	public int redWinCnt;
+
+	public DEFAULT_PLAYER_LIST blue;
+	public DEFAULT_PLAYER_LIST red;
+
+}
+
+
+public enum GAME_TYPE_TAE {
+
+	NONE = -1,
+	PLUS,	//득점제
+	MINUS	//실점제
 
 }

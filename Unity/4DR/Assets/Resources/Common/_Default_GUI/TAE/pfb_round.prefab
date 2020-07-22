@@ -247,6 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2549137602870492793}
   - component: {fileID: 2549137602870492795}
+  - component: {fileID: 114320687085012324}
   m_Layer: 8
   m_Name: pfb_round
   m_TagString: Untagged
@@ -320,6 +321,22 @@ MonoBehaviour:
   from: {x: 3, y: 3, z: 3}
   to: {x: 1, y: 1, z: 1}
   updateTable: 0
+--- !u!114 &114320687085012324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549137602870492792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e94673a0db76f24c892febed6dae3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelRoundInfo:
+  - {fileID: 2549137601687001204}
+  - {fileID: 2549137602320021335}
+  - {fileID: 2549137603145626794}
 --- !u!1 &2549137603145626792
 GameObject:
   m_ObjectHideFlags: 0

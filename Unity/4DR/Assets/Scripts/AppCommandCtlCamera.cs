@@ -501,6 +501,20 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _cmd.Clear();
                 }
                 break;
+            case COMMAND_CTL_CAMERA.ROUND_START:
+                {
+                    GameObject _prefab = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_ROUND);                    
+                    _cmd.Clear();
+
+                    uisoRoundStart _roundStart = _prefab.GetComponent<uisoRoundStart>();
+
+                    _roundStart.SET_INFO(_cmd.round_index);
+                    
+                    isoDestoryTime idt = _prefab.AddComponent<isoDestoryTime>();
+                    idt.SET_DESTROY_TIMER(2f);
+
+                }
+                break;
             
             case COMMAND_CTL_CAMERA.NONE :
                 //Debug.Log("remove index == " + _cmd.index);
@@ -570,6 +584,10 @@ public class Q_COMMAND_CTL_CAMERA {
     //////////
     public int blud_playerindex;
     public int red_playerindex;
+
+    ////
+    ///
+    public int round_index;
 
     //table parsing용
     public Q_COMMAND_CTL_CAMERA(string _ori) {
@@ -652,8 +670,12 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
             blud_playerindex = Convert.ToInt32(_tmp[i++]);
             red_playerindex = Convert.ToInt32(_tmp[i++]);
-            break;
+            break;        
         case COMMAND_CTL_CAMERA.PLAYER_INFO_OFF:
+            break;
+
+        case COMMAND_CTL_CAMERA.ROUND_START:
+            round_index = Convert.ToInt32(_tmp[i++]);
             break;
         }
 
@@ -696,7 +718,11 @@ public enum COMMAND_CTL_CAMERA {
     CHANNEL_RIGHT,
 
     PLAYER_INFO_ON,
-    PLAYER_INFO_OFF
+    PLAYER_INFO_OFF,
+
+    ROUND_START,
+
+    SET_SCORE
 }
 
 
@@ -706,5 +732,14 @@ public enum COMMAND_STATUS {
     WAIT,
     ING,
     DONE,
+
+}
+
+
+public enum WHAT_TEAM_COLOR {
+
+    NONE = -1,
+    BLUE = 0,
+    RED = 1
 
 }

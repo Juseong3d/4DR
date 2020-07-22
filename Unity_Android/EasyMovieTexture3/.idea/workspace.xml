@@ -7,7 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_Default_Table/~$Project_table.xlsm.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_popup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Atlas/atlas_popup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/GameObject (4).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/GameObject (4).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/pfb_Main_.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/pfb_Main_.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/pfb_test.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI_2/pfb_test.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Status/0_GS_START.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
