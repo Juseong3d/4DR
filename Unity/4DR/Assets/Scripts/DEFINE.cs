@@ -34,6 +34,9 @@ public class DEFINE : MonoBehaviour {
 
 	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://work.muteklab.com:50443";
 
+	public const float MAX_MINUS_GAME_SCORE = 100;
+	public const float MAX_PENALTY_TIME = 10;
+
 	static public string GET_LOCAL_FOLDER_PATH() {
 
 		return Application.persistentDataPath + "" + "/4DLocal/";

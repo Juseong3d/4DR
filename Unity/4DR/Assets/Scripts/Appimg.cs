@@ -16,10 +16,8 @@ public class Appimg : MonoBehaviour {
 	public isoFdPlayerCtl _nowFullCtl;
 	public MediaPlayerCtrl _nowFullVideo;
 
-
 	public List<string> FilePathList;
     public List<string> CoverPathList;
-
 
 	public TEMP_TEXTURE[] tempTexture;
 
@@ -44,6 +42,7 @@ public class Appimg : MonoBehaviour {
 		loadTable4EffectList();	
 		loadTable4EffectTable();
 		loadTable4PlayerList();
+		loadTable4GameList();
 
 		tempTexture = null;//new TEMP_TEXTURE[1];
 
@@ -556,6 +555,35 @@ public class Appimg : MonoBehaviour {
 			string[] tableData = allData[i + 1].Split(","[0]);
 
 			appmain.defaultPlayList[i] = new DEFAULT_PLAYER_LIST(tableData);
+		}
+	}
+
+
+	internal void loadTable4GameList() {
+
+		string path = "Common/_Default_Table/tb_game_list";
+
+		int totalCnt = 0;
+		int i = 0;
+		string[] allData = null;
+
+		allData = CSVReader.ReadFile(path, false);
+
+		if (allData == null) {
+			Debug.Log(path + " :: allData is null");
+			return;
+		}
+
+		string[] tmp = allData[0].Split(","[0]);
+		totalCnt = Convert.ToInt32(tmp[0]);
+
+		appmain.defaultGameInfo = new GAME_INFO_TAE[totalCnt];
+
+		for (i = 0; i < totalCnt; i++) {
+
+			string[] tableData = allData[i + 1].Split(","[0]);
+
+			appmain.defaultGameInfo[i] = new GAME_INFO_TAE(tableData);
 		}
 	}
 

@@ -246,6 +246,9 @@ public class DEFAULT_PLAYER_LIST {
 	public string spcial_info;
 	public string thumnail_url;
 
+	public bool isPenalty;
+	public float nowPenaltyTime;
+
 	public DEFAULT_PLAYER_LIST(string[] tableData) {
 
 		int j = 0;
@@ -271,20 +274,59 @@ public class DEFAULT_PLAYER_LIST {
 [Serializable]
 public class GAME_INFO_TAE {
 
-	public GAME_TYPE_TAE _type;	//득점제 실점제
+	public GAME_TYPE_TAE gameType;	//득점제 실점제
 
 	///////////////////////////
 	
+	public int index;
+
 	public string gameName;
 	public string stadiumName;
 	public long gameStartTime;	//기간 : 경기 시작
 	public long gameEndTime;	//기간 : 경기 종료
+
+	public string gameWeight;
 	///////////////////////////
 
 	public int maxStageCnt; //총 경기수
 	public int nowStageCnt;	//경기차수	
-	public int maxRoundCnt;	//총 라운드수 3판 2선승이면 3
-	public ROUND_INFO_TAE[] roundInfo;
+	public int maxRoundCnt_normal;	//총 라운드수 3판 2선승이면 3
+	public int maxRoudnCnt_final;
+
+	
+	public int roundTime;
+	
+	public bool isPlaying;
+	public int nowRoundCnt;
+	public float nowRoundTime;
+
+	public ROUND_INFO_TAE[] roundInfo;	//어디서 생성하지...?
+
+
+	public GAME_INFO_TAE(string[] tableData) {
+
+		int j = 0;
+
+		this.index = Convert.ToInt32(tableData[j ++]);
+		bool result = Enum.TryParse<GAME_TYPE_TAE>(tableData[j ++], out this.gameType);
+		if(result == false) {
+			Debug.Log("need check GAME_TYPE_TAE");
+		}
+		this.gameName = tableData[j ++];
+		this.stadiumName = tableData[j ++];
+
+		this.gameStartTime = Convert.ToInt64(tableData[j ++]);
+		this.gameEndTime = Convert.ToInt64(tableData[j ++]);
+
+		this.gameWeight = tableData[j ++];
+
+		this.maxStageCnt = Convert.ToInt32(tableData[j ++]);
+
+		this.maxRoundCnt_normal = Convert.ToInt32(tableData[j ++]);
+		this.maxRoudnCnt_final = Convert.ToInt32(tableData[j ++]);
+
+		this.roundTime = Convert.ToInt32(tableData[j ++]);
+	}
 
 }
 
@@ -293,15 +335,29 @@ public class GAME_INFO_TAE {
 public class ROUND_INFO_TAE {
 	
 	public int nowRoundCnt;	//진행중인 라운드 수
-
-	public int blueScore;
-	public int redScore;
+		
+	public float blueScore;
+	public float redScore;
 
 	public int blueWinCnt;
 	public int redWinCnt;
 
 	public DEFAULT_PLAYER_LIST blue;
 	public DEFAULT_PLAYER_LIST red;
+
+	public ROUND_INFO_TAE() {
+
+	}
+
+	public ROUND_INFO_TAE(DEFAULT_PLAYER_LIST blue, DEFAULT_PLAYER_LIST red) {
+
+		this.blue = blue;
+		this.red = red;
+
+		this.blue.isPenalty = false;
+		this.blue.isPenalty = false;
+
+	}
 
 }
 

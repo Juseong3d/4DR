@@ -41,7 +41,8 @@ public class Appmain : MonoBehaviour {
 	[Header(" * Default Table & List ------------")]
 	public DEFAULT_EFFECT_LIST[] defaultEffectList;
 	public DEFAULT_EFFECT_TABLE[] defaultEffectTable;
-	public DEFAULT_PLAYER_LIST[] defaultPlayList;
+	public DEFAULT_PLAYER_LIST[] defaultPlayList; //cms에서 후에 받아오기
+	public GAME_INFO_TAE[] defaultGameInfo;	//cms로 받아와야하지만 일단 table로..
 
 
 	[Header(" * CUSTOM ------------")]

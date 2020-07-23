@@ -656,6 +656,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
         Appmain.appdoc.setGameStatus(GAME_STATUS.GS_TITLE);
 #else
         Appmain.appimg.mainUIPrefab.SetActive(true);
+
+        AppCommandCtlCamera _ccc = this.beforeParent.GetComponent<AppCommandCtlCamera>();
+
+        NGUITools.Destroy(_ccc.gameObjectPlayerInfoVs);
+        NGUITools.Destroy(_ccc.gameObjectTAEScore);
+
         NGUITools.Destroy(this.beforeParent.gameObject);
         NGUITools.Destroy(this.transform.gameObject);
 #endif

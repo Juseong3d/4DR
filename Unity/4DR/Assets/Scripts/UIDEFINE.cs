@@ -16,8 +16,15 @@ internal class UIDEFINE {
     public const string PATH_MAIN_MENU = "Common/_Default_GUI/TAE/pfb_MAIN_MENU";
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE/pfb_VideoManager_Mini2";
 
-    public const string PATH_PLAYER_INFO = "Common/_Default_GUI/TAE/pfb_player_vs";
-    public const string PATH_ROUND = "Common/_Defualt_GUI/TAE/pfb_round";
+    public const string PATH_TAE_PLAYER_INFO = "Common/_Default_GUI/TAE/pfb_player_vs";
+    public const string PATH_TAE_ROUND_START = "Common/_Default_GUI/TAE/pfb_round";
+    public const string PATH_TAE_SCORE_MINUS = "Common/_Default_GUI/TAE/pfb_hp_gauage";
+    public const string PATH_TAE_SCORE_PLUS = "Common/_Default_GUI/TAE/pfb_up_score";
+
+    public const string PATH_EFFECT_DAMAGE = "Common/_Default_GUI/TAE/pfb_Damage";
+
+    public const string PATH_EFFECT_WIN_BLUE = "Common/_Default_GUI/TAE/pfb_win_blue_win";
+    public const string PATH_EFFECT_WIN_RED = "Common/_Default_GUI/TAE/pfb_win_red_win";
 #else	
 	public const string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";

@@ -29,6 +29,7 @@ public class AppCommandCtlCamera : MonoBehaviour
 
     [Header("* TAE PROJECT --------------")]
     public GameObject gameObjectPlayerInfoVs;
+    public GameObject gameObjectTAEScore;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,8 @@ public class AppCommandCtlCamera : MonoBehaviour
     }
 
     ~AppCommandCtlCamera() {
+        NGUITools.Destroy(gameObjectTAEScore);
+        NGUITools.Destroy(gameObjectPlayerInfoVs);
         _commandes.Clear();
     }
 
@@ -472,7 +475,7 @@ public class AppCommandCtlCamera : MonoBehaviour
 
             case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
                 {
-                    gameObjectPlayerInfoVs = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_PLAYER_INFO);                    
+                    gameObjectPlayerInfoVs = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_PLAYER_INFO);                    
                     _cmd.Clear();
 
 
@@ -503,7 +506,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.ROUND_START:
                 {
-                    GameObject _prefab = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_ROUND);                    
+                    GameObject _prefab = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_ROUND_START);                    
                     _cmd.Clear();
 
                     uisoRoundStart _roundStart = _prefab.GetComponent<uisoRoundStart>();
@@ -512,6 +515,106 @@ public class AppCommandCtlCamera : MonoBehaviour
                     
                     isoDestoryTime idt = _prefab.AddComponent<isoDestoryTime>();
                     idt.SET_DESTROY_TIMER(2f);
+
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                    _uigameInfo._info.isPlaying = true;
+
+                }
+                break;
+            case COMMAND_CTL_CAMERA.ROUND_PAUSE:
+                {
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                    
+                    _uigameInfo._info.isPlaying = false;
+                    _cmd.Clear();
+
+                }
+                break;
+            case COMMAND_CTL_CAMERA.ROUND_RESTART:
+                {
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                    
+                    _uigameInfo._info.isPlaying = true;
+                    _cmd.Clear();
+                }
+                break;
+            case COMMAND_CTL_CAMERA.SET_GAME_INFO:
+                {
+                    GAME_INFO_TAE gameInfo = Appmain.appmain.defaultGameInfo[_cmd.gameInfoIndex];
+
+                    //몇강 인지 설정
+                    gameInfo.nowStageCnt = _cmd.nowStageCnt;
+                    //현재 몇라운드 인지 설정
+                    gameInfo.nowRoundCnt = _cmd.round_index;
+
+                    //최초 이므로 초기화
+                    gameInfo.isPlaying = false;
+                    gameInfo.nowRoundTime = gameInfo.roundTime;
+
+                    //UI SET
+                    if(gameInfo.gameType == GAME_TYPE_TAE.MINUS) {
+                        gameObjectTAEScore = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_SCORE_MINUS);
+                        uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                        
+                        //0이면 결승
+                        if(gameInfo.nowStageCnt == 0) {
+                            gameInfo.roundInfo = new ROUND_INFO_TAE[gameInfo.maxRoudnCnt_final];
+                        }else {
+                            gameInfo.roundInfo = new ROUND_INFO_TAE[gameInfo.maxRoundCnt_normal];
+                        }
+
+                        //선수 정보 셋팅
+                        for(int i = 0; i<gameInfo.roundInfo.Length; i++) {
+                            gameInfo.roundInfo[i] = new ROUND_INFO_TAE(Appmain.appmain.defaultPlayList[_cmd.blud_playerindex], Appmain.appmain.defaultPlayList[_cmd.red_playerindex]);
+                        }
+
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].blueWinCnt = _cmd.blueWinCnt;
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].redWinCnt = _cmd.redWinCnt;
+
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].blueScore = DEFINE.MAX_MINUS_GAME_SCORE;
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].redScore = DEFINE.MAX_MINUS_GAME_SCORE;
+
+                        _uigameInfo.SET_INFO(gameInfo);
+                    }
+
+                    _cmd.Clear();
+
+                }
+                break;
+            case COMMAND_CTL_CAMERA.SET_SCORE:
+                {
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                    
+                    if(_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].blueScore += _cmd.setScore;
+                    }else {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].redScore += _cmd.setScore;
+                    }
+
+                    _uigameInfo.UPDATE_SCORE(_cmd);
+                    _cmd.Clear();
+                }
+                break;
+            case COMMAND_CTL_CAMERA.ROUND_RESULT:
+                {
+                    
+                    string path = ((_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) ? UIDEFINE.PATH_EFFECT_WIN_BLUE:UIDEFINE.PATH_EFFECT_WIN_RED);
+
+                    GameObject _prefab = Appimg.LoadResource4Prefab4UI(path);
+
+                    _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+
+                    _cmd.Clear();
+
+                }
+                break;
+            case COMMAND_CTL_CAMERA.PENALTY_START:
+                {
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+
+                    _uigameInfo.SET_PERNALTY(_cmd.setScoreWho);
+
+                    _cmd.Clear();
 
                 }
                 break;
@@ -588,6 +691,17 @@ public class Q_COMMAND_CTL_CAMERA {
     ////
     ///
     public int round_index;
+    public int blueWinCnt;
+    public int redWinCnt;
+
+    public int nowStageCnt;
+
+    public int gameInfoIndex;
+
+    ////
+    ///
+    public WHAT_TEAM_COLOR setScoreWho;
+    public int setScore;
 
     //table parsing용
     public Q_COMMAND_CTL_CAMERA(string _ori) {
@@ -677,6 +791,32 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ROUND_START:
             round_index = Convert.ToInt32(_tmp[i++]);
             break;
+        case COMMAND_CTL_CAMERA.SET_GAME_INFO:
+            gameInfoIndex = Convert.ToInt32(_tmp[i++]);
+            
+            nowStageCnt = Convert.ToInt32(_tmp[i++]);
+
+            {
+                string[] _tmptmp = _tmp[i++].Split("|"[0]);
+
+                round_index = Convert.ToInt32(_tmptmp[0]);
+                blueWinCnt = Convert.ToInt32(_tmptmp[1]);
+                redWinCnt = Convert.ToInt32(_tmptmp[2]);
+            }
+            blud_playerindex = Convert.ToInt32(_tmp[i++]);
+            red_playerindex = Convert.ToInt32(_tmp[i++]);
+            break;
+        case COMMAND_CTL_CAMERA.SET_SCORE:
+            setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
+            setScore = Convert.ToInt32(_tmp[i++]);
+            break;
+        case COMMAND_CTL_CAMERA.ROUND_PAUSE:
+        case COMMAND_CTL_CAMERA.ROUND_RESTART:
+            break;
+        case COMMAND_CTL_CAMERA.PENALTY_START:
+        case COMMAND_CTL_CAMERA.ROUND_RESULT:
+            setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
+            break;
         }
 
         status = COMMAND_STATUS.WAIT;
@@ -717,12 +857,26 @@ public enum COMMAND_CTL_CAMERA {
     CHANNEL_LEFT,
     CHANNEL_RIGHT,
 
+#if _TAE_
+    
+    //video의 종류에 따라(카테고리) 분기되어야함.
+    SET_GAME_INFO,
+
     PLAYER_INFO_ON,
     PLAYER_INFO_OFF,
 
     ROUND_START,
 
-    SET_SCORE
+    SET_SCORE,
+
+    ROUND_PAUSE,
+    ROUND_RESTART,
+
+    PENALTY_START,        
+    ROUND_RESULT
+
+#endif
+
 }
 
 
