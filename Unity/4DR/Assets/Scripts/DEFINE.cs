@@ -116,3 +116,23 @@ public enum RECV_TYPE {
 	CAMERA_SCRIPT
 
 }
+
+
+public enum TABLE_LIST {
+
+	NONE = -1,
+	tb_country_code,
+	tb_effect_list,
+	tb_effect_table,
+	tb_Game_list,
+	tb_player_list
+
+}
+
+
+public enum CATEGORY_KEY {
+
+	none = 0,
+	TAE
+
+}

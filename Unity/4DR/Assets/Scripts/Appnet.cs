@@ -213,27 +213,40 @@ public class Appnet : MonoBehaviour {
 					_item.SET_TYPE();
 
 					switch(_item.type) {
-						case RECV_TYPE.CAMERA_SCRIPT:
+					case RECV_TYPE.CAMERA_SCRIPT:
+						__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.script_sub, _item.id);
+						break;
+					case RECV_TYPE.TABLE:
 						__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.script_sub, _item.id);
 						break;
 					}
 				}
 			}
-			break;
+			break;		
 		case NET_WEB_API_CMD.script_sub:
 			{
 				LIST_SCRIPT_LIST_ITEM_SUB recvValue = JsonUtility.FromJson<LIST_SCRIPT_LIST_ITEM_SUB>(networkData.tmpRecvData);
 
-				foreach(LIST_SCRIPT_LIST_ITEM _item in appclass._list_script_list.result) {
-					
-					if(_item.id == recvValue.id) {
-						_item.cs_commands_data = recvValue.content;
-						break;
-					}
-				}
+				recvValue.SET_TYPE();
 
-				if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
-					Appmain.appimg._SET_CAMERA_SCRIPT();
+				switch(recvValue.type) {
+				case RECV_TYPE.CAMERA_SCRIPT:
+
+					foreach(LIST_SCRIPT_LIST_ITEM _item in appclass._list_script_list.result) {
+					
+						if(_item.id == recvValue.id) {
+							_item.cs_commands_data = recvValue.content;
+							break;
+						}
+					}
+
+					if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
+						Appmain.appimg._SET_CAMERA_SCRIPT();
+					}
+					break;
+				case RECV_TYPE.TABLE:
+					Appmain.appimg.overwriteTable(recvValue);
+					break;
 				}
 			}
 			break;
@@ -241,6 +254,10 @@ public class Appnet : MonoBehaviour {
 			{
 				appclass._list_conent_fdlist.result.Clear();
 				appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + networkData.tmpRecvData + "}");
+
+				for(int i = 0; i<appclass._list_conent_fdlist.result.Count; i++) {
+					appclass._list_conent_fdlist.result[i].SET_CATEGOTY_KET();
+				}
 
 				if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
 					Appmain.appimg._SET_MINI_VIDEO_GRID();
@@ -1015,6 +1032,7 @@ public enum NET_WEB_API_CMD {
 	video,
 	category,
 	script,
-	script_sub
+	script_sub,
+	table_sub
 
 }

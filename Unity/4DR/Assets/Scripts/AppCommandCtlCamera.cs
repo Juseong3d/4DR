@@ -550,6 +550,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                     //최초 이므로 초기화
                     gameInfo.isPlaying = false;
                     gameInfo.nowRoundTime = gameInfo.roundTime;
+                
+                    NGUITools.Destroy(gameObjectTAEScore);
 
                     //UI SET
                     if(gameInfo.gameType == GAME_TYPE_TAE.MINUS) {
@@ -575,6 +577,25 @@ public class AppCommandCtlCamera : MonoBehaviour
                         gameInfo.roundInfo[gameInfo.nowRoundCnt].redScore = DEFINE.MAX_MINUS_GAME_SCORE;
 
                         _uigameInfo.SET_INFO(gameInfo);
+                    }else if(gameInfo.gameType == GAME_TYPE_TAE.PLUS) {
+                        gameObjectTAEScore = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_SCORE_PLUS);
+                        uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+
+                        gameInfo.roundInfo = new ROUND_INFO_TAE[gameInfo.maxRoundCnt_normal];
+
+                        //선수 정보 셋팅
+                        for(int i = 0; i<gameInfo.roundInfo.Length; i++) {
+                            gameInfo.roundInfo[i] = new ROUND_INFO_TAE(Appmain.appmain.defaultPlayList[_cmd.blud_playerindex], Appmain.appmain.defaultPlayList[_cmd.red_playerindex]);
+                        }
+
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].blueWinCnt = _cmd.blueWinCnt;
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].redWinCnt = _cmd.redWinCnt;
+
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].blueScore = 0;
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].redScore = 0;
+
+                        _uigameInfo.SET_INFO(gameInfo);
+
                     }
 
                     _cmd.Clear();
@@ -602,7 +623,9 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                     GameObject _prefab = Appimg.LoadResource4Prefab4UI(path);
 
-                    _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+                    //_prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+                    isoDestoryTime _life = _prefab.AddComponent<isoDestoryTime>();
+                    _life.SET_DESTROY_TIMER(_cmd._life_time);
 
                     _cmd.Clear();
 
@@ -814,8 +837,11 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ROUND_RESTART:
             break;
         case COMMAND_CTL_CAMERA.PENALTY_START:
+            setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
+            break;
         case COMMAND_CTL_CAMERA.ROUND_RESULT:
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
+            _life_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
         }
 

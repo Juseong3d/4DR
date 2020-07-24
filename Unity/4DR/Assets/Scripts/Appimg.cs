@@ -39,6 +39,8 @@ public class Appimg : MonoBehaviour {
 
 	internal void loadImage4Common() {
 		
+		loadTable4DefaultCountryCode();
+
 		loadTable4EffectList();	
 		loadTable4EffectTable();
 		loadTable4PlayerList();
@@ -232,8 +234,11 @@ public class Appimg : MonoBehaviour {
 			#if _TAE_
 				if((Appmain.appclass._list_conent_fdlist.result[i].category != null) && (!string.IsNullOrEmpty(Appmain.appclass._list_conent_fdlist.result[i].category.name))) {
 
-					Debug.Log("Appmain.appclass._list_conent_fdlist.result[i].category.name : " + Appmain.appclass._list_conent_fdlist.result[i].category.name);
-					if(Appmain.appclass._list_conent_fdlist.result[i].category.name.Equals(DEFINE.CATAGORI_TAE)) {
+					//Debug.Log("Appmain.appclass._list_conent_fdlist.result[i].category.name : " + Appmain.appclass._list_conent_fdlist.result[i].category.name);
+					//Debug.Log("Appmain.appclass._list_conent_fdlist.result[i].category.key : " + Appmain.appclass._list_conent_fdlist.result[i].category.key);
+					//Debug.Log("Appmain.appclass._list_conent_fdlist.result[i].category.key : " + Appmain.appclass._list_conent_fdlist.result[i].category._key);
+
+					if(Appmain.appclass._list_conent_fdlist.result[i].category._key == CATEGORY_KEY.TAE) {
 						StartCoroutine(_LOAD_MINI_VIDEO(i, _delay));
 					}
 				}
@@ -245,7 +250,7 @@ public class Appimg : MonoBehaviour {
 			}
 		}
 	}
-
+	
 
 	IEnumerator _LOAD_MINI_VIDEO(int i, float _delay = 0.5f) {
 
@@ -472,7 +477,7 @@ public class Appimg : MonoBehaviour {
 	}
 
 
-	internal void loadTable4EffectList() {
+	internal void loadTable4EffectList(string _allData = null) {
 
 		string path = "Common/_Default_Table/tb_effect_list";
 
@@ -480,7 +485,11 @@ public class Appimg : MonoBehaviour {
 		int i = 0;
 		string[] allData = null;
 
-		allData = CSVReader.ReadFile(path, false);
+		if(_allData != null) {
+			allData = CSVReader.ReadFileFromString(_allData);
+		} else {
+			allData = CSVReader.ReadFile(path, false);
+		}
 
 		if (allData == null) {
 			Debug.Log(path + " :: allData is null");
@@ -501,7 +510,7 @@ public class Appimg : MonoBehaviour {
 	}
 
 
-	internal void loadTable4EffectTable() {
+	internal void loadTable4EffectTable(string _allData = null) {
 
 		string path = "Common/_Default_Table/tb_effect_table";
 
@@ -509,7 +518,11 @@ public class Appimg : MonoBehaviour {
 		int i = 0;
 		string[] allData = null;
 
-		allData = CSVReader.ReadFile(path, false);
+		if(_allData != null) {
+			allData = CSVReader.ReadFileFromString(_allData);
+		} else {
+			allData = CSVReader.ReadFile(path, false);
+		}
 
 		if (allData == null) {
 			Debug.Log(path + " :: allData is null");
@@ -530,7 +543,7 @@ public class Appimg : MonoBehaviour {
 	}
 
 
-	internal void loadTable4PlayerList() {
+	internal void loadTable4PlayerList(string _allData = null) {
 
 		string path = "Common/_Default_Table/tb_player_list";
 
@@ -538,7 +551,11 @@ public class Appimg : MonoBehaviour {
 		int i = 0;
 		string[] allData = null;
 
-		allData = CSVReader.ReadFile(path, false);
+		if(_allData != null) {
+			allData = CSVReader.ReadFileFromString(_allData);
+		} else {
+			allData = CSVReader.ReadFile(path, false);
+		}
 
 		if (allData == null) {
 			Debug.Log(path + " :: allData is null");
@@ -559,7 +576,7 @@ public class Appimg : MonoBehaviour {
 	}
 
 
-	internal void loadTable4GameList() {
+	internal void loadTable4GameList(string _allData = null) {
 
 		string path = "Common/_Default_Table/tb_game_list";
 
@@ -567,7 +584,11 @@ public class Appimg : MonoBehaviour {
 		int i = 0;
 		string[] allData = null;
 
-		allData = CSVReader.ReadFile(path, false);
+		if(_allData != null) {
+			allData = CSVReader.ReadFileFromString(_allData);
+		} else {
+			allData = CSVReader.ReadFile(path, false);
+		}
 
 		if (allData == null) {
 			Debug.Log(path + " :: allData is null");
@@ -585,6 +606,75 @@ public class Appimg : MonoBehaviour {
 
 			appmain.defaultGameInfo[i] = new GAME_INFO_TAE(tableData);
 		}
+	}
+
+
+	internal void loadTable4DefaultCountryCode(string _allData = null) {
+
+		string path = "Common/_Default_Table/tb_country_code";
+
+		int totalCnt = 0;
+		int i = 0;
+		string[] allData = null;
+
+		if(_allData != null) {
+			allData = CSVReader.ReadFileFromString(_allData);
+		} else {
+			allData = CSVReader.ReadFile(path, false);
+		}
+
+		if (allData == null) {
+			Debug.Log(path + " :: allData is null");
+			return;
+		}
+
+		string[] tmp = allData[0].Split(","[0]);
+		totalCnt = Convert.ToInt32(tmp[0]);
+
+		appmain.defaultCountryCode = new COUNTRY_CODE[totalCnt];
+
+		for (i = 0; i < totalCnt; i++) {
+
+			string[] tableData = allData[i + 1].Split(","[0]);
+
+			appmain.defaultCountryCode[i] = new COUNTRY_CODE(tableData);
+		}
+	}
+
+
+	internal void overwriteTable(LIST_SCRIPT_LIST_ITEM_SUB recvValue) {
+
+		TABLE_LIST whatTable;
+		bool isResult = Enum.TryParse<TABLE_LIST>(recvValue.filename, out whatTable);
+
+		if(isResult == false) {
+			Debug.Log("none table list check :: " + recvValue.filename);
+			return;
+		}
+
+		switch (whatTable) {
+		case TABLE_LIST.tb_country_code:
+			loadTable4DefaultCountryCode(recvValue.content);
+			break;
+		case TABLE_LIST.tb_effect_list:
+			loadTable4EffectList(recvValue.content);
+			break;
+		case TABLE_LIST.NONE:
+			break;
+		case TABLE_LIST.tb_effect_table:
+			loadTable4EffectTable(recvValue.content);
+			break;
+		case TABLE_LIST.tb_Game_list:
+			loadTable4GameList(recvValue.content);
+			break;
+		case TABLE_LIST.tb_player_list:
+			loadTable4PlayerList(recvValue.content);
+			break;
+		default:
+
+			break;
+		}
+
 	}
 
 }

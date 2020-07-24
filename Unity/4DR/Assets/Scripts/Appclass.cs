@@ -118,11 +118,20 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 		throw new NotImplementedException();
 	}
 
+	public void SET_CATEGOTY_KET() {
+
+		bool result = Enum.TryParse<CATEGORY_KEY>(category.key, out category._key);
+
+	}
+
 	[Serializable]
 	public class sub_category {
 		public int id;
 		public string name;
-	}
+		public string key;		
+
+		public CATEGORY_KEY _key;
+	}	
 
 	[Serializable]
 	public class sub_thumbnail {
@@ -134,10 +143,26 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 [Serializable]
 public class LIST_SCRIPT_LIST_ITEM_SUB {
 
+	public RECV_TYPE type;
+
 	public int id;
 	public string name;
 	public string content;
 	public string filename;
+
+	public void SET_TYPE() {
+		if(!string.IsNullOrEmpty(filename)) {
+			string[] _tmp = filename.Split("_"[0]);
+
+			if(_tmp[0].Equals("cs")) {
+				type = RECV_TYPE.CAMERA_SCRIPT;
+			}else if(_tmp[0].Equals("tb")) {
+				type = RECV_TYPE.TABLE;
+			}else if(_tmp[0].Equals("l")) {
+				type = RECV_TYPE.LIST;
+			}
+		}
+	}
 }
 
 [Serializable]
@@ -359,6 +384,30 @@ public class ROUND_INFO_TAE {
 
 	}
 
+}
+
+
+[Serializable]
+public class COUNTRY_CODE {
+
+	public int index;
+	public string name;
+	public string alpha2Code;
+	public string alpha3Code;
+	public int numbericCode;
+	public string isoCode;
+
+	public COUNTRY_CODE(string[] tableData) {
+		int i = 0;
+
+		this.index = Convert.ToInt32(tableData[i++]);
+		this.name = tableData[i++];
+		this.alpha2Code = tableData[i++];
+		this.alpha3Code = tableData[i++];
+		this.numbericCode = Convert.ToInt32(tableData[i++]);
+		this.isoCode = tableData[i++];
+
+	}
 }
 
 

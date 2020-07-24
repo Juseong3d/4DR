@@ -132,4 +132,21 @@ public class Appdoc : MonoBehaviour {
 		}		
 	}
 
+
+	public static COUNTRY_CODE GET_COUNTRY_CODE(string _value) {
+
+		COUNTRY_CODE rtn = null;
+
+		for(int i = 0; i<Appmain.appmain.defaultCountryCode.Length; i++) {
+
+			if(Appmain.appmain.defaultCountryCode[i].alpha2Code.Equals(_value) == true || Appmain.appmain.defaultCountryCode[i].alpha3Code.Equals(_value) == true) {
+				rtn = Appmain.appmain.defaultCountryCode[i];
+				break;
+			}
+		}
+
+		return rtn;
+
+	}
+
 }

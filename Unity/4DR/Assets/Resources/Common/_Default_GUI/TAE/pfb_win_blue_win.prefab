@@ -436,12 +436,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8360448062820174042}
   m_Layer: 8
-  m_Name: pfb_blue_win
+  m_Name: pfb_win_blue_win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8360448062820174042
 Transform:
   m_ObjectHideFlags: 0

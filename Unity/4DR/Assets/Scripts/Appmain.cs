@@ -39,6 +39,8 @@ public class Appmain : MonoBehaviour {
 	public static float gameStatusTime;
 
 	[Header(" * Default Table & List ------------")]
+	public COUNTRY_CODE[] defaultCountryCode;
+
 	public DEFAULT_EFFECT_LIST[] defaultEffectList;
 	public DEFAULT_EFFECT_TABLE[] defaultEffectTable;
 	public DEFAULT_PLAYER_LIST[] defaultPlayList; //cms에서 후에 받아오기

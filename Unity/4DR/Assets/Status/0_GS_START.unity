@@ -299,6 +299,7 @@ MonoBehaviour:
     bundle_id: 
   serverTime: 0
   tmpStartToLogin: 0
+  defaultCountryCode: []
   defaultEffectList: []
   defaultEffectTable: []
   defaultPlayList: []
@@ -435,7 +436,7 @@ Camera:
   m_GameObject: {fileID: 33662852}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -3245,12 +3246,12 @@ PrefabInstance:
     - target: {fileID: 5578414653245268061, guid: dcbd4cf384a0157488a84b6943d30009,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -734
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578414653245268061, guid: dcbd4cf384a0157488a84b6943d30009,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 532
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578414653245268061, guid: dcbd4cf384a0157488a84b6943d30009,
         type: 3}
@@ -4261,6 +4262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pfb_blue_win
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360448062820174043, guid: 06bbaa1b0cab2fa488c1cc1242edaafd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06bbaa1b0cab2fa488c1cc1242edaafd, type: 3}
