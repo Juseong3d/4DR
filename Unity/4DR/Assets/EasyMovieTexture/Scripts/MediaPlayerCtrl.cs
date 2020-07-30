@@ -19,6 +19,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 {
 #endif
 
+	public Appfdcontroller fdcontroller;
 
 
 
@@ -294,8 +295,9 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 	private void OnVideoReady_LoadingMark() {
 
-		//Debug.Log("test ::: OnVideoReady_LoadingMark");
+		Debug.Log("test ::: OnVideoReady_LoadingMark");
 		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
+		fdcontroller._SEND(string.Empty);
 
 	}
 
@@ -364,7 +366,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 #elif UNITY_ANDROID
 
 #if UNITY_EDITOR
-			strName = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";//"rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";			
+			//strName = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";//"rtsp://192.168.0.62:1935/vod/unpack_1.mp4?videoindex=39";			
 #endif
 
 			if(m_bSupportRockchip)
@@ -2125,7 +2127,12 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 		AVFormatContext* ppFomatContext = null;
 
-		if (ffmpeg.avformat_open_input(&ppFomatContext, strFileName, null, null) != 0)
+		AVDictionary* avDict;
+		ffmpeg.av_dict_set(&avDict, "rtsp_transport", "tcp", 0);
+
+			Debug.Log("strFileName :: " + strFileName);
+
+		if (ffmpeg.avformat_open_input(&ppFomatContext, strFileName, null, &avDict) != 0)
 		{
 			pFormatContext = null;
 			m_CurrentState = MEDIAPLAYER_STATE.ERROR;

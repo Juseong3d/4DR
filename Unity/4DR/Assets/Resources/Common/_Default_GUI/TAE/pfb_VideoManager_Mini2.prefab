@@ -290,6 +290,8 @@ MonoBehaviour:
     category:
       id: 0
       name: 
+      key: 
+      _key: 0
     thumbnail:
       url: 
     controler: {fileID: 0}
