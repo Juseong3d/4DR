@@ -6,89 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d415cad-b73c-495f-8952-7fcc2647e3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/EasyMovieTexture/Scripts/MediaPlayerCtrl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerLib-release.aar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerLib-release.aar.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerLib-release.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerLib-release.iml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerSampleApp-FDLivePlayerLib-release.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/FDLivePlayerSampleApp-FDLivePlayerLib-release.iml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build.gradle.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/14093fac312d8273bc8ef8e478df61ab.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/19362bbc42ef95ea4b11ae13a51c3092.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/1e82d00ba6d69b811f98471f4ba00366.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jars/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libCARMAgent.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libFDLivePlayerLib.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libSDL2.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libavcodec.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libavfilter.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libavformat.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libavutil.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libgnustl_shared.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libhidapi.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libswresample.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/arm64-v8a/libswscale.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libCARMAgent.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libFDLivePlayerLib.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libSDL2.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libavcodec.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libavfilter.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libavformat.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libavutil.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libgnustl_shared.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libhidapi.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libswresample.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/jni/armeabi-v7a/libswscale.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/2afe1c2e53d03e25eff8ef74c7e38fb8/res/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/4150067b08e73dfd73537290238cf80c.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/7b70563f993edfe8a8c586f5e474d0c1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jars/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libCARMAgent.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libFDLivePlayerLib.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libSDL2.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libavcodec.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libavfilter.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libavformat.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libavutil.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libgnustl_shared.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libhidapi.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libswresample.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/arm64-v8a/libswscale.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libCARMAgent.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libFDLivePlayerLib.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libSDL2.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libavcodec.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libavfilter.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libavformat.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libavutil.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libgnustl_shared.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libhidapi.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libswresample.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/jni/armeabi-v7a/libswscale.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/81fd7aee8b977181cde8ca512fdb08fd/FDLivePlayerLib-release/res/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/989131fc7d5c9fa8b4443b0c140603b6.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/9bc1d2fba8ff73552641e3c3f79e982e.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/a1ecf8be6e62448ac6197d22300c0a59.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/b6289d34a6cb76300d99b4d69b3ee61a.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/be500b04c154780b6eb4b750e14f7a97.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/e3bd00ccf381cd8f0a80d6f5e3b95d3f.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/f16a442718996bb55f6495fa89ebcccf.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/ff91d23c750e09f04b0edb53cbc74eaa.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Plugins/Android/FDLivePlayerLib-release/build/.transforms/ff91d23c750e09f04b0edb53cbc74eaa/package-aware-r.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/TAE/pfb_VideoManager_Mini2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/TAE/pfb_VideoManager_Mini2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/Resources/Common/_Default_GUI/pfb_VideoManager2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_Default_Table/Project_table.xlsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../Unity/4DR/Assets/_Default_Table/Project_table.xlsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Unity/4DR/Assets/_Default_Table/~$Project_table.xlsm.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -98,7 +15,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="LGF800Se84985c0" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
