@@ -814,6 +814,7 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ROUND_START:
             round_index = Convert.ToInt32(_tmp[i++]);
             break;
+#if _TAE_
         case COMMAND_CTL_CAMERA.SET_GAME_INFO:
             gameInfoIndex = Convert.ToInt32(_tmp[i++]);
             
@@ -843,6 +844,7 @@ public class Q_COMMAND_CTL_CAMERA {
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             _life_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
+#endif
         }
 
         status = COMMAND_STATUS.WAIT;
