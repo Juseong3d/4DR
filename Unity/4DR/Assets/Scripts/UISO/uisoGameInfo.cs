@@ -58,8 +58,9 @@ public class uisoGameInfo : MonoBehaviour
                 _info.nowRoundTime = 0f;
                 _info.isPlaying = false;
             }
-
+#if _TAE_
             SET_ROUND_TIME();
+#endif
         }        
 
         if(_info.gameType == GAME_TYPE_TAE.MINUS) {
@@ -91,7 +92,7 @@ public class uisoGameInfo : MonoBehaviour
         }
     }
 
-
+#if _TAE_
     public void SET_INFO(GAME_INFO_TAE _info) {
 
         this._info = _info;
@@ -155,8 +156,9 @@ public class uisoGameInfo : MonoBehaviour
 
         SET_ROUND_TIME();
     }
+#endif
 
-
+#if _TAE_
     public void SET_ROUND_TIME() {
 
         if(_info.nowRoundTime <= 10f) {
@@ -213,4 +215,5 @@ public class uisoGameInfo : MonoBehaviour
             NGUITools.SetActive(sliderRedPenalty.gameObject, true);
         }
     }
+#endif
 }

@@ -472,8 +472,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                     }
                 }
                 break;
-
-            case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
+#if _TAE_
+                case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
                 {
                     gameObjectPlayerInfoVs = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_PLAYER_INFO);                    
                     _cmd.Clear();
@@ -641,7 +641,7 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                 }
                 break;
-            
+#endif
             case COMMAND_CTL_CAMERA.NONE :
                 //Debug.Log("remove index == " + _cmd.index);
                 //_commandes.RemoveAt(_cmd.index);
