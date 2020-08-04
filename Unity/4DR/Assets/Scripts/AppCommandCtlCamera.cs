@@ -804,6 +804,7 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.CHANNEL_RIGHT:
             _channel_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
+#if _TAE_
         case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
             blud_playerindex = Convert.ToInt32(_tmp[i++]);
             red_playerindex = Convert.ToInt32(_tmp[i++]);
@@ -814,7 +815,7 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ROUND_START:
             round_index = Convert.ToInt32(_tmp[i++]);
             break;
-#if _TAE_
+
         case COMMAND_CTL_CAMERA.SET_GAME_INFO:
             gameInfoIndex = Convert.ToInt32(_tmp[i++]);
             
