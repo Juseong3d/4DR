@@ -88,9 +88,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 	
 	
 	[DllImport("EasyMovieTexture")]
-	private static extern IntPtr GetRenderEventFunc();
+	private static extern IntPtr GetRenderEventFunc();	
 	
-
 	
 #endif
 
@@ -297,7 +296,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 		Debug.Log("test ::: OnVideoReady_LoadingMark");
 		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
-		fdcontroller._SEND(string.Empty);
+		fdcontroller._SEND(string.Empty);				
 
 	}
 
@@ -2130,13 +2129,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 		AVDictionary* avDict;
 		ffmpeg.av_dict_set(&avDict, "rtsp_transport", "tcp", 0);
 
-			Debug.Log("strFileName :: " + strFileName);
-
 		if (ffmpeg.avformat_open_input(&ppFomatContext, strFileName, null, &avDict) != 0)
 		{
 			pFormatContext = null;
-			m_CurrentState = MEDIAPLAYER_STATE.ERROR;
-			Debug.Log("MEDIAPLAYER_STATE.ERROR : Could not open file : " + strFileName);
+			m_CurrentState = MEDIAPLAYER_STATE.ERROR;			
 			throw new ApplicationException(@"Could not open file");
 		}
 
@@ -2502,7 +2498,7 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 							//Debug.Log ("Video " + pts);
 
 							//fLastFrameTime = (float)pts;
-							
+							//Debug.Log("pts :: " + pts + "/" + pPacket->duration);
 
 							sbyte** src = &pDecodedFrame->data0;
 							sbyte** dst = &pConvertedFrame->data0;
@@ -2862,22 +2858,16 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 	
 	private void Call_UpdateVideoTexture()
 	{
-
-		if (bEnd == true && listVideo.Count == 0 )
-		{
+		if (bEnd == true && listVideo.Count == 0 ) {
 			
 			m_CurrentState = MEDIAPLAYER_STATE.END;
 
-			if (OnEnd != null)
-			{
-				OnEnd();
-				
+			if (OnEnd != null) {
+				OnEnd();				
 				//return;
 			}
 
-
-			if (m_bLoop == true)
-			{
+			if (m_bLoop == true) {
 				Destroy (audioClip);
 				audioClip = null;
 				Load (m_strFileName);
@@ -2887,43 +2877,26 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 
 			bEnd = false;
 
-
-
 			return;
 		}
 
 
-        if (bInterrupt == true)
-        {
-            if (audioSource != null)
-            {
+        if (bInterrupt == true) {
+            if (audioSource != null) {
                 audioSource.Pause();
             }
-        }
-        else
-        {
-			if (audioSource != null && m_CurrentState == MEDIAPLAYER_STATE.PLAYING && m_bIsFirstFrameReady == true)
-            {
+        } else{
+			if (audioSource != null && m_CurrentState == MEDIAPLAYER_STATE.PLAYING && m_bIsFirstFrameReady == true) {
 				if( audioSource.isPlaying == false/* && audioSource.time > 0.02f*/)
                     audioSource.Play();
             }
         }
 
-        
-
-
-     
-
-		
 		if( m_CurrentState == MEDIAPLAYER_STATE.PLAYING && m_bIsFirstFrameReady == true && bInterrupt == false)
 		{
 			if( listVideo.Count > 0)
 				fCurrentSeekTime += Time.deltaTime * m_fSpeed;
 		}
-
-
-		
-
 
     	//Debug.Log("last " + fLastFrameTime + " " + fCurrentSeekTime + " " + listVideo.Count);
 
@@ -2934,13 +2907,8 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
             threadVideo.Start();
         }
 
-        
-
-
 		if( fLastFrameTime > fCurrentSeekTime - 0.1f  )
 		{
-
-
             for (int i = 0; i < listAudio.Count; i++)
             {
 
@@ -2961,29 +2929,19 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 						audioClip = AudioClip.Create("videoAudio",(int)((float)pAudioCodecContext->sample_rate * ((float)listAudioPtsTime[i] + 600.0f)),pAudioCodecContext->channels,pAudioCodecContext->sample_rate,true,OnAudioRead);
                     }
                     else*/
-                    {
-						 
+                    {						 
 #if UNITY_5
 							audioClip = AudioClip.Create("videoAudio",(int)((float)pAudioCodecContext->sample_rate * 600.0f),pAudioCodecContext->channels,pAudioCodecContext->sample_rate,false);
-							
-							
 #else
 							audioClip = AudioClip.Create("videoAudio",(int)((float)pAudioCodecContext->sample_rate * 600.0f),pAudioCodecContext->channels,pAudioCodecContext->sample_rate,false,false);
-							
-							
 #endif
 					}
-
-				 
-
 
                     audioSource.clip = audioClip;
                 }
 
 				if (audioSource != null  && Call_GetDuration() >0)
                 {
-				
-
 					if( listAudioPts.Count > i)
 					{
 						if (listAudioPts [i] >= 0) {
@@ -3003,13 +2961,7 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 							}
 						}
 					}
-					
-					
-                    
                 }
-
-
-
             }
 
 			if (audioSource != null && audioSource.isPlaying  && Call_GetDuration() >0) {
@@ -3017,14 +2969,9 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 				listAudioPts.Clear();
 				listAudioPtsTime.Clear();
 			}
-            
-
-			
 		}
 		else
 		{
-
-
 				//do
 				{
 #if (UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5)
@@ -3134,10 +3081,6 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
                 }*/
             }
 #endif
-
-
-
-
                     if (m_TargetMaterial != null) {
                         for (int i = 0; i < m_TargetMaterial.Length; i++) {
                             if (m_TargetMaterial [i] == null)
@@ -3191,18 +3134,11 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 #if UNITY_5
 								audioClip = AudioClip.Create("videoAudio",(int)((float)pAudioCodecContext->sample_rate * 600.0f),pAudioCodecContext->channels,pAudioCodecContext->sample_rate,false);
 
-
 #else
 	audioClip = AudioClip.Create("videoAudio",(int)((float)pAudioCodecContext->sample_rate * 600.0f),pAudioCodecContext->channels,pAudioCodecContext->sample_rate,false,false);
-
-
 #endif
 
 							}
-
-
-
-
 							audioSource.clip = audioClip;
 							//audioSource.Play();
 
@@ -3231,39 +3167,15 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 							//if(audioSource.isPlaying == false)
 							//audioSource.Play();
 						}
-
-
-
 					}
-
-
-
 				} 
-          
-
-                    
-
 
 				}//while(fLastFrameTime < fCurrentSeekTime );
 
-
-        
-                
-
-
             //Debug.Log(listAudio.Count);
-            
-
-   
-
-
-				
+            	
 		}
 
-		
-
-
-		
 	}
 	
 	private void Call_SetVolume(float fVolume)

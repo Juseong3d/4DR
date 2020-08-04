@@ -24,7 +24,7 @@ public class Appfdcontroller : MonoBehaviour
         //WWWForm form = new WWWForm();
         Dictionary<string, string> headers = new Dictionary<string,string>();
 		headers.Add("Content-Type", "application/json");
-        headers.Add("Contents-Length", "0");
+        headers.Add("Contents-Length", "10");
 
         //form.headers.Remove("Content-Type");
         //form.headers.Add("Content-Type", "application/json");
