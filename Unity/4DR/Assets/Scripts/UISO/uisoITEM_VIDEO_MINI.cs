@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Security.Policy;
+﻿//using System.Collections.Generic;
+//using System.Security.Policy;
 using UnityEngine;
 
 public class uisoITEM_VIDEO_MINI : MonoBehaviour
