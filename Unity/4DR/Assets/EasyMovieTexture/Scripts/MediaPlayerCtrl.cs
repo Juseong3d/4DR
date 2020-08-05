@@ -1522,8 +1522,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private static extern void VideoPlayerPluginStopVideo(int iID);
 	[DllImport("__Internal")]
 	private static extern bool VideoPlayerPluginFinish(int iID);
-	[DllImport("__Internal")]
-	private static extern bool VideoPlayerPluginError(int iID);
+	//[DllImport("__Internal")]
+	//private static extern bool VideoPlayerPluginError(int iID);
 	[DllImport("__Internal")]
 	private static extern void VideoPlayerPluginSetTexture(int iID,int iTextureID);
 
@@ -1871,10 +1871,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 			return MEDIAPLAYER_STATE.END;
 		}
 
-		if( VideoPlayerPluginError(m_iID) )
-		{
-			return MEDIAPLAYER_STATE.ERROR;
-		}
+		//if( VideoPlayerPluginError(m_iID) )
+		//{
+		//	return MEDIAPLAYER_STATE.ERROR;
+		//}
 		
 		if( m_CurrentState == MEDIAPLAYER_STATE.PAUSED || m_CurrentState == MEDIAPLAYER_STATE.STOPPED)
 		{
