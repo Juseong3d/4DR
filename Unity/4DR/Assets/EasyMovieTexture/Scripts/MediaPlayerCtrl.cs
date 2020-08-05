@@ -1527,8 +1527,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 	[DllImport("__Internal")]
 	private static extern void VideoPlayerPluginSetTexture(int iID,int iTextureID);
 
-	[DllImport("__Internal")]
-	private static extern void VideoPlayerPluginSetSpeed(int iID,float fSpeed);
+	//[DllImport("__Internal")]
+	//private static extern void VideoPlayerPluginSetSpeed(int iID,float fSpeed);
 	
 	
 	
@@ -1860,7 +1860,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 	private void Call_SetSpeed(float fSpeed)
 	{
-		VideoPlayerPluginSetSpeed(m_iID,fSpeed);
+		//VideoPlayerPluginSetSpeed(m_iID,fSpeed);
 	}
 	
 	private MEDIAPLAYER_STATE Call_GetStatus()
