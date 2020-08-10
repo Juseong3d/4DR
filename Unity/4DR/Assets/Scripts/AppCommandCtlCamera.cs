@@ -79,7 +79,7 @@ public class AppCommandCtlCamera : MonoBehaviour
         }        
         Debug.Log("OnEndSoInitCommandStatus()");
     }
-
+     
 
     public void LOAD_COMMANDS_4_TABLE(string path) {
 
