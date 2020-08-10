@@ -296,7 +296,9 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 		Debug.Log("test ::: OnVideoReady_LoadingMark");
 		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
-		fdcontroller._SEND(string.Empty);				
+		//if(fdcontroller != null) {
+		//	fdcontroller._SEND(string.Empty);				
+		//}
 
 	}
 

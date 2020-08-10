@@ -308,7 +308,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 fs.close();
             }
         }else if(m_strFileName.contains("://") == true) {
-            if(m_strFileName.contains(".4ds") == true) {
+            if(m_strFileName.contains(".4ds") == true || m_strFileName.contains("8554/main") == true) {
 
             }else {
                 try {
@@ -377,7 +377,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         m_SurfaceTexture.setOnFrameAvailableListener(this);
         m_Surface = new Surface( m_SurfaceTexture);
 
-        if(m_strFileName.contains(".4ds") == true) {
+        if(m_strFileName.contains(".4ds") == true || m_strFileName.contains("8554/main") == true) {
             //Log.d(TAG, "m_strFileName ::::::: " + m_strFileName);
             open1(m_strFileName, m_bTcp, m_bHWDec, m_iRESTFul_Port);
 
@@ -412,7 +412,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         if(m_bUpdate == false) return;
 
         //Log.d(TAG, "m_MediaPlayer() : " + m_MediaPlayer);
-        if((m_MediaPlayer != null) || (m4DLivePlayer != null)) {
+        if((m_MediaPlayer != null) || (m4DLivePlayer != null) || (m_MediaPlayer != null)) {
             //Log.d(TAG, "UpdateVideoTexture / m_iCurrentState : " + m_iCurrentState);
             if(m_iCurrentState == MEDIAPLAYER_STATE.PLAYING || m_iCurrentState == MEDIAPLAYER_STATE.PAUSED) {
                 SetManagerID(m_iNativeMgrID);

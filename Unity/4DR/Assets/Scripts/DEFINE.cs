@@ -25,7 +25,9 @@ public class DEFINE : MonoBehaviour {
 	public const int FDPLAYER_PORT = 7070;
 	public const float CONTRLER_STATUS_TIME = 5.0f;
 
-	public const string DIRECT_TEST_URL = "rtsp://app.4dlive.com/mbc_test01.4ds?type=vod";
+	//public const string DIRECT_TEST_URL = "rtsp://app.4dlive.com/mbc_test01.4ds?type=vod";
+	public const string DIRECT_TEST_URL = "rtsp://192.168.18.152:8554/main";
+	
 	public const string LOCAL_FOLDER_PATH = "/4DLocal";
 
 	public const string VOD_TYPE_NOT_USE = "not_used";
