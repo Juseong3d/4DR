@@ -378,6 +378,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         m_Surface = new Surface( m_SurfaceTexture);
 
         if(m_strFileName.contains(".4ds") == true || m_strFileName.contains("8554/main") == true) {
+
+            if(m_strFileName.contains("8554/main") == true) m_bHWDec = true;
+
             //Log.d(TAG, "m_strFileName ::::::: " + m_strFileName);
             open1(m_strFileName, m_bTcp, m_bHWDec, m_iRESTFul_Port);
 
