@@ -135,7 +135,7 @@ public class isoCameraZoom : MonoBehaviour
             if (doubleTouchCnt == 0) {
                 Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
 
-                Debug.Log("one touch :: " + direction);
+                //Debug.Log("one touch :: " + direction);
 
                 Appmain.appui.mainCamera3D.transform.position += direction;
             }

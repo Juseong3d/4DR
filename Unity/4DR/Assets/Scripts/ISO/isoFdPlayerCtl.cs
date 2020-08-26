@@ -7,7 +7,7 @@ using UnityEngine.Experimental.UIElements;
 
 public class isoFdPlayerCtl : MonoBehaviour {
         
-    public MediaPlayerCtrl scrMedia;
+    public MediaPlayerCtrl _mpc;
 
     public AppandroidCallback4FDPlayer _info;
     
@@ -66,6 +66,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public UILabel labelFrameInfo;
     public UILabel labelCommandList;
 
+
+    public isoNGUIJoystick joyStickChannel;
+    public isoNGUIJoystick joyStickTime;
+
+    public bool isSlowChange;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -104,25 +110,101 @@ public class isoFdPlayerCtl : MonoBehaviour {
         isPressed_AX8 = false;
 
         isBottomMenu = true;
+
+        //joyStickChannel = GetComponentInChildren<isoNGUIJoystick>();
+        joyStickChannel._sider.onDragFinished += OnReleaseJoyStick;
+        joyStickTime._sider.onDragFinished += OnReleaseJoyStick;
     }
 
     private void onDragFinished() {
 
         int _change = (int)((double)_info.duration * slider.value);
                 
-        scrMedia.SeekTo(_change);
+        _mpc.SeekTo(_change);
         
     }
 
+
+    public void OnValueChangeJoyStick() {
+
+        if(joyStickChannel._sider.value < 0.5f) {
+            isLeft = true;
+            isRight = false;
+            if(joyStickChannel._sider.value > 0f) {
+                isSlowChange = true;
+            }else {
+                isSlowChange = false;
+            }
+        }
+        
+        if(joyStickChannel._sider.value > 0.5f) {
+            isLeft = false;
+            isRight = true;
+            if(joyStickChannel._sider.value < 1f) {
+                isSlowChange = true;
+            }else {
+                isSlowChange = false;
+            }
+        }
+        
+        if(joyStickChannel._sider.value == 0.5f) {
+            isLeft = false;
+            isRight = false;            
+            isSlowChange = false;            
+        }
+    }
+
+
+    public void OnValueChangeJoyStick4Time() {
+
+        if(joyStickTime._sider.value < 0.5f) {
+            isRightTime = false;
+            isLeftTime = true;
+        }
+        
+        if(joyStickTime._sider.value > 0.5f) {
+            isLeftTime = false;
+            isRightTime = true;
+        }
+        
+        if(joyStickTime._sider.value == 0.5f) {
+            isLeftTime = false;
+            isRightTime = false;
+        }
+    }
+
+
+    public void OnReleaseJoyStick() {
+
+        isLeft = false;
+        isRight = false;
+        isLeftTime = false;
+        isRightTime = false;
+
+    }
+
     // Update is called once per frame
-    void LateUpdate() {
+    void FixedUpdate() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
-            if(isLeft == true) {
-                OnClickButton4Left(false);
-            }else if(isRight == true) {
-                OnClickButton4Right(false);
+            if(isLeft == true || joyStickChannel._sider.value == 0f) {
+
+                if(isSlowChange == true) {
+                    if(Appmain.gameStatusCnt % 5 == 0) {
+                        OnClickButton4Left(false);
+                    }
+                }else {
+                    OnClickButton4Left(false);
+                }
+            }else if(isRight == true || joyStickChannel._sider.value == 1f) {
+                if(isSlowChange == true) {
+                    if(Appmain.gameStatusCnt % 5 == 0) {
+                        OnClickButton4Right(false);
+                    }
+                }else {
+                    OnClickButton4Right(false);
+                }                
             }
         }
 
@@ -238,30 +320,30 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
                 switch((XOBX_ONE_BUTTON)i) {
                     case XOBX_ONE_BUTTON.BUTTON_A:
-                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                        if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
                             OnClickButton4Load();
                         }
                         break;
                     case XOBX_ONE_BUTTON.BUTTON_B:
-                        scrMedia.PlayToNow();
+                        _mpc.PlayToNow();
                         break;
                     case XOBX_ONE_BUTTON.BUTTON_X:
                         OnClickButtonExit();
                         break;
                     case XOBX_ONE_BUTTON.LB:
-                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                             OnClickButton4Pause();
                         }
                         break;
                     case XOBX_ONE_BUTTON.RB:
-                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                             OnClickButton4Pause();
                         }
                         break;
                     case XOBX_ONE_BUTTON.RS_B:
-                        if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                             OnClickButton4Pause();
-                        }else if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                        }else if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
                             OnClickButton4Load();
                         }
                         break;
@@ -453,6 +535,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     public void OnClickButton4PressLeft() {
+        
         isLeft = true;
     }
 
@@ -494,14 +577,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Left(bool _how) {
 
+        
         if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
             if(_info.channel == 0) return;
 
-            if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+            if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                 if(_info.frame == lastCallFrame) return;
             }
         }
 
+        
        StartCoroutine(_OnClickButton4Left(_how));
 
     }
@@ -511,7 +596,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         yield return new WaitForFixedUpdate();
 
-        scrMedia.Left(_how);
+        _mpc.Left(_how);
 
 #if UNITY_EDITOR
         _info.channel --;
@@ -524,16 +609,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 
     public void OnClickButton4Right(bool _how) {
-
+                
         if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
             if(max_channel != 0) {
                 if(_info.channel == max_channel) return;
             }
 
-            if( scrMedia.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+            if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                 if(_info.frame == lastCallFrame) return;
             }
-        }
+        }               
 
         StartCoroutine(_OnClickButton4Right(_how));
     }
@@ -543,7 +628,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         yield return new WaitForFixedUpdate();
                 
-        scrMedia.Right(_how);        
+        _mpc.Right(_how);        
 
 #if UNITY_EDITOR
         _info.channel ++;
@@ -591,7 +676,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public void OnClickButton4Load() {
 
         //Debug.Log("OnClickButton4Load()");
-        scrMedia.Play();
+        _mpc.Play();
         buttonTL.isEnabled = false;
         buttonTR.isEnabled = false;       
 
@@ -613,7 +698,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4Pause() {
 
-        scrMedia.Pause();
+        _mpc.Pause();
         buttonTL.isEnabled = true;
         buttonTR.isEnabled = true;       
 

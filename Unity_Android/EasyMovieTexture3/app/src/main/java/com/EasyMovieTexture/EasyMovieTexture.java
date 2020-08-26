@@ -41,7 +41,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
     static final String TAG = "Unity";
     private FDLivePlayer m4DLivePlayer = null;
     private boolean m_bTcp = true;
-    private boolean m_bHWDec = false;
+    private boolean m_bHWDec = true;
     private int m_iRESTFul_Port = 7070;
 
     private int m_iVideoWidth = 1920;
@@ -1059,7 +1059,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         int ret = 1;
         //Log.d(TAG, "111 ?????????? " + m4DLivePlayer);
         if (!m4DLivePlayer.isStreamOpened()) {
-            ret = m4DLivePlayer.streamOpen(url, surfaceMainEx, isTCP, isHWDec);
+            ret = m4DLivePlayer.streamOpen(url, m_Surface, isTCP, isHWDec);
         }
 
         //Log.d(TAG, "############ streamOpen End ::: ret = " + ret);
@@ -1067,6 +1067,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 //        _isOpened = m4DLivePlayer.isStreamOpened();
 //
 //        Log.d(TAG, "check _isOpened 111 :::  " + _isOpened);
+
+        if(m_strFileName.contains("8554/main") == true)
+            return;
 
         final int finalRet = ret;
 

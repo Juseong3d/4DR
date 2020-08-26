@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation name: 'FDLivePlayerLib-release', ext: 'aar'
     implementation name: 'FDMediaPlayerLib-release', ext: 'aar'
-    //implementation project(':FDLivePlayerLib-release')
+
 }
 
 
@@ -56,7 +56,7 @@ task deleteObjectJar(type: Delete){
 task exportJar(type: Copy){
     from('build/intermediates/packaged-classes/release/')
     into('release/')
-    //into('../../../Unity/4DR/Assets/Plugins/Android')
+    into('../../../Unity/4DR/Assets/Plugins/Android')
     include('classes.jar')
     rename('classes.jar', 'EasyMovieTexture.jar')
 }

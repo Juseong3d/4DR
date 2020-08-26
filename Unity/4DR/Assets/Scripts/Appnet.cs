@@ -83,7 +83,8 @@ public class Appnet : MonoBehaviour {
 
 		//_IP = "110.45.132.199:7888/web_api.php?xml=";
 		
-		_URL = "https://work.muteklab.com:50443/unity/api/";
+		_URL = "https://work.muteklab.com:50443/unity/";
+		//_URL = "http://192.168.0.242:10080/unity/";
 
 		initNetwork();	
 
@@ -394,7 +395,7 @@ public class Appnet : MonoBehaviour {
 
 			if(_index != -1) {
 				_last_url = _last_url.Replace("_sub", string.Empty);
-				_last_url += string.Format(":{0}", _index);				
+				_last_url += string.Format("/{0}", _index);				
 			}
 
 			Debug.Log("URL :: " + _last_url);
