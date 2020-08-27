@@ -149,4 +149,41 @@ public class Appdoc : MonoBehaviour {
 
 	}
 
+
+	public static string getNumberToDateTime4Ori(long seconds, string format, bool isShot = false) {
+
+		int sec = (int)(seconds % 60);
+		int min = (int)(seconds / 60 % 60);
+		int hour = (int)(seconds / 60 / 60 % 24);
+		int day = (int)(seconds / 60 / 60 / 24);
+		
+		string rtnString = string.Empty;
+		
+		if(day == 0) {
+            rtnString = string.Format("[FFFFFF]{1:00}:{2:00}:{3:00}[-]", day, hour, min, sec);
+		}else {
+			return rtnString;
+		}
+
+		if(!string.IsNullOrEmpty(format)) {
+			rtnString = string.Format(format, day, hour, min, sec);
+		}
+
+		if(isShot == true) {
+			if(hour == 0) {
+                rtnString = string.Format("[FFFFFF]{2:00}:{3:00}[-]", day, hour, min, sec);
+			}else {
+				return rtnString;
+			}
+
+			if(min == 0) {
+                rtnString = string.Format("[FFFFFF]{3:00}[-]", day, hour, min, sec);
+			}else {
+				return rtnString;
+			}
+		}
+
+		return rtnString;
+	}
+
 }

@@ -46,8 +46,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 6ddff873b9d9a424ca9b065c8e6ff3eb, type: 2}
   mSprites:
   - name: arrow_down
-    x: 56
-    y: 49
+    x: 753
+    y: 748
     width: 54
     height: 56
     borderLeft: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 4
   - name: arrow_up
-    x: 110
-    y: 49
+    x: 807
+    y: 748
     width: 54
     height: 56
     borderLeft: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
     paddingBottom: 4
   - name: btn_camera
     x: 233
-    y: 92
+    y: 236
     width: 144
     height: 144
     borderLeft: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: btn_time
     x: 233
-    y: 236
+    y: 92
     width: 144
     height: 144
     borderLeft: 0
@@ -202,8 +202,8 @@ MonoBehaviour:
     paddingTop: 14
     paddingBottom: 9
   - name: checkmark
-    x: 900
-    y: 808
+    x: 0
+    y: 5
     width: 56
     height: 44
     borderLeft: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
     paddingTop: 10
     paddingBottom: 10
   - name: help
-    x: 797
+    x: 913
     y: 748
     width: 40
     height: 56
@@ -240,9 +240,35 @@ MonoBehaviour:
     paddingRight: 12
     paddingTop: 4
     paddingBottom: 4
+  - name: icon_pause
+    x: 900
+    y: 878
+    width: 48
+    height: 72
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 36
+    paddingRight: 36
+    paddingTop: 24
+    paddingBottom: 24
+  - name: icon_play
+    x: 900
+    y: 950
+    width: 64
+    height: 74
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 33
+    paddingRight: 23
+    paddingTop: 23
+    paddingBottom: 23
   - name: info
-    x: 216
-    y: 49
+    x: 1006
+    y: 894
     width: 16
     height: 56
     borderLeft: 0
@@ -267,8 +293,8 @@ MonoBehaviour:
     paddingTop: 6
     paddingBottom: 6
   - name: message
-    x: 956
-    y: 810
+    x: 56
+    y: 7
     width: 56
     height: 42
     borderLeft: 0
@@ -293,8 +319,8 @@ MonoBehaviour:
     paddingTop: 24
     paddingBottom: 24
   - name: pause
-    x: 753
-    y: 748
+    x: 900
+    y: 822
     width: 44
     height: 56
     borderLeft: 0
@@ -306,8 +332,8 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: play
-    x: 164
-    y: 49
+    x: 861
+    y: 748
     width: 52
     height: 56
     borderLeft: 0
@@ -319,8 +345,8 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: plus
-    x: 900
-    y: 908
+    x: 948
+    y: 836
     width: 56
     height: 56
     borderLeft: 0
@@ -331,6 +357,19 @@ MonoBehaviour:
     paddingRight: 4
     paddingTop: 4
     paddingBottom: 4
+  - name: progress_control
+    x: 112
+    y: 9
+    width: 40
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 16
+    paddingRight: 16
+    paddingTop: 16
+    paddingBottom: 16
   - name: radio_200
     x: 700
     y: 824
@@ -345,7 +384,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: radio_60
-    x: 900
+    x: 964
     y: 964
     width: 60
     height: 60
@@ -358,8 +397,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: repeat
-    x: 956
-    y: 908
+    x: 0
+    y: 49
     width: 56
     height: 56
     borderLeft: 0
@@ -371,8 +410,8 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: settings
-    x: 900
-    y: 852
+    x: 56
+    y: 49
     width: 56
     height: 56
     borderLeft: 0
@@ -384,8 +423,8 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: share
-    x: 956
-    y: 852
+    x: 112
+    y: 49
     width: 56
     height: 56
     borderLeft: 0
@@ -397,7 +436,7 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: speaker
-    x: 0
+    x: 168
     y: 49
     width: 56
     height: 56
@@ -462,8 +501,8 @@ MonoBehaviour:
     paddingTop: 8
     paddingBottom: 16
   - name: x
-    x: 960
-    y: 966
+    x: 948
+    y: 892
     width: 58
     height: 58
     borderLeft: 0

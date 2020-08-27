@@ -34,7 +34,8 @@ public class AppCommandCtlCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _mainCamera = Appmain.appui.mainCamera3D;
+        if(Appmain.appui != null)
+            _mainCamera = Appmain.appui.mainCamera3D;
         _cameraCtl = _mainCamera.GetComponent<isoCameraZoom>();
         _cameraShake = _mainCamera.GetComponent<isoShakeCamera>();
         _mediaMain = this.gameObject.GetComponentInChildren<MediaPlayerCtrl>();

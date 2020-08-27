@@ -72,11 +72,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public bool isSlowChange;
 
+    public UIToggle togglePlayButton;
+
+    public UILabel labelTime;
+
     // Start is called before the first frame update
     void Start() {
 
         _info = FindObjectOfType<AppandroidCallback4FDPlayer>();
-        camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
+        if(Appmain.appui != null) 
+            camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
 
         isRight = false;
         isLeft = false;
@@ -228,18 +233,27 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //if(isPressPlayerBackButton == true) {
         //    OnClickButton4Player(this.gameObject, true);
         //}
-        
-        if(_info.duration != 0) {
+        if(_info != null) {
+            if(_info.duration != 0) {
             
-            float _value = (float)_info.time / (float)_info.duration;
-            labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
-            slider.value = _value;           
+                float _value = (float)_info.time / (float)_info.duration;
+                labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
+                slider.value = _value;           
 
-            if (isPressRightCamera == false && isPressLeftCamera == false) {
+                if (isPressRightCamera == false && isPressLeftCamera == false) {
 
-                Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+                    Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
 
-                _cameraY = _info.channel * _cameraRotationSpeed;
+                    _cameraY = _info.channel * _cameraRotationSpeed;
+                }
+
+                
+                labelTime.text = Appdoc.getNumberToDateTime4Ori(_info.time / 1000, string.Empty, false);
+                
+                
+                
+            }else {
+                labelTime.text = "UNKNOW";
             }
         }
 
@@ -803,5 +817,15 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         isBottomMenu = !isBottomMenu;
 
+    }
+
+
+    public void OnClickButtton4Play_Pause(UIToggle toggle) {
+        
+        if(toggle.value == true) {
+            OnClickButton4Load();
+        }else {
+            OnClickButton4Pause();
+        }
     }
 }
