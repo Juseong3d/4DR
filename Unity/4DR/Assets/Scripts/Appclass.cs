@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using AnimationOrTween;
 
 [Serializable]
 public class Appclass : MonoBehaviour {
@@ -37,10 +38,10 @@ public class APP_INFO {
 
 		version0 = "0";
 		version1 = "3";
-		version2 = "6";
+		version2 = "7";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += "1.PROTO";
+		appVersion += ".PROTO";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -418,3 +419,16 @@ public enum GAME_TYPE_TAE {
 	MINUS	//½ÇÁ¡Á¦
 
 }
+
+
+public class SEND_FDLIVE_SWIPE {
+
+	public string sessionId;
+	public string actionType;
+	public string direction;
+	public int speed;
+	public int moveFrame;
+
+}
+
+

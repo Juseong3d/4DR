@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Appfdcontroller : MonoBehaviour
 {
@@ -19,26 +20,45 @@ public class Appfdcontroller : MonoBehaviour
     }
 
 
-    public void _SEND(string _url) {
+    public void _SEND(string _url, string body) {
 
-        //WWWForm form = new WWWForm();
-        Dictionary<string, string> headers = new Dictionary<string,string>();
-		headers.Add("Content-Type", "application/json");
-        headers.Add("Contents-Length", "10");
+        string url = "http://app.4dlive.kr:7070" + "/4dapp/movie/swipe";
 
-        //form.headers.Remove("Content-Type");
-        //form.headers.Add("Content-Type", "application/json");
-        //form.headers.Add("Contents-Length", "0");
+        WWW www;
+        var formData = System.Text.Encoding.UTF8.GetBytes(body);
+        Hashtable postHeader = new Hashtable();
+        postHeader.Add("Content-Type", "application/json");
+        postHeader.Add("Contents-Length", formData.Length.ToString());
 
-        _url = "http://app.4dlive.kr:" + _PORT;
-        _url = "http://app.4dlive.kr:7070";
-
+        
 		Debug.Log("URL :: " + _url);        
         //WWW www = new WWW(_url, form);
-		WWW www = new WWW(_url, null, headers);
+		www = new WWW(url, formData, postHeader);
         
         StartCoroutine(WaitForRequest(www));
 
+    }
+
+    public IEnumerator _SEND_(string _url, string body) {
+
+        string url = "http://app.4dlive.kr:7070" + "/4dapp/movie/swipe";
+
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(body);
+        WWWForm form = new WWWForm();
+        form.AddField("body", body);
+ 
+        Debug.Log("url : " + url);
+        UnityWebRequest www = UnityWebRequest.Post(url, body);
+        www.SetRequestHeader("Content-Type", "application/json");
+        www.SetRequestHeader("Contents-Length", body.Length.ToString());
+        yield return www.SendWebRequest();
+ 
+        if(www.isNetworkError || www.isHttpError) {
+            Debug.Log(www.error);
+        }
+        else {
+            Debug.Log(www.downloadHandler.text);
+        }
     }
 
 

@@ -3271,6 +3271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39de3dad206e9f1498dad99558807f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fdcontroller: {fileID: 667067650800479160}
   _mpc: {fileID: 8345317369325057025}
   _info: {fileID: 0}
   _player: {fileID: 3187677382507319090}
@@ -4263,7 +4264,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3015
+  startingRenderQueue: 3016
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -4881,7 +4882,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3006
+  startingRenderQueue: 3011
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -5330,7 +5331,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3007
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}

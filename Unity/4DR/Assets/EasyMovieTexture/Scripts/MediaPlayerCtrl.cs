@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEditor.VersionControl;
 #if !UNITY_WEBPLAYER && !UNITY_WEBGL && !UNITY_WP8 && !UNITY_WP8_1
 using FFmpeg.AutoGen;
 using System.Threading;
@@ -296,9 +297,20 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 		Debug.Log("test ::: OnVideoReady_LoadingMark");
 		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
-		//if(fdcontroller != null) {
-		//	fdcontroller._SEND(string.Empty);				
-		//}
+		if (fdcontroller != null) {
+			//fdcontroller._SEND(string.Empty);
+			SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
+
+			_send.sessionId = "1";
+			_send.actionType = "bounce";
+			_send.direction = "right";
+			_send.speed = 1;
+			_send.moveFrame = 1;
+
+			string message = JsonUtility.ToJson(_send);
+			Debug.Log("message = " + message);
+			StartCoroutine(fdcontroller._SEND_(string.Empty, message));
+		}
 
 	}
 

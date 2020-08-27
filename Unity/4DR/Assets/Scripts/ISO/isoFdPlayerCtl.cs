@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
 public class isoFdPlayerCtl : MonoBehaviour {
-        
+
+    public Appfdcontroller fdcontroller;
+    
     public MediaPlayerCtrl _mpc;
 
     public AppandroidCallback4FDPlayer _info;
@@ -613,8 +615,19 @@ public class isoFdPlayerCtl : MonoBehaviour {
         _mpc.Left(_how);
 
 #if UNITY_EDITOR
-        _info.channel --;
-        _info.channel = Mathf.Clamp(_info.channel, 0, 45);
+        //_info.channel --;
+        //_info.channel = Mathf.Clamp(_info.channel, 0, 45);
+         SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
+
+		_send.sessionId = "1";
+		_send.actionType = "bounce";
+		_send.direction = "left";
+		_send.speed = 1;
+		_send.moveFrame = 1;
+
+		string message = JsonUtility.ToJson(_send);
+		Debug.Log("message = " + message);
+		StartCoroutine(fdcontroller._SEND_(string.Empty, message));
 #endif
 
         lastCallFrame = _info.frame;
@@ -645,8 +658,19 @@ public class isoFdPlayerCtl : MonoBehaviour {
         _mpc.Right(_how);        
 
 #if UNITY_EDITOR
-        _info.channel ++;
-        _info.channel = Mathf.Clamp(_info.channel, 0, 45);
+        //_info.channel ++;
+        //_info.channel = Mathf.Clamp(_info.channel, 0, 45);
+        SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
+
+		_send.sessionId = "1";
+		_send.actionType = "bounce";
+		_send.direction = "right";
+		_send.speed = 1;
+		_send.moveFrame = 1;
+
+		string message = JsonUtility.ToJson(_send);
+		Debug.Log("message = " + message);
+		StartCoroutine(fdcontroller._SEND_(string.Empty, message));
 #endif
                 
         lastCallFrame = _info.frame;
