@@ -7,7 +7,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor.VersionControl;
+
 #if !UNITY_WEBPLAYER && !UNITY_WEBGL && !UNITY_WP8 && !UNITY_WP8_1
 using FFmpeg.AutoGen;
 using System.Threading;
