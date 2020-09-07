@@ -82,6 +82,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
     void Start() {
 
         _info = FindObjectOfType<AppandroidCallback4FDPlayer>();
+        _info._mpc = this._mpc;
+
         if(Appmain.appui != null) 
             camerashake = Appmain.appui.mainCamera3D.GetComponent<isoShakeCamera>();
 

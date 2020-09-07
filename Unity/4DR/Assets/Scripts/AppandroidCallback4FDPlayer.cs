@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AppandroidCallback4FDPlayer : MonoBehaviour {
 
+    public MediaPlayerCtrl _mpc;
+
     public int videoWidth;
     public int videoHeight;
     public long duration;
@@ -61,10 +63,11 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
 
         int code = Convert.ToInt32(_tmp[1]);
 
-        switch(code) {
-        case 2300:
-        case 2301:
-            //setStreamOpenStartTS(time);
+        switch((FDLIVE_ERROR)code) {
+        case FDLIVE_ERROR.STREAM_RECIVING_FAILURE_DICONNECTION:
+        case FDLIVE_ERROR.STREAM_RECIVING_FAILURE_WAITING_TIME_OUT:
+            //_mpc.setStreamOpenStartTS((int)time);
+            //_mpc.Load(_mpc.m_strFileName);
             break;
 
         }
