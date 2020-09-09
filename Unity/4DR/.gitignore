@@ -12,7 +12,7 @@ UnityGenerated/
  
 Library/
  
-
+ProjectSettings/
  
  
 # ===================================== #
@@ -68,5 +68,7 @@ Thumbs.db
 GraphicsSettings.asset
  
 ProjectSettings.asset
+
+QualitySettings.asset
  
 ProjectVersion.txt
