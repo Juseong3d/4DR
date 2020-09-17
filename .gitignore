@@ -47,6 +47,8 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.asset
+Unity/4DR/ProjectSettings/ProjectSettings.asset
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -58,3 +60,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Unity/4DR/ProjectSettings
+Unity/LejailLotto
+Unity/4DR/Assets/__4DR_ORI.*
+Unity/4DR/Assets/__TAE.*
+Unity/4DR/_APK
