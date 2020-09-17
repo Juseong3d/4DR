@@ -193,7 +193,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void LateUpdate() {
 
         //if(isLeftTime == false && isRightTime == false) 
             {
@@ -238,11 +238,11 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //    OnClickButton4Player(this.gameObject, true);
         //}
         if(_info != null) {
-            if(_info.duration != 0) {
-            
+            if(_info.duration != 0) {            
+
                 float _value = (float)_info.time / (float)_info.duration;
                 labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
-                slider.value = _value;           
+                slider.value = _value;
 
                 if (isPressRightCamera == false && isPressLeftCamera == false) {
 
@@ -250,11 +250,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
                     _cameraY = _info.channel * _cameraRotationSpeed;
                 }
-
                 
                 labelTime.text = Appdoc.getNumberToDateTime4Ori(_info.time / 1000, string.Empty, false);
-                
-                
                 
             }else {
                 labelTime.text = "UNKNOW";
@@ -337,6 +334,14 @@ public class isoFdPlayerCtl : MonoBehaviour {
                 Debug.Log(tmp);
 
                 switch((XOBX_ONE_BUTTON)i) {
+                    case XOBX_ONE_BUTTON.BUTTON_Y:
+                        {
+                            AppCommandCtlCamera _ccc = this.beforeParent.GetComponent<AppCommandCtlCamera>();
+                            
+                            _ccc._cameraShake.StartUpDownShake(3f);
+                            _ccc._cameraShake.StartLeftRightShake(2f);
+                        }
+                        break;
                     case XOBX_ONE_BUTTON.BUTTON_A:
                         if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
                             OnClickButton4Load();

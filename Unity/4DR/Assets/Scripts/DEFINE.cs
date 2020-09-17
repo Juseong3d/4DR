@@ -138,3 +138,14 @@ public enum CATEGORY_KEY {
 	TAE
 
 }
+
+
+public enum VIDEO_CONTENT_TYPE {
+	
+	none = 0,
+	not_used,
+	vod,
+	live,
+	local
+
+}

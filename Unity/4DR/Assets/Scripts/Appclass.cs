@@ -41,7 +41,7 @@ public class APP_INFO {
 		version2 = "7";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += ".PROTO";
+		appVersion += "2.PROTO";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -95,6 +95,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public string title;
 	public string url;
 	public string type;
+	public VIDEO_CONTENT_TYPE _type;
 	public int default_channel;
 	public int max_channel;
 
@@ -106,6 +107,7 @@ public class LIST_CONTENT_FDLIVE_ITEM {
 	public LIST_CONTENT_FDLIVE_ITEM() {
 
 		//_prefab = new GameObject();
+		bool isResult = Enum.TryParse<VIDEO_CONTENT_TYPE>(type, out _type);
 	}
 
 	internal string GETURL() {

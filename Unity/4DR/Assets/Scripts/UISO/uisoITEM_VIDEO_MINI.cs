@@ -33,11 +33,18 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
         __info = _info;
 
         labelInfo.text = _tmp;
-        labelType.text = _info.type.ToUpper();
+        labelType.text = _info.type.ToString().ToUpper();
 
         if(labelType.text.Equals("LIVE") == true) {
+        //if(_info.type == VIDEO_CONTENT_TYPE.live) {
             labelType.color = Color.red;
         }
+
+        if(labelType.text.Equals("LOCAL") == true) {
+
+            __info.url = DEFINE.GET_LOCAL_FOLDER_PATH() +  _info.url;
+        }
+
 
         if(!string.IsNullOrEmpty(_info.thumbnail.url)) {
             string url = string.Format("{0}{1}", DEFINE.THUMNAIL_IMG_DOWNLOAD_SERVER_URL, _info.thumbnail.url);
