@@ -83,8 +83,9 @@ public class Appnet : MonoBehaviour {
 
 		//_IP = "110.45.132.199:7888/web_api.php?xml=";
 		
-		_URL = "https://work.muteklab.com:50443/unity/";
-		//_URL = "http://192.168.0.242:10080/unity/";
+		//_URL = "https://work.muteklab.com:50443/unity/";
+		_URL = "https://unity.4dreplay.io:50443/unity/";
+		//_URL = "http://192.168.0.242:10080/unity/";		
 
 		initNetwork();	
 

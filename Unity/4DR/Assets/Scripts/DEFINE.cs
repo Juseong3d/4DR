@@ -34,7 +34,7 @@ public class DEFINE : MonoBehaviour {
 
 	public const string CATAGORI_TAE = "태권도";
 
-	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://work.muteklab.com:50443";
+	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://unity.4dreplay.io:50443";//"https://work.muteklab.com:50443";
 
 	public const float MAX_MINUS_GAME_SCORE = 100;
 	public const float MAX_PENALTY_TIME = 10;
@@ -96,6 +96,28 @@ public enum XOBX_ONE_BUTTON {
 	LB = 4,
 	RB = 5,
 	RS_B = 9
+
+}
+
+
+public enum NVIDIA_REMOTE_CONTROL {
+
+	POWER = 26,
+	MENU = 82,
+	UP = 19,
+	LEFT = 21,
+	OK = 23,
+	RIGHT = 22,
+	DOWN = 20,
+	BACK = 4,
+	HONE = 3,
+	FOWARD = 90,
+	MIC = 219,
+	PLAY_PAUSE = 85,
+	VOLLUM_UP = 24,
+	REWARD = 89,
+	VOLLUM_DOWN = 25,
+	NETFLIX = 199
 
 }
 
