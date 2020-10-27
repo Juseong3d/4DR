@@ -338,6 +338,7 @@ namespace FFmpeg.AutoGen
         public uint @nb_streams;
         public AVStream** @streams;
         public fixed sbyte @filename[1024]; 
+        public sbyte* url;
         public long @start_time;
         public long @duration;
         public long @bit_rate;
@@ -399,6 +400,38 @@ namespace FFmpeg.AutoGen
         public sbyte* @protocol_whitelist;
         public IntPtr @io_open;
         public IntPtr @io_close;
+
+        /**
+         * ',' separated list of disallowed protocols.
+         * - encoding: unused
+         * - decoding: set by user
+         */
+        public sbyte* @protocol_blacklist;
+
+        /**
+         * The maximum number of streams.
+         * - encoding: unused
+         * - decoding: set by user
+         */
+        public int @max_streams;
+
+	    /**
+        * Add by mshan
+        * RTSP SESSION_ID 512Byte
+    	    */
+        public fixed sbyte @rtsp_session_id[512];
+
+	    /**
+        * Add by mshan
+        * RTSP Connect Start Timestamp
+    	    */
+	    public int @rtsp_connect_start_timestamp;
+
+	    /**
+        * Add by mshan
+        * RTP MARKER BIT Check On/Off
+    	    */
+	    public int @is_rtp_markerbit_check;
     }
     
     public unsafe partial struct AVPacketList
@@ -541,7 +574,7 @@ namespace FFmpeg.AutoGen
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX 
 		private const string libavformat = "EasyMovieTexture";
 #else
-        private const string libavformat = "avformat-57";
+        private const string libavformat = "avformat-58";
 #endif
         
         [DllImport(libavformat, EntryPoint = "avio_find_protocol_name", CallingConvention = CallingConvention.Cdecl)]

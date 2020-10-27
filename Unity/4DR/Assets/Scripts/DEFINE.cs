@@ -34,7 +34,7 @@ public class DEFINE : MonoBehaviour {
 
 	public const string CATAGORI_TAE = "태권도";
 
-	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://work.muteklab.com:50443";
+	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://unity.4dreplay.io:50443";
 
 	public const float MAX_MINUS_GAME_SCORE = 100;
 	public const float MAX_PENALTY_TIME = 10;

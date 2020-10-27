@@ -602,11 +602,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         
         if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
+#if !UNITY_EDITOR
             if(_info.channel == 0) return;
 
             if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
                 if(_info.frame == lastCallFrame) return;
             }
+#endif
         }
 
         
@@ -626,15 +628,15 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //_info.channel = Mathf.Clamp(_info.channel, 0, 45);
          SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
 
-		_send.sessionId = "1";
-		_send.actionType = "bounce";
+		_send.sessionId = _mpc.GET_RTSP_SESSION_ID();
+		_send.actionType = "normal";
 		_send.direction = "left";
 		_send.speed = 1;
 		_send.moveFrame = 1;
 
 		string message = JsonUtility.ToJson(_send);
 		Debug.Log("message = " + message);
-		StartCoroutine(fdcontroller._SEND_(string.Empty, message));
+		fdcontroller._SEND(string.Empty, message);
 #endif
 
         lastCallFrame = _info.frame;
@@ -669,15 +671,18 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //_info.channel = Mathf.Clamp(_info.channel, 0, 45);
         SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
 
-		_send.sessionId = "1";
-		_send.actionType = "bounce";
+        //setSwipe : 21 normal right 1 1
+
+		_send.sessionId = _mpc.GET_RTSP_SESSION_ID();
+		_send.actionType = "normal";
 		_send.direction = "right";
 		_send.speed = 1;
 		_send.moveFrame = 1;
 
 		string message = JsonUtility.ToJson(_send);
 		Debug.Log("message = " + message);
-		StartCoroutine(fdcontroller._SEND_(string.Empty, message));
+		//StartCoroutine(fdcontroller._SEND_(string.Empty, message.Trim()));
+        fdcontroller._SEND(string.Empty, message);
 #endif
                 
         lastCallFrame = _info.frame;

@@ -37,7 +37,7 @@ import com.unity3d.player.UnityPlayerActivity;
 
 public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, OnFrameAvailableListener {
 
-    static final String _UNITY_ANDROID_ = "_UNITY_ANDROID_";
+    private String _UNITY_ANDROID_ = "_UNITY_ANDROID_";
     static final String TAG = "Unity";
     private FDLivePlayer m4DLivePlayer = null;
     private boolean m_bTcp = true;
@@ -89,6 +89,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     }
 
+    public void SetUnityGameObjectName4NativeMessage(String _name) {
+        _UNITY_ANDROID_ = _name;
+    }
+
     private static final int GL_TEXTURE_EXTERNAL_OES = 0x8D65;
 
     public native int InitNDK(Object obj);
@@ -122,6 +126,13 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         m_objCtrl.remove(this);
     }
 
+
+    public void setAVSyncEnable(boolean _how) {
+
+        m4DLivePlayer.setAVSyncEnable(_how);
+
+    }
+
     public void _LEFT(boolean isTime) {
 
         int _result = -1;
@@ -139,7 +150,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 }
             }
         }else {
-            Log.d(TAG, "player nulllll");
+            //Log.d(TAG, "player nulllll");
         }
 
         if(fdLocalPlayer != null) {
@@ -169,7 +180,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                 }
             }
         }else {
-            Log.d(TAG, "player nulllll");
+            //Log.d(TAG, "player nulllll");
         }
 
         if(fdLocalPlayer != null) {
@@ -197,9 +208,9 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void UnLoad() {
 
-        Log.d(TAG, "###################### UnLoad() ");
+        //Log.d(TAG, "###################### UnLoad() ");
         if(m4DLivePlayer != null) {
-            Log.d(TAG, "###################### UnLoad() " + m_iCurrentState);
+            //Log.d(TAG, "###################### UnLoad() " + m_iCurrentState);
             if (m_iCurrentState != MEDIAPLAYER_STATE.NOT_READY) {
                 try {
                     m4DLivePlayer.pause();
@@ -211,7 +222,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Log.d(TAG, "################ 4dPlayer nulllllllllllllllllllllll 1");
+               // Log.d(TAG, "################ 4dPlayer nulllllllllllllllllllllll 1");
                 m4DLivePlayer = null;
             } else {
                 try {
@@ -223,7 +234,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                Log.d(TAG, "################# 4dPlayer nulllllllllllllllllllllll 2");
+                //Log.d(TAG, "################# 4dPlayer nulllllllllllllllllllllll 2");
                 m4DLivePlayer = null;
             }
         }
@@ -330,7 +341,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             }
         }else {
             if(m_strFileName.contains(".mp4") == true) {
-                Log.d(TAG, "########## ok check mp4");
+                //Log.d(TAG, "########## ok check mp4");
             }else if(m_bSplitOBB) {
                 try {
                     ZipResourceFile expansionFile = new ZipResourceFile(m_strOBBName);
@@ -392,6 +403,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
             m_MediaPlayer.release();
             m_MediaPlayer = null;
+
         }else {
             m_MediaPlayer.setSurface(m_Surface);
             m_MediaPlayer.setOnPreparedListener(this);
@@ -522,7 +534,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
     public void Play(int iSeek) {
 
-        Log.d(TAG, "?????????????? " + m4DLivePlayer);
+        //Log.d(TAG, "?????????????? " + m4DLivePlayer);
         if(m_MediaPlayer != null) {
             if(m_iCurrentState == MEDIAPLAYER_STATE.READY || m_iCurrentState == MEDIAPLAYER_STATE.PAUSED || m_iCurrentState == MEDIAPLAYER_STATE.END ) {
 
@@ -879,14 +891,14 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
             final String str = "getError," + code + "," + msg + "," + ls_ip;
             final int err_code = code;
 
-            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "CallBackFromFDPlayer", str);
+            UnityPlayer.UnitySendMessage(_UNITY_ANDROID_, "getError", str);
         }
 
         @Override
         public void getVideoStreamInfo(int width, int height, int duration)
         {
-            final String log = "############################# getVideoStreamInfo " + width + " , " + height + " , " + duration;
-            Log.d(TAG, log);
+            final String log = "getVideoStreamInfo " + width + " , " + height + " , " + duration;
+            //Log.d(TAG, log);
             m_iVideoWidth = width;
             m_iVideoheight = height;
             m_iDuration = duration;
@@ -972,10 +984,10 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         @Override
         public void getStart(int code)
         {
-            if (code == -1)
-                Log.e(TAG, "getStart " + code);
-            else if (code == 0)
-                Log.d(TAG, "getStart " + code);
+//            if (code == -1)
+//                //Log.e(TAG, "getStart " + code);
+//            else if (code == 0)
+//                //Log.d(TAG, "getStart " + code);
 
             final String log = "getStart " + code;
             m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
@@ -983,7 +995,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         @Override
         public void getStop(int code) {
-            Log.d(TAG, "getStop " + code);
+            //Log.d(TAG, "getStop " + code);
 
             final String log = "getStop " + code;
             m_iCurrentState = MEDIAPLAYER_STATE.STOPPED;
@@ -991,7 +1003,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         @Override
         public void getPlay() {
-            Log.d(TAG, "getPlay ");
+            //Log.d(TAG, "getPlay ");
 
             final String log = "getPlay ";
             m_iCurrentState = MEDIAPLAYER_STATE.PLAYING;
@@ -999,7 +1011,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         @Override
         public void getPause() {
-            Log.d(TAG, "getPause ");
+            //Log.d(TAG, "getPause ");
 
             final String log = "getPause ";
             m_iCurrentState = MEDIAPLAYER_STATE.PAUSED;
@@ -1007,7 +1019,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         @Override
         public void getPlayDone() {
-            Log.d(TAG, "getPlayDone ");
+            //Log.d(TAG, "getPlayDone ");
 
             final String log = "getPlayDone ";
             m_iCurrentState = MEDIAPLAYER_STATE.END;
@@ -1017,7 +1029,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
         @Override
         public void getSlowReceiveFrame(int isSlow)
         {
-            Log.d(TAG, "getSlowReceiveFrame : " + isSlow);
+            //Log.d(TAG, "getSlowReceiveFrame : " + isSlow);
 
             final String log = "getSlowReceiveFrame : " + isSlow;
         }
@@ -1030,7 +1042,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         m4DLivePlayer.pause();
         m4DLivePlayer.streamClose();
-        Log.d(TAG, "call streamClose ");
+        //Log.d(TAG, "call streamClose ");
     }
 
 
@@ -1041,7 +1053,7 @@ public class EasyMovieTexture implements MediaPlayer.OnPreparedListener, MediaPl
 
         if (m4DLivePlayer.isStreamOpened()) {
             m4DLivePlayer.streamClose();
-            Log.d(TAG,"streamClose");
+            //Log.d(TAG,"streamClose");
             return;
         }
 

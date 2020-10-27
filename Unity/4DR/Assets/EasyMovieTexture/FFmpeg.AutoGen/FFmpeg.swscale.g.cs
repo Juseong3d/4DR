@@ -61,7 +61,7 @@ namespace FFmpeg.AutoGen
 #if UNITY_EDITOR_OSX  || UNITY_STANDALONE_OSX 
 		private const string libswscale = "EasyMovieTexture";
 #else
-        private const string libswscale = "swscale-4";
+        private const string libswscale = "swscale-5";
 #endif
         
         [DllImport(libswscale, EntryPoint = "swscale_version", CallingConvention = CallingConvention.Cdecl)]

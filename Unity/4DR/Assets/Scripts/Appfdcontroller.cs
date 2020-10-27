@@ -39,18 +39,20 @@ public class Appfdcontroller : MonoBehaviour
 
     }
 
+
     public IEnumerator _SEND_(string _url, string body) {
 
         string url = "http://app.4dlive.kr:7070" + "/4dapp/movie/swipe";
-
-        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(body);
+        //4dapp/movie/swipe
+        
         WWWForm form = new WWWForm();
-        form.AddField("body", body);
+        form.AddField("POST", body);        
  
         Debug.Log("url : " + url);
-        UnityWebRequest www = UnityWebRequest.Post(url, body);
+        UnityWebRequest www = UnityWebRequest.Post(url, form);
         www.SetRequestHeader("Content-Type", "application/json");
         www.SetRequestHeader("Contents-Length", body.Length.ToString());
+
         yield return www.SendWebRequest();
  
         if(www.isNetworkError || www.isHttpError) {

@@ -38,57 +38,6 @@
     </issue>
 
     <issue
-        id="GradleDependency"
-        severity="Warning"
-        message="A newer version of com.squareup.retrofit2:retrofit than 2.3.0 is available: 2.6.2"
-        category="Correctness"
-        priority="4"
-        summary="Obsolete Gradle Dependency"
-        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="    implementation &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        quickfix="studio">
-        <location
-            file="D:\Project\_GITHUB\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
-            line="40"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        severity="Warning"
-        message="A newer version of com.squareup.retrofit2:converter-gson than 2.3.0 is available: 2.6.2"
-        category="Correctness"
-        priority="4"
-        summary="Obsolete Gradle Dependency"
-        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="    implementation &apos;com.squareup.retrofit2:converter-gson:2.3.0&apos;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        quickfix="studio">
-        <location
-            file="D:\Project\_GITHUB\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
-            line="41"
-            column="5"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        severity="Warning"
-        message="A newer version of com.squareup.retrofit2:converter-scalars than 2.3.0 is available: 2.6.2"
-        category="Correctness"
-        priority="4"
-        summary="Obsolete Gradle Dependency"
-        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="    implementation &apos;com.squareup.retrofit2:converter-scalars:2.3.0&apos;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        quickfix="studio">
-        <location
-            file="D:\Project\_GITHUB\4DR\Unity_Android\EasyMovieTexture3\app\build.gradle"
-            line="42"
-            column="5"/>
-    </issue>
-
-    <issue
         id="GradlePath"
         severity="Warning"
         message="Do not use Windows file separators in .gradle files; use / instead"
