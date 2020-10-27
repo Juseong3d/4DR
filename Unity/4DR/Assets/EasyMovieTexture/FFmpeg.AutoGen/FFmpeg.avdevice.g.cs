@@ -138,7 +138,7 @@ namespace FFmpeg.AutoGen
         public const int LIBAVDEVICE_VERSION_MAJOR = 57;
         public const int LIBAVDEVICE_VERSION_MINOR = 0;
         public const int LIBAVDEVICE_VERSION_MICRO = 101;
-        private const string libavdevice = "avdevice-57";
+        private const string libavdevice = "avdevice-58";
         
         [DllImport(libavdevice, EntryPoint = "avdevice_version", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint avdevice_version();

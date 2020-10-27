@@ -25,42 +25,55 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
 
     public bool isChangeChannel;
 
+    public enum FDLIVE_ERROR {
+
+	    STREAM_RECIVING_FAILURE_DICONNECTION = 2300,
+	    STREAM_RECIVING_FAILURE_WAITING_TIME_OUT = 2301
+
+    }
+
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         duration = 999999;
         isErrorPopup = false;
         isZoomMoveR = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+
+    /*
+     * Scene GameObject Default Name : _UNITY_ANDROID_
+     */
+    public void call_SetUnityGameObjectName4NativeMessage(string _reName) {
+#if UNITY_ANDROID
+		try {
+			using (AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
+				using (AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity")) {
+					Debug.Log("CallAndroid : getContactList");
+					jo.Call("SetUnityGameObjectName4NativeMessage", new object[] { _reName });
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			Debug.Log(e.StackTrace);
+		}
+#endif
+
+	}
+
+	
+	void CallBackFromFDPlayer(string _value) {
+
+        getError(_value);
+
+    }
+
+
+	void getError(string _value) {
         
-    }
-
-    public void IS_CHANGE_POPUP(UIToggle _value) {
-
-        isErrorPopup = _value.value;
-    }
-
-
-    public void IS_CHANGE_ZOOM_MOVE_R(UIToggle _value) {
-
-        isZoomMoveR = _value.value;
-
-    }
-
-
-    void CallBackFromFDPlayer(string _value) {
-
-        //Debug.Log("CallBackFromFDPlayer ::: " + _value);
-        if(isErrorPopup == true) {
-            PopupBox.Create(_value);        
-        }
-
+        //final String str = "getError," + code + "," + msg + "," + ls_ip;
         string[] _tmp = _value.Split(","[0]);
-
         int code = Convert.ToInt32(_tmp[1]);
 
         switch((FDLIVE_ERROR)code) {
@@ -69,7 +82,6 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
             //_mpc.setStreamOpenStartTS((int)time);
             //_mpc.Load(_mpc.m_strFileName);
             break;
-
         }
     }
 
@@ -88,6 +100,7 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
     void getCurrentPlayInfo(string _value) {               
 
         string[] _tmp = _value.Split(","[0]);
+
 #if !UNITY_EDITOR
         isChangeChannel = (prevChannel != channel);
         prevChannel = channel;

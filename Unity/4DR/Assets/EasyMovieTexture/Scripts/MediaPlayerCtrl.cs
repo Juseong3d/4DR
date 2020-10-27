@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Text;
 
 #if !UNITY_WEBPLAYER && !UNITY_WEBGL && !UNITY_WP8 && !UNITY_WP8_1
 using FFmpeg.AutoGen;
@@ -299,18 +300,21 @@ public class MediaPlayerCtrl : MonoBehaviour
 		//Appmain.appmain.UN_SET_POPUP_BACK_9000(POPUPBOX_RETURN_TYPE.OK);
 		if (fdcontroller != null) {
 			//fdcontroller._SEND(string.Empty);
-			SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
+			//SEND_FDLIVE_SWIPE _send = new SEND_FDLIVE_SWIPE();
 
-			_send.sessionId = "1";
-			_send.actionType = "bounce";
-			_send.direction = "right";
-			_send.speed = 1;
-			_send.moveFrame = 1;
+			//_send.sessionId = GET_RTSP_SESSION_ID();
+			//_send.actionType = "bounce";
+			//_send.direction = "right";
+			//_send.speed = 1;
+			//_send.moveFrame = 1;
 
-			string message = JsonUtility.ToJson(_send);
-			Debug.Log("message = " + message);
-			StartCoroutine(fdcontroller._SEND_(string.Empty, message));
+			//string message = JsonUtility.ToJson(_send);
+			//Debug.Log("message = " + message);
+			//StartCoroutine(fdcontroller._SEND_(string.Empty, message));
 		}
+
+		//for testing...
+		//setAVSyncEnable(true);
 
 	}
 
@@ -906,6 +910,15 @@ public class MediaPlayerCtrl : MonoBehaviour
         
     }
 
+	public void setAVSyncEnable(bool _how) {
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		Call_setAVSyncEnable(_how);
+#endif
+#endif
+
+	}
+
 
 	public void setStreamOpenStartTS(int _value) {
 
@@ -1340,6 +1353,12 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void Call_PlayToNow()
 	{
 		GetJavaObject().Call("_PLAY_TO_NOW");
+	}
+
+	private void Call_setAVSyncEnable(bool _how) {
+
+		GetJavaObject().Call("setAVSyncEnable", _how);
+
 	}
 
 	private void Call_setStreamOpenStartTS(int _value) {
@@ -2163,7 +2182,19 @@ public class MediaPlayerCtrl : MonoBehaviour
 			throw new ApplicationException(@"Could not find stream info");
 		}
 
-		AddActionForUnityMainThread( () => {
+		int a = 0;
+		sbyte[] temp = new sbyte[512];
+
+			//Marshal.Copy((IntPtr)pFormatContext->rtsp_session_id, temp, 0, 512);
+
+			//string tmp = Encoding.UTF8.GetString(pFormatContext->rtsp_session_id, 512);
+
+			Debug.Log("#### Start");
+			Debug.Log("#### f : " + new string(pFormatContext->filename));
+			Debug.Log("#### s : " + new string(pFormatContext->rtsp_session_id));
+			Debug.Log("#### End");
+
+			AddActionForUnityMainThread( () => {
 			LoadVideoPart2 ();
 		});
 
@@ -2222,9 +2253,10 @@ void LoadVideoPart2 ()
 		}
 		
 		var codecContext = *pStream->codec;
-		
+
 		m_iWidth = codecContext.width;
 		m_iHeight = codecContext.height;
+
 		var sourcePixFmt = codecContext.pix_fmt;
 		var codecId = codecContext.codec_id;
 		var convertToPixFmt = AVPixelFormat.AV_PIX_FMT_RGBA;
@@ -3571,8 +3603,23 @@ AVHWAccel *ff_find_hwaccel( AVCodecID codec_id,  AVPixelFormat pix_fmt)
 		}
 		checkNewActions = true;
 	}
+	
 
 #endregion
+	
 
+	public string GET_RTSP_SESSION_ID() {
+
+		
+		unsafe {
+			string rtn;			
+
+			//rtn = new string(pFormatContext->rtsp_session_id);	
+			rtn = "11";
+
+			return rtn;		
+		}
+
+	}
 
 }
