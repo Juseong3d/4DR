@@ -414,17 +414,21 @@ public class Appnet : MonoBehaviour {
 				case NET_WEB_API_CMD.table_sub:
 					if(_index != -1) {
 						_last_url = _last_url.Replace("_sub", string.Empty);
-						_last_url += string.Format("/{0}", _index);				
+						_last_url += string.Format("/{0}", _index);
 					}
+					Debug.Log("URL :: " + _last_url);
 					break;
 				case NET_WEB_API_CMD.commander:
 					{
 						_last_url += string.Format("?session={0}", appmain.appSession);
 					}
 					break;
+				default:
+					Debug.Log("URL :: " + _last_url);
+					break;
 			}
 
-			Debug.Log("URL :: " + _last_url);
+			
 			WWW www = new WWW(_last_url, null, headers);
 
 			StartCoroutine (WaitForRequest (www, networkData));			

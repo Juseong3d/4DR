@@ -786,6 +786,7 @@ public class Q_COMMAND_CTL_CAMERA {
             break;
         case COMMAND_CTL_CAMERA.PAUSE :            
             _pause_time = Convert.ToSingle(_tmp[i]);// / 1000f;
+            Debug.Log("__pause_time :: " + _pause_time);
             if(_pause_time > 0f) {
                 _pause_time = _pause_time / 1000f;
             }
