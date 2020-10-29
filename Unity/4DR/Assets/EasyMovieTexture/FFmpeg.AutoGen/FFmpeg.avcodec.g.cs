@@ -1406,7 +1406,7 @@ namespace FFmpeg.AutoGen
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX 
 		private const string libavcodec = "EasyMovieTexture";
 #else
-        private const string libavcodec = "avcodec-58";
+        private const string libavcodec = "avcodec-57";
 #endif
         
         [DllImport(libavcodec, EntryPoint = "av_codec_get_pkt_timebase", CallingConvention = CallingConvention.Cdecl)]

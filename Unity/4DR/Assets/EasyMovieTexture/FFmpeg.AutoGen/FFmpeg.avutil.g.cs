@@ -803,7 +803,7 @@ namespace FFmpeg.AutoGen
 #if UNITY_EDITOR_OSX  || UNITY_STANDALONE_OSX 
 		private const string libavutil = "EasyMovieTexture";
 #else
-        private const string libavutil = "avutil-56";
+        private const string libavutil = "avutil-55";
 #endif
         
         [DllImport(libavutil, EntryPoint = "avutil_version", CallingConvention = CallingConvention.Cdecl)]

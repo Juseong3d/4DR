@@ -294,7 +294,7 @@ namespace FFmpeg.AutoGen
         public const int AVFILTER_CMD_FLAG_FAST = 2;
         public const int AV_BUFFERSINK_FLAG_PEEK = 1;
         public const int AV_BUFFERSINK_FLAG_NO_REQUEST = 2;
-        private const string libavfilter = "avfilter-7";
+        private const string libavfilter = "avfilter-6";
         
         [DllImport(libavfilter, EntryPoint = "avfilter_version", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint avfilter_version();

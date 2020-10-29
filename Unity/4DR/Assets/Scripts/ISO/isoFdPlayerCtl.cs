@@ -105,7 +105,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         //beforeParent = this.gameObject.transform.parent;
         //this.transform.SetParent(this.gameObject.transform.parent.parent);
-        _idx = 1;
+        _idx = 0;
 
         _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
 
@@ -471,6 +471,18 @@ public class isoFdPlayerCtl : MonoBehaviour {
 					//"Common/_Default_Effect/Magic fire pro orange",
 					//"Common/_Default_Effect/Magic fire pro red",
 					//"Common/_Default_Effect/Magic fire pro yellow",
+                    "Common/_Default_Effect/Hit_A_01_Blue",
+                    "Common/_Default_Effect/Hit_A_02_Blue",
+                    "Common/_Default_Effect/Hit_A_03_Blue",
+                    "Common/_Default_Effect/Hit_A_04_Blue",
+                    "Common/_Default_Effect/Hit_A_05_Blue",
+
+                    "Common/_Default_Effect/Hit_A_01_Red",
+                    "Common/_Default_Effect/Hit_A_02_Red",
+                    "Common/_Default_Effect/Hit_A_03_Red",
+                    "Common/_Default_Effect/Hit_A_04_Red",
+                    "Common/_Default_Effect/Hit_A_05_Red",
+
 					"Common/_Default_Effect/pfb_Effect_Touch",	//9
 
 					//"Common/_Default_Effect/RotatorPS1",
@@ -515,6 +527,19 @@ public class isoFdPlayerCtl : MonoBehaviour {
 					//"Common/_Default_Effect/Magic fire pro orange",
 					//"Common/_Default_Effect/Magic fire pro red",
 					//"Common/_Default_Effect/Magic fire pro yellow",
+                    50,
+                    50,
+                    50,
+                    50,
+                    50,//5
+
+                    50,
+                    50,
+                    50,
+                    50,
+                    50,
+
+
 					50,//"Common/_Default_Effect/pfb_Effect_Touch",	//9
 
 					//"Common/_Default_Effect/RotatorPS1",

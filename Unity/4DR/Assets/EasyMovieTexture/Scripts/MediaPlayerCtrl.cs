@@ -2182,17 +2182,17 @@ public class MediaPlayerCtrl : MonoBehaviour
 			throw new ApplicationException(@"Could not find stream info");
 		}
 
-		int a = 0;
-		sbyte[] temp = new sbyte[512];
+		//int a = 0;
+		//sbyte[] temp = new sbyte[512];
 
-			//Marshal.Copy((IntPtr)pFormatContext->rtsp_session_id, temp, 0, 512);
+		//	//Marshal.Copy((IntPtr)pFormatContext->rtsp_session_id, temp, 0, 512);
 
-			//string tmp = Encoding.UTF8.GetString(pFormatContext->rtsp_session_id, 512);
+		//	//string tmp = Encoding.UTF8.GetString(pFormatContext->rtsp_session_id, 512);
 
-			Debug.Log("#### Start");
-			Debug.Log("#### f : " + new string(pFormatContext->filename));
-			Debug.Log("#### s : " + new string(pFormatContext->rtsp_session_id));
-			Debug.Log("#### End");
+		//	Debug.Log("#### Start");
+		//	Debug.Log("#### f : " + new string(pFormatContext->filename));
+		//	Debug.Log("#### s : " + new string(pFormatContext->rtsp_session_id));
+		//	Debug.Log("#### End");
 
 			AddActionForUnityMainThread( () => {
 			LoadVideoPart2 ();

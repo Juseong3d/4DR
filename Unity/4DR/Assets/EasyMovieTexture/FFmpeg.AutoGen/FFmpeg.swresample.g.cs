@@ -60,7 +60,7 @@ namespace FFmpeg.AutoGen
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX  
 		private const string libswresample = "EasyMovieTexture";
 #else
-        private const string libswresample = "swresample-3";
+        private const string libswresample = "swresample-2";
 #endif
         
         [DllImport(libswresample, EntryPoint = "swr_get_class", CallingConvention = CallingConvention.Cdecl)]
