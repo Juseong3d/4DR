@@ -1,3 +1,6 @@
+** 20200916_tae_project_proto_v.0.3.7.apk
+https://unity.muteklab.com:50443/admin/unity/video
+
 ** 20200827_fdreplayer_unity_proto_v.0.3.7.apk
 * CMS
  - Web api 수정

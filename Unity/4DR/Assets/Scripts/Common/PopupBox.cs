@@ -70,6 +70,8 @@ public class PopupBox : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Return)) {
 			OnClickOk();
 		}
+
+		//키 처리
 	}
 
 

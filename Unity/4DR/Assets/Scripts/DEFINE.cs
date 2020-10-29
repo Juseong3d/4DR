@@ -14,7 +14,7 @@ public class DEFINE : MonoBehaviour {
 	public const string KEY_OPTION_BGM = "KEY_OPTION_BGM";
 	public const string KEY_OPTION_EFFECT_SOUND = "KEY_OPTION_EFFECT_SOUND";
 
-	
+
     public const string POPUP_OK = "OK";
 	public const string POPUP_YES = "YES";
 	public const string POPUP_NO = "NO";
@@ -27,13 +27,13 @@ public class DEFINE : MonoBehaviour {
 
 	//public const string DIRECT_TEST_URL = "rtsp://app.4dlive.com/mbc_test01.4ds?type=vod";
 	public const string DIRECT_TEST_URL = "rtsp://192.168.18.152:8554/main";
-	
+
 	public const string LOCAL_FOLDER_PATH = "/4DLocal";
 
 	public const string VOD_TYPE_NOT_USE = "not_used";
 
 	public const string CATAGORI_TAE = "태권도";
-
+	
 	public const string THUMNAIL_IMG_DOWNLOAD_SERVER_URL = "https://unity.4dreplay.io:50443";
 
 	public const float MAX_MINUS_GAME_SCORE = 100;
@@ -59,19 +59,19 @@ public enum STATUS {
 	//이동상태
 	//매치 체크 상태
 	//제거 상태
-	//채우기 상태		
+	//채우기 상태
 
 }
 
 
  public enum GAME_STATUS {
-        
+
 	GS_NONE = -1,
     GS_START,
     GS_INIT,
     GS_INTRO,
     GS_TITLE,
-    GS_MENU   
+    GS_MENU
 
 }
 
@@ -96,6 +96,28 @@ public enum XOBX_ONE_BUTTON {
 	LB = 4,
 	RB = 5,
 	RS_B = 9
+
+}
+
+
+public enum NVIDIA_REMOTE_CONTROL {
+
+	POWER = 26,
+	MENU = 82,
+	UP = 19,
+	LEFT = 21,
+	OK = 23,
+	RIGHT = 22,
+	DOWN = 20,
+	BACK = 4,
+	HONE = 3,
+	FOWARD = 90,
+	MIC = 219,
+	PLAY_PAUSE = 85,
+	VOLLUM_UP = 24,
+	REWARD = 89,
+	VOLLUM_DOWN = 25,
+	NETFLIX = 199
 
 }
 
@@ -141,7 +163,7 @@ public enum CATEGORY_KEY {
 
 
 public enum VIDEO_CONTENT_TYPE {
-	
+
 	none = 0,
 	not_used,
 	vod,

@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 507854229}
   - component: {fileID: 507854231}
   - component: {fileID: 507854232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3D_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

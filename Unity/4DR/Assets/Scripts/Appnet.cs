@@ -83,10 +83,9 @@ public class Appnet : MonoBehaviour {
 
 		//_IP = "110.45.132.199:7888/web_api.php?xml=";
 		
-		//_URL = "https://unity.muteklab.com:50443/unity/";
+		//_URL = "https://work.muteklab.com:50443/unity/";
 		_URL = "https://unity.4dreplay.io:50443/unity/";
-
-		//_URL = "http://192.168.0.240:10080/unity/";
+		//_URL = "http://192.168.0.242:10080/unity/";		
 
 		initNetwork();	
 
@@ -188,13 +187,13 @@ public class Appnet : MonoBehaviour {
 			recvComplete(networkData);
 
         } else {
-			//string _tmp =
+			//string _tmp = 
 			//	//"[{\"id\":9,\"title\":\"LGU+_Baseball\",\"url\":\"rtsp://app.4dlive.kr/vod_test01.4ds\",\"type\":\"vod\"},{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"},{\"id\":11,\"title\":\"Golf\",\"url\":\"rtsp://app.4dlive.kr/Golf_20Mbps.4ds\",\"type\":\"vod\"},{\"id\":12,\"title\":\"JUDO\",\"url\":\"rtsp://app.4dlive.kr/judo_4k_30p.4ds\",\"type\":\"vod\"},{\"id\":13,\"title\":\"mbc_test01\",\"url\":\"rtsp://app.4dlive.kr/mbc_test01.4ds\",\"type\":\"vod\"},{\"id\":14,\"title\":\"vod_test02\",\"url\":\"rtsp://app.4dlive.kr/vod_test02.4ds\",\"type\":\"vod\"}]";
 			//	"[{\"id\":10,\"title\":\"MBC_TEST03\",\"url\":\"rtsp://app.4dlive.kr/mbc_test03.4ds\",\"type\":\"vod\"}]";
 
-			//appclass._list_conent_fdlist.result.Clear();
+			//appclass._list_conent_fdlist.result.Clear();			
 			//appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
-			Debug.Log("WWW Error: "+ www.error);
+            Debug.Log("WWW Error: "+ www.error);
 			PopupBox.Create("plz check web server : " + www.error);
         }    
     }
