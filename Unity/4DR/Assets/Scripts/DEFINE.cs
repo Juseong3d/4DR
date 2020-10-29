@@ -39,6 +39,8 @@ public class DEFINE : MonoBehaviour {
 	public const float MAX_MINUS_GAME_SCORE = 100;
 	public const float MAX_PENALTY_TIME = 10;
 
+	public const float COMMAND_REFLASH_TIME = 5f;
+
 	static public string GET_LOCAL_FOLDER_PATH() {
 
 		return Application.persistentDataPath + "" + "/4DLocal/";

@@ -31,6 +31,8 @@ public class AppCommandCtlCamera : MonoBehaviour
     public GameObject gameObjectPlayerInfoVs;
     public GameObject gameObjectTAEScore;
 
+    public float commanderReflashTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,8 @@ public class AppCommandCtlCamera : MonoBehaviour
         _lastCallChangeTimeMove = 0;
 
         _videoInfo.time = 0;
+
+        commanderReflashTime = DEFINE.COMMAND_REFLASH_TIME;
 
         _mediaMain.OnEnd += initEndSoInitCommandStatus;
     }
@@ -150,6 +154,17 @@ public class AppCommandCtlCamera : MonoBehaviour
     void FixedUpdate()
     {
         processingCommandCTLCamera();
+
+#if _COMMANDER_
+        commanderReflashTime -= Time.deltaTime;
+
+        if(commanderReflashTime <= 0f) {
+
+            Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.commander);
+            commanderReflashTime = DEFINE.COMMAND_REFLASH_TIME;
+
+        }
+#endif
     }
 
 
@@ -169,18 +184,21 @@ public class AppCommandCtlCamera : MonoBehaviour
 
         foreach(Q_COMMAND_CTL_CAMERA _cmd in _commandes) {
             
-        #if UNITY_EDITOR
-            
-            //Debug.Log(_cmd._frame + " : ////// : " + _frameTime * 1000f);
 
-            if(_cmd._frame > _frameTime * 1000f) continue;
-        #else
-            if(_cmd._frame > _videoInfo.time) {
-                _cmd.status = COMMAND_STATUS.WAIT;
-                continue;
-            }
-        #endif
+            if(_cmd._frame != 0) {
+#if UNITY_EDITOR
             
+                //Debug.Log(_cmd._frame + " : ////// : " + _frameTime * 1000f);
+            
+                if(_cmd._frame > _frameTime * 1000f) continue;
+#else
+                if(_cmd._frame > _videoInfo.time) {
+                    _cmd.status = COMMAND_STATUS.WAIT;
+                    continue;
+                }
+#endif
+            }
+
             if(_cmd.status == COMMAND_STATUS.DONE || _cmd.status == COMMAND_STATUS.NONE) {
                 continue;
             }
@@ -215,7 +233,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.PAUSE :
-                if(_cmd._pause_time == -1) {
+                if(_cmd._pause_time == 0) {
                     _mediaMain.Pause();
                     _cmd.Clear();
                 }else {                    
@@ -731,12 +749,25 @@ public class Q_COMMAND_CTL_CAMERA {
     public Q_COMMAND_CTL_CAMERA(string _ori) {
 
         string[] _tmp = _ori.Split(","[0]);
+
+        for(int j = 0; j<_tmp.Length; j++) {
+            if(string.IsNullOrEmpty(_tmp[j])) {
+                _tmp[j] = "0";
+            }
+        }
+
         int i = 0;
 
         _ori_command = _ori;
 
         index = Convert.ToInt32(_tmp[i++]);
-        _frame = Convert.ToDouble(_tmp[i++]);
+        
+        string __tmp = _tmp[i++];
+
+        if(!string.IsNullOrEmpty(__tmp))
+            _frame = Convert.ToDouble(__tmp);
+        else
+            _frame = 0;
 
         //COMMAND_CTL_CAMERA out _tmpCmd;
         bool _result = Enum.TryParse<COMMAND_CTL_CAMERA>(_tmp[i++], out cmd);
@@ -753,8 +784,11 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.PLAY :
 
             break;
-        case COMMAND_CTL_CAMERA.PAUSE :
-            _pause_time = Convert.ToSingle(_tmp[i]) / 1000f;
+        case COMMAND_CTL_CAMERA.PAUSE :            
+            _pause_time = Convert.ToSingle(_tmp[i]);// / 1000f;
+            if(_pause_time > 0f) {
+                _pause_time = _pause_time / 1000f;
+            }
             break;
         case COMMAND_CTL_CAMERA.ZOOM :
             _zoom = Convert.ToSingle(_tmp[i]);

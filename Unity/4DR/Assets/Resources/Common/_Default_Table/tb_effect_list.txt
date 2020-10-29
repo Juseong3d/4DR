@@ -1,4 +1,4 @@
-﻿14,4
+﻿24,5
 0,Common/_Default_Effect/TAE/,pfb_effect_test,임시 테스트용
 1,Common/_Default_Effect/TAE/,ROUND1,1라운드 시작
 2,Common/_Default_Effect/TAE/,ROUND2,2라운드 시작
@@ -7,9 +7,19 @@
 5,Common/_Default_Effect/TAE/,BLUE_LOSE,블루 패배
 6,Common/_Default_Effect/TAE/,RED_WIN,레드 승리
 7,Common/_Default_Effect/TAE/,RED_LOSE,레드 패배
-8,Common/_Default_Effect/TAE/,HIT_HEAD,머리 타격
-9,Common/_Default_Effect/TAE/,HIT_HAND,주먹 타격
-10,Common/_Default_Effect/TAE/,HIT_BODY_LOW,몸통 약한 타격
-11,Common/_Default_Effect/TAE/,HIT_BODY_MIDDLE,몸통 중간 타격
-12,Common/_Default_Effect/TAE/,HIT_BODY_STRONG,몸통 강한 타격
-13,Common/_Default_Effect/TAE/,HIT_BODY_AWESOME,몸통 추가 강한 타격
+8,Common/_Default_Effect/TAE/,BLUE_HIT,블루_Punch Body
+9,Common/_Default_Effect/TAE/,BLUE_HIT_LOW,블루_Kick Body
+10,Common/_Default_Effect/TAE/,BLUE_HIT__MIDDLE,블루_Kick Head
+11,Common/_Default_Effect/TAE/,BLUE_HIT_STRONG,블루_Spin Kick Body
+12,Common/_Default_Effect/TAE/,BLUE_HIT_AWESOME,블루_Spin Kick Head
+13,Common/_Default_Effect/TAE/,RED_HIT,레드_Punch Body
+14,Common/_Default_Effect/TAE/,RED_HIT_LOW,레드_Kick Body
+15,Common/_Default_Effect/TAE/,RED_HIT_MIDDLE,레드_Kick Head
+16,Common/_Default_Effect/TAE/,RED_HIT_STRONG,레드_Spin Kick Body
+17,Common/_Default_Effect/TAE/,RED_HIT_AWESOME,레드_Spin Kick Head
+18,Common/_Default_Effect/TAE/,PENALTY,페널티 획득시 
+19,Common/_Default_Effect/TAE/,ENERGY_REDUCE,에너지 감소
+20,Common/_Default_Effect/TAE/,SCORE_1POINT_NOMAL,1득점시
+21,Common/_Default_Effect/TAE/,SCORE_1POINT_PENALTY,상대 감점으로 인한 득점
+22,Common/_Default_Effect/TAE/,SCORE_2POINT,2득점시
+23,Common/_Default_Effect/TAE/,SCORE_3POINT,3득점시

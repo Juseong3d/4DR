@@ -9,6 +9,7 @@ public class Appclass : MonoBehaviour {
 
 	public LIST_CONTENT_FDLIVE _list_conent_fdlist;
 	public LIST_SCRIPT_LIST _list_script_list;
+	public LIST_COMMANDER _list_commander;
 }
 
 /////////////////////////////////////
@@ -66,6 +67,24 @@ public class TEMP_TEXTURE {
 /////////////////////////////////////
 /// Custom class
 /////////////////////////////////////
+
+[Serializable]
+public class LIST_COMMANDER {
+
+	public List<LIST_COMMANDER_ITEM> result;
+
+}
+
+
+[Serializable]
+public class LIST_COMMANDER_ITEM {
+
+	public int id;
+	public string data;
+	public long timestamp;
+
+}
+
 
 [Serializable]
 public class  LIST_CONTENT_FDLIVE {

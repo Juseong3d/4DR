@@ -89,7 +89,8 @@ public class Appnet : MonoBehaviour {
 
 		initNetwork();	
 
-		//__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(string.Empty);		
+		//최초 한번 session 등록
+		__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.commander);
 
 		//appclass._list_conent_fdlist = new LIST_CONTENT_FDLIVE();
 
@@ -194,7 +195,7 @@ public class Appnet : MonoBehaviour {
 			//appclass._list_conent_fdlist.result.Clear();			
 			//appclass._list_conent_fdlist = JsonUtility.FromJson<LIST_CONTENT_FDLIVE>("{\"result\":" + _tmp + "}");
             Debug.Log("WWW Error: "+ www.error);
-			PopupBox.Create("plz check web server : " + www.error);
+			PopupBox.Create("plz check network or web server status : " + www.error);
         }    
     }
 
@@ -263,6 +264,20 @@ public class Appnet : MonoBehaviour {
 
 				if (Appmain.gameStatus == GAME_STATUS.GS_MENU) {
 					Appmain.appimg._SET_MINI_VIDEO_GRID();
+				}
+			}
+			break;
+		case NET_WEB_API_CMD.commander:
+			{
+				appclass._list_commander.result.Clear();
+				appclass._list_commander = JsonUtility.FromJson<LIST_COMMANDER>("{\"result\":" + networkData.tmpRecvData + "}");
+
+				if(appclass._list_commander.result.Count != 0) {
+					int a = 0;
+				}
+
+				for(int i = 0; i<appclass._list_commander.result.Count; i++) {
+					Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
 				}
 			}
 			break;
@@ -394,9 +409,19 @@ public class Appnet : MonoBehaviour {
 
 			string _last_url = _URL + networkData.functionName;
 
-			if(_index != -1) {
-				_last_url = _last_url.Replace("_sub", string.Empty);
-				_last_url += string.Format("/{0}", _index);				
+			switch(sendData) {
+				case NET_WEB_API_CMD.script_sub:
+				case NET_WEB_API_CMD.table_sub:
+					if(_index != -1) {
+						_last_url = _last_url.Replace("_sub", string.Empty);
+						_last_url += string.Format("/{0}", _index);				
+					}
+					break;
+				case NET_WEB_API_CMD.commander:
+					{
+						_last_url += string.Format("?session={0}", appmain.appSession);
+					}
+					break;
 			}
 
 			Debug.Log("URL :: " + _last_url);
@@ -1035,6 +1060,7 @@ public enum NET_WEB_API_CMD {
 	category,
 	script,
 	script_sub,
-	table_sub
+	table_sub,
+	commander
 
 }

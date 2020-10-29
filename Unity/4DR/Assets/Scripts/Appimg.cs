@@ -14,6 +14,7 @@ public class Appimg : MonoBehaviour {
 	public uisoMainMenu imgMainMenu;
 
 	public isoFdPlayerCtl _nowFullCtl;
+	public AppCommandCtlCamera _nowVideoCommander;
 	public MediaPlayerCtrl _nowFullVideo;
 
 	public List<string> FilePathList;
@@ -350,6 +351,8 @@ public class Appimg : MonoBehaviour {
 
 			_nowFullCtl.beforeParent = _videoManager.gameObject.transform;
 			_nowFullCtl.transform.SetParent(Appmain.appui.transform);
+
+			_nowVideoCommander = _nowFullCtl.beforeParent.GetComponent<AppCommandCtlCamera>();
 
 
 			{

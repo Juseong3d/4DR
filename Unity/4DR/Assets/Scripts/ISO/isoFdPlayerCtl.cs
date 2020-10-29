@@ -472,17 +472,18 @@ public class isoFdPlayerCtl : MonoBehaviour {
 					//"Common/_Default_Effect/Magic fire pro orange",
 					//"Common/_Default_Effect/Magic fire pro red",
 					//"Common/_Default_Effect/Magic fire pro yellow",
-                    "Common/_Default_Effect/Hit_A_01_Blue",
-                    "Common/_Default_Effect/Hit_A_02_Blue",
-                    "Common/_Default_Effect/Hit_A_03_Blue",
-                    "Common/_Default_Effect/Hit_A_04_Blue",
-                    "Common/_Default_Effect/Hit_A_05_Blue",
+                    "Common/_Default_Effect/TAE/BLUE_HIT",
+                    "Common/_Default_Effect/TAE/BLUE_HIT__MIDDLE",
+                    "Common/_Default_Effect/TAE/BLUE_HIT_AWESOME",
+                    "Common/_Default_Effect/TAE/BLUE_HIT_LOW",
+                    "Common/_Default_Effect/TAE/BLUE_HIT_STRONG",
 
-                    "Common/_Default_Effect/Hit_A_01_Red",
-                    "Common/_Default_Effect/Hit_A_02_Red",
-                    "Common/_Default_Effect/Hit_A_03_Red",
-                    "Common/_Default_Effect/Hit_A_04_Red",
-                    "Common/_Default_Effect/Hit_A_05_Red",
+                    //"Common/_Default_Effect/Magic fire pro yellow",
+                    "Common/_Default_Effect/TAE/RED_HIT",
+                    "Common/_Default_Effect/TAE/RED_HIT_MIDDLE",
+                    "Common/_Default_Effect/TAE/RED_HIT_AWESOME",
+                    "Common/_Default_Effect/TAE/RED_HIT_LOW",
+                    "Common/_Default_Effect/TAE/RED_HIT_STRONG",
 
 					"Common/_Default_Effect/pfb_Effect_Touch",	//9
 
@@ -507,8 +508,14 @@ public class isoFdPlayerCtl : MonoBehaviour {
         string _rtnString = _effects_path[rtn];
         if(isShort == true) {
             string[] _tmp = _rtnString.Split("/"[0]);
-
+                        
             _rtnString = _tmp[2];
+
+            if(_tmp.Length >= 4) {
+                for(int i = 3; i<_tmp.Length; i++) {
+                    _rtnString += "/" + _tmp[i];
+                }
+            }            
         }
 
         return _rtnString;

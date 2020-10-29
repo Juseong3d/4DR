@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Security.Cryptography;
 
 public class Appmain : MonoBehaviour {
 
@@ -48,6 +50,9 @@ public class Appmain : MonoBehaviour {
 
 
 	[Header(" * CUSTOM ------------")]
+	public long appStartTime;
+	public string appSession;
+
 	public bool isErrorPopup;	
 	public VIDEO_TYPE selectVideoType;
 
@@ -87,6 +92,16 @@ public class Appmain : MonoBehaviour {
 		Application.runInBackground = true;
 
 		Time.captureFramerate = 0;
+
+		appStartTime = Appdoc.GET_TIME_NOW();
+
+		{
+			var mdHash = MD5.Create();
+
+			appSession = Appdoc.GET_MD5_HASH(mdHash, appStartTime.ToString());
+		}
+
+		Debug.Log("appStartTime : " + appStartTime);
 
 		Debug.Log("Screen Size :: " + Screen.width + "/" + Screen.height);		
 
