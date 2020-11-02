@@ -354,6 +354,8 @@ public class Appimg : MonoBehaviour {
 
 			_nowVideoCommander = _nowFullCtl.beforeParent.GetComponent<AppCommandCtlCamera>();
 
+			_nowFullCtl._videoInfo = __info;
+
 
 			{
 				appmain._selectCameraScript.Clear();

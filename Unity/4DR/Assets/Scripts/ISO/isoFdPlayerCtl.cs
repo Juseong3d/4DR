@@ -7,6 +7,8 @@ using UnityEngine.Experimental.UIElements;
 
 public class isoFdPlayerCtl : MonoBehaviour {
 
+    public LIST_CONTENT_FDLIVE_ITEM _videoInfo;
+
     public Appfdcontroller fdcontroller;
     
     public MediaPlayerCtrl _mpc;
@@ -33,7 +35,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     float _cameraY;
     float _cameraRotationSpeed;
     
-	public int _idx;
+	public int _effectIdx;
 
     public Transform beforeParent;
     public float _contrlerStatusTime;
@@ -99,14 +101,14 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         //beforeParent = this.gameObject.transform.parent;
         //this.transform.SetParent(this.gameObject.transform.parent.parent);
-        _idx = 0;
+        _effectIdx = 0;
 
         _contrlerStatusTime = DEFINE.CONTRLER_STATUS_TIME;
 
         isLeftMenu = true;
         isRightMenu = true;
 
-        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
+        labelEffectName.text = GET_EFFECT_NAME(_effectIdx, true);
 
         isPressed = false;
         isPressed_AX7 = false;
@@ -402,8 +404,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 			//Debug.Log("_x :: " + _x + "/" + _y);
 			//for testing...			
-            string _path = GET_EFFECT_NAME(_idx);			
-            int scaleSize = GET_EFFECT_SCALE_SIZE(_idx);
+            string _path = GET_EFFECT_NAME(_effectIdx);			
+            int scaleSize = GET_EFFECT_SCALE_SIZE(_effectIdx);
 
             Debug.Log("_path :: " + _path);
 
@@ -577,16 +579,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4EffectIndex() {
 
-        _idx ++;
-        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
+        _effectIdx ++;
+        labelEffectName.text = GET_EFFECT_NAME(_effectIdx, true);
 
     }
 
 
     public void OnClickButton4EffectIndexM() {
 
-        _idx --;
-        labelEffectName.text = GET_EFFECT_NAME(_idx, true);
+        _effectIdx --;
+        labelEffectName.text = GET_EFFECT_NAME(_effectIdx, true);
 
     }
 

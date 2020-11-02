@@ -80,6 +80,7 @@ public class LIST_COMMANDER {
 public class LIST_COMMANDER_ITEM {
 
 	public int id;
+	public int video_id;
 	public string data;
 	public long timestamp;
 

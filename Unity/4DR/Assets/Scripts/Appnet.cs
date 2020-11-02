@@ -172,7 +172,12 @@ public class Appnet : MonoBehaviour {
 			networkData.tmpRecvData = www.text;
 
 #if UNITY_EDITOR
-			Debug.Log("RECV TEXT :\n" + www.text);
+			NET_WEB_API_CMD cmd = (NET_WEB_API_CMD)Enum.Parse(typeof(NET_WEB_API_CMD), networkData.functionName);
+
+			if(cmd != NET_WEB_API_CMD.commander) 
+			{
+				Debug.Log("RECV TEXT :\n" + www.text);
+			}
 #endif		
 
 			
@@ -277,7 +282,9 @@ public class Appnet : MonoBehaviour {
 				}
 
 				for(int i = 0; i<appclass._list_commander.result.Count; i++) {
-					Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
+					if(appclass._list_commander.result[i].video_id == Appmain.appimg._nowFullCtl._videoInfo.id) {
+						Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
+					}
 				}
 			}
 			break;
