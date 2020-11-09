@@ -490,6 +490,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //}
 
         NGUITools.SetActive(tweenAlphaJoystickCamera.gameObject, !_toggle.value);
+        NGUITools.SetActive(toggleParent, toggleSettingMain.value);
 
     }
 
