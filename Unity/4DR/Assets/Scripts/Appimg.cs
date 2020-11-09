@@ -17,6 +17,8 @@ public class Appimg : MonoBehaviour {
 	public AppCommandCtlCamera _nowVideoCommander;
 	public MediaPlayerCtrl _nowFullVideo;
 
+	public uisoStartScale[] _startTween;
+
 	public List<string> FilePathList;
     public List<string> CoverPathList;
 
@@ -331,6 +333,9 @@ public class Appimg : MonoBehaviour {
 
 		{
             GameObject _videoManager = LoadResource4Prefab(UIDEFINE.PATH_VIDEO_MANAGER, true);
+			
+			//_startTween = _videoManager.GetComponentsInChildren<uisoStartScale>();
+
             MediaPlayerCtrl _ctl = _videoManager.GetComponentInChildren<MediaPlayerCtrl>();
 
 			_nowFullVideo = _ctl;			
@@ -351,7 +356,7 @@ public class Appimg : MonoBehaviour {
 
 			_nowFullCtl.beforeParent = _videoManager.gameObject.transform;
 			_nowFullCtl.transform.SetParent(Appmain.appui.transform);
-
+			
 			_nowVideoCommander = _nowFullCtl.beforeParent.GetComponent<AppCommandCtlCamera>();
 
 			_nowFullCtl._videoInfo = __info;
@@ -374,6 +379,7 @@ public class Appimg : MonoBehaviour {
 
 			}
 
+			Appmain.appmain.isPlayVideo = true;
 			mainUIPrefab.SetActive(false);
         }
 	}

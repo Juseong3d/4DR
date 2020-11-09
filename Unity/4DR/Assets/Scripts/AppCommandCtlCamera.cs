@@ -33,6 +33,7 @@ public class AppCommandCtlCamera : MonoBehaviour
 
     public float commanderReflashTime;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -493,7 +494,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
 #if _TAE_
                 case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
-                {
+                if(gameObjectPlayerInfoVs == null) {
                     gameObjectPlayerInfoVs = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_PLAYER_INFO);                    
                     _cmd.Clear();
 
@@ -503,6 +504,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _info._blue.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.blud_playerindex]);
                     _info._red.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.red_playerindex]);
 
+                }else {
+                    Debug.Log("gameObjectPlayerInfoVs not nulllllllll");
                 }
                 break;
             case COMMAND_CTL_CAMERA.PLAYER_INFO_OFF:
@@ -519,7 +522,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                     }
 
                     isoDestoryTime idt = gameObjectPlayerInfoVs.AddComponent<isoDestoryTime>();
-                    idt.SET_DESTROY_TIMER(1f);
+                    idt.SET_DESTROY_TIMER(0f);
                     _cmd.Clear();
                 }
                 break;
@@ -535,13 +538,15 @@ public class AppCommandCtlCamera : MonoBehaviour
                     isoDestoryTime idt = _prefab.AddComponent<isoDestoryTime>();
                     idt.SET_DESTROY_TIMER(2f);
 
-                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
-                    _uigameInfo._info.isPlaying = true;
+                    if(gameObjectTAEScore != null) {
+                        uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+                        _uigameInfo._info.isPlaying = true;
+                    }
 
                 }
                 break;
             case COMMAND_CTL_CAMERA.ROUND_PAUSE:
-                {
+                if(gameObjectTAEScore != null) {
                     uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
                     
                     _uigameInfo._info.isPlaying = false;
@@ -550,7 +555,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.ROUND_RESTART:
-                {
+                if(gameObjectTAEScore != null) {
                     uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
                     
                     _uigameInfo._info.isPlaying = true;
@@ -573,7 +578,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                     NGUITools.Destroy(gameObjectTAEScore);
 
                     //UI SET
-                    if(gameInfo.gameType == GAME_TYPE_TAE.MINUS) {
+                    if(gameInfo.gameType == GAME_TYPE_TAE.MINUS) {                        
+
                         gameObjectTAEScore = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_TAE_SCORE_MINUS);
                         uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
                         
@@ -594,6 +600,9 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                         gameInfo.roundInfo[gameInfo.nowRoundCnt].blueScore = DEFINE.MAX_MINUS_GAME_SCORE;
                         gameInfo.roundInfo[gameInfo.nowRoundCnt].redScore = DEFINE.MAX_MINUS_GAME_SCORE;
+
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].prevBlueScore = DEFINE.MAX_MINUS_GAME_SCORE;
+                        gameInfo.roundInfo[gameInfo.nowRoundCnt].prevRedScore = DEFINE.MAX_MINUS_GAME_SCORE;
 
                         _uigameInfo.SET_INFO(gameInfo);
                     }else if(gameInfo.gameType == GAME_TYPE_TAE.PLUS) {
@@ -622,12 +631,14 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.SET_SCORE:
-                {
+                if(gameObjectTAEScore != null) {
                     uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
                     
                     if(_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].prevBlueScore = _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].blueScore;
                         _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].blueScore += _cmd.setScore;
                     }else {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].prevRedScore = _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].redScore;
                         _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].redScore += _cmd.setScore;
                     }
 
@@ -635,9 +646,9 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _cmd.Clear();
                 }
                 break;
+            case COMMAND_CTL_CAMERA.GAME_RESULT:
             case COMMAND_CTL_CAMERA.ROUND_RESULT:
-                {
-                    
+                {                    
                     string path = ((_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) ? UIDEFINE.PATH_EFFECT_WIN_BLUE:UIDEFINE.PATH_EFFECT_WIN_RED);
 
                     GameObject _prefab = Appimg.LoadResource4Prefab4UI(path);
@@ -651,7 +662,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }
                 break;
             case COMMAND_CTL_CAMERA.PENALTY_START:
-                {
+                if(gameObjectTAEScore != null) {
                     uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
 
                     _uigameInfo.SET_PERNALTY(_cmd.setScoreWho);
@@ -777,6 +788,9 @@ public class Q_COMMAND_CTL_CAMERA {
             return;
         }
 
+        status = COMMAND_STATUS.WAIT;
+        Debug.Log("Add Command Done : " + cmd);
+
         switch(cmd) {
          case COMMAND_CTL_CAMERA.DEFAULT :
 
@@ -794,20 +808,34 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ZOOM :
             _zoom = Convert.ToSingle(_tmp[i]);
             _ori_zoom = _zoom;
+
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.AUTO_ZOOM].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.LOOKAT :
             _x = Convert.ToInt32(_tmp[i++]);
             _y = Convert.ToInt32(_tmp[i++]);
             _zoom = Convert.ToSingle(_tmp[i++]);
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.AUTO_ZOOM].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.CHANNEL :
             _channel_index = Convert.ToInt32(_tmp[i++]);
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.CAMERA_ROTATION].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.EFFECT :
             _x = Convert.ToInt32(_tmp[i++]);
             _y = Convert.ToInt32(_tmp[i++]);
             _effect_index = Convert.ToInt32(_tmp[i++]);
             _effect_info = Appmain.appmain.GET_DEFAULT_EFFECT(_effect_index);
+
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.EFFECT].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.TEXT :
             _x = Convert.ToInt32(_tmp[i++]);
@@ -818,6 +846,9 @@ public class Q_COMMAND_CTL_CAMERA {
             break;
         case COMMAND_CTL_CAMERA.CHANNEL_TO:
             _channel_index = Convert.ToInt32(_tmp[i++]);
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.CAMERA_ROTATION].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.CAMERA_SHAKE:
             _cameraShake_ud = Convert.ToSingle(_tmp[i++]);
@@ -828,6 +859,9 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.TIME_REWIND:
             _time_rewind = Convert.ToSingle(_tmp[i++]) / 1000f;
             _isReplay = (_tmp[i].Equals("1") == true);
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.TIME_MACHINE].value == false) {
+                Clear();
+            }
             break;
         case COMMAND_CTL_CAMERA.TIME_FORWARD:
             _time_forward = Convert.ToSingle(_tmp[i++]) / 1000f;
@@ -839,6 +873,9 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.CHANNEL_LEFT:
         case COMMAND_CTL_CAMERA.CHANNEL_RIGHT:
             _channel_time = Convert.ToSingle(_tmp[i++]) / 1000f;
+            if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.TIME_MACHINE].value == false) {
+                Clear();
+            }
             break;
 #if _TAE_
         case COMMAND_CTL_CAMERA.PLAYER_INFO_ON:
@@ -860,9 +897,11 @@ public class Q_COMMAND_CTL_CAMERA {
             {
                 string[] _tmptmp = _tmp[i++].Split("|"[0]);
 
-                round_index = Convert.ToInt32(_tmptmp[0]);
-                blueWinCnt = Convert.ToInt32(_tmptmp[1]);
-                redWinCnt = Convert.ToInt32(_tmptmp[2]);
+                if(_tmptmp.Length > 1) {
+                    round_index = Convert.ToInt32(_tmptmp[0]);
+                    blueWinCnt = Convert.ToInt32(_tmptmp[1]);
+                    redWinCnt = Convert.ToInt32(_tmptmp[2]);
+                }
             }
             blud_playerindex = Convert.ToInt32(_tmp[i++]);
             red_playerindex = Convert.ToInt32(_tmp[i++]);
@@ -877,14 +916,14 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.PENALTY_START:
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             break;
+        case COMMAND_CTL_CAMERA.GAME_RESULT:
         case COMMAND_CTL_CAMERA.ROUND_RESULT:
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             _life_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
+        
 #endif
-        }
-
-        status = COMMAND_STATUS.WAIT;
+        }        
     }
 
 
@@ -938,7 +977,8 @@ public enum COMMAND_CTL_CAMERA {
     ROUND_RESTART,
 
     PENALTY_START,        
-    ROUND_RESULT
+    ROUND_RESULT,
+    GAME_RESULT
 
 #endif
 

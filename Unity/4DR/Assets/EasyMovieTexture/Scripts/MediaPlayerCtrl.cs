@@ -23,8 +23,6 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 	public Appfdcontroller fdcontroller;
 
-
-
     public string m_strFileName;
     public GameObject[] m_TargetMaterial = null;
     private Texture2D m_VideoTexture = null;
@@ -322,7 +320,9 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void OnVideoFirstFrameReady_LoadingMark() {
 		
 		//Debug.Log("test ::: ");
-		
+		for(int i = 0; i<Appmain.appimg._startTween.Length; i++) {
+			Appmain.appimg._startTween[i].TWEEN_START();
+		}
 	}
 
 	void OnApplicationQuit()

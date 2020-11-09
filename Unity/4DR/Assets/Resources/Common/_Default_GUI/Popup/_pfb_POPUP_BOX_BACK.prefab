@@ -61,7 +61,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: 0, b: 0, a: 0.3529412}
+  mColor: {r: 0, g: 0, b: 0, a: 0.6}
   mPivot: 4
   mWidth: 2000
   mHeight: 2000
@@ -164,7 +164,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 720, w: 1280}

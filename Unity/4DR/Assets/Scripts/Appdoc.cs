@@ -32,6 +32,7 @@ public class Appdoc : MonoBehaviour {
 	//게임 시작시 한번 초기활 내용들
 	public void initGameData() {
 
+		Appmain.appmain.isPlayVideo = false;
 
 	}
 
@@ -125,6 +126,7 @@ public class Appdoc : MonoBehaviour {
 			case GAME_STATUS.GS_INIT :
 				Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.video);
 				Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON(NET_WEB_API_CMD.script);
+				initGameData();
 				break;
 			case GAME_STATUS.GS_INTRO :
 

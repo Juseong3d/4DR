@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class uisoPlayerInfo : MonoBehaviour
 {
+    public UILabel labelAge;
+
+    public UILabel labelPlayerName;
+    public UILabel labelSpcialInfo;
+
     public UILabel labelTeamName;
     public UILabel labelAgeand;
+
+    public UILabel labelTotalPoint;
+
     public UILabel labelMainSkill;
-    public UILabel labelCur;
-    public UILabel labelPlayerName;
+    
+    
 
 
     // Start is called before the first frame update
@@ -27,10 +35,14 @@ public class uisoPlayerInfo : MonoBehaviour
     public void SET_INFO(DEFAULT_PLAYER_LIST _playerInfo) {
 
         labelTeamName.text = string.Format("{0} {1}", _playerInfo.country, _playerInfo.teamName);
-        labelPlayerName.text = _playerInfo.playerName;
-        labelAgeand.text = string.Format("Age {0}\nTall {1}\nWeight {2}", _playerInfo.age, _playerInfo.tall, _playerInfo.weight);
-        labelMainSkill.text = string.Format("[ffff64]MAIN SKILL[-]\n{0}", _playerInfo.s_skill);
-        labelCur.text = string.Format("{0}", _playerInfo.spcial_info);
+        labelPlayerName.text = string.Format("{0} ({1})", _playerInfo.playerName, _playerInfo.age);
+        labelAgeand.text = string.Format("{1}cm/{2}kg", _playerInfo.age, _playerInfo.tall, _playerInfo.weight);
+        labelAge.text = string.Format("{0}", _playerInfo.age);
+        //labelMainSkill.text = string.Format("[ffff64]MAIN SKILL[-]\n{0}", _playerInfo.s_skill);
+        labelMainSkill.text = string.Format("{0}", _playerInfo.s_skill);
+        labelSpcialInfo.text = string.Format("{0}", _playerInfo.spcial_info);
+
+        labelTotalPoint.text = string.Format("-");
 
     }
 }

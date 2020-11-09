@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
@@ -71,8 +72,22 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public UIToggle togglePlayButton;
     public UILabel labelTime;
+    public UILabel labelTotalTime;
 
     public bool isPressPlayerBackButton;
+
+    public TweenAlpha tweenAlphaPlayerController;
+    public float playerTouchTimmer;
+
+
+    public TweenScale tweenScaleSeekThumb;
+    
+    public GameObject toggleParent;
+    public UIToggle toggleSettingMain;
+    public UIToggle[] toggleOption;
+
+    public TweenAlpha tweenAlphaJoystickCamera;
+    public TweenAlpha tweenAlphaJoysticTime;
 
     // Start is called before the first frame update
     void Start() {
@@ -95,7 +110,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         buttonLeftCamera.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Left_Camera;
         buttonRightCamera.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Right_Camera;
-        _player.gameObject.AddComponent<UIEventListener>().onPress = OnClickButton4Player;
+        UIEventListener eventlistener = _player.gameObject.AddComponent<UIEventListener>();//
+        eventlistener.onPress = OnClickButton4Player;
+        //eventlistener.onPress += OnClickButton4PlayerTouch;
+
         _cameraY = 0.0f;
         _cameraRotationSpeed = 4.5f;
 
@@ -119,40 +137,162 @@ public class isoFdPlayerCtl : MonoBehaviour {
         //joyStickChannel = GetComponentInChildren<isoNGUIJoystick>();
         joyStickChannel._sider.onDragFinished += OnReleaseJoyStick;
         joyStickTime._sider.onDragFinished += OnReleaseJoyStick;
+
+        playerTouchTimmer = 0.1f;//DEFINE.PLAYER_CONTROLLER_TIME;
+
+        toggleOption = toggleParent.GetComponentsInChildren<UIToggle>();
+
+        NGUITools.SetActive(joyStickChannel.gameObject, false);
+        NGUITools.SetActive(joyStickTime.gameObject, false);
+        
     }
+
+
+     // Update is called once per frame
+    void LateUpdate() {
+
+        //if(isLeftTime == false && isRightTime == false) 
+        {
+            if(isLeft == true || joyStickChannel._sider.value == 1f) {
+                                
+                OnClickButton4Left(false);
+                
+            }else if(isRight == true || joyStickChannel._sider.value == 0f) {
+                
+                OnClickButton4Right(false);
+                                
+            }
+        }
+
+        //if(isLeft == false && isRight == false) 
+        {
+            if(isLeftTime == true) {
+                OnClickButton4Left(true);
+            }else if(isRightTime == true) {
+                OnClickButton4Right(true);
+            }
+        }
+        
+        if(isPressLeftCamera == true) {
+            OnClickButton4Left_Camera(this.gameObject, true);
+        }
+
+        if(isPressRightCamera == true) {
+            OnClickButton4Right_Camera(this.gameObject, true);
+        }
+
+        //if(isPressPlayerBackButton == true) {
+        //    OnClickButton4Player(this.gameObject, true);
+        //}
+        if(_info != null) {
+            if(_info.duration != 0) {            
+
+                float _value = (float)_info.time / (float)_info.duration;
+                labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
+                slider.value = _value;
+
+                if (isPressRightCamera == false && isPressLeftCamera == false) {
+
+                    Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+
+                    _cameraY = _info.channel * _cameraRotationSpeed;
+                }
+                
+                labelTime.text = Appdoc.getNumberToDateTime4Ori(_info.time / 1000, string.Empty, false);
+                SET_DURATION();
+                
+            }else {
+                labelTime.text = "UNKNOW";
+            }
+        }
+
+        //if(_contrlerStatusTime > 0.0f) {
+        //    _contrlerStatusTime -= Time.deltaTime;
+        //}else if(_contrlerStatusTime == 0.0f) {
+
+        //}else {
+        //    _contrlerStatusTime = 0.0f;
+        //    tweenCtlPanel.PlayReverse();
+        //}
+
+        processPressedControllerButton();
+        
+        if(toggleSettingMain.value == false) {
+            if(playerTouchTimmer != 0) {
+                playerTouchTimmer -= Time.deltaTime;
+
+                if(playerTouchTimmer < 0) {
+                    tweenAlphaPlayerController.PlayReverse();
+                    playerTouchTimmer = 0;
+                }
+            }
+        }
+        
+
+#if UNITY_EDITOR
+        lastCallFrame = -999;
+#endif
+    }   
+
 
     private void onDragFinished() {
 
         int _change = (int)((double)_info.duration * slider.value);
                 
         _mpc.SeekTo(_change);
-        
-    }
 
+        tweenScaleSeekThumb.ResetToBeginning();
+        tweenScaleSeekThumb.PlayForward();
+        
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
+    }
+    
 
     public void OnValueChangeJoyStick() {
 
-        if(joyStickChannel._sider.value < 0.5f) {
+        //if(joyStickChannel._sider.value < 0.5f) {
+        //    isLeft = true;
+        //    isRight = false;
+        //    if(joyStickChannel._sider.value > 0f) {
+        //        isSlowChange = true;
+        //    }else {
+        //        isSlowChange = false;
+        //    }
+        //}
+
+        //if(joyStickChannel._sider.value > 0.5f) {
+        //    isLeft = false;
+        //    isRight = true;
+        //    if(joyStickChannel._sider.value < 1f) {
+        //        isSlowChange = true;
+        //    }else {
+        //        isSlowChange = false;
+        //    }
+        //}
+
+        if (joyStickChannel._sider.value > 0.5f) {
             isLeft = true;
             isRight = false;
-            if(joyStickChannel._sider.value > 0f) {
-                isSlowChange = true;
-            }else {
-                isSlowChange = false;
-            }
+            //if (joyStickChannel._sider.value > 1f) {
+            //    isSlowChange = true;
+            //}
+            //else {
+            //    isSlowChange = false;
+            //}
         }
-        
-        if(joyStickChannel._sider.value > 0.5f) {
+
+        if (joyStickChannel._sider.value < 0.5f) {
             isLeft = false;
             isRight = true;
-            if(joyStickChannel._sider.value < 1f) {
-                isSlowChange = true;
-            }else {
-                isSlowChange = false;
-            }
+            //if (joyStickChannel._sider.value < 0f) {
+            //    isSlowChange = true;
+            //}
+            //else {
+            //    isSlowChange = false;
+            //}
         }
-        
-        if(joyStickChannel._sider.value == 0.5f) {
+
+        if (joyStickChannel._sider.value == 0.5f) {
             isLeft = false;
             isRight = false;            
             isSlowChange = false;            
@@ -307,92 +447,69 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }
         }
     }
+   
 
-    // Update is called once per frame
-    void LateUpdate() {
+    public void OnClickButton4PlayerTouch() {
 
-        //if(isLeftTime == false && isRightTime == false) 
-        {
-            if(isLeft == true || joyStickChannel._sider.value == 0f) {
+        Debug.Log("OnClickButton4PlayerTouch()");
 
-                if(isSlowChange == true) {
-                    if(Appmain.gameStatusCnt % 5 == 0) {
-                        OnClickButton4Left(false);
-                    }
-                }else {
-                    OnClickButton4Left(false);
-                }
-            }else if(isRight == true || joyStickChannel._sider.value == 1f) {
-                if(isSlowChange == true) {
-                    if(Appmain.gameStatusCnt % 5 == 0) {
-                        OnClickButton4Right(false);
-                    }
-                }else {
-                    OnClickButton4Right(false);
-                }                
-            }
-        }
+        tweenAlphaPlayerController.PlayForward();
+        if(toggleSettingMain.value == true) {
+            toggleSettingMain.value = false; 
+        }        
 
-        //if(isLeft == false && isRight == false) 
-        {
-            if(isLeftTime == true) {
-                OnClickButton4Left(true);
-            }else if(isRightTime == true) {
-                OnClickButton4Right(true);
-            }
-        }
-        
-        if(isPressLeftCamera == true) {
-            OnClickButton4Left_Camera(this.gameObject, true);
-        }
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
+    }
 
-        if(isPressRightCamera == true) {
-            OnClickButton4Right_Camera(this.gameObject, true);
-        }
+    public void RE_SET_TOUCH_TIMMER() {
 
-        //if(isPressPlayerBackButton == true) {
-        //    OnClickButton4Player(this.gameObject, true);
-        //}
-        if(_info != null) {
-            if(_info.duration != 0) {            
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
 
-                float _value = (float)_info.time / (float)_info.duration;
-                labelFrameInfo.text = string.Format("Time {0}/{1}\nFrame {2}\nChannel {3}\nwidth {4}\nheight {5}", _info.time, _info.duration, _info.frame, _info.channel, _info.videoWidth, _info.videoHeight);
-                slider.value = _value;
+    }
 
-                if (isPressRightCamera == false && isPressLeftCamera == false) {
 
-                    Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+    public void OnChangeToggleSettingMain() {
 
-                    _cameraY = _info.channel * _cameraRotationSpeed;
-                }
-                
-                labelTime.text = Appdoc.getNumberToDateTime4Ori(_info.time / 1000, string.Empty, false);
-                
-            }else {
-                labelTime.text = "UNKNOW";
-            }
-        }
-
-        //if(_contrlerStatusTime > 0.0f) {
-        //    _contrlerStatusTime -= Time.deltaTime;
-        //}else if(_contrlerStatusTime == 0.0f) {
-
+        //if(toggleSettingMain.value == true) {
+        //    NGUITools.SetActive(toggleParent, 
         //}else {
-        //    _contrlerStatusTime = 0.0f;
-        //    tweenCtlPanel.PlayReverse();
+
+        //}
+        NGUITools.SetActive(toggleParent, toggleSettingMain.value);
+    }
+
+
+    public void OnChangeToggleCameraRotation(UIToggle _toggle) {
+
+        //if(_toggle.value == true) {
+        //    //알파로 끔
+        //    tweenAlphaJoystickCamera.PlayForward();
+        //}else {
+        //    //알파로 킴
+        //    tweenAlphaJoystickCamera.PlayReverse();
         //}
 
-        processPressedControllerButton();
-        
+        NGUITools.SetActive(tweenAlphaJoystickCamera.gameObject, !_toggle.value);
 
-#if UNITY_EDITOR
-        lastCallFrame = -999;
-#endif
-    }   
+    }
 
-    
+
+    public void OnChangeToggleTimeMachine(UIToggle _toggle) {
+
+        // if(_toggle.value == true) {
+        //    //알파로 끔
+        //    tweenAlphaJoysticTime.PlayForward();
+        //}else {
+        //    //알파로 킴
+        //    tweenAlphaJoysticTime.PlayReverse();
+        //}
+        NGUITools.SetActive(tweenAlphaJoysticTime.gameObject, !_toggle.value);
+    }
+
+
     public void OnClickButton4Player(GameObject obj, bool isPress) {
+
+        OnClickButton4PlayerTouch();
 
 #if _TAE_
         return;
@@ -676,6 +793,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         lastCallFrame = _info.frame;
 
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
     }
 
 
@@ -721,6 +839,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 #endif
                 
         lastCallFrame = _info.frame;
+
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
     }
 
 
@@ -785,7 +905,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         _mpc.Pause();
         buttonTL.isEnabled = true;
-        buttonTR.isEnabled = true;       
+        buttonTR.isEnabled = true;
+
+        playerTouchTimmer = DEFINE.PLAYER_CONTROLLER_TIME;
 
     }
 
@@ -825,6 +947,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         Appmain.appdoc.setGameStatus(GAME_STATUS.GS_TITLE);
 #else
+        Appmain.appmain.isPlayVideo = false;
         Appmain.appimg.mainUIPrefab.SetActive(true);
 
         AppCommandCtlCamera _ccc = this.beforeParent.GetComponent<AppCommandCtlCamera>();
@@ -898,5 +1021,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
         }else {
             OnClickButton4Pause();
         }
+    }
+
+
+    public void SET_DURATION() {
+
+        labelTotalTime.text = Appdoc.getNumberToDateTime4Ori(_info.duration / 1000, string.Empty, false);
+
     }
 }

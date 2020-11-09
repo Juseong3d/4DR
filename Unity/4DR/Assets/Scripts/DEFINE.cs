@@ -20,7 +20,7 @@ public class DEFINE : MonoBehaviour {
 	public const string POPUP_NO = "NO";
 
 	public const string POPUP_EXIT_TITLE = "Close";
-	public const string POPUP_EXIT_QUSTION = "Want Close?";
+	public const string POPUP_EXIT_QUSTION = "Are you sure you want to exit 4D Taekwondo?";//"Want Close?";
 
 	public const int FDPLAYER_PORT = 7070;
 	public const float CONTRLER_STATUS_TIME = 5.0f;
@@ -39,7 +39,10 @@ public class DEFINE : MonoBehaviour {
 	public const float MAX_MINUS_GAME_SCORE = 100;
 	public const float MAX_PENALTY_TIME = 10;
 
-	public const float COMMAND_REFLASH_TIME = 1f;
+	public const float COMMAND_REFLASH_TIME = 0.5f;
+	public const int COMMANDER_CUT_TIME = 15;
+
+	public const float PLAYER_CONTROLLER_TIME = 3f;
 
 	static public string GET_LOCAL_FOLDER_PATH() {
 
@@ -171,5 +174,15 @@ public enum VIDEO_CONTENT_TYPE {
 	vod,
 	live,
 	local
+
+}
+
+
+public enum SETTING {
+
+	EFFECT,
+	AUTO_ZOOM,
+	CAMERA_ROTATION,
+	TIME_MACHINE
 
 }

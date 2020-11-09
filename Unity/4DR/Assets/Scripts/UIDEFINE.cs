@@ -12,29 +12,33 @@ internal class UIDEFINE {
 
 #if _TAE_
     public const string PATH_INTRO = "Common/_Default_GUI/TAE/pfb_Intro";
-    public const string PATH_TITLE = "Common/_Default_GUI/TAE/pfb_TITLE";
-    public const string PATH_MAIN_MENU = "Common/_Default_GUI/TAE/pfb_MAIN_MENU";
-    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE/pfb_VideoManager_Mini2";
+    public const string PATH_TITLE = "Common/_Default_GUI/TAE2/pfb_TITLE";
+    public const string PATH_MAIN_MENU = "Common/_Default_GUI/TAE2/pfb_MAIN_MENU";
+    public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/TAE2/pfb_VideoManager_Mini2";
 
-    public const string PATH_TAE_PLAYER_INFO = "Common/_Default_GUI/TAE/pfb_player_vs";
-    public const string PATH_TAE_ROUND_START = "Common/_Default_GUI/TAE/pfb_round";
-    public const string PATH_TAE_SCORE_MINUS = "Common/_Default_GUI/TAE/pfb_hp_gauage";
-    public const string PATH_TAE_SCORE_PLUS = "Common/_Default_GUI/TAE/pfb_up_score";
+    public const string PATH_TAE_PLAYER_INFO = "Common/_Default_GUI/TAE2/pfb_player_vs";
+    public const string PATH_TAE_ROUND_START = "Common/_Default_GUI/TAE2/pfb_round";
+    public const string PATH_TAE_SCORE_MINUS = "Common/_Default_GUI/TAE2/pfb_hp_gauage";
+    public const string PATH_TAE_SCORE_PLUS = "Common/_Default_GUI/TAE2/pfb_up_score";
 
     public const string PATH_EFFECT_DAMAGE = "Common/_Default_GUI/TAE/pfb_Damage";
 
-    public const string PATH_EFFECT_WIN_BLUE = "Common/_Default_GUI/TAE/pfb_win_blue_win";
-    public const string PATH_EFFECT_WIN_RED = "Common/_Default_GUI/TAE/pfb_win_red_win";
+    public const string PATH_EFFECT_WIN_BLUE = "Common/_Default_GUI/TAE2/pfb_win_blue_win";
+    public const string PATH_EFFECT_WIN_RED = "Common/_Default_GUI/TAE2/pfb_win_red_win";
+
+    public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI/TAE2/pfb_VideoManager2";
 #else	
 	public const string PATH_INTRO = "Common/_Default_GUI/pfb_Intro";
     public const string PATH_TITLE = "Common/_Default_GUI/pfb_TITLE";
     public const string PATH_MAIN_MENU = "Common/_Default_GUI/pfb_MAIN_MENU";
     public const string PATH_VIDEO_ITEM_MINI = "Common/_Default_GUI/pfb_VideoManager_Mini2";
+
+    public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI/pfb_VideoManager2";
 #endif
 
     public const string TEST_EFFECT = "Common/_Default_Effect/pfb_Effect_Touch";
 
-    public const string PATH_VIDEO_MANAGER = "Common/_Default_GUI/pfb_VideoManager2";
+    
     public const string PATH_VIDEO_CTL = "Common/_Default_GUI/pfb_FDPlayerCTL";    
     
 	public const string PATH_CAMERA_SCRIPT_ALL = "Common/_Default_Table/CameraScript";

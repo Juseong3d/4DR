@@ -97,30 +97,30 @@ public class PopupBox : MonoBehaviour {
 		if(_prefab == null)
 			Debug.Log("error popup box null");
 	
-        {
-            UISprite[] sprite;
+        //{
+        //    UISprite[] sprite;
 
-            sprite = dialogBox.gameObject.GetComponentsInChildren<UISprite>(true);
+        //    sprite = dialogBox.gameObject.GetComponentsInChildren<UISprite>(true);
 
-            for(int i = 0; i < sprite.Length; i++) {
+        //    for(int i = 0; i < sprite.Length; i++) {
 
-                sprite[i].atlas = UIDEFINE.getProjectAtlas(Appmain.appmain.projectType, sprite[i].atlas.name);
+        //        sprite[i].atlas = UIDEFINE.getProjectAtlas(Appmain.appmain.projectType, sprite[i].atlas.name);
 
-            }
-        }
+        //    }
+        //}
 
-        {
-            UILabel[] label;
+        //{
+        //    UILabel[] label;
 
-            label = dialogBox.gameObject.GetComponentsInChildren<UILabel>(true);
+        //    label = dialogBox.gameObject.GetComponentsInChildren<UILabel>(true);
 
-            for(int i = 0; i < label.Length; i++) {
+        //    for(int i = 0; i < label.Length; i++) {
 
-                label[i].trueTypeFont = UIDEFINE.setProjectFont(Appmain.appmain.projectType);
+        //        label[i].trueTypeFont = UIDEFINE.setProjectFont(Appmain.appmain.projectType);
 
-            }
+        //    }
 
-        }
+        //}
 
         if (dialogBox) {
             dialogBox.Set(title, content, actionType, eventReciver, funcName, soundType, localize);

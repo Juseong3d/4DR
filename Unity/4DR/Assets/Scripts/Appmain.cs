@@ -55,6 +55,7 @@ public class Appmain : MonoBehaviour {
 
 	public bool isErrorPopup;	
 	public VIDEO_TYPE selectVideoType;
+	public bool isPlayVideo;
 
 	public List<uisoITEM_CameraScript> _selectCameraScript;
 

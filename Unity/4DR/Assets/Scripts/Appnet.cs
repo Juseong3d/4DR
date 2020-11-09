@@ -174,7 +174,8 @@ public class Appnet : MonoBehaviour {
 #if UNITY_EDITOR
 			NET_WEB_API_CMD cmd = (NET_WEB_API_CMD)Enum.Parse(typeof(NET_WEB_API_CMD), networkData.functionName);
 
-			if(cmd != NET_WEB_API_CMD.commander) 
+			//if(cmd != NET_WEB_API_CMD.commander) 
+			if(!www.text.Equals("[]"))
 			{
 				Debug.Log("RECV TEXT :\n" + www.text);
 			}
@@ -281,9 +282,17 @@ public class Appnet : MonoBehaviour {
 					int a = 0;
 				}
 
+				//몇초 이상 지난건 애드 하지 않도록 해보자..
 				for(int i = 0; i<appclass._list_commander.result.Count; i++) {
 					if(appclass._list_commander.result[i].video_id == Appmain.appimg._nowFullCtl._videoInfo.id) {
-						Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
+						
+						//long nowTime = Appdoc.GET_TIME_NOW() - DEFINE.COMMANDER_CUT_TIME;
+						
+						//Debug.Log("nowTime : " + nowTime);
+						//if(appclass._list_commander.result[i].timestamp >= nowTime) 
+						{
+							Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
+						}
 					}
 				}
 			}

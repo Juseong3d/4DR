@@ -103,7 +103,7 @@ public class isoCameraZoom : MonoBehaviour
             if(touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved) {
                 zoom(difference * 0.001f);
 
-#if _TAE_
+#if _TAE_ && _JJJ_
                 Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition));                
 
                 Appmain.appui.mainCamera3D.transform.position += direction;
@@ -116,7 +116,7 @@ public class isoCameraZoom : MonoBehaviour
 
         }else if (Input.GetMouseButton(0)) {
 
-#if _TAE_
+#if _TAE_ && _JJJ_
             Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(Input.mousePosition)); 
 
             //Debug.Log("direction.x :: " + direction.x);
@@ -143,7 +143,7 @@ public class isoCameraZoom : MonoBehaviour
 #endif
 
         }else if(Input.GetMouseButtonUp(0)) {
-#if _TAE_
+#if _TAE_ && _JJJ_
             //RaycastHit _hit;
             RaycastHit[] hithit;
 

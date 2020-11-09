@@ -38,11 +38,11 @@ public class APP_INFO {
 		phoneNumber = "UNKNOW";
 
 		version0 = "0";
-		version1 = "3";
-		version2 = "7";
+		version1 = "4";
+		version2 = "0";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += "2.PROTO";
+		appVersion += "1.ALPHA";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -383,6 +383,9 @@ public class GAME_INFO_TAE {
 public class ROUND_INFO_TAE {
 	
 	public int nowRoundCnt;	//진행중인 라운드 수
+
+	public float prevBlueScore;
+	public float prevRedScore;
 		
 	public float blueScore;
 	public float redScore;

@@ -1619,6 +1619,21 @@ public class UILabel : UIWidget
 	/// OnValueChanged function in inspector with a label.
 	/// </summary>
 
+	public void SetCurrentProgressFix ()
+	{
+		if (UIProgressBar.current != null) {
+			int _x = 10;
+			float _tmpValue = UIProgressBar.current.value * _x;
+
+			text = _tmpValue.ToString("F");
+		}
+	}
+
+	/// <summary>
+	/// Convenience function, in case you wanted to associate progress bar, slider or scroll bar's
+	/// OnValueChanged function in inspector with a label.
+	/// </summary>
+
 	public void SetCurrentPercent ()
 	{
 		if (UIProgressBar.current != null)

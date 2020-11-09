@@ -1,11 +1,14 @@
 ﻿//using System.Collections.Generic;
 //using System.Security.Policy;
+using System;
 using UnityEngine;
 
 public class uisoITEM_VIDEO_MINI : MonoBehaviour
 {
     public UILabel labelInfo;
     public UILabel labelType;
+
+    public UISprite spriteType;
 
     public LIST_CONTENT_FDLIVE_ITEM __info;
 
@@ -29,15 +32,25 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
     public void SET_INFO(LIST_CONTENT_FDLIVE_ITEM _info) {
 
         string _tmp = string.Format("{0}", _info.title);
+        bool isResult = Enum.TryParse<VIDEO_CONTENT_TYPE>(_info.type, out _info._type);
 
         __info = _info;
 
-        labelInfo.text = _tmp;
+        labelInfo.text = _tmp;        
+
         labelType.text = _info.type.ToString().ToUpper();
 
         if(labelType.text.Equals("LIVE") == true) {
         //if(_info.type == VIDEO_CONTENT_TYPE.live) {
             labelType.color = Color.red;
+        }
+
+        if(_info._type == VIDEO_CONTENT_TYPE.vod) {
+            spriteType.spriteName = "img_vod_tag";
+            spriteType.MakePixelPerfect();
+        }else if(_info._type == VIDEO_CONTENT_TYPE.live) {
+            spriteType.spriteName = "img_live_tag";
+            spriteType.MakePixelPerfect();
         }
 
         if(labelType.text.Equals("LOCAL") == true) {

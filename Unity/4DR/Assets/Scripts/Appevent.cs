@@ -85,11 +85,19 @@ public class Appevent : MonoBehaviour {
             //if(Appmain.gameStatus < GAME_STATUS.GS_TITLE)   //로컬라이징 전에 종료 안뜨게 
             //    return;            
 
-			if(isMakedExitPopup == false) {
-				PopupBox.Create(DEFINE.POPUP_EXIT_QUSTION, DEFINE.POPUP_EXIT_TITLE, POPUPBOX_ACTION_TYPE.YESNO, this.gameObject, "OnConformExit");
-				isMakedExitPopup = true;
-			}else {
+			switch(Appmain.gameStatus) {
+				case GAME_STATUS.GS_MENU:
+					if(Appmain.appmain.isPlayVideo == false) {
+						if(isMakedExitPopup == false) {
+							PopupBox.Create(DEFINE.POPUP_EXIT_QUSTION, DEFINE.POPUP_EXIT_TITLE, POPUPBOX_ACTION_TYPE.YESNO, this.gameObject, "OnConformExit");
+							isMakedExitPopup = true;
+						}else {
 
+						}
+					}else {
+						Appmain.appimg._nowFullCtl.OnClickButtonExit();
+					}
+					break;
 			}
 		}
 

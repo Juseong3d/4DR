@@ -18,6 +18,9 @@ public class uisoGameInfo : MonoBehaviour
     public UISlider sliderBlue;
     public UISlider sliderRed;
 
+    public UISlider sliderBlueBack;
+    public UISlider sliderRedBack;
+
     public UISlider sliderBluePenalty;
     public UISlider sliderRedPenalty;    
 
@@ -89,6 +92,20 @@ public class uisoGameInfo : MonoBehaviour
                     sliderRedPenalty.value = _info.roundInfo[_info.nowRoundCnt].red.nowPenaltyTime / DEFINE.MAX_PENALTY_TIME;
                 }            
             }
+
+            if(_info.roundInfo[_info.nowRoundCnt].prevBlueScore != _info.roundInfo[_info.nowRoundCnt].blueScore) {
+
+                _info.roundInfo[_info.nowRoundCnt].prevBlueScore --;
+                sliderBlue.value = ((float)_info.roundInfo[_info.nowRoundCnt].prevBlueScore) / DEFINE.MAX_MINUS_GAME_SCORE;            
+
+            }
+
+            if(_info.roundInfo[_info.nowRoundCnt].prevRedScore != _info.roundInfo[_info.nowRoundCnt].redScore) {
+
+                _info.roundInfo[_info.nowRoundCnt].prevRedScore --;
+                sliderRed.value = ((float)_info.roundInfo[_info.nowRoundCnt].prevRedScore) / DEFINE.MAX_MINUS_GAME_SCORE;
+
+            }
         }
     }
 
@@ -134,14 +151,20 @@ public class uisoGameInfo : MonoBehaviour
             
         }else if(_info.gameType == GAME_TYPE_TAE.PLUS) {
 
-            labelMatchCnt.text = string.Format("MATCH\n{0}", _info.nowStageCnt);
-            labelRoundCnt.text = string.Format("ROUND\n{0}", _info.nowRoundCnt);
+            if(labelMatchCnt != null) 
+                labelMatchCnt.text = string.Format("MATCH\n{0}", _info.nowStageCnt);
+
+            if(labelRoundCnt != null)
+                labelRoundCnt.text = string.Format("R{0}", _info.nowRoundCnt);
 
             labelBlueName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blue.playerName);
             labelRedName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].red.playerName);
 
-            labelCountryBlue.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blue.country);
-            labelCountryRed.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].red.country);
+            if(labelCountryBlue != null)
+                labelCountryBlue.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blue.country);
+
+            if(labelCountryRed != null)
+                labelCountryRed.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].red.country);
 
             COUNTRY_CODE _blue = Appdoc.GET_COUNTRY_CODE(_info.roundInfo[_info.nowRoundCnt].blue.country);
             COUNTRY_CODE _red = Appdoc.GET_COUNTRY_CODE(_info.roundInfo[_info.nowRoundCnt].red.country);
@@ -176,8 +199,8 @@ public class uisoGameInfo : MonoBehaviour
 
             WHAT_TEAM_COLOR _who = _cmd.setScoreWho;
 
-            sliderBlue.value = ((float)_info.roundInfo[_info.nowRoundCnt].blueScore) / DEFINE.MAX_MINUS_GAME_SCORE;
-            sliderRed.value = ((float)_info.roundInfo[_info.nowRoundCnt].redScore) / DEFINE.MAX_MINUS_GAME_SCORE;
+            sliderBlue.value = ((float)_info.roundInfo[_info.nowRoundCnt].prevBlueScore) / DEFINE.MAX_MINUS_GAME_SCORE;
+            sliderRed.value = ((float)_info.roundInfo[_info.nowRoundCnt].prevRedScore) / DEFINE.MAX_MINUS_GAME_SCORE;
 
             GameObject _prfab = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_EFFECT_DAMAGE);
             UILabel _label = _prfab.GetComponentInChildren<UILabel>();
@@ -190,14 +213,16 @@ public class uisoGameInfo : MonoBehaviour
                 _prfab.transform.SetParent(sliderRed.thumb.transform);
             }
             
+            StartCoroutine(SET_BACK_GAUAGE(0.5f));
+
         }else if(_info.gameType == GAME_TYPE_TAE.PLUS) {
             
             WHAT_TEAM_COLOR _who = _cmd.setScoreWho;
 
             if(_who == WHAT_TEAM_COLOR.BLUE) {
-                labelScoreRed.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blueScore);
+                labelScoreBlue.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blueScore);
             }else if(_who == WHAT_TEAM_COLOR.RED) {
-                labelScoreBlue.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].redScore);
+                labelScoreRed.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].redScore);
             }
         }
     }
@@ -205,15 +230,33 @@ public class uisoGameInfo : MonoBehaviour
 
     public void SET_PERNALTY(WHAT_TEAM_COLOR _who) {
 
+        if(_info.gameType != GAME_TYPE_TAE.MINUS) return;
+
         if(_who == WHAT_TEAM_COLOR.BLUE) {
             _info.roundInfo[_info.nowRoundCnt].blue.isPenalty = true;
             _info.roundInfo[_info.nowRoundCnt].blue.nowPenaltyTime = DEFINE.MAX_PENALTY_TIME;
-            NGUITools.SetActive(sliderBluePenalty.gameObject, true);
+
+            if(sliderBluePenalty != null) {
+                NGUITools.SetActive(sliderBluePenalty.gameObject, true);
+            }
         }else if(_who == WHAT_TEAM_COLOR.RED) {
             _info.roundInfo[_info.nowRoundCnt].red.isPenalty = true;
             _info.roundInfo[_info.nowRoundCnt].red.nowPenaltyTime = DEFINE.MAX_PENALTY_TIME;
-            NGUITools.SetActive(sliderRedPenalty.gameObject, true);
+
+            if(sliderBluePenalty != null) {
+                NGUITools.SetActive(sliderRedPenalty.gameObject, true);
+            }
         }
+    }
+
+
+    IEnumerator SET_BACK_GAUAGE(float delay = 0.5f) {
+
+        yield return new WaitForSeconds(delay);
+
+        sliderBlueBack.value = sliderBlue.value;
+        sliderRedBack.value = sliderRed.value;
+
     }
 #endif
 }

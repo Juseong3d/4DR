@@ -5,6 +5,7 @@ using UnityEngine;
 public class uisoRoundStart : MonoBehaviour
 {
 
+    public UISprite spriteRoundInfo;
     public UILabel[] labelRoundInfo;
 
 
@@ -24,8 +25,12 @@ public class uisoRoundStart : MonoBehaviour
     public void SET_INFO(int _value) {
 
         for(int i = 0; i<labelRoundInfo.Length; i++) {
-            labelRoundInfo[i].text = string.Format("ROUND {0}", _value);
+            if(labelRoundInfo[i] != null) {
+                labelRoundInfo[i].text = string.Format("ROUND {0}", _value);
+            }
         }
+
+        spriteRoundInfo.spriteName = string.Format("img_r{0}", _value);
     }
 
 }

@@ -14,6 +14,10 @@ public class isoNGUIJoystick : MonoBehaviour
 
     }
 
+    private void Start() {
+        OnReleaseButton();
+    }
+
     // Update is called once per frame
     void Update()
     {
