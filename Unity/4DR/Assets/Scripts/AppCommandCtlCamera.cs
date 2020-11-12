@@ -341,12 +341,21 @@ public class AppCommandCtlCamera : MonoBehaviour
             case COMMAND_CTL_CAMERA.EFFECT :
                 {
                     GameObject _prefab = Appimg.LoadResource4Prefab(_cmd._effect_info.GET_PATH());
-                    Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+                    //Common/_Default_Effect/TAE/​pfb_effect_test​
+                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/​pfb_effect_test​");
+                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/ROUND_FX");
 
-                    _prefab.transform.localPosition = _position;
-                    _prefab.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    //D:\Project\2018\4DR_TAE\Unity\4DR\Assets\Resources\Common\_Default_Effect\TAE
+                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/BLUE_HIT__MIDDLE");
 
-                    _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+                    if(_prefab != null) {
+                        Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+
+                        _prefab.transform.localPosition = _position;
+                        _prefab.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+                        _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+                    }
 
                     _cmd.Clear();
                 }

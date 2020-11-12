@@ -39,10 +39,10 @@ public class APP_INFO {
 
 		version0 = "0";
 		version1 = "4";
-		version2 = "0";
+		version2 = "1";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += "2.ALPHA";
+		appVersion += ".ALPHA";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -236,6 +236,14 @@ public class DEFAULT_EFFECT_LIST {
 		this.resources_path = tableData[j ++];
 		this.pfb_name = tableData[j ++];
 		this.etc = tableData[j ++];
+
+		resources_path = resources_path.TrimStart();
+		resources_path = resources_path.TrimEnd();
+		resources_path = resources_path.Trim();
+		
+		pfb_name = pfb_name.TrimStart();
+		pfb_name = pfb_name.TrimEnd();
+		pfb_name = pfb_name.Trim();
 
 	}
 

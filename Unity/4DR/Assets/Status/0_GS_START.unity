@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6
 Transform:
   m_ObjectHideFlags: 0
@@ -454,7 +454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &221536736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &361418012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,7 +1071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &912019295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064523037679383687, guid: 3cd22d2c40a8db948956a679c98c9e49,
+        type: 3}
+      propertyPath: aspectRatio
+      value: 7.9210525
       objectReference: {fileID: 0}
     - target: {fileID: 8616069326835096364, guid: 3cd22d2c40a8db948956a679c98c9e49,
         type: 3}
@@ -1484,6 +1489,21 @@ PrefabInstance:
       propertyPath: onChange.Array.data[0].mTarget
       value: 
       objectReference: {fileID: 361418015}
+    - target: {fileID: 1190502613831937132, guid: 1d19fd62c90b205469d2a72545a862ff,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190502613831937132, guid: 1d19fd62c90b205469d2a72545a862ff,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190502613831937133, guid: 1d19fd62c90b205469d2a72545a862ff,
+        type: 3}
+      propertyPath: eventReceiverMask.m_Bits
+      value: 257
+      objectReference: {fileID: 0}
     - target: {fileID: 1190502613962991098, guid: 1d19fd62c90b205469d2a72545a862ff,
         type: 3}
       propertyPath: onChange.Array.data[0].mTarget
@@ -1962,16 +1982,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880802951}
     m_Modifications:
-    - target: {fileID: 1929447022678898488, guid: ed5c89c5135a24e46b6f71ebae960e28,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158351960947778759, guid: ed5c89c5135a24e46b6f71ebae960e28,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3239618310670458018, guid: ed5c89c5135a24e46b6f71ebae960e28,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2026,16 +2036,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3599802398322952286, guid: ed5c89c5135a24e46b6f71ebae960e28,
-        type: 3}
-      propertyPath: mColor.a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855052294291695197, guid: ed5c89c5135a24e46b6f71ebae960e28,
-        type: 3}
-      propertyPath: m_Name
-      value: Label_age
       objectReference: {fileID: 0}
     - target: {fileID: 7106155423823176167, guid: ed5c89c5135a24e46b6f71ebae960e28,
         type: 3}
@@ -2263,11 +2263,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pfb_win_blue_win
-      objectReference: {fileID: 0}
-    - target: {fileID: 8360448062820174043, guid: f35140faea2c2714e8718536b6a49e17,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35140faea2c2714e8718536b6a49e17, type: 3}

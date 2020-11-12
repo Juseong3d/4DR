@@ -42,7 +42,11 @@ public class uisoGameInfo : MonoBehaviour
     public UISprite spriteCountryRed;
     public UISprite spriteCountryBlue;
 
+    public ParticleSystem psPenaltyRed;
+    public ParticleSystem psPenaltyBlue;
     
+    public ParticleSystem psHPRed;
+    public ParticleSystem psHPBlue;
 
     // Start is called before the first frame update
     void Start()
@@ -205,12 +209,21 @@ public class uisoGameInfo : MonoBehaviour
             GameObject _prfab = Appimg.LoadResource4Prefab4UI(UIDEFINE.PATH_EFFECT_DAMAGE);
             UILabel _label = _prfab.GetComponentInChildren<UILabel>();
 
-            _label.text = string.Format("{0}", _cmd.setScore);
+            _label.text = string.Format("{0}", _cmd.setScore);            
 
-            if(_who == WHAT_TEAM_COLOR.BLUE) {
-                _prfab.transform.SetParent(sliderBlue.thumb.transform);
-            }else if(_who == WHAT_TEAM_COLOR.RED) {
-                _prfab.transform.SetParent(sliderRed.thumb.transform);
+            switch(_who) {
+                case WHAT_TEAM_COLOR.BLUE:
+                    _prfab.transform.SetParent(sliderBlue.thumb.transform);
+                    if(psHPBlue != null) {
+                        psHPBlue.Play();
+                    }
+                    break;
+                case WHAT_TEAM_COLOR.RED:
+                    _prfab.transform.SetParent(sliderRed.thumb.transform);
+                    if(psHPRed != null) {
+                        psHPRed.Play();
+                    }
+                    break;
             }
             
             StartCoroutine(SET_BACK_GAUAGE(0.5f));
@@ -239,12 +252,20 @@ public class uisoGameInfo : MonoBehaviour
             if(sliderBluePenalty != null) {
                 NGUITools.SetActive(sliderBluePenalty.gameObject, true);
             }
+
+            if(psPenaltyBlue != null) {
+                psPenaltyBlue.Play();
+            }
         }else if(_who == WHAT_TEAM_COLOR.RED) {
             _info.roundInfo[_info.nowRoundCnt].red.isPenalty = true;
             _info.roundInfo[_info.nowRoundCnt].red.nowPenaltyTime = DEFINE.MAX_PENALTY_TIME;
 
             if(sliderBluePenalty != null) {
                 NGUITools.SetActive(sliderRedPenalty.gameObject, true);
+            }
+
+            if(psPenaltyRed != null) {
+                psPenaltyRed.Play();
             }
         }
     }

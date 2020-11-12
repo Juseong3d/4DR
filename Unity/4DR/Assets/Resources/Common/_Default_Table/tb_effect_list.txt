@@ -1,25 +1,24 @@
-﻿24,5
-0,Common/_Default_Effect/TAE/,pfb_effect_test,임시 테스트용
-1,Common/_Default_Effect/TAE/,ROUND1,1라운드 시작
-2,Common/_Default_Effect/TAE/,ROUND2,2라운드 시작
-3,Common/_Default_Effect/TAE/,ROUND3,3라운드 시작
-4,Common/_Default_Effect/TAE/,BLUE_WIN,블루 승리
-5,Common/_Default_Effect/TAE/,BLUE_LOSE,블루 패배
-6,Common/_Default_Effect/TAE/,RED_WIN,레드 승리
-7,Common/_Default_Effect/TAE/,RED_LOSE,레드 패배
-8,Common/_Default_Effect/TAE/,BLUE_HIT,블루_Punch Body
-9,Common/_Default_Effect/TAE/,BLUE_HIT_LOW,블루_Kick Body
-10,Common/_Default_Effect/TAE/,BLUE_HIT__MIDDLE,블루_Kick Head
-11,Common/_Default_Effect/TAE/,BLUE_HIT_STRONG,블루_Spin Kick Body
-12,Common/_Default_Effect/TAE/,BLUE_HIT_AWESOME,블루_Spin Kick Head
-13,Common/_Default_Effect/TAE/,RED_HIT,레드_Punch Body
-14,Common/_Default_Effect/TAE/,RED_HIT_LOW,레드_Kick Body
-15,Common/_Default_Effect/TAE/,RED_HIT_MIDDLE,레드_Kick Head
-16,Common/_Default_Effect/TAE/,RED_HIT_STRONG,레드_Spin Kick Body
-17,Common/_Default_Effect/TAE/,RED_HIT_AWESOME,레드_Spin Kick Head
-18,Common/_Default_Effect/TAE/,PENALTY,페널티 획득시 
-19,Common/_Default_Effect/TAE/,ENERGY_REDUCE,에너지 감소
-20,Common/_Default_Effect/TAE/,SCORE_1POINT_NOMAL,1득점시
-21,Common/_Default_Effect/TAE/,SCORE_1POINT_PENALTY,상대 감점으로 인한 득점
-22,Common/_Default_Effect/TAE/,SCORE_2POINT,2득점시
-23,Common/_Default_Effect/TAE/,SCORE_3POINT,3득점시
+﻿23,28
+0,Common/_Default_Effect/TAE/,pfb_effect_test,0
+1,Common/_Default_Effect/TAE/,ROUND_FX_A,0
+2,Common/_Default_Effect/TAE/,BLUE_HIT,0
+3,Common/_Default_Effect/TAE/,BLUE_HIT__MIDDLE,0
+4,Common/_Default_Effect/TAE/,BLUE_WIN_2D_FX,0
+5,Common/_Default_Effect/TAE/,BLUE_HIT_LOW,0
+6,Common/_Default_Effect/TAE/,BLUE_HIT_STRONG,0
+7,Common/_Default_Effect/TAE/,BLUE_WIN_2D_FX,0
+8,Common/_Default_Effect/TAE/,ENERGY_REDUCE_FX_Blue,0
+9,Common/_Default_Effect/TAE/,ENERGY_REDUCE_FX_Red,0
+10,Common/_Default_Effect/TAE/,PENALTY,0
+11,Common/_Default_Effect/TAE/,PENALTY_2D_FX_Blue,0
+12,Common/_Default_Effect/TAE/,PENALTY_2D_FX_Red,0
+13,Common/_Default_Effect/TAE/,pfb_effect_test,0
+14,Common/_Default_Effect/TAE/,pfb_effect_text,0
+15,Common/_Default_Effect/TAE/,RED_HIT,0
+16,Common/_Default_Effect/TAE/,RED_HIT_AWESOME,0
+17,Common/_Default_Effect/TAE/,RED_HIT_LOW,0
+18,Common/_Default_Effect/TAE/,RED_HIT_MIDDLE,0
+19,Common/_Default_Effect/TAE/,RED_HIT_STRONG,0
+20,Common/_Default_Effect/TAE/,RED_WIN_2D_FX,0
+21,Common/_Default_Effect/TAE/,SCORE_1POINT_PENALTY_FX,0
+22,Common/_Default_Effect/TAE/,WIN_3D_FX,0

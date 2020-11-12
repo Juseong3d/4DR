@@ -57083,6 +57083,7 @@ GameObject:
   - component: {fileID: 7677006452599010489}
   - component: {fileID: 1031371910449010673}
   - component: {fileID: 8806117031733084491}
+  - component: {fileID: 4208725740851722528}
   m_Layer: 0
   m_Name: BLUE_HIT_AWESOME
   m_TagString: Untagged
@@ -57097,7 +57098,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613430795838790625}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
@@ -61785,6 +61786,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4208725740851722528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613430795838790625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a29d8d7c9bc18a4fab5568f76644a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatus: 0
+  time: 3
 --- !u!1 &8814800708597736319
 GameObject:
   m_ObjectHideFlags: 0

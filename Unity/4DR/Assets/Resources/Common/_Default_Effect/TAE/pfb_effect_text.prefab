@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1320311734412789057}
   - component: {fileID: 6670662437797300715}
   - component: {fileID: 114697585958272758}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: pfb_effect_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5405199893977138051}
   - component: {fileID: 2653236484584686188}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7049469042218618686}
   - component: {fileID: 7837855120799920675}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using System.Text;
 
 public class Appimg : MonoBehaviour {
 
@@ -44,7 +45,7 @@ public class Appimg : MonoBehaviour {
 		
 		loadTable4DefaultCountryCode();
 
-		loadTable4EffectList();	
+		loadTable4EffectList();
 		loadTable4EffectTable();
 		loadTable4PlayerList();
 		loadTable4GameList();
@@ -396,15 +397,36 @@ public class Appimg : MonoBehaviour {
 		GameObject prefab = Appmain.appimg.bundleMgr.bundle[DEFINE.ASSET_BUNDLE_IDX].Load(path, typeof(GameObject)) as GameObject;
 		GameObject instan = (GameObject)Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity);
 		
-#else
+#else	
+
+		path = Appdoc.GET_STRING_DEL_BOM(path);
 		GameObject prefab = (GameObject)Resources.Load(path);
-		GameObject instan = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+		if(prefab == null) {
+			int len = path.Length;
+			Debug.Log("len :: " + len);
+			Debug.Log("path :: [" + path + "]");
+
+			path = path.TrimStart();
+			path = path.TrimEnd();
+			path = path.Trim();
+
+			len = path.Length;
+			Debug.Log("len :: " + len);
+			Debug.Log("path :: [" + path + "]");
+			
+			//Debug.Break();
+			Debug.Log("###################################################### : " + path);
+		}else {
+			GameObject instan = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
 #endif
-		if(isScaleOne == true) {
-			instan.transform.localScale = new Vector3(1, 1, 1);
+			if(isScaleOne == true) {
+				instan.transform.localScale = new Vector3(1, 1, 1);
+			}
+
+			return instan;
 		}
 
-		return instan;
+		return null;
 	}
 
 
@@ -655,11 +677,14 @@ public class Appimg : MonoBehaviour {
 
 	internal void overwriteTable(LIST_SCRIPT_LIST_ITEM_SUB recvValue) {
 
+		return;
+
 		TABLE_LIST whatTable;
-		bool isResult = Enum.TryParse<TABLE_LIST>(recvValue.filename, out whatTable);
+		string[] _filename = recvValue.filename.Split("."[0]);
+		bool isResult = Enum.TryParse<TABLE_LIST>(_filename[0], out whatTable);
 
 		if(isResult == false) {
-			Debug.Log("none table list check :: " + recvValue.filename);
+			Debug.Log("none table list check :: " + _filename);
 			return;
 		}
 
