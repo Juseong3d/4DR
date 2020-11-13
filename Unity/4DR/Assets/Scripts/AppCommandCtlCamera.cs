@@ -475,7 +475,9 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.SPEED:
                 {
-                    _mediaMain.Speed(_cmd._speed);
+                    //_mediaMain.Speed(_cmd._speed);
+                    Time.timeScale = _cmd._speed;
+                    Debug.Log("Time.timeScale : " + Time.timeScale);
                     _cmd.Clear();
                 }
                 break;
@@ -684,6 +686,12 @@ public class AppCommandCtlCamera : MonoBehaviour
             case COMMAND_CTL_CAMERA.NONE :
                 //Debug.Log("remove index == " + _cmd.index);
                 //_commandes.RemoveAt(_cmd.index);
+                break;
+            case COMMAND_CTL_CAMERA.SET_VIBRATE:
+                {
+                    Appsound.VIBRATE();
+                    _cmd.Clear();
+                }
                 break;
 
             }
@@ -987,9 +995,11 @@ public enum COMMAND_CTL_CAMERA {
 
     PENALTY_START,        
     ROUND_RESULT,
-    GAME_RESULT
+    GAME_RESULT,
 
 #endif
+
+    SET_VIBRATE
 
 }
  

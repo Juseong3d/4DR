@@ -399,7 +399,7 @@ public class Appimg : MonoBehaviour {
 		
 #else	
 
-		path = Appdoc.GET_STRING_DEL_BOM(path);
+		//path = Appdoc.GET_STRING_DEL_BOM(path);
 		GameObject prefab = (GameObject)Resources.Load(path);
 		if(prefab == null) {
 			int len = path.Length;
@@ -676,8 +676,6 @@ public class Appimg : MonoBehaviour {
 
 
 	internal void overwriteTable(LIST_SCRIPT_LIST_ITEM_SUB recvValue) {
-
-		return;
 
 		TABLE_LIST whatTable;
 		string[] _filename = recvValue.filename.Split("."[0]);

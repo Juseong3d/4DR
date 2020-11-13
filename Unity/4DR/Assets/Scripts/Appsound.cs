@@ -182,4 +182,14 @@ public class Appsound : MonoBehaviour {
 		return Convert.ToBoolean(PlayerPrefs.GetInt(DEFINE.KEY_OPTION_EFFECT_SOUND, 1));
 
 	}
+
+
+	public static void VIBRATE() {
+
+		
+#if UNITY_ANDROID
+		Handheld.Vibrate();
+#endif
+
+	}
 }

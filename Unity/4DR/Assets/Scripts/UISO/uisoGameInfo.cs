@@ -78,6 +78,8 @@ public class uisoGameInfo : MonoBehaviour
                     _info.roundInfo[_info.nowRoundCnt].blue.nowPenaltyTime = 0f;
                     _info.roundInfo[_info.nowRoundCnt].blue.isPenalty = false;
                     NGUITools.SetActive(sliderBluePenalty.gameObject, false);
+
+                    NGUITools.SetActive(psPenaltyBlue.gameObject, false);                    
                 }
                 {
                     sliderBluePenalty.value = _info.roundInfo[_info.nowRoundCnt].blue.nowPenaltyTime / DEFINE.MAX_PENALTY_TIME;
@@ -91,6 +93,8 @@ public class uisoGameInfo : MonoBehaviour
                     _info.roundInfo[_info.nowRoundCnt].red.nowPenaltyTime = 0f;
                     _info.roundInfo[_info.nowRoundCnt].red.isPenalty = false;
                     NGUITools.SetActive(sliderRedPenalty.gameObject, false);
+
+                    NGUITools.SetActive(psPenaltyRed.gameObject, false);                    
                 }
                 {
                     sliderRedPenalty.value = _info.roundInfo[_info.nowRoundCnt].red.nowPenaltyTime / DEFINE.MAX_PENALTY_TIME;
@@ -152,6 +156,10 @@ public class uisoGameInfo : MonoBehaviour
             labelBlueName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blue.playerName);
             labelRedName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].red.playerName);
 
+            //psPenaltyBlue.Stop();
+            //psPenaltyRed.Stop();
+            NGUITools.SetActive(psPenaltyBlue.gameObject, false);
+            NGUITools.SetActive(psPenaltyRed.gameObject, false);
             
         }else if(_info.gameType == GAME_TYPE_TAE.PLUS) {
 
@@ -254,7 +262,8 @@ public class uisoGameInfo : MonoBehaviour
             }
 
             if(psPenaltyBlue != null) {
-                psPenaltyBlue.Play();
+                NGUITools.SetActive(psPenaltyBlue.gameObject, true);
+                
             }
         }else if(_who == WHAT_TEAM_COLOR.RED) {
             _info.roundInfo[_info.nowRoundCnt].red.isPenalty = true;
@@ -265,7 +274,7 @@ public class uisoGameInfo : MonoBehaviour
             }
 
             if(psPenaltyRed != null) {
-                psPenaltyRed.Play();
+                NGUITools.SetActive(psPenaltyRed.gameObject, true);
             }
         }
     }
