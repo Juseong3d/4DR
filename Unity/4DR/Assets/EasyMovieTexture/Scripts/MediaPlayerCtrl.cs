@@ -930,6 +930,17 @@ public class MediaPlayerCtrl : MonoBehaviour
 
 	}
 
+
+	public void VIBRATOR(long[] _pattern) {
+
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		Call_VIBRATOR(_pattern);
+#endif
+#endif
+
+	}
+
 	public int Left(bool _how) {
 
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
@@ -1336,6 +1347,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void Call_Pause()
 	{
 		GetJavaObject().Call("Pause");
+	}
+
+	private void Call_VIBRATOR(long[] _pattern) {
+		GetJavaObject().Call("VIBRATOR", new object[] { _pattern });
 	}
 
 

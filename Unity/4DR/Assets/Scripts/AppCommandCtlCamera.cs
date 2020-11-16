@@ -693,6 +693,12 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _cmd.Clear();
                 }
                 break;
+            case COMMAND_CTL_CAMERA.SET_VIBRATE_PATTEN:
+                {
+                    _mediaMain.VIBRATOR(_cmd.vibratior_pattern);
+                    _cmd.Clear();
+                }
+                break;
 
             }
 
@@ -772,6 +778,8 @@ public class Q_COMMAND_CTL_CAMERA {
     ///
     public WHAT_TEAM_COLOR setScoreWho;
     public int setScore;
+
+    public long[] vibratior_pattern;
 
     //table parsing용
     public Q_COMMAND_CTL_CAMERA(string _ori) {
@@ -938,8 +946,21 @@ public class Q_COMMAND_CTL_CAMERA {
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             _life_time = Convert.ToSingle(_tmp[i++]) / 1000f;
             break;
-        
+
 #endif
+        case COMMAND_CTL_CAMERA.SET_VIBRATE_PATTEN:
+            {
+                string[] _tmptmp = _tmp[i++].Split("|"[0]);
+
+                Debug.Log("_tmptmp.Length : " + _tmptmp.Length);
+
+                vibratior_pattern = new long[_tmptmp.Length];
+
+                for(int j = 0; j<_tmptmp.Length; j++) {
+                    vibratior_pattern[j] = Convert.ToInt64(_tmptmp[j]);
+                }
+            }
+            break;
         }        
     }
 
@@ -999,7 +1020,9 @@ public enum COMMAND_CTL_CAMERA {
 
 #endif
 
-    SET_VIBRATE
+    SET_VIBRATE,
+
+    SET_VIBRATE_PATTEN,
 
 }
  
@@ -1019,5 +1042,15 @@ public enum WHAT_TEAM_COLOR {
     NONE = -1,
     BLUE = 0,
     RED = 1
+
+}
+
+
+public enum PARTS {
+
+	head,
+	body,
+	kick,
+	punch
 
 }
