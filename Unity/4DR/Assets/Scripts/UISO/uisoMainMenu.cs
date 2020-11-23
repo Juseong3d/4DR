@@ -153,7 +153,7 @@ public class uisoMainMenu : MonoBehaviour
                 break;
         }
 
-        maxCnt = _gridMain.GetChildList().size - 1;
+        maxCnt = _gridMain.GetChildList().Count - 1;
     }
 
 
@@ -166,7 +166,7 @@ public class uisoMainMenu : MonoBehaviour
     
     private void SET_MAX_CNT() {
 
-        maxCnt = _gridMain.GetChildList().size - 1;
+        maxCnt = _gridMain.GetChildList().Count - 1;
 
     }
 

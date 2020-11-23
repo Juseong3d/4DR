@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using System.Text;
@@ -28,7 +28,7 @@ public class ByteReader
 
 	static public ByteReader Open (string path)
 	{
-#if UNITY_EDITOR || (!UNITY_FLASH && !NETFX_CORE && !UNITY_WP8)
+#if UNITY_EDITOR || (!UNITY_FLASH && !NETFX_CORE && !UNITY_WP8 && !UNITY_WP_8_1)
 		FileStream fs = File.OpenRead(path);
 
 		if (fs != null)
@@ -217,7 +217,6 @@ public class ByteReader
 				if (s == null) return null;
 				s = s.Replace("\\n", "\n");
 				line += "\n" + s;
-				++wordStart;
 			}
 			else
 			{
@@ -251,7 +250,7 @@ public class ByteReader
 
 						if (line[i + 1] != '"')
 						{
-							mTemp.Add(line.Substring(wordStart, i - wordStart));
+							mTemp.Add(line.Substring(wordStart, i - wordStart).Replace("\"\"", "\""));
 							insideQuotes = false;
 
 							if (line[i + 1] == ',')
@@ -275,6 +274,7 @@ public class ByteReader
 				if (insideQuotes) continue;
 				mTemp.Add(line.Substring(wordStart, line.Length - wordStart));
 			}
+			else mTemp.Add("");
 			return mTemp;
 		}
 		return null;

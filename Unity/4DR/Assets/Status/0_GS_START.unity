@@ -585,19 +585,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3000
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 1
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0
 --- !u!4 &308024032
 Transform:
   m_ObjectHideFlags: 0
@@ -969,6 +976,7 @@ MonoBehaviour:
   mWidth: 1920
   mHeight: 1080
   mDepth: 9
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -978,6 +986,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -989,10 +1000,10 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
-  mTexture: {fileID: 2800000, guid: 556ff308afae40043a9532d93664e2ac, type: 3}
-  mMat: {fileID: 0}
+  mTexture: {fileID: 2800000, guid: 887fd6319f9a96047ae4f195849c6c46, type: 3}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
+  mFixedAspect: 0
 --- !u!54 &788691261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1040,19 +1051,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3009
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 9999
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0
 --- !u!1 &912019294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1736,16 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 257
       objectReference: {fileID: 0}
+    - target: {fileID: 1190502613831937132, guid: 1d19fd62c90b205469d2a72545a862ff,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190502613831937132, guid: 1d19fd62c90b205469d2a72545a862ff,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1190502613831937133, guid: 1d19fd62c90b205469d2a72545a862ff,
         type: 3}
       propertyPath: eventReceiverMask.m_Bits
@@ -1950,27 +1978,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880802951}
     m_Modifications:
-    - target: {fileID: 876009242678414919, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2741552360675037368, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: mAtlas
-      value: 
-      objectReference: {fileID: 1125776013334430137, guid: 54696e691b7017041bd3e6bad17b14a3,
-        type: 3}
-    - target: {fileID: 2955845290534135147, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634748173676576590, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5578414653245268061, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2026,17 +2033,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5792097737494560866, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7950210873126972862, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
-        type: 3}
-      propertyPath: mAtlas
-      value: 
-      objectReference: {fileID: 1125776013334430137, guid: 54696e691b7017041bd3e6bad17b14a3,
-        type: 3}
     - target: {fileID: 8905059287958537634, guid: 9bd42a08be191214cb2fbaed50d6c3c1,
         type: 3}
       propertyPath: m_Name
@@ -2357,7 +2353,7 @@ PrefabInstance:
     - target: {fileID: 3278273585775661041, guid: edbddab7af5540144a7aa5d988a3f162,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: 3278273585775661041, guid: edbddab7af5540144a7aa5d988a3f162,
         type: 3}

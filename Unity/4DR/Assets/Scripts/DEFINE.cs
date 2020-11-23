@@ -44,6 +44,8 @@ public class DEFINE : MonoBehaviour {
 
 	public const float PLAYER_CONTROLLER_TIME = 3f;
 
+	public const float LIVE_BACK_SEEK = 10f;
+
 	static public string GET_LOCAL_FOLDER_PATH() {
 
 		return Application.persistentDataPath + "" + "/4DLocal/";

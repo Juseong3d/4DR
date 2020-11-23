@@ -1,14 +1,17 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 /// <summary>
-/// This improved version of the System.Collections.Generic.List that doesn't release the buffer on Clear(), resulting in better performance and less garbage collection.
+/// This improved version of the System.Collections.Generic.List that doesn't release the buffer on Clear(),
+/// resulting in better performance and less garbage collection.
+/// PRO: BetterList performs faster than List when you Add and Remove items (although slower if you remove from the beginning).
+/// CON: BetterList performs worse when sorting the list. If your operations involve sorting, use the standard List instead.
 /// </summary>
 
 public class BetterList<T>
@@ -16,21 +19,21 @@ public class BetterList<T>
 #if UNITY_FLASH
 
 	List<T> mList = new List<T>();
-	
+
 	/// <summary>
 	/// Direct access to the buffer. Note that you should not use its 'Length' parameter, but instead use BetterList.size.
 	/// </summary>
-	
+
 	public T this[int i]
 	{
 		get { return mList[i]; }
 		set { mList[i] = value; }
 	}
-	
+
 	/// <summary>
 	/// Compatibility with the non-flash syntax.
 	/// </summary>
-	
+
 	public List<T> buffer { get { return mList; } }
 
 	/// <summary>
@@ -154,12 +157,13 @@ public class BetterList<T>
 			}
 		}
 	}
-	
+
 	/// <summary>
 	/// Convenience function. I recommend using .buffer instead.
 	/// </summary>
 
 	[DebuggerHidden]
+	[System.Obsolete("Access the list.buffer[index] instead -- direct array access avoids a copy, so it can be much faster")]
 	public T this[int i]
 	{
 		get { return buffer[i]; }

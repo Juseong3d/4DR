@@ -124,7 +124,7 @@ public class uisoGameInfo : MonoBehaviour
 
         if(_info.gameType == GAME_TYPE_TAE.MINUS) {
 
-            labelRoundCnt.text = string.Format("{0}R", _info.nowRoundCnt);
+            labelRoundCnt.text = string.Format("ROUND {0}", _info.nowRoundCnt);
 
             //3라운드 5라운드를 박아스 쓰좌...
             if(_info.nowStageCnt == 0) {
@@ -234,7 +234,7 @@ public class uisoGameInfo : MonoBehaviour
                     break;
             }
             
-            StartCoroutine(SET_BACK_GAUAGE(0.5f));
+            StartCoroutine(SET_BACK_GAUAGE(0.8f));
 
         }else if(_info.gameType == GAME_TYPE_TAE.PLUS) {
             

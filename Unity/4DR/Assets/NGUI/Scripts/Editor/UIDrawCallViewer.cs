@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEditor;
 using UnityEngine;
@@ -77,14 +77,14 @@ public class UIDrawCallViewer : EditorWindow
 
 		for (int i = 0; i < dcs.size; ++i)
 		{
-			UIDrawCall dc = dcs[i];
+			UIDrawCall dc = dcs.buffer[i];
 			string key = "Draw Call " + (i + 1);
 			bool highlight = (selectedPanel == null || selectedPanel == dc.manager);
 
 			if (!highlight)
 			{
 				if (!NGUISettings.showAllDCs) continue;
-				
+
 				if (UnityEditor.EditorPrefs.GetBool(key, true))
 				{
 					GUI.color = new Color(0.85f, 0.85f, 0.85f);
@@ -110,13 +110,13 @@ public class UIDrawCallViewer : EditorWindow
 
 				int count = 0;
 
-				for (int a = 0; a < UIPanel.list.size; ++a)
+				for (int a = 0; a < UIPanel.list.Count; ++a)
 				{
-					UIPanel p = UIPanel.list.buffer[a];
+					UIPanel p = UIPanel.list[a];
 
-					for (int b = 0; b < p.widgets.size; ++b)
+					for (int b = 0; b < p.widgets.Count; ++b)
 					{
-						UIWidget w = p.widgets.buffer[b];
+						UIWidget w = p.widgets[b];
 						if (w.drawCall == dc) ++count;
 					}
 				}
@@ -127,13 +127,13 @@ public class UIDrawCallViewer : EditorWindow
 				list[0] = count.ToString();
 				count = 0;
 
-				for (int a = 0; a < UIPanel.list.size; ++a)
+				for (int a = 0; a < UIPanel.list.Count; ++a)
 				{
-					UIPanel p = UIPanel.list.buffer[a];
+					UIPanel p = UIPanel.list[a];
 
-					for (int b = 0; b < p.widgets.size; ++b)
+					for (int b = 0; b < p.widgets.Count; ++b)
 					{
-						UIWidget w = p.widgets.buffer[b];
+						UIWidget w = p.widgets[b];
 
 						if (w.drawCall == dc)
 						{
@@ -152,13 +152,13 @@ public class UIDrawCallViewer : EditorWindow
 				{
 					count = 0;
 
-					for (int a = 0; a < UIPanel.list.size; ++a)
+					for (int a = 0; a < UIPanel.list.Count; ++a)
 					{
-						UIPanel p = UIPanel.list.buffer[a];
+						UIPanel p = UIPanel.list[a];
 
-						for (int b = 0; b < p.widgets.size; ++b)
+						for (int b = 0; b < p.widgets.Count; ++b)
 						{
-							UIWidget w = p.widgets.buffer[b];
+							UIWidget w = p.widgets[b];
 
 							if (w.drawCall == dc && ++count == sel)
 							{

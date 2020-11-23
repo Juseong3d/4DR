@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using UnityEditor;
@@ -11,8 +11,8 @@ public class UIPlayTweenEditor : Editor
 {
 	enum ResetOnPlay
 	{
-		Continue,
-		Restart,
+		ContinueFromCurrent,
+		RestartTween,
 		RestartIfNotPlaying,
 	}
 
@@ -31,14 +31,17 @@ public class UIPlayTweenEditor : Editor
 		GUI.changed = false;
 		GameObject tt = (GameObject)EditorGUILayout.ObjectField("Tween Target", tw.tweenTarget, typeof(GameObject), true);
 
-		bool inc = EditorGUILayout.Toggle("Include Children", tw.includeChildren);
-		int group = EditorGUILayout.IntField("Tween Group", tw.tweenGroup, GUILayout.Width(160f));
+		var ss = tw.startState;
+		var inc = EditorGUILayout.Toggle("Include Children", tw.includeChildren);
+		var setState = EditorGUILayout.Toggle("Start State", tw.setState);
+		if (setState) ss = EditorGUILayout.FloatField("   value", ss);
+		var group = EditorGUILayout.IntField("Tween Group", tw.tweenGroup, GUILayout.Width(160f));
 
 		AnimationOrTween.Trigger trigger = (AnimationOrTween.Trigger)EditorGUILayout.EnumPopup("Trigger condition", tw.trigger);
 		AnimationOrTween.Direction dir = (AnimationOrTween.Direction)EditorGUILayout.EnumPopup("Play direction", tw.playDirection);
 		AnimationOrTween.EnableCondition enab = (AnimationOrTween.EnableCondition)EditorGUILayout.EnumPopup("If target is disabled", tw.ifDisabledOnPlay);
-		ResetOnPlay rs = tw.resetOnPlay ? ResetOnPlay.Restart : (tw.resetIfDisabled ? ResetOnPlay.RestartIfNotPlaying : ResetOnPlay.Continue);
-		ResetOnPlay reset = (ResetOnPlay)EditorGUILayout.EnumPopup("If already playing", rs);
+		ResetOnPlay rs = tw.resetOnPlay ? ResetOnPlay.RestartTween : (tw.resetIfDisabled ? ResetOnPlay.RestartIfNotPlaying : ResetOnPlay.ContinueFromCurrent);
+		ResetOnPlay reset = (ResetOnPlay)EditorGUILayout.EnumPopup("On activation", rs);
 		AnimationOrTween.DisableCondition dis = (AnimationOrTween.DisableCondition)EditorGUILayout.EnumPopup("When finished", tw.disableWhenFinished);
 
 		if (GUI.changed)
@@ -46,11 +49,13 @@ public class UIPlayTweenEditor : Editor
 			NGUIEditorTools.RegisterUndo("Tween Change", tw);
 			tw.tweenTarget = tt;
 			tw.tweenGroup = group;
+			tw.setState = setState;
+			tw.startState = ss;
 			tw.includeChildren = inc;
 			tw.trigger = trigger;
 			tw.playDirection = dir;
 			tw.ifDisabledOnPlay = enab;
-			tw.resetOnPlay = (reset == ResetOnPlay.Restart);
+			tw.resetOnPlay = (reset == ResetOnPlay.RestartTween);
 			tw.resetIfDisabled = (reset == ResetOnPlay.RestartIfNotPlaying);
 			tw.disableWhenFinished = dis;
 			NGUITools.SetDirty(tw);

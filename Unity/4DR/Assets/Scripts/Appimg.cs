@@ -134,9 +134,9 @@ public class Appimg : MonoBehaviour {
 	public void _SET_CAMERA_SCRIPT() {
 
 		{
-			BetterList<Transform> _gridrightcs = imgMainMenu._gridRightMain.GetChildList();
+			List<Transform> _gridrightcs = imgMainMenu._gridRightMain.GetChildList();
 
-			for(int i = 0; i<_gridrightcs.size; i++) {
+			for(int i = 0; i<_gridrightcs.Count; i++) {
 				NGUITools.Destroy(_gridrightcs[i].gameObject);
 			}
 
@@ -173,9 +173,9 @@ public class Appimg : MonoBehaviour {
 
 
 		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();	
-		BetterList<Transform> _gridC = mainMenu._gridMain.GetChildList();
+		List<Transform> _gridC = mainMenu._gridMain.GetChildList();
 
-		for(int i = 0; i<_gridC.size; i++) {			
+		for(int i = 0; i<_gridC.Count; i++) {			
 
 			NGUITools.Destroy(_gridC[i].gameObject);
 			//NGUITools.SetActive(_gridC[i].gameObject, false);
@@ -216,9 +216,9 @@ public class Appimg : MonoBehaviour {
 	public void _SET_MINI_VIDEO_GRID() {
 
 		uisoMainMenu mainMenu = mainUIPrefab.GetComponent<uisoMainMenu>();	
-		BetterList<Transform> _gridC = mainMenu._gridMain.GetChildList();
+		List<Transform> _gridC = mainMenu._gridMain.GetChildList();
 
-		for(int i = 0; i<_gridC.size; i++) {
+		for(int i = 0; i<_gridC.Count; i++) {
 
 			MediaPlayerCtrl _ctl = _gridC[i].GetComponentInChildren<MediaPlayerCtrl>();
 
@@ -367,7 +367,7 @@ public class Appimg : MonoBehaviour {
 				appmain._selectCameraScript.Clear();
 				appmain._selectCameraScript = new List<uisoITEM_CameraScript>();
 
-				BetterList<Transform> ccc = imgMainMenu._gridRightMain.GetChildList();
+				List<Transform> ccc = imgMainMenu._gridRightMain.GetChildList();
 				
 
 				foreach(Transform obj in ccc) {
@@ -482,28 +482,28 @@ public class Appimg : MonoBehaviour {
 
         if( ischeck == true)
         {
-            UISprite[] sprite;
+            //UISprite[] sprite;
 
-            sprite = instan.GetComponentsInChildren<UISprite>(true);
+            //sprite = instan.GetComponentsInChildren<UISprite>(true);
             
-            for(int i = 0; i < sprite.Length; i++) {
+            //for(int i = 0; i < sprite.Length; i++) {
 
-                sprite[i].atlas = UIDEFINE.getProjectAtlas(Appmain.appmain.projectType, sprite[i].atlas.name);
+            //    sprite[i].atlas = UIDEFINE.getProjectAtlas(Appmain.appmain.projectType, sprite[i].atlas.name);
 
-            }
+            //}
 
-            {
-                UILabel[] label;
+            //{
+            //    UILabel[] label;
 
-                label = instan.GetComponentsInChildren<UILabel>(true);
+            //    label = instan.GetComponentsInChildren<UILabel>(true);
 
-                for(int i = 0; i < label.Length; i++) {
+            //    for(int i = 0; i < label.Length; i++) {
 
-                    label[i].trueTypeFont = UIDEFINE.setProjectFont(Appmain.appmain.projectType);
+            //        label[i].trueTypeFont = UIDEFINE.setProjectFont(Appmain.appmain.projectType);
 
-                }
+            //    }
 
-            }
+            //}
         }
 
 		return instan;

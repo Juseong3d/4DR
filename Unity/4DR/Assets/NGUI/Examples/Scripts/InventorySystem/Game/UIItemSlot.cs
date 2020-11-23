@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
+// Copyright © 2011-2020 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -80,11 +80,11 @@ public abstract class UIItemSlot : MonoBehaviour
 				}
 
 				if (!string.IsNullOrEmpty(bi.description)) t += "\n[FF9900]" + bi.description;
-				UITooltip.ShowText(t);
+				UITooltip.Show(t);
 				return;
 			}
 		}
-		UITooltip.ShowText(null);
+		UITooltip.Hide();
 	}
 
 	/// <summary>
@@ -144,7 +144,7 @@ public abstract class UIItemSlot : MonoBehaviour
 	{
 		if (mDraggedItem != null && mDraggedItem.baseItem != null)
 		{
-			UICursor.Set(mDraggedItem.baseItem.iconAtlas, mDraggedItem.baseItem.iconName);
+			UICursor.Set(mDraggedItem.baseItem.iconAtlas as INGUIAtlas, mDraggedItem.baseItem.iconName);
 		}
 		else
 		{
@@ -172,7 +172,7 @@ public abstract class UIItemSlot : MonoBehaviour
 				if (string.IsNullOrEmpty(mText)) mText = label.text;
 				label.text = (itemName != null) ? itemName : mText;
 			}
-			
+
 			if (icon != null)
 			{
 				if (baseItem == null || baseItem.iconAtlas == null)
@@ -181,7 +181,7 @@ public abstract class UIItemSlot : MonoBehaviour
 				}
 				else
 				{
-					icon.atlas = baseItem.iconAtlas;
+					icon.atlas = baseItem.iconAtlas as INGUIAtlas;
 					icon.spriteName = baseItem.iconName;
 					icon.enabled = true;
 					icon.MakePixelPerfect();

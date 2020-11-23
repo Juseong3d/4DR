@@ -1,16 +1,13 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
-#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
-
-using UnityEngine;
 using UnityEditor;
-using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
-/// Inspector class used to edit UITextures.
+/// Inspector class used to edit UI sprites and textures.
 /// </summary>
 
 [CanEditMultipleObjects]
@@ -76,16 +73,27 @@ public class UIBasicSpriteEditor : UIWidgetInspector
 			NGUIEditorTools.DrawProperty("  Center", serializedObject, "centerType");
 			NGUIEditorTools.DrawProperty("Flip", serializedObject, "mFlip");
 		}
+		
+		if (type == UIBasicSprite.Type.Simple || type == UIBasicSprite.Type.Sliced) // Gradients get too complicated for tiled and filled.
+		{
+			GUILayout.BeginHorizontal();
+			SerializedProperty gr = NGUIEditorTools.DrawProperty("Gradient", serializedObject, "mApplyGradient", GUILayout.Width(95f));
 
-		//GUI.changed = false;
-		//Vector4 draw = EditorGUILayout.Vector4Field("Draw Region", mWidget.drawRegion);
+			EditorGUI.BeginDisabledGroup(!gr.hasMultipleDifferentValues && !gr.boolValue);
+			{
+				NGUIEditorTools.SetLabelWidth(30f);
+				serializedObject.DrawProperty("mGradientTop", "Top", GUILayout.MinWidth(40f));
+				GUILayout.EndHorizontal();
+				GUILayout.BeginHorizontal();
+				NGUIEditorTools.SetLabelWidth(50f);
+				GUILayout.Space(79f);
 
-		//if (GUI.changed)
-		//{
-		//    NGUIEditorTools.RegisterUndo("Draw Region", mWidget);
-		//    mWidget.drawRegion = draw;
-		//}
+				serializedObject.DrawProperty("mGradientBottom", "Bottom", GUILayout.MinWidth(40f));
+				NGUIEditorTools.SetLabelWidth(80f);
+			}
+			EditorGUI.EndDisabledGroup();
+			GUILayout.EndHorizontal();
+		}
 		base.DrawCustomProperties();
 	}
 }
-#endif

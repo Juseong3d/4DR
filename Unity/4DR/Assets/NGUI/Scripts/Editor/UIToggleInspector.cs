@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2014 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using UnityEditor;
@@ -40,9 +40,26 @@ public class UIToggleInspector : UIWidgetContainerEditor
 
 		if (NGUIEditorTools.DrawMinimalisticHeader("State Transition"))
 		{
-			NGUIEditorTools.BeginContents(true);
-			NGUIEditorTools.DrawProperty("Sprite", serializedObject, "activeSprite");
-			NGUIEditorTools.DrawProperty("Animation", serializedObject, "activeAnimation");
+			NGUIEditorTools.BeginContents();
+
+			var sprite = serializedObject.FindProperty("activeSprite");
+			var animator = serializedObject.FindProperty("animator");
+			var animation = serializedObject.FindProperty("activeAnimation");
+			var tween = serializedObject.FindProperty("tween");
+
+			if (sprite.objectReferenceValue != null)
+			{
+				NGUIEditorTools.DrawProperty("Sprite", sprite, false);
+				serializedObject.DrawProperty("invertSpriteState", "Invert State");
+			}
+			else
+			{
+				NGUIEditorTools.DrawProperty("Sprite", serializedObject, "activeSprite");
+			}
+			
+			NGUIEditorTools.DrawProperty("Animator", animator, false);
+			NGUIEditorTools.DrawProperty("Animation", animation, false);
+			NGUIEditorTools.DrawProperty("Tween", tween, false);
 
 			if (serializedObject.isEditingMultipleObjects)
 			{

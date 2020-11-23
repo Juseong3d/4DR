@@ -3,16 +3,17 @@ using System.Collections;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 // Source: UIToolkit -- https://github.com/prime31/UIToolkit/blob/master/Assets/Plugins/MiniJSON.cs
 
-// Based on the JSON parser from 
+// Based on the JSON parser from
 // http://techblog.procurios.nl/k/618/news/view/14605/14863/How-do-I-write-my-own-parser-for-JSON.html
 
 /// <summary>
 /// This class encodes and decodes JSON strings.
 /// Spec. details, see http://www.json.org/
-/// 
+///
 /// JSON uses Arrays and Objects. These correspond here to the datatypes ArrayList and Hashtable.
 /// All numbers are parsed to doubles.
 /// </summary>
@@ -43,7 +44,7 @@ public class NGUIJson
 	/// Parse the specified JSon file, loading sprite information for the specified atlas.
 	/// </summary>
 
-	static public void LoadSpriteData (UIAtlas atlas, TextAsset asset)
+	static public void LoadSpriteData (INGUIAtlas atlas, TextAsset asset)
 	{
 		if (asset == null || atlas == null) return;
 
@@ -65,7 +66,7 @@ public class NGUIJson
 	/// Parse the specified JSon file, loading sprite information for the specified atlas.
 	/// </summary>
 
-	static public void LoadSpriteData (UIAtlas atlas, string jsonData)
+	static public void LoadSpriteData (INGUIAtlas atlas, string jsonData)
 	{
 		if (string.IsNullOrEmpty(jsonData) || atlas == null) return;
 
@@ -82,7 +83,7 @@ public class NGUIJson
 	/// Parse the specified JSon file, loading sprite information for the specified atlas.
 	/// </summary>
 
-	static void LoadSpriteData (UIAtlas atlas, Hashtable decodedHash)
+	static void LoadSpriteData (INGUIAtlas atlas, Hashtable decodedHash)
 	{
 		if (decodedHash == null || atlas == null) return;
 		List<UISpriteData> oldSprites = atlas.spriteList;
@@ -192,7 +193,7 @@ public class NGUIJson
 	/// </summary>
 	/// <param name="json">A JSON string.</param>
 	/// <returns>An ArrayList, a Hashtable, a double, a string, null, true, or false</returns>
-	public static object jsonDecode( string json )
+	static public object jsonDecode( string json )
 	{
 		// save the string for debug information
 		NGUIJson.lastDecode = json;
@@ -223,11 +224,11 @@ public class NGUIJson
 	/// </summary>
 	/// <param name="json">A Hashtable / ArrayList</param>
 	/// <returns>A JSON encoded string, or null if object 'json' is not serializable</returns>
-	public static string jsonEncode( object json )
+	static public string jsonEncode( object json )
 	{
 		var builder = new StringBuilder( BUILDER_CAPACITY );
 		var success = NGUIJson.serializeValue( json, builder );
-		
+
 		return ( success ? builder.ToString() : null );
 	}
 
@@ -236,7 +237,7 @@ public class NGUIJson
 	/// On decoding, this function returns the position at which the parse failed (-1 = no error).
 	/// </summary>
 	/// <returns></returns>
-	public static bool lastDecodeSuccessful()
+	static public bool lastDecodeSuccessful()
 	{
 		return ( NGUIJson.lastErrorIndex == -1 );
 	}
@@ -246,18 +247,18 @@ public class NGUIJson
 	/// On decoding, this function returns the position at which the parse failed (-1 = no error).
 	/// </summary>
 	/// <returns></returns>
-	public static int getLastErrorIndex()
+	static public int getLastErrorIndex()
 	{
 		return NGUIJson.lastErrorIndex;
 	}
 
 
 	/// <summary>
-	/// If a decoding error occurred, this function returns a piece of the JSON string 
+	/// If a decoding error occurred, this function returns a piece of the JSON string
 	/// at which the error took place. To ease debugging.
 	/// </summary>
 	/// <returns></returns>
-	public static string getLastErrorSnippet()
+	static public string getLastErrorSnippet()
 	{
 		if( NGUIJson.lastErrorIndex == -1 )
 		{
@@ -277,9 +278,9 @@ public class NGUIJson
 		}
 	}
 
-	
+
 	#region Parsing
-	
+
 	protected static Hashtable parseObject( char[] json, ref int index )
 	{
 		Hashtable table = new Hashtable();
@@ -332,7 +333,7 @@ public class NGUIJson
 		return table;
 	}
 
-	
+
 	protected static ArrayList parseArray( char[] json, ref int index )
 	{
 		ArrayList array = new ArrayList();
@@ -371,7 +372,7 @@ public class NGUIJson
 		return array;
 	}
 
-	
+
 	protected static object parseValue( char[] json, ref int index, ref bool success )
 	{
 		switch( lookAhead( json, index ) )
@@ -401,14 +402,14 @@ public class NGUIJson
 		return null;
 	}
 
-	
+
 	protected static string parseString( char[] json, ref int index )
 	{
 		string s = "";
 		char c;
 
 		eatWhitespace( json, ref index );
-		
+
 		// "
 		c = json[index++];
 
@@ -501,8 +502,8 @@ s += Char.ConvertFromUtf32((int)codePoint);
 
 		return s;
 	}
-	
-	
+
+
 	protected static double parseNumber( char[] json, ref int index )
 	{
 		eatWhitespace( json, ref index );
@@ -515,8 +516,8 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		index = lastIndex + 1;
 		return Double.Parse( new string( numberCharArray ) ); // , CultureInfo.InvariantCulture);
 	}
-	
-	
+
+
 	protected static int getLastIndexOfNumber( char[] json, int index )
 	{
 		int lastIndex;
@@ -527,8 +528,8 @@ s += Char.ConvertFromUtf32((int)codePoint);
 			}
 		return lastIndex - 1;
 	}
-	
-	
+
+
 	protected static void eatWhitespace( char[] json, ref int index )
 	{
 		for( ; index < json.Length; index++ )
@@ -537,15 +538,15 @@ s += Char.ConvertFromUtf32((int)codePoint);
 				break;
 			}
 	}
-	
-	
+
+
 	protected static int lookAhead( char[] json, int index )
 	{
 		int saveIndex = index;
 		return nextToken( json, ref saveIndex );
 	}
 
-	
+
 	protected static int nextToken( char[] json, ref int index )
 	{
 		eatWhitespace( json, ref index );
@@ -554,7 +555,7 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		{
 			return NGUIJson.TOKEN_NONE;
 		}
-		
+
 		char c = json[index];
 		index++;
 		switch( c )
@@ -575,13 +576,13 @@ s += Char.ConvertFromUtf32((int)codePoint);
 			case '1':
 			case '2':
 			case '3':
-			case '4': 
+			case '4':
 			case '5':
 			case '6':
 			case '7':
 			case '8':
 			case '9':
-			case '-': 
+			case '-':
 				return NGUIJson.TOKEN_NUMBER;
 			case ':':
 				return NGUIJson.TOKEN_COLON;
@@ -634,10 +635,10 @@ s += Char.ConvertFromUtf32((int)codePoint);
 	}
 
 	#endregion
-	
-	
+
+
 	#region Serialization
-	
+
 	protected static bool serializeObjectOrArray( object objectOrArray, StringBuilder builder )
 	{
 		if( objectOrArray is Hashtable )
@@ -654,7 +655,7 @@ s += Char.ConvertFromUtf32((int)codePoint);
 			}
 	}
 
-	
+
 	protected static bool serializeObject( Hashtable anObject, StringBuilder builder )
 	{
 		builder.Append( "{" );
@@ -684,18 +685,18 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		builder.Append( "}" );
 		return true;
 	}
-	
-	
+
+
 	protected static bool serializeDictionary( Dictionary<string,string> dict, StringBuilder builder )
 	{
 		builder.Append( "{" );
-		
+
 		bool first = true;
 		foreach( var kv in dict )
 		{
 			if( !first )
 				builder.Append( ", " );
-			
+
 			serializeString( kv.Key, builder );
 			builder.Append( ":" );
 			serializeString( kv.Value, builder );
@@ -706,8 +707,8 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		builder.Append( "}" );
 		return true;
 	}
-	
-	
+
+
 	protected static bool serializeArray( ArrayList anArray, StringBuilder builder )
 	{
 		builder.Append( "[" );
@@ -734,7 +735,7 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		return true;
 	}
 
-	
+
 	protected static bool serializeValue( object value, StringBuilder builder )
 	{
 		// Type t = value.GetType();
@@ -788,7 +789,7 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		return true;
 	}
 
-	
+
 	protected static void serializeString( string aString, StringBuilder builder )
 	{
 		builder.Append( "\"" );
@@ -842,12 +843,12 @@ s += Char.ConvertFromUtf32((int)codePoint);
 		builder.Append( "\"" );
 	}
 
-	
+
 	protected static void serializeNumber( double number, StringBuilder builder )
 	{
 		builder.Append( Convert.ToString( number ) ); // , CultureInfo.InvariantCulture));
 	}
-	
+
 	#endregion
-	
+
 }
