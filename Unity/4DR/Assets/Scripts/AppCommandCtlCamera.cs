@@ -357,6 +357,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                         _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
                     }
 
+                    Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Effect_Sound);
+
                     _cmd.Clear();
                 }
                 break;
@@ -515,6 +517,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _info._blue.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.blud_playerindex]);
                     _info._red.SET_INFO(Appmain.appmain.defaultPlayList[_cmd.red_playerindex]);
 
+                    Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Player_Info);
+
                 }else {
                     Debug.Log("gameObjectPlayerInfoVs not nulllllllll");
                 }
@@ -553,6 +557,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                         uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
                         _uigameInfo._info.isPlaying = true;
                     }
+
+                    Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Start_Round);
 
                 }
                 break;
@@ -654,7 +660,15 @@ public class AppCommandCtlCamera : MonoBehaviour
                     }
 
                     _uigameInfo.UPDATE_SCORE(_cmd);
+
+                    if(_cmd.setScore > 0) {
+                        Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Point_Up);
+                    }else {
+                        Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Energy_Gauge);
+                    }
+
                     _cmd.Clear();
+                    
                 }
                 break;
             case COMMAND_CTL_CAMERA.GAME_RESULT:

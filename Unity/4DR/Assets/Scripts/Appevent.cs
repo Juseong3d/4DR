@@ -116,9 +116,12 @@ public class Appevent : MonoBehaviour {
 #else
 			Application.Quit();
 #endif
+			Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Button_Exit);
 
 		}else {
 			isMakedExitPopup = false;
+
+			Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Button_Click);
 		}
 
 	}

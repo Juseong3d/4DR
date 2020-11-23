@@ -104,6 +104,8 @@ public class uisoTITLE : MonoBehaviour
 
     public void OnClickButton4Title() {
 
+        Appmain.appsound.stopBGM();
+        Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Button_Click);
         Appmain.appdoc.setGameStatus(GAME_STATUS.GS_MENU);
 
     }

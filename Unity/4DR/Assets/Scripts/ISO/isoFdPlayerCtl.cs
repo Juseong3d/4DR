@@ -973,6 +973,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }
         }
 
+        Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Video_Exit);
+
     }
         
 

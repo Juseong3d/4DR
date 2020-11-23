@@ -4,28 +4,23 @@ using System;
 
 public enum SOUND_BGM_TYPE {
 
-		TITLE_AND_MENU,
-		IN_GAME_ONE,
-		IN_GAME_TWO,
-		IN_GAME_THREE,
-		IN_GAME_FOUR,
+		Intro_Bgm,		
 		LENGTH
 }
 
 
 public enum SOUND_EFFECT_TYPE {
 
-	BUTTON,
-	WARING,
-	GAME_START,
-	GAME_MOVE,
-	SUCCESS,
-	TIME_OVER,
-	RUBY_BUY,
-	SUCCESS_NEW,
-	FAIL_NEW,
-	BUTTON2,
-	CTL_MOVE,
+	Button_Click	,
+	Touch_Video	,
+	Button_Exit	,
+	Player_Info	,
+	Start_Round	,
+	Effect_Sound	,
+	Energy_Gauge	,
+	Point_Up	,
+	Video_Exit	,
+
 	LENGTH
 
 }
@@ -82,7 +77,10 @@ public class Appsound : MonoBehaviour {
 
 		for(int i = 0; i<bgmClipCount; i++) {
 
-		    audioClipBGM[i] = (AudioClip)Resources.Load( stringBGM + i);
+			SOUND_BGM_TYPE _tmp = (SOUND_BGM_TYPE)i;
+			string path = string.Format("{0}{1}", stringBGM, _tmp.ToString());
+
+		    audioClipBGM[i] = (AudioClip)Resources.Load(path);
 
 		}
 
@@ -92,7 +90,10 @@ public class Appsound : MonoBehaviour {
 
 		for (int i = 0; i < audioClipEffect.Length; i++) {
 
-			audioClipEffect[i] = (AudioClip)Resources.Load(stringEffect + i);
+			SOUND_EFFECT_TYPE _tmp = (SOUND_EFFECT_TYPE)i;
+			string path = string.Format("{0}{1}", stringEffect, _tmp.ToString());
+
+			audioClipEffect[i] = (AudioClip)Resources.Load(path);
 
 		}
     }
@@ -111,7 +112,7 @@ public class Appsound : MonoBehaviour {
 
         if (GET_SETTING_SOUND() == true) {
 			int rand = UnityEngine.Random.Range(0, 2);
-			int type = (int)((rand == 0) ? SOUND_EFFECT_TYPE.BUTTON:SOUND_EFFECT_TYPE.BUTTON2);
+			int type = (int)((rand == 0) ? SOUND_EFFECT_TYPE.Button_Click:SOUND_EFFECT_TYPE.Button_Click);
 
             StartCoroutine(this.coroutineEffect(type, 0.0f));        
         }

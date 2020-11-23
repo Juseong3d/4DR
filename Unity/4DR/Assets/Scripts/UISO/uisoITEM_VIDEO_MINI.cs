@@ -84,6 +84,7 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
 
     public void OnClickButton4FullScreen() {
         
+        Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Touch_Video);
         Appmain.appimg.LOAD_FULL_SCREEN_VIDEO(__info);//.GETURL());
 
     }

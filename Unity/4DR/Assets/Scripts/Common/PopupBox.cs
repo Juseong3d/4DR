@@ -75,7 +75,7 @@ public class PopupBox : MonoBehaviour {
 	}
 
 
-	static public PopupBox Create(string content, string title = "", POPUPBOX_ACTION_TYPE actionType = POPUPBOX_ACTION_TYPE.OK, GameObject eventReciver = null, string funcName = "", bool alwaysOnTop = false, bool allowOverlap = true, SOUND_EFFECT_TYPE soundType = SOUND_EFFECT_TYPE.BUTTON,string key = "", bool localize = false) {
+	static public PopupBox Create(string content, string title = "", POPUPBOX_ACTION_TYPE actionType = POPUPBOX_ACTION_TYPE.OK, GameObject eventReciver = null, string funcName = "", bool alwaysOnTop = false, bool allowOverlap = true, SOUND_EFFECT_TYPE soundType = SOUND_EFFECT_TYPE.Button_Click,string key = "", bool localize = false) {
 
 		string path = UIDEFINE.PATH_POPUP_BOX;//string.Empty;
 
@@ -169,7 +169,7 @@ public class PopupBox : MonoBehaviour {
 	}
 
 
-	public void Set(string title, string content, POPUPBOX_ACTION_TYPE actionType = POPUPBOX_ACTION_TYPE.OK, GameObject eventReciver = null, string funcName = "", SOUND_EFFECT_TYPE soundType = SOUND_EFFECT_TYPE.BUTTON, bool localize = false) {
+	public void Set(string title, string content, POPUPBOX_ACTION_TYPE actionType = POPUPBOX_ACTION_TYPE.OK, GameObject eventReciver = null, string funcName = "", SOUND_EFFECT_TYPE soundType = SOUND_EFFECT_TYPE.Button_Click, bool localize = false) {
 
 		bool idParsingResult = int.TryParse(title, out this._ID);
 
@@ -230,8 +230,8 @@ public class PopupBox : MonoBehaviour {
         tweenPopupBox.PlayReverse();
         returnType = POPUPBOX_RETURN_TYPE.OK;
 
-		if(appsound != null) 
-			appsound.playEffectButton();
+		//if(appsound != null) 
+		//	appsound.playEffectButton();
 
 		//if (Appmain.gameObjectPopupBack != null) {
 		//	UIPanel _panel = Appmain.gameObjectPopupBack.GetComponent<UIPanel>();
@@ -253,7 +253,7 @@ public class PopupBox : MonoBehaviour {
         
         tweenPopupBox.PlayReverse();
         returnType = POPUPBOX_RETURN_TYPE.YES;		
-		appsound.playEffectButton();
+		//appsound.playEffectButton();
 
 		//if (Appmain.gameObjectPopupBack != null) {
 		//	UIPanel _panel = Appmain.gameObjectPopupBack.GetComponent<UIPanel>();
@@ -265,7 +265,7 @@ public class PopupBox : MonoBehaviour {
         
         tweenPopupBox.PlayReverse();
         returnType = POPUPBOX_RETURN_TYPE.NO;
-		appsound.playEffectButton();
+		//appsound.playEffectButton();
 		
 		//if (Appmain.gameObjectPopupBack != null) {
 		//	UIPanel _panel = Appmain.gameObjectPopupBack.GetComponent<UIPanel>();

@@ -103,6 +103,7 @@ public class Appdoc : MonoBehaviour {
 				break;
 			case GAME_STATUS.GS_INIT :
 				setGameStatus(GAME_STATUS.GS_INTRO);
+				
 				break;
 			case GAME_STATUS.GS_INTRO :
 				if(Appmain.gameStatusCnt > 100) {
@@ -130,6 +131,9 @@ public class Appdoc : MonoBehaviour {
 				break;
 			case GAME_STATUS.GS_INTRO :
 
+				break;
+			case GAME_STATUS.GS_TITLE:
+				Appmain.appsound.playBGM(SOUND_BGM_TYPE.Intro_Bgm);
 				break;
 			case GAME_STATUS.GS_MENU:
 
