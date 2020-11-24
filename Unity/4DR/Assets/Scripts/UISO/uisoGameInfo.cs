@@ -42,6 +42,10 @@ public class uisoGameInfo : MonoBehaviour
     public UISprite spriteCountryRed;
     public UISprite spriteCountryBlue;
 
+    public UILabel labelBlueYellowCardCnt;
+    public UILabel labelRedYellowCardCnt;
+
+    [Header("* down score -----------------")]
     public ParticleSystem psPenaltyRed;
     public ParticleSystem psPenaltyBlue;
     
@@ -167,7 +171,7 @@ public class uisoGameInfo : MonoBehaviour
                 labelMatchCnt.text = string.Format("MATCH\n{0}", _info.nowStageCnt);
 
             if(labelRoundCnt != null)
-                labelRoundCnt.text = string.Format("R{0}", _info.nowRoundCnt);
+                labelRoundCnt.text = string.Format("{0}R", _info.nowRoundCnt);
 
             labelBlueName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blue.playerName);
             labelRedName.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].red.playerName);
@@ -186,6 +190,9 @@ public class uisoGameInfo : MonoBehaviour
 
             labelScoreBlue.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].blueScore);
             labelScoreRed.text = string.Format("{0}", _info.roundInfo[_info.nowRoundCnt].redScore);
+
+            SET_YELLOW_CARD(WHAT_TEAM_COLOR.BLUE, _info.roundInfo[_info.nowRoundCnt].blue.yellowCardCnt);
+            SET_YELLOW_CARD(WHAT_TEAM_COLOR.RED, _info.roundInfo[_info.nowRoundCnt].red.yellowCardCnt);
 
         }
 
@@ -286,6 +293,33 @@ public class uisoGameInfo : MonoBehaviour
 
         sliderBlueBack.value = sliderBlue.value;
         sliderRedBack.value = sliderRed.value;
+
+    }
+
+
+    public void SET_YELLOW_CARD(WHAT_TEAM_COLOR _who, int _cnt) {
+
+        if(_who == WHAT_TEAM_COLOR.BLUE) {
+            if(labelBlueYellowCardCnt != null) {
+                labelBlueYellowCardCnt.text = string.Format("{0}", _cnt);
+            }
+        }else if(_who == WHAT_TEAM_COLOR.RED) {
+            if(labelBlueYellowCardCnt != null) {
+                labelRedYellowCardCnt.text = string.Format("{0}", _cnt);
+            }
+        }
+
+        if(_info.roundInfo[_info.nowRoundCnt].blue.yellowCardCnt == 0) {
+            NGUITools.SetActive(labelBlueYellowCardCnt.transform.parent.gameObject, false);
+        }else {
+            NGUITools.SetActive(labelBlueYellowCardCnt.transform.parent.gameObject, true);
+        }
+
+        if(_info.roundInfo[_info.nowRoundCnt].red.yellowCardCnt == 0) {
+            NGUITools.SetActive(labelRedYellowCardCnt.transform.parent.gameObject, false);
+        }else {
+            NGUITools.SetActive(labelRedYellowCardCnt.transform.parent.gameObject, true);
+        }
 
     }
 #endif

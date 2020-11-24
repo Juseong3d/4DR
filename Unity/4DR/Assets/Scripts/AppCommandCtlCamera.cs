@@ -713,6 +713,20 @@ public class AppCommandCtlCamera : MonoBehaviour
                     _cmd.Clear();
                 }
                 break;
+            case COMMAND_CTL_CAMERA.SET_YELLOW_CARD:
+                if(gameObjectTAEScore != null) {
+                    uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
+
+                    if(_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].blue.yellowCardCnt = _cmd.setScore;
+                    }else if(_cmd.setScoreWho == WHAT_TEAM_COLOR.RED) {
+                        _uigameInfo._info.roundInfo[_uigameInfo._info.nowRoundCnt].red.yellowCardCnt = _cmd.setScore;
+                    }
+
+                    _uigameInfo.SET_YELLOW_CARD(_cmd.setScoreWho, _cmd.setScore);
+                    _cmd.Clear();
+                }
+                break;
 
             }
 
@@ -945,6 +959,7 @@ public class Q_COMMAND_CTL_CAMERA {
             blud_playerindex = Convert.ToInt32(_tmp[i++]);
             red_playerindex = Convert.ToInt32(_tmp[i++]);
             break;
+        case COMMAND_CTL_CAMERA.SET_YELLOW_CARD:
         case COMMAND_CTL_CAMERA.SET_SCORE:
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             setScore = Convert.ToInt32(_tmp[i++]);
@@ -1031,6 +1046,8 @@ public enum COMMAND_CTL_CAMERA {
     PENALTY_START,        
     ROUND_RESULT,
     GAME_RESULT,
+
+    SET_YELLOW_CARD,
 
 #endif
 

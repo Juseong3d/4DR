@@ -314,15 +314,31 @@ public class MediaPlayerCtrl : MonoBehaviour
 		//for testing...
 		//setAVSyncEnable(true);
 
+		//for testing...
+		Debug.Log("aaaaaaaaaaaaaaaa");
+		Debug.Log("Appmain.appimg._nowFullCtl._videoInfo._type : " + Appmain.appimg._nowFullCtl._videoInfo._type);
+		if(Appmain.appimg._nowFullCtl._videoInfo._type == VIDEO_CONTENT_TYPE.live) {
+			Debug.Log("##################");
+			SeekTo(-999);
+		}
 
 	}
 
 
 	private void OnVideoFirstFrameReady_LoadingMark() {
 		
-		//Debug.Log("test ::: ");
+		Debug.Log("test ::: ");
 		for(int i = 0; i<Appmain.appimg._startTween.Length; i++) {
 			Appmain.appimg._startTween[i].TWEEN_START();
+		}
+		Debug.Log("Appmain.appimg._nowFullCtl._videoInfo._type : " + Appmain.appimg._nowFullCtl._videoInfo._type);
+		if(Appmain.appimg._nowFullCtl._videoInfo._type == VIDEO_CONTENT_TYPE.live) {
+			Debug.Log("################## : " + Appmain.appimg._nowFullCtl._info.time);
+			
+			int tmpTime = (int)Appmain.appimg._nowFullCtl._info.time;
+			Pause();			
+			SeekTo(tmpTime - 10000);
+			Play();
 		}
 	}
 

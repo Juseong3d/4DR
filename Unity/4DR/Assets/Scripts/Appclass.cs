@@ -42,7 +42,7 @@ public class APP_INFO {
 		version2 = "2";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += ".12.ALPHA";
+		appVersion += ".2.ALPHA";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif
@@ -305,6 +305,8 @@ public class DEFAULT_PLAYER_LIST {
 	public bool isPenalty;
 	public float nowPenaltyTime;
 
+	public int yellowCardCnt;
+
 	public DEFAULT_PLAYER_LIST(string[] tableData) {
 
 		int j = 0;
@@ -414,7 +416,10 @@ public class ROUND_INFO_TAE {
 		this.red = red;
 
 		this.blue.isPenalty = false;
-		this.blue.isPenalty = false;
+		this.red.isPenalty = false;
+
+		this.blue.yellowCardCnt = 0;
+		this.red.yellowCardCnt = 0;
 
 	}
 

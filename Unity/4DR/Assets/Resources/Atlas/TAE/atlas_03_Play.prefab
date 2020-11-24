@@ -46,8 +46,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: cb5c79cc54d44574f83038733e89276a, type: 2}
   mSprites:
   - name: icon_close_normal
-    x: 1476
-    y: 202
+    x: 1212
+    y: 10
     width: 88
     height: 88
     borderLeft: 0
@@ -59,8 +59,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_close_touch
-    x: 1387
-    y: 202
+    x: 1908
+    y: 60
     width: 88
     height: 88
     borderLeft: 0
@@ -72,8 +72,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_pause
-    x: 1617
-    y: 272
+    x: 1938
+    y: 1039
     width: 88
     height: 88
     borderLeft: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_play
-    x: 1706
-    y: 248
+    x: 1938
+    y: 1128
     width: 88
     height: 88
     borderLeft: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_progress_control_normal
-    x: 1795
-    y: 173
+    x: 1034
+    y: 10
     width: 88
     height: 88
     borderLeft: 0
@@ -111,8 +111,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_progress_control_pressed
-    x: 1885
-    y: 1671
+    x: 1446
+    y: 589
     width: 160
     height: 160
     borderLeft: 0
@@ -123,9 +123,35 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: icon_score_timeline_normal
+    x: 1730
+    y: 60
+    width: 88
+    height: 88
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: icon_score_timeline_touch
+    x: 1819
+    y: 60
+    width: 88
+    height: 88
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: icon_setting_normal
-    x: 1884
-    y: 173
+    x: 945
+    y: 10
     width: 88
     height: 88
     borderLeft: 0
@@ -137,8 +163,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_setting_touch
-    x: 1298
-    y: 202
+    x: 1123
+    y: 10
     width: 88
     height: 88
     borderLeft: 0
@@ -150,8 +176,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_controll_bar
-    x: 953
-    y: 266
+    x: 1607
+    y: 594
     width: 344
     height: 24
     borderLeft: 0
@@ -163,8 +189,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_machine
-    x: 953
-    y: 325
+    x: 1576
+    y: 1514
     width: 120
     height: 120
     borderLeft: 0
@@ -176,8 +202,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_machine_dim
-    x: 1859
-    y: 957
+    x: 1426
+    y: 359
     width: 174
     height: 174
     borderLeft: 0
@@ -189,8 +215,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_machine_normal
-    x: 1830
-    y: 1132
+    x: 1601
+    y: 359
     width: 174
     height: 174
     borderLeft: 0
@@ -202,8 +228,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_machine_pressed
-    x: 1830
-    y: 1307
+    x: 1642
+    y: 689
     width: 174
     height: 174
     borderLeft: 0
@@ -215,8 +241,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_normal
-    x: 1775
-    y: 607
+    x: 1817
+    y: 689
     width: 174
     height: 174
     borderLeft: 0
@@ -228,8 +254,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_pressed
-    x: 1830
-    y: 1482
+    x: 1817
+    y: 864
     width: 174
     height: 174
     borderLeft: 0
@@ -241,8 +267,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_slice
-    x: 1074
-    y: 325
+    x: 1455
+    y: 1514
     width: 120
     height: 120
     borderLeft: 0
@@ -254,20 +280,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: icon_time_slice_dim
-    x: 1859
-    y: 782
-    width: 174
-    height: 174
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: icon_time_slice_normal
-    x: 1493
+    x: 1868
     y: 1874
     width: 174
     height: 174
@@ -279,9 +292,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: icon_time_slice_normal
+    x: 1642
+    y: 864
+    width: 174
+    height: 174
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: icon_time_slice_pressed
-    x: 1710
-    y: 1657
+    x: 1776
+    y: 359
     width: 174
     height: 174
     borderLeft: 0
@@ -294,7 +320,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_blue_win
     x: 0
-    y: 595
+    y: 517
     width: 672
     height: 288
     borderLeft: 0
@@ -306,8 +332,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_body_blue
-    x: 753
-    y: 311
+    x: 810
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -319,8 +345,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_body_red
-    x: 1581
-    y: 361
+    x: 540
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -332,8 +358,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_flag_korea
-    x: 1973
-    y: 140
+    x: 803
+    y: 757
     width: 72
     height: 48
     borderLeft: 0
@@ -345,8 +371,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_flag_russia
-    x: 673
-    y: 835
+    x: 876
+    y: 757
     width: 72
     height: 48
     borderLeft: 0
@@ -358,8 +384,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_gauge_bg
-    x: 1869
-    y: 476
+    x: 1938
+    y: 1217
     width: 64
     height: 130
     borderLeft: 30
@@ -371,8 +397,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_head_blue
-    x: 1851
-    y: 262
+    x: 405
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -384,8 +410,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_head_red
-    x: 1716
-    y: 337
+    x: 270
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -398,7 +424,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_hp_bar_frame_left
     x: 0
-    y: 493
+    y: 466
     width: 620
     height: 50
     borderLeft: 0
@@ -410,8 +436,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_bar_frame_right
-    x: 0
-    y: 544
+    x: 1426
+    y: 534
     width: 620
     height: 50
     borderLeft: 0
@@ -423,8 +449,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_bg_left
-    x: 0
-    y: 1147
+    x: 673
+    y: 487
     width: 752
     height: 48
     borderLeft: 0
@@ -436,8 +462,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_bg_right
-    x: 0
-    y: 397
+    x: 673
+    y: 536
     width: 752
     height: 48
     borderLeft: 0
@@ -449,8 +475,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_gauge_blue
-    x: 1869
-    y: 403
+    x: 1480
+    y: 26
     width: 72
     height: 72
     borderLeft: 36
@@ -462,8 +488,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_gauge_red
-    x: 1973
-    y: 189
+    x: 1407
+    y: 26
     width: 72
     height: 72
     borderLeft: 34
@@ -475,8 +501,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_hp_gauge_white
-    x: 1775
-    y: 827
+    x: 1553
+    y: 4
     width: 72
     height: 72
     borderLeft: 36
@@ -488,8 +514,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_kick_blue
-    x: 1446
-    y: 375
+    x: 0
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -501,8 +527,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_kick_red
-    x: 1734
-    y: 472
+    x: 135
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -515,7 +541,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_name_title_bg
     x: 673
-    y: 446
+    y: 585
     width: 772
     height: 164
     borderLeft: 0
@@ -527,8 +553,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_number_1
-    x: 1642
-    y: 900
+    x: 1672
+    y: 1635
     width: 216
     height: 216
     borderLeft: 0
@@ -540,8 +566,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_number_2
-    x: 1830
-    y: 1832
+    x: 1455
+    y: 1635
     width: 216
     height: 216
     borderLeft: 0
@@ -553,8 +579,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_number_3
-    x: 1493
-    y: 1615
+    x: 689
+    y: 1523
     width: 216
     height: 216
     borderLeft: 0
@@ -566,8 +592,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_off
-    x: 1710
-    y: 1585
+    x: 1618
+    y: 77
     width: 111
     height: 71
     borderLeft: 0
@@ -579,8 +605,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_on
-    x: 753
-    y: 1124
+    x: 1301
+    y: 27
     width: 105
     height: 71
     borderLeft: 0
@@ -592,8 +618,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_bar_frame_left
-    x: 1195
-    y: 291
+    x: 1607
+    y: 619
     width: 421
     height: 34
     borderLeft: 0
@@ -605,8 +631,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_bar_frame_right
-    x: 1195
-    y: 326
+    x: 1607
+    y: 654
     width: 421
     height: 34
     borderLeft: 0
@@ -618,8 +644,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_bg_left
-    x: 0
-    y: 468
+    x: 945
+    y: 124
     width: 672
     height: 24
     borderLeft: 0
@@ -631,8 +657,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_bg_right
-    x: 0
-    y: 1122
+    x: 945
+    y: 99
     width: 672
     height: 24
     borderLeft: 0
@@ -644,8 +670,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_gauge_left
-    x: 1707
-    y: 835
+    x: 0
+    y: 401
     width: 64
     height: 64
     borderLeft: 28
@@ -657,8 +683,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_penalty_gauge_right
-    x: 1642
-    y: 835
+    x: 621
+    y: 422
     width: 64
     height: 64
     borderLeft: 31
@@ -670,8 +696,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_play_info_line
-    x: 0
-    y: 1119
+    x: 1446
+    y: 586
     width: 584
     height: 2
     borderLeft: 0
@@ -683,10 +709,23 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_player_bar_f
-    x: 1581
-    y: 501
+    x: 1868
+    y: 1865
     width: 16
     height: 8
+    borderLeft: 4
+    borderRight: 4
+    borderTop: 2
+    borderBottom: 2
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: img_player_shadow_bottom
+    x: 1951
+    y: 149
+    width: 64
+    height: 384
     borderLeft: 4
     borderRight: 4
     borderTop: 0
@@ -695,26 +734,13 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: img_player_shadow_bottom
-    x: 1950
-    y: 397
-    width: 64
-    height: 384
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: img_player_shadow_top
-    x: 888
-    y: 178
+    x: 1938
+    y: 1348
     width: 64
     height: 267
-    borderLeft: 0
-    borderRight: 0
+    borderLeft: 4
+    borderRight: 4
     borderTop: 0
     borderBottom: 0
     paddingLeft: 0
@@ -722,10 +748,10 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_point_add
-    x: 621
-    y: 546
-    width: 48
-    height: 48
+    x: 1997
+    y: 59
+    width: 44
+    height: 44
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -735,10 +761,10 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_point_empty
-    x: 1795
-    y: 288
-    width: 48
-    height: 48
+    x: 1997
+    y: 104
+    width: 44
+    height: 44
     borderLeft: 0
     borderRight: 0
     borderTop: 0
@@ -748,8 +774,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_popup_bg_1
-    x: 1668
-    y: 1839
+    x: 1796
+    y: 1543
     width: 128
     height: 72
     borderLeft: 0
@@ -761,8 +787,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_punch_blue
-    x: 1599
-    y: 496
+    x: 675
+    y: 14
     width: 134
     height: 134
     borderLeft: 0
@@ -774,8 +800,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_punch_red
-    x: 1668
-    y: 1912
+    x: 1889
+    y: 1737
     width: 136
     height: 136
     borderLeft: 0
@@ -787,8 +813,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_r1
-    x: 524
-    y: 1816
+    x: 969
+    y: 1272
     width: 968
     height: 232
     borderLeft: 0
@@ -800,8 +826,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_r2
-    x: 524
-    y: 1583
+    x: 0
+    y: 1039
     width: 968
     height: 232
     borderLeft: 0
@@ -813,8 +839,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_r3
-    x: 861
-    y: 1350
+    x: 969
+    y: 1039
     width: 968
     height: 232
     borderLeft: 0
@@ -827,7 +853,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_r4
     x: 0
-    y: 884
+    y: 806
     width: 968
     height: 232
     borderLeft: 0
@@ -839,8 +865,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_r5
-    x: 861
-    y: 1117
+    x: 0
+    y: 1272
     width: 968
     height: 232
     borderLeft: 0
@@ -853,7 +879,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_red_win
     x: 969
-    y: 828
+    y: 750
     width: 672
     height: 288
     borderLeft: 0
@@ -865,8 +891,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_round
-    x: 673
-    y: 611
+    x: 0
+    y: 1523
     width: 688
     height: 216
     borderLeft: 0
@@ -878,8 +904,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_round_title_bg
-    x: 1362
-    y: 631
+    x: 1455
+    y: 1852
     width: 412
     height: 196
     borderLeft: 0
@@ -892,8 +918,8 @@ MonoBehaviour:
     paddingBottom: 0
   - name: img_round_title_bg_2
     x: 0
-    y: 1196
-    width: 860
+    y: 1740
+    width: 930
     height: 308
     borderLeft: 0
     borderRight: 0
@@ -903,8 +929,34 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: img_score_popup_bg
+    x: 1626
+    y: 26
+    width: 90
+    height: 50
+    borderLeft: 4
+    borderRight: 4
+    borderTop: 4
+    borderBottom: 4
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: img_scroll_popup
+    x: 906
+    y: 1512
+    width: 8
+    height: 227
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: img_setting_pop_bg
-    x: 0
+    x: 931
     y: 1505
     width: 523
     height: 543
@@ -917,8 +969,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_team_blue
-    x: 621
-    y: 505
+    x: 1758
+    y: 19
     width: 40
     height: 40
     borderLeft: 0
@@ -930,8 +982,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_team_blue_circle
-    x: 1797
-    y: 1879
+    x: 1607
+    y: 717
     width: 32
     height: 32
     borderLeft: 0
@@ -943,8 +995,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_team_red
-    x: 1775
-    y: 786
+    x: 1717
+    y: 19
     width: 40
     height: 40
     borderLeft: 0
@@ -956,8 +1008,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_team_red_circle
-    x: 1816
-    y: 794
+    x: 1796
+    y: 1510
     width: 32
     height: 32
     borderLeft: 0
@@ -968,11 +1020,37 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: img_time_bg
+    x: 673
+    y: 761
+    width: 129
+    height: 44
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: img_vs
-    x: 1446
-    y: 510
+    x: 1889
+    y: 1616
     width: 152
     height: 120
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: img_yellow_card
+    x: 1697
+    y: 1536
+    width: 98
+    height: 98
     borderLeft: 0
     borderRight: 0
     borderTop: 0
