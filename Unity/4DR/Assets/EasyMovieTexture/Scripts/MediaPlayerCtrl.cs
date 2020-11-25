@@ -190,6 +190,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 	#endif
 	}
 
+	
 	void Awake()
 	{
 
@@ -266,6 +267,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 		m_iAndroidMgrID = Call_InitNDK();		
 	#endif		
 		Call_SetUnityActivity();
+
     }
 
 
@@ -548,9 +550,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 
         }
 
+		
 		GL.InvalidateState ();
-
-
     }
 
 	public void DeleteVideoTexture()

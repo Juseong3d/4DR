@@ -66,15 +66,19 @@ MonoBehaviour:
   mWidth: 2000
   mHeight: 2000
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
-  mType: 0
+  mType: 1
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -82,6 +86,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 3938670707984331167, guid: ffbdb8fa9cedc3144bf80a56d5ce4957, type: 3}
   mSpriteName: white
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!65 &6515438
 BoxCollider:
@@ -159,16 +164,23 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3000
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 720, w: 1280}
   mClipSoftness: {x: 0, y: 0}
   mDepth: 5001
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0

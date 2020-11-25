@@ -34,6 +34,15 @@ public class AppCommandCtlCamera : MonoBehaviour
     public float commanderReflashTime;
 
 
+    private float fixedDeltaTime;
+
+    private void Awake() {
+        
+		this.fixedDeltaTime = Time.fixedDeltaTime;
+
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -476,10 +485,12 @@ public class AppCommandCtlCamera : MonoBehaviour
                 }  
                 break;
             case COMMAND_CTL_CAMERA.SPEED:
-                {
+                if(_cmd._speed > 0) {
                     //_mediaMain.Speed(_cmd._speed);
                     Time.timeScale = _cmd._speed;
                     Debug.Log("Time.timeScale : " + Time.timeScale);
+                    
+		            Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
                     _cmd.Clear();
                 }
                 break;
@@ -555,7 +566,8 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                     if(gameObjectTAEScore != null) {
                         uisoGameInfo _uigameInfo = gameObjectTAEScore.GetComponent<uisoGameInfo>();
-                        _uigameInfo._info.isPlaying = true;
+                        _uigameInfo.SET_INFO_ONLY_ROUND(_cmd.round_index);
+                        _uigameInfo._info.isPlaying = true;                        
                     }
 
                     Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Start_Round);
@@ -645,6 +657,12 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                     _cmd.Clear();
 
+                }
+                break;
+            case COMMAND_CTL_CAMERA.SET_GAME_INFO_OFF:
+                {
+                    NGUITools.Destroy(gameObjectTAEScore);
+                    _cmd.Clear();
                 }
                 break;
             case COMMAND_CTL_CAMERA.SET_SCORE:
@@ -1032,6 +1050,7 @@ public enum COMMAND_CTL_CAMERA {
     
     //video의 종류에 따라(카테고리) 분기되어야함.
     SET_GAME_INFO,
+    SET_GAME_INFO_OFF,
 
     PLAYER_INFO_ON,
     PLAYER_INFO_OFF,

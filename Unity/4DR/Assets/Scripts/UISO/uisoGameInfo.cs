@@ -122,6 +122,24 @@ public class uisoGameInfo : MonoBehaviour
     }
 
 #if _TAE_
+
+    public void SET_INFO_ONLY_ROUND(int roundIndex) {
+
+        this._info.nowRoundCnt = roundIndex;
+
+        if(_info.gameType == GAME_TYPE_TAE.MINUS) {
+            labelRoundCnt.text = string.Format("ROUND {0}", _info.nowRoundCnt);
+        }else if(_info.gameType == GAME_TYPE_TAE.PLUS) {
+
+            if(labelMatchCnt != null) 
+                labelMatchCnt.text = string.Format("MATCH\n{0}", _info.nowStageCnt);
+
+            if(labelRoundCnt != null)
+                labelRoundCnt.text = string.Format("{0}R", _info.nowRoundCnt);
+        }
+    }
+
+
     public void SET_INFO(GAME_INFO_TAE _info) {
 
         this._info = _info;

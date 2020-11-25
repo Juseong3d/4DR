@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: df9f7114a1ce64c429fc8637ac2c05c4, type: 2}
   mSprites:
-  - name: img_btn_no_normal
-    x: 1025
+  - name: img_btn_no_normal_re
+    x: 0
     y: 396
     width: 368
     height: 112
@@ -58,8 +58,8 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: img_btn_no_normal_re
-    x: 1025
+  - name: img_btn_no_touch_re
+    x: 0
     y: 283
     width: 368
     height: 112
@@ -71,35 +71,9 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: img_btn_no_touch
-    x: 0
-    y: 109
-    width: 368
-    height: 112
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: img_btn_no_touch_re
-    x: 369
-    y: 335
-    width: 368
-    height: 112
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
   - name: img_btn_normal
-    x: 369
-    y: 222
+    x: 0
+    y: 170
     width: 368
     height: 112
     borderLeft: 0
@@ -111,34 +85,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_btn_touch
-    x: 369
-    y: 109
-    width: 368
-    height: 112
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: img_btn_yes_normal
     x: 0
-    y: 335
-    width: 368
-    height: 112
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: img_btn_yes_touch
-    x: 0
-    y: 222
+    y: 57
     width: 368
     height: 112
     borderLeft: 0
@@ -150,23 +98,10 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: img_popup_bg
-    x: 1025
+    x: 0
     y: 509
     width: 955
     height: 515
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
-  - name: img_popup_bg_1
-    x: 0
-    y: 448
-    width: 1024
-    height: 576
     borderLeft: 0
     borderRight: 0
     borderTop: 0

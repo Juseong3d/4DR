@@ -111,6 +111,6 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
         time = long.Parse(_tmp[4]);
         utc = _tmp[5];        
 
-        Debug.Log("### :: " + _value);
+        //Debug.Log("### :: " + _value);
     }
 }
