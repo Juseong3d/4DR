@@ -324,6 +324,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 			SeekTo(-999);
 		}
 
+		Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON_EXTRA(Appmain.appimg._nowFullCtl._videoInfo.id, 0, 0);
+
 	}
 
 
@@ -342,6 +344,8 @@ public class MediaPlayerCtrl : MonoBehaviour
 			SeekTo(tmpTime - 10000);
 			Play();
 		}
+
+		Debug.Break();
 	}
 
 	void OnApplicationQuit()

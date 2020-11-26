@@ -25,6 +25,9 @@ public class Appimg : MonoBehaviour {
 
 	public TEMP_TEXTURE[] tempTexture;
 
+
+	public uisoObejctRect[] imgObjects;
+
 	// Use this for initialization
 	void Start () {
 
@@ -56,8 +59,7 @@ public class Appimg : MonoBehaviour {
 			for(int i = 0; i<tempTexture.Length; i++) {
 				tempTexture[i] = new TEMP_TEXTURE();
 			}
-		}
-
+		}		
 	}
 
 
@@ -97,6 +99,34 @@ public class Appimg : MonoBehaviour {
 				//}
 				{
 					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_TITLE, true);
+				}
+
+				imgObjects = new uisoObejctRect[4];
+		
+				for(int i = 0; i<(int)EXTRA_OBJECT_TYPE.LENGTH; i++) {
+					GameObject _io = LoadResource4Prefab4UI(UIDEFINE.PATH_OBJECT_RECT, true);
+
+					imgObjects[i] = _io.GetComponent<uisoObejctRect>();
+
+					switch((EXTRA_OBJECT_TYPE)i) {
+						case EXTRA_OBJECT_TYPE.blue:
+							imgObjects[i].spriteTeam.spriteName = "img_team_blue";
+							imgObjects[i].spriteTeam.color = Color.white;
+							break;
+						case EXTRA_OBJECT_TYPE.red:
+							imgObjects[i].spriteTeam.spriteName = "img_team_red";
+							imgObjects[i].spriteTeam.color = Color.white;
+							break;
+						case EXTRA_OBJECT_TYPE.hug:
+							imgObjects[i].spriteTeam.spriteName = "img_player_bar_f";
+							imgObjects[i].spriteTeam.color = Color.blue + Color.red;
+							break;
+						case EXTRA_OBJECT_TYPE.refree:
+							imgObjects[i].spriteTeam.spriteName = "img_player_bar_f";
+							imgObjects[i].spriteTeam.color = Color.white;
+							break;
+
+					}
 				}
 				break;
 			case GAME_STATUS.GS_MENU :

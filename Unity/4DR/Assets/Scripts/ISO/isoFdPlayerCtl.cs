@@ -89,6 +89,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
     public TweenAlpha tweenAlphaJoystickCamera;
     public TweenAlpha tweenAlphaJoysticTime;
 
+
+    public UILabel labelVideoExtra;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -172,6 +175,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
                 OnClickButton4Right(true);
             }
         }
+
+        //slow!!!!!!!!!!
         
         if(isPressLeftCamera == true) {
             OnClickButton4Left_Camera(this.gameObject, true);
@@ -816,7 +821,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     IEnumerator _OnClickButton4Right(bool _how) {
 
-        yield return new WaitForFixedUpdate();
+        //yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(Time.fixedDeltaTime);
                 
         _mpc.Right(_how);        
 
@@ -974,6 +980,13 @@ public class isoFdPlayerCtl : MonoBehaviour {
         }
 
         Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Video_Exit);
+
+        for(int i = 0; i<Appmain.appimg.imgObjects.Length; i++) {
+				
+			int[] _rect = new int[] { 0, 0, 0, 0 };
+
+			Appmain.appimg.imgObjects[i].SET_RECT(_rect);
+		}
 
     }
         

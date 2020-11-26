@@ -86,6 +86,7 @@ public class Appevent : MonoBehaviour {
             //    return;            
 
 			switch(Appmain.gameStatus) {
+				case GAME_STATUS.GS_TITLE:
 				case GAME_STATUS.GS_MENU:
 					if(Appmain.appmain.isPlayVideo == false) {
 						if(isMakedExitPopup == false) {

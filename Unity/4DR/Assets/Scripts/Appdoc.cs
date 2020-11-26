@@ -110,6 +110,9 @@ public class Appdoc : MonoBehaviour {
 					setGameStatus(GAME_STATUS.GS_TITLE);
 				}
 				break;
+			case GAME_STATUS.GS_MENU:
+				
+				break;
 		}
 
 
@@ -136,7 +139,10 @@ public class Appdoc : MonoBehaviour {
 				Appmain.appsound.playBGM(SOUND_BGM_TYPE.Intro_Bgm);
 				break;
 			case GAME_STATUS.GS_MENU:
-
+				{
+					Appmain.appclass._list_video_extra_info.result.Clear();
+					
+				}
 				break;
 		}		
 	}

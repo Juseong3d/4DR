@@ -10,6 +10,7 @@ public class Appclass : MonoBehaviour {
 	public LIST_CONTENT_FDLIVE _list_conent_fdlist;
 	public LIST_SCRIPT_LIST _list_script_list;
 	public LIST_COMMANDER _list_commander;
+	public LIST_VIDEO_EXTRA_INFO _list_video_extra_info;
 }
 
 /////////////////////////////////////
@@ -67,6 +68,13 @@ public class TEMP_TEXTURE {
 /////////////////////////////////////
 /// Custom class
 /////////////////////////////////////
+///
+[Serializable]
+public class LIST_VIDEO_EXTRA_INFO {
+
+	public List<VIDEO_EXTRA_INFOMATION> result;
+
+}
 
 [Serializable]
 public class LIST_COMMANDER {

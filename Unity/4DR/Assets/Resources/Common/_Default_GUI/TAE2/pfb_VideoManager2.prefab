@@ -721,7 +721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113733674865105511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -617, y: 0, z: 0}
+  m_LocalPosition: {x: -620, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 113733674864870977}
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3002
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -3906,6 +3906,7 @@ Transform:
   m_Children:
   - {fileID: 3526188007172486001}
   - {fileID: 7922839690617703163}
+  - {fileID: 1768317339913890436}
   m_Father: {fileID: 5839140239112086894}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3948,7 +3949,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -4036,6 +4037,7 @@ MonoBehaviour:
   toggleOption: []
   tweenAlphaJoystickCamera: {fileID: 3868928312489344323}
   tweenAlphaJoysticTime: {fileID: 5906442013163215110}
+  labelVideoExtra: {fileID: 9216384825522450938}
 --- !u!54 &4259189132329558024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4998,7 +5000,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3013
+  startingRenderQueue: 3009
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -5856,7 +5858,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3008
+  startingRenderQueue: 3011
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -6526,8 +6528,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 456.38226, y: 128.4, z: 0}
-  m_Center: {x: 228.19113, y: 0, z: 0}
+  m_Size: {x: 538.06287, y: 128.4, z: 0}
+  m_Center: {x: 269.03143, y: 0, z: 0}
 --- !u!114 &6694189603840323605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6697,8 +6699,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 456.38226, y: 128.4, z: 0}
-  m_Center: {x: 228.19113, y: 0, z: 0}
+  m_Size: {x: 541.01514, y: 128.4, z: 0}
+  m_Center: {x: 270.50757, y: 0, z: 0}
 --- !u!114 &6694189604230844487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7384,8 +7386,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 456.38226, y: 128.4, z: 0}
-  m_Center: {x: 228.19113, y: 0, z: 0}
+  m_Size: {x: 537.07874, y: 128.4, z: 0}
+  m_Center: {x: 268.53937, y: 0, z: 0}
 --- !u!114 &6694189604853558254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7636,8 +7638,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 456.38226, y: 128.4, z: 0}
-  m_Center: {x: 228.19113, y: 0, z: 0}
+  m_Size: {x: 541.99927, y: 128.4, z: 0}
+  m_Center: {x: 270.99963, y: 0, z: 0}
 --- !u!114 &6694189604996339252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7964,7 +7966,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3006
+  startingRenderQueue: 3007
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -8635,6 +8637,108 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 100, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8501870440416923104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768317339913890436}
+  - component: {fileID: 9216384825522450938}
+  m_Layer: 8
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1768317339913890436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501870440416923104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -939, y: 472, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3993594888378106926}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9216384825522450938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501870440416923104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  rightAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  bottomAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 0
+  mWidth: 14
+  mHeight: 24
+  mDepth: 30
+  mMat: {fileID: 0}
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 0.034313727
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 0}
+  mFont: {fileID: 11477304, guid: e9ee0a9adf0d4184f8131732430568b3, type: 3}
+  mText: '-'
+  mFontSize: 24
+  mFontStyle: 0
+  mAlignment: 0
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 3
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mOverflow: 2
+  mApplyGradient: 1
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mOverflowHeight: 0
+  mModifier: 0
+  mSymbolDepth: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1 &8786876568411252413
 GameObject:
   m_ObjectHideFlags: 0

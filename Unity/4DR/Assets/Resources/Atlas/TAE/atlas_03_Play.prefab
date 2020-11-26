@@ -50,10 +50,10 @@ MonoBehaviour:
     y: 829
     width: 88
     height: 88
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 44
+    borderRight: 44
+    borderTop: 44
+    borderBottom: 44
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

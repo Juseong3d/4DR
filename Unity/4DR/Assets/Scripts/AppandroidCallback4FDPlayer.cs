@@ -112,5 +112,6 @@ public class AppandroidCallback4FDPlayer : MonoBehaviour {
         utc = _tmp[5];        
 
         //Debug.Log("### :: " + _value);
+        Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON_EXTRA(Appmain.appimg._nowFullCtl._videoInfo.id, frame, channel);
     }
 }

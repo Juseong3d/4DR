@@ -1027,6 +1027,37 @@ public class Q_COMMAND_CTL_CAMERA {
 }
 
 
+[Serializable]
+public class VIDEO_EXTRA_INFOMATION {
+
+    public int frame;
+    public int channel;
+    public _object[] objects;
+
+    public int[] hitting_coord;
+
+    public bool slow_motion_trigger;
+
+    [Serializable]
+    public class _object {
+        public int id;
+        public int[] rect;
+        public float probability;
+
+        //public _object() {
+        //    changey();
+        //}
+
+        //public void changey() {
+        //    Debug.Log("b rect[1] = " + rect[1]);
+        //    rect[1] = (int)DEFINE.BASE_SCREEN_HEIGHT - rect[1];
+        //    Debug.Log("a rect[1] = " + rect[1]);
+        //}
+    }
+
+}
+
+
 public enum COMMAND_CTL_CAMERA {
 
     NONE = -1,
@@ -1103,4 +1134,15 @@ public enum PARTS {
 	kick,
 	punch
 
+}
+
+
+public enum EXTRA_OBJECT_TYPE {
+    
+    red = 0,
+    blue = 1,
+    refree = 2,
+    hug = 3,
+
+    LENGTH
 }

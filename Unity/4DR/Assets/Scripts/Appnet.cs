@@ -278,10 +278,6 @@ public class Appnet : MonoBehaviour {
 				appclass._list_commander.result.Clear();
 				appclass._list_commander = JsonUtility.FromJson<LIST_COMMANDER>("{\"result\":" + networkData.tmpRecvData + "}");
 
-				if(appclass._list_commander.result.Count != 0) {
-					int a = 0;
-				}
-
 				//몇초 이상 지난건 애드 하지 않도록 해보자..
 				for(int i = 0; i<appclass._list_commander.result.Count; i++) {
 					if(appclass._list_commander.result[i].video_id == Appmain.appimg._nowFullCtl._videoInfo.id) {
@@ -293,6 +289,44 @@ public class Appnet : MonoBehaviour {
 						{
 							Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(appclass._list_commander.result[i].data));
 						}
+					}
+				}
+			}
+			break;
+		case NET_WEB_API_CMD.video_extra_info:
+			{							
+				//Debug.Log("networkData.tmpRecvData : " + networkData.tmpRecvData);
+				//appclass._list_video_extra_info.result.Clear();
+				VIDEO_EXTRA_INFOMATION _last = JsonUtility.FromJson<VIDEO_EXTRA_INFOMATION>(networkData.tmpRecvData);				
+				//appclass._list_video_extra_info.result.Add(_last);
+
+				for(int i = 0; i<Appmain.appimg.imgObjects.Length; i++) {
+				
+					int[] _rect = new int[] { 0, 0, 0, 0 };
+
+					Appmain.appimg.imgObjects[i].SET_RECT(_rect);
+				}
+
+
+
+				if(networkData.tmpRecvData.Length > 3) {
+					//Object prefab 생성
+					//Object value로 셋팅
+					if(_last != null) {
+						if(_last.objects != null) {
+							for(int i = 0; i<_last.objects.Length; i++) {
+
+								Appmain.appimg.imgObjects[_last.objects[i].id].SET_RECT(_last.objects[i].rect);
+
+							}
+						}
+					}
+					try {
+						Appmain.appimg._nowFullCtl.labelVideoExtra.text = string.Format("* Info\nCurrence Info : f {0} c {1}\nTracking Info : f {2} c {3}\nHitting  Info : x {4} y {5}\nisSlowmotion  : {6}",
+							Appmain.appimg._nowFullCtl._info.frame, Appmain.appimg._nowFullCtl._info.channel, _last.frame, _last.channel, _last.hitting_coord[0], _last.hitting_coord[1], _last.slow_motion_trigger);//
+							
+					}catch(Exception e) {
+						Debug.Log("e : " + e);							 
 					}
 				}
 			}
@@ -394,6 +428,23 @@ public class Appnet : MonoBehaviour {
 			www = new WWW(_URL, _form);
 
 		}		
+	}
+
+
+	internal void __WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON_EXTRA(int videoID, int frameID, int channelID) {
+
+		NETWORK_DATA networkData = new NETWORK_DATA();
+		networkData.init();
+
+		networkData.functionName = NET_WEB_API_CMD.video_extra_info.ToString();
+
+		Dictionary<string, string> headers = new Dictionary<string,string>();
+		headers.Add("Accept", "application/json");
+
+		string _last_url = string.Format("{0}video/{1}/frame/{2}/channel/{3}", _URL, videoID, frameID, channelID);
+
+		WWW www = new WWW(_last_url, null, headers);
+		StartCoroutine (WaitForRequest (www, networkData));
 	}
 
 
@@ -711,6 +762,7 @@ public class Appnet : MonoBehaviour {
 
 	internal string GET_UID() {
 
+		Debug.Log("SystemInfo.deviceUniqueIdentifier : " + SystemInfo.deviceUniqueIdentifier);
 		return SystemInfo.deviceUniqueIdentifier;
 
 	}
@@ -1081,6 +1133,7 @@ public enum NET_WEB_API_CMD {
 	script,
 	script_sub,
 	table_sub,
-	commander
+	commander,
+	video_extra_info
 
 }
