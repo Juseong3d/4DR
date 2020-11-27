@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1307136001820650039}
   - component: {fileID: 5280386920103570362}
   - component: {fileID: 5986683684599886869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Side_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 4516897283112208749}
   - component: {fileID: 2839358106562973485}
   - component: {fileID: 4960318511962648945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Side_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9685,7 +9685,7 @@ GameObject:
   - component: {fileID: 9174922662674443897}
   - component: {fileID: 1190707695450947452}
   - component: {fileID: 4915417408582667019}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14522,7 +14522,7 @@ GameObject:
   - component: {fileID: 3342970321549758684}
   - component: {fileID: 903238242091331204}
   - component: {fileID: 5346573624046465677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SCORE_1POINT_PENALTY_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19227,7 +19227,7 @@ GameObject:
   - component: {fileID: 9219947449376700655}
   - component: {fileID: 2320005488701290952}
   - component: {fileID: 6325142131520699350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Side_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24064,7 +24064,7 @@ GameObject:
   - component: {fileID: 5648809467767596389}
   - component: {fileID: 2795836466446424819}
   - component: {fileID: 7320397195704629801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28901,7 +28901,7 @@ GameObject:
   - component: {fileID: 3426308897641073130}
   - component: {fileID: 3736438069102619928}
   - component: {fileID: 6271038657936633913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33738,7 +33738,7 @@ GameObject:
   - component: {fileID: 2373171024865452448}
   - component: {fileID: 7769585869260189699}
   - component: {fileID: 275876403595708958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Centre_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

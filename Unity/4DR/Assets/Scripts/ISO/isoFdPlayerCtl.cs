@@ -456,7 +456,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     public void OnClickButton4PlayerTouch() {
 
-        Debug.Log("OnClickButton4PlayerTouch()");
+        //Debug.Log("OnClickButton4PlayerTouch()");
 
         tweenAlphaPlayerController.PlayForward();
         if(toggleSettingMain.value == true) {
@@ -983,10 +983,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
         for(int i = 0; i<Appmain.appimg.imgObjects.Length; i++) {
 				
-			int[] _rect = new int[] { 0, 0, 0, 0 };
+			int[] _rect = new int[] { -88, -88, 0, 0 };
 
-			Appmain.appimg.imgObjects[i].SET_RECT(_rect);
-		}
+			Appmain.appimg.imgObjects[i].SET_RECT(_rect);            
+        }
 
     }
         

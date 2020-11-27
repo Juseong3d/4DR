@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1172017922547137340}
   - component: {fileID: 1172017922547137342}
   - component: {fileID: 1172017922547137343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 5274565202751254412}
   - component: {fileID: 148383821918699055}
   - component: {fileID: 7640404332465685554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Centre_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9604,7 +9604,7 @@ GameObject:
   - component: {fileID: 5066697653554579398}
   - component: {fileID: 6486953413075444532}
   - component: {fileID: 4529217204717829653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14360,7 +14360,7 @@ GameObject:
   - component: {fileID: 3491452111956388310}
   - component: {fileID: 1217680532184986231}
   - component: {fileID: 8369928161106024169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flash_3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19147,7 +19147,7 @@ GameObject:
   - component: {fileID: 4420805899110280220}
   - component: {fileID: 6616419698003882195}
   - component: {fileID: 8979447734372559059}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flare_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23904,7 +23904,7 @@ GameObject:
   - component: {fileID: 9000253758243761294}
   - component: {fileID: 4400923839845557691}
   - component: {fileID: 7519790975105642485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WIN_3D_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28623,7 +28623,7 @@ GameObject:
   - component: {fileID: 4617088983009414129}
   - component: {fileID: 6490870543408079037}
   - component: {fileID: 5811882003489966134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flare_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33379,7 +33379,7 @@ GameObject:
   - component: {fileID: 8755228246923700085}
   - component: {fileID: 6471499376582204286}
   - component: {fileID: 5272068561232664832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flare_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

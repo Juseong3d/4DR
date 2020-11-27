@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7171916468921509482}
   - component: {fileID: 2909382545739024797}
   - component: {fileID: 2271303129555848133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow_Cloud_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 3116041499035906575}
   - component: {fileID: 6880403155222306003}
   - component: {fileID: 3783746885665879158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PENALTY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9487,7 +9487,7 @@ GameObject:
   - component: {fileID: 182866935818040956}
   - component: {fileID: 3262542419290778769}
   - component: {fileID: 2403286540951738593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14324,7 +14324,7 @@ GameObject:
   - component: {fileID: 5044593127616149879}
   - component: {fileID: 1424912939814660206}
   - component: {fileID: 2611946324911394537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19161,7 +19161,7 @@ GameObject:
   - component: {fileID: 8190689949771875096}
   - component: {fileID: 5533080021779836599}
   - component: {fileID: 8328416960717581680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow_Cloud_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23917,7 +23917,7 @@ GameObject:
   - component: {fileID: 5757049906884713702}
   - component: {fileID: 8898127329734877238}
   - component: {fileID: 1853802486967877751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Centre_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28754,7 +28754,7 @@ GameObject:
   - component: {fileID: 3488387798234299667}
   - component: {fileID: 6219845336305658721}
   - component: {fileID: 7872027359384637693}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_UP_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33591,7 +33591,7 @@ GameObject:
   - component: {fileID: 5414044848979900073}
   - component: {fileID: 7937229417561341203}
   - component: {fileID: 4689137287760330929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

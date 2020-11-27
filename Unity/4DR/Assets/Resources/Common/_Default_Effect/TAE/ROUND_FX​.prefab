@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6860509949926180766}
   - component: {fileID: 6815091863188043199}
   - component: {fileID: 7228519460304415173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Centre_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ GameObject:
   - component: {fileID: 1950627936597797777}
   - component: {fileID: 5638716381788387055}
   - component: {fileID: 439996695949888536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lightning_SQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9604,7 +9604,7 @@ GameObject:
   - component: {fileID: 6002553306833321404}
   - component: {fileID: 6943818056353853127}
   - component: {fileID: 4633515333931618445}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_Centre_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14378,7 +14378,7 @@ GameObject:
   - component: {fileID: 4629919979713949328}
   - component: {fileID: 3868339193888623105}
   - component: {fileID: 2614617453010040655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_Centre_Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19152,7 +19152,7 @@ GameObject:
   - component: {fileID: 3211121852621451741}
   - component: {fileID: 8226459089427753787}
   - component: {fileID: 7291532500650483535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23926,7 +23926,7 @@ GameObject:
   - component: {fileID: 998043553568713548}
   - component: {fileID: 1743291124489319355}
   - component: {fileID: 6108694543909481997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "ROUND_FX\u200B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28631,7 +28631,7 @@ GameObject:
   - component: {fileID: 4959421181468606807}
   - component: {fileID: 1615853196083326803}
   - component: {fileID: 7930626750316113197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Round1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33387,7 +33387,7 @@ GameObject:
   - component: {fileID: 3351198728931831109}
   - component: {fileID: 6986187754902133120}
   - component: {fileID: 705508133707866449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_Long_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

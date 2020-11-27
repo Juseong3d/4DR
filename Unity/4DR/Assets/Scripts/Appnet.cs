@@ -294,7 +294,7 @@ public class Appnet : MonoBehaviour {
 			}
 			break;
 		case NET_WEB_API_CMD.video_extra_info:
-			{							
+			if(Appmain.appmain.isPlayVideo == true) {
 				//Debug.Log("networkData.tmpRecvData : " + networkData.tmpRecvData);
 				//appclass._list_video_extra_info.result.Clear();
 				VIDEO_EXTRA_INFOMATION _last = JsonUtility.FromJson<VIDEO_EXTRA_INFOMATION>(networkData.tmpRecvData);				
@@ -302,7 +302,7 @@ public class Appnet : MonoBehaviour {
 
 				for(int i = 0; i<Appmain.appimg.imgObjects.Length; i++) {
 				
-					int[] _rect = new int[] { 0, 0, 0, 0 };
+					int[] _rect = new int[] { -88, -88, 0, 0 };
 
 					Appmain.appimg.imgObjects[i].SET_RECT(_rect);
 				}
@@ -318,15 +318,52 @@ public class Appnet : MonoBehaviour {
 
 								Appmain.appimg.imgObjects[_last.objects[i].id].SET_RECT(_last.objects[i].rect);
 
+								if(Appmain.appimg._nowVideoCommander.gameObjectTAEScore != null) {
+									if(_last.objects[i].id == (int)EXTRA_OBJECT_TYPE.blue) {
+										uisoGameInfo _uigameInfo = Appmain.appimg._nowVideoCommander.gameObjectTAEScore.GetComponent<uisoGameInfo>();
+										Appmain.appimg.imgObjects[_last.objects[i].id].SET_LABEL(_uigameInfo.labelBlueName.text);
+									}else if(_last.objects[i].id == (int)EXTRA_OBJECT_TYPE.red) {
+										uisoGameInfo _uigameInfo = Appmain.appimg._nowVideoCommander.gameObjectTAEScore.GetComponent<uisoGameInfo>();
+										Appmain.appimg.imgObjects[_last.objects[i].id].SET_LABEL(_uigameInfo.labelRedName.text);
+									}
+								}
 							}
 						}
 					}
 					try {
-						Appmain.appimg._nowFullCtl.labelVideoExtra.text = string.Format("* Info\nCurrence Info : f {0} c {1}\nTracking Info : f {2} c {3}\nHitting  Info : x {4} y {5}\nisSlowmotion  : {6}",
-							Appmain.appimg._nowFullCtl._info.frame, Appmain.appimg._nowFullCtl._info.channel, _last.frame, _last.channel, _last.hitting_coord[0], _last.hitting_coord[1], _last.slow_motion_trigger);//
+						int[] _tr = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.blue).rect;
+						int[] _tr2 = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.red).rect;
+						int x1 = _tr[0] + _tr[1] + _tr[3] + (_tr[2] >> 1);
+						int x2 = _tr2[0] + _tr2[1] + _tr2[3] + (_tr2[2] >> 1);
+						int dist = Math.Abs(x1 - x2);						
+
+						Appmain.appimg.imgObjectLine.SET_LINE(0, _tr);
+						Appmain.appimg.imgObjectLine.SET_LINE(1, _tr2);
+
+						Appmain.appimg._nowFullCtl.labelVideoExtra.text = string.Format("* Info\nCurrence Info : f {0} c {1}\nTracking Info : f {2} c {3}\nHitting  Info : x {4} y {5}\nisSlowmotion  : {6}\n\nDist : {7}",
+							Appmain.appimg._nowFullCtl._info.frame, Appmain.appimg._nowFullCtl._info.channel, _last.frame, _last.channel, _last.hitting_coord[0], _last.hitting_coord[1], _last.slow_motion_trigger, dist);//
 							
 					}catch(Exception e) {
 						Debug.Log("e : " + e);							 
+					}
+
+					//히트 좌표값과 rect를 비교하여 blue인지 red인지 비교
+					//해당 rect의 상하 비교하여 몸인지 머리인지 비교
+
+					if(_last.hitting_coord[0] != -1 || _last.hitting_coord[1] != -1) {
+						int[] _tr = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.blue).rect;
+						int[] _tr2 = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.red).rect;
+
+						bool isBlue = Appmain.appdoc.COLLUSION(_tr[0], _tr[1], _tr[2], _tr[3], _last.hitting_coord[0], _last.hitting_coord[1], 1, 1);
+						bool isRed = Appmain.appdoc.COLLUSION(_tr2[0], _tr2[1], _tr2[2], _tr2[3], _last.hitting_coord[0], _last.hitting_coord[1], 1, 1);
+
+						if(isBlue == true) {
+							string addcmd = string.Format("9999,,EFFECT,{0},{1},{2},,", _last.hitting_coord[0], _last.hitting_coord[1], 9);
+							Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(addcmd));
+						}else if(isRed == true) {
+							string addcmd = string.Format("9999,,EFFECT,{0},{1},{2},,", _last.hitting_coord[0], _last.hitting_coord[1], 14);
+							Appmain.appimg._nowVideoCommander._commandes.Add(new Q_COMMAND_CTL_CAMERA(addcmd));
+						}
 					}
 				}
 			}

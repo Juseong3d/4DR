@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8851132226715053899}
   - component: {fileID: 3191976956835145102}
   - component: {fileID: 3866854158892090391}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BLUE_WIN_2D_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

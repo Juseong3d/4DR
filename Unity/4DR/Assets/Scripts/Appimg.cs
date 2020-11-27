@@ -27,6 +27,7 @@ public class Appimg : MonoBehaviour {
 
 
 	public uisoObejctRect[] imgObjects;
+	public uisoObejctRect imgObjectLine;
 
 	// Use this for initialization
 	void Start () {
@@ -101,7 +102,7 @@ public class Appimg : MonoBehaviour {
 					mainUIPrefab = LoadResource4Prefab4UI(UIDEFINE.PATH_TITLE, true);
 				}
 
-				imgObjects = new uisoObejctRect[4];
+				imgObjects = new uisoObejctRect[(int)EXTRA_OBJECT_TYPE.LENGTH];
 		
 				for(int i = 0; i<(int)EXTRA_OBJECT_TYPE.LENGTH; i++) {
 					GameObject _io = LoadResource4Prefab4UI(UIDEFINE.PATH_OBJECT_RECT, true);
@@ -127,6 +128,14 @@ public class Appimg : MonoBehaviour {
 							break;
 
 					}
+
+					//imgObjects[i].transform.SetParent(Appmain.appui.mainCamera3D.transform);
+				}
+				{
+					GameObject _io = LoadResource4Prefab4UI(UIDEFINE.PATH_OBJECT_LINE, true);
+
+					imgObjectLine = _io.GetComponent<uisoObejctRect>();
+					//imgObjectLine.transform.SetParent(Appmain.appui.mainCamera3D.transform);
 				}
 				break;
 			case GAME_STATUS.GS_MENU :
@@ -353,7 +362,7 @@ public class Appimg : MonoBehaviour {
 
 		string _url = __info.GETURL();
 
-		Debug.Log("LOAD_FULL_SCREEN_VIDEO :: " + _url);;
+		Debug.Log("LOAD_FULL_SCREEN_VIDEO :: " + _url);		
 
 		for(int i = 0; i<Appmain.appclass._list_conent_fdlist.result.Count; i++) {
 
@@ -373,6 +382,11 @@ public class Appimg : MonoBehaviour {
 			_nowFullCtl = _videoManager.GetComponentInChildren<isoFdPlayerCtl>();			
 
 			_nowFullCtl.max_channel = __info.max_channel;
+
+			if(_url.Contains("192.168.0") == true) {
+				_nowFullVideo.NDK_SET_IS_RESTFUL_PORT(7009);
+			}
+
 			_ctl.m_strFileName = _url;
             _videoManager.transform.SetParent(Appmain.appui.transform);
 			_videoManager.transform.localScale = new Vector3(1, 1, 1);

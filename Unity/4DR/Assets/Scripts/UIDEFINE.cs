@@ -46,6 +46,7 @@ internal class UIDEFINE {
     public const string PATH_CAMERA_SCRIPT_ITEM = "Common/_Default_GUI/pfb_ITEM_Camera_Script";
 
     public const string PATH_OBJECT_RECT = "Common/_Default_GUI/TAE2/pfb_Object_Rect";
+    public const string PATH_OBJECT_LINE = "Common/_Default_GUI/TAE2/pfb_Object_Line";
 	
 
 	static public UIAtlas getProjectAtlas(PROJECT_TYPE type, string str){

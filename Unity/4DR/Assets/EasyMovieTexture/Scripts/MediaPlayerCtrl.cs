@@ -345,7 +345,7 @@ public class MediaPlayerCtrl : MonoBehaviour
 			Play();
 		}
 
-		Debug.Break();
+		//Debug.Break();
 	}
 
 	void OnApplicationQuit()
@@ -953,6 +953,18 @@ public class MediaPlayerCtrl : MonoBehaviour
 	}
 
 
+	public void NDK_SET_IS_RESTFUL_PORT(int _value) {
+
+		Debug.Log("NDK_SET_IS_RESTFUL_PORT : " + _value);
+#if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
+#if UNITY_ANDROID
+		Call_NDK_SET_IS_RESTFUL_PORT(_value);
+#endif
+#endif
+
+	}
+
+
 	public void VIBRATOR(long[] _pattern) {
 
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_WEBGL
@@ -1369,6 +1381,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 	private void Call_Pause()
 	{
 		GetJavaObject().Call("Pause");
+	}
+
+	private void Call_NDK_SET_IS_RESTFUL_PORT(int _value) {
+		GetJavaObject().Call("NDK_SET_IS_RESTFUL_PORT", new object[] { _value });
 	}
 
 	private void Call_VIBRATOR(long[] _pattern) {

@@ -358,12 +358,13 @@ public class AppCommandCtlCamera : MonoBehaviour
                     //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/BLUE_HIT__MIDDLE");
 
                     if(_prefab != null) {
-                        Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
 
-                        _prefab.transform.localPosition = _position;
-                        _prefab.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                        _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                        
 
-                        _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);
+                        //Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, DEFINE.BASE_SCREEN_HEIGHT - _cmd._y));
+
+                        _prefab.transform.localPosition = new Vector3(_cmd._x, -_cmd._y, 0);
+                        _prefab.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);                        
                     }
 
                     Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Effect_Sound);
@@ -1053,6 +1054,20 @@ public class VIDEO_EXTRA_INFOMATION {
         //    rect[1] = (int)DEFINE.BASE_SCREEN_HEIGHT - rect[1];
         //    Debug.Log("a rect[1] = " + rect[1]);
         //}
+    }
+
+
+    public _object GET_OBJECT_FROM_ID(int id) {
+
+        for(int i = 0; i<objects.Length; i++) {
+
+            if(objects[i].id == id) {
+                return objects[i];
+            }
+        }
+
+        return null;
+
     }
 
 }

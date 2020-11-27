@@ -244,5 +244,41 @@ public class Appdoc : MonoBehaviour {
 
 	}
 
+	/*
+	사각형 충돌 채크..
+	*/
+	internal bool COLLUSION(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
 
+		if( x1 >= (x2 + w2) || (x1 + w1) <= x2 )
+			return false; 
+
+		if( y1 >= (y2 + h2) || (y1 + h1) <= y2 )
+			return false;
+
+		return true;
+	}
+
+
+	internal bool COLLUSION(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
+
+		if( x1 >= (x2 + w2) || (x1 + w1) <= x2 )
+			return false; 
+
+		if( y1 >= (y2 + h2) || (y1 + h1) <= y2 )
+			return false;
+
+		return true;
+	}
+
+
+	internal bool ECOLLUSION(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
+
+		if( x1 > (x2 + w2) || (x1 + w1) < x2 )
+			return false; 
+
+		if( y1 > (y2 + h2) || (y1 + h1) < y2 )
+			return false;
+
+		return true;
+	}
 }
