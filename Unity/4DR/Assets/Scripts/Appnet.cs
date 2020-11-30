@@ -307,8 +307,6 @@ public class Appnet : MonoBehaviour {
 					Appmain.appimg.imgObjects[i].SET_RECT(_rect);
 				}
 
-
-
 				if(networkData.tmpRecvData.Length > 3) {
 					//Object prefab 생성
 					//Object value로 셋팅
@@ -328,34 +326,52 @@ public class Appnet : MonoBehaviour {
 									}
 								}
 							}
-						}
+						}				
 					}
+
 					try {
-						int[] _tr = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.blue).rect;
-						int[] _tr2 = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.red).rect;
-						int x1 = _tr[0] + _tr[1] + _tr[3] + (_tr[2] >> 1);
-						int x2 = _tr2[0] + _tr2[1] + _tr2[3] + (_tr2[2] >> 1);
-						int dist = Math.Abs(x1 - x2);						
+							if(_last != null) {
 
-						Appmain.appimg.imgObjectLine.SET_LINE(0, _tr);
-						Appmain.appimg.imgObjectLine.SET_LINE(1, _tr2);
+								VIDEO_EXTRA_INFOMATION._object _obj = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.blue);
+								VIDEO_EXTRA_INFOMATION._object _obj2 = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.red);
+						
+								if(_obj != null || _obj2 != null) {
+									int[] _tr = _obj.rect;					
+									int[] _tr2 = _obj2.rect;
+					
+									if(_tr != null || _tr2 != null) {					
+											int x1 = _tr[0] + _tr[1] + _tr[3] + (_tr[2] >> 1);					
+											int x2 = _tr2[0] + _tr2[1] + _tr2[3] + (_tr2[2] >> 1);					
+											int dist = Math.Abs(x1 - x2);						
+					
+											if(Appmain.appimg.imgObjectLine != null) {
+												Appmain.appimg.imgObjectLine.SET_LINE(0, _tr);
+												Appmain.appimg.imgObjectLine.SET_LINE(1, _tr2);
+											}
+					
+											Appmain.appimg._nowFullCtl.labelVideoExtra.text = string.Format("* Info\nCurrence Info : f {0} c {1}\nTracking Info : f {2} c {3}\nHitting  Info : x {4} y {5}\nisSlowmotion  : {6}\n\nDist : {7}",
+												Appmain.appimg._nowFullCtl._info.frame, Appmain.appimg._nowFullCtl._info.channel, _last.frame, _last.channel, _last.hitting_coord[0], _last.hitting_coord[1], _last.slow_motion_trigger, dist);//
+					
+									}
+								}
+							}
+						} catch (Exception e) {
+							//Debug.Log("e : " + e);
+						}
 
-						Appmain.appimg._nowFullCtl.labelVideoExtra.text = string.Format("* Info\nCurrence Info : f {0} c {1}\nTracking Info : f {2} c {3}\nHitting  Info : x {4} y {5}\nisSlowmotion  : {6}\n\nDist : {7}",
-							Appmain.appimg._nowFullCtl._info.frame, Appmain.appimg._nowFullCtl._info.channel, _last.frame, _last.channel, _last.hitting_coord[0], _last.hitting_coord[1], _last.slow_motion_trigger, dist);//
-							
-					}catch(Exception e) {
-						Debug.Log("e : " + e);							 
-					}
+				//히트 좌표값과 rect를 비교하여 blue인지 red인지 비교
+				//해당 rect의 상하 비교하여 몸인지 머리인지 비교
 
-					//히트 좌표값과 rect를 비교하여 blue인지 red인지 비교
-					//해당 rect의 상하 비교하여 몸인지 머리인지 비교
+				if (_last.hitting_coord[0] != -1 || _last.hitting_coord[1] != -1) {
 
-					if(_last.hitting_coord[0] != -1 || _last.hitting_coord[1] != -1) {
 						int[] _tr = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.blue).rect;
 						int[] _tr2 = _last.GET_OBJECT_FROM_ID((int)EXTRA_OBJECT_TYPE.red).rect;
 
 						bool isBlue = Appmain.appdoc.COLLUSION(_tr[0], _tr[1], _tr[2], _tr[3], _last.hitting_coord[0], _last.hitting_coord[1], 1, 1);
 						bool isRed = Appmain.appdoc.COLLUSION(_tr2[0], _tr2[1], _tr2[2], _tr2[3], _last.hitting_coord[0], _last.hitting_coord[1], 1, 1);
+
+						Debug.Log("isBLue = " + isBlue);
+						Debug.Log("isRed  = " + isRed);
 
 						if(isBlue == true) {
 							string addcmd = string.Format("9999,,EFFECT,{0},{1},{2},,", _last.hitting_coord[0], _last.hitting_coord[1], 9);

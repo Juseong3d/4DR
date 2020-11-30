@@ -36,6 +36,8 @@ public class AppCommandCtlCamera : MonoBehaviour
 
     private float fixedDeltaTime;
 
+    public Q_COMMAND_CTL_CAMERA _lastLookAt;
+
     private void Awake() {
         
 		this.fixedDeltaTime = Time.fixedDeltaTime;
@@ -275,29 +277,42 @@ public class AppCommandCtlCamera : MonoBehaviour
             case COMMAND_CTL_CAMERA.LOOKAT :
                 {
 
-                    Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
-                    Vector3 _tmpTarget = new Vector3(
-                            Mathf.Lerp(_mainCamera.transform.localPosition.x, _position.x, Time.deltaTime),
-                            Mathf.Lerp(_mainCamera.transform.localPosition.y, _position.y, Time.deltaTime),
-                            Mathf.Lerp(_mainCamera.transform.localPosition.z, 0f, Time.deltaTime)
-                        );
-                    Vector3 ___ddddd = _mainCamera.transform.localPosition - _position;
-                    Debug.Log("___ddddd :: " + ___ddddd.x + "/" + ___ddddd.y + "//" + _mainCamera.transform.localPosition + "//" + _tmpTarget);
-                    
-                    if (Mathf.Abs(___ddddd.x) <= 0.2f && Mathf.Abs(___ddddd.y) <= 0.2f /*&& _mainCamera.orthographicSize <= _cmd._zoom*/) {                            
-                            _cmd.Clear();
-                    }else {
-                    
-                        _mainCamera.transform.localPosition = _tmpTarget;
-                        //_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);
+                //Vector3 touchStart = Appmain.appui.mainCamera3D.ScreenToWorldPoint(Appmain.appui.mainCamera3D.transform.position);
+                //Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y))); 
 
-                        //if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) <= 0.001f) {
-                        //    _mainCamera.orthographicSize = _cmd._zoom;
-                        //}
+                //Debug.Log("one touch :: " + direction);
 
-                    }
-                    
-                }
+                //Appmain.appui.mainCamera3D.transform.position += direction;
+                ////Appmain.appui.mainCamera3D.transform.position = Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position, direction, 
+
+                //_cmd.Clear();
+
+                //Vector3 _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+                //Vector3 _tmpTarget = new Vector3(
+                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.x, _position.x, Time.deltaTime),
+                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.y, _position.y, Time.deltaTime),
+                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.z, 0f, Time.deltaTime)
+                //    );
+                //Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.localPosition - _position;
+                //Debug.Log("___ddddd :: " + ___ddddd.x + "/" + ___ddddd.y + "//" + Appmain.appui.mainCamera3D.transform.localPosition + "//" + _tmpTarget);
+
+                //if (Mathf.Abs(___ddddd.x) <= 0.2f && Mathf.Abs(___ddddd.y) <= 0.2f /*&& _mainCamera.orthographicSize <= _cmd._zoom*/) {
+                //    _cmd.Clear();
+                //}
+                //else {
+
+                //    Appmain.appui.mainCamera3D.transform.localPosition = _tmpTarget;
+                //    //_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);
+
+                //    //if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) <= 0.001f) {
+                //    //    _mainCamera.orthographicSize = _cmd._zoom;
+                //    //}
+
+                //}
+                Appmain.appui.mainCamera3D.transform.LookAt(new Vector3(_cmd._x, _cmd._y, 0));
+                _cmd.Clear();
+
+            }
                 break;
             case COMMAND_CTL_CAMERA.CHANNEL :
 
@@ -349,27 +364,47 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.EFFECT :
                 {
-                    GameObject _prefab = Appimg.LoadResource4Prefab(_cmd._effect_info.GET_PATH());
-                    //Common/_Default_Effect/TAE/​pfb_effect_test​
-                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/​pfb_effect_test​");
-                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/ROUND_FX");
+                    Transform[] _nowHave = Appmain.appui._EFFECT_MAIN.transform.GetComponentsInChildren<Transform>();
+                    bool isHave = false;
 
-                    //D:\Project\2018\4DR_TAE\Unity\4DR\Assets\Resources\Common\_Default_Effect\TAE
-                    //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/BLUE_HIT__MIDDLE");
-
-                    if(_prefab != null) {
-
-                        _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                        
-
-                        //Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, DEFINE.BASE_SCREEN_HEIGHT - _cmd._y));
-
-                        _prefab.transform.localPosition = new Vector3(_cmd._x, -_cmd._y, 0);
-                        _prefab.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);                        
+                    for(int i = 0; i<_nowHave.Length; i++) {
+                        if(_nowHave[i].transform.name == _cmd._effect_index.ToString()) {
+                            isHave = true;
+                            break;
+                        }
                     }
 
-                    Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Effect_Sound);
+                    if(isHave == false) {
+                        GameObject _prefab = Appimg.LoadResource4Prefab(_cmd._effect_info.GET_PATH());
+                        //Common/_Default_Effect/TAE/​pfb_effect_test​
+                        //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/​pfb_effect_test​");
+                        //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/ROUND_FX");
 
-                    _cmd.Clear();
+                        //D:\Project\2018\4DR_TAE\Unity\4DR\Assets\Resources\Common\_Default_Effect\TAE
+                        //GameObject _prefab = Appimg.LoadResource4Prefab("Common/_Default_Effect/TAE/BLUE_HIT__MIDDLE");
+
+                        if(_prefab != null) {
+
+                            _prefab.name = _cmd._effect_index.ToString();
+
+                            _prefab.transform.SetParent(Appmain.appui._EFFECT_MAIN.transform);                        
+
+                            //Vector3 _position = _mainCamera.ScreenToWorldPoint(new Vector3(_cmd._x, DEFINE.BASE_SCREEN_HEIGHT - _cmd._y));
+
+                            _prefab.transform.localPosition = new Vector3(_cmd._x, -_cmd._y, 0);
+                            _prefab.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);                        
+
+                            Appmain.appsound.playEffect(SOUND_EFFECT_TYPE.Effect_Sound);
+                        
+                            isoDestoryTime dtt = _prefab.AddComponent<isoDestoryTime>();
+                        
+                            dtt.SET_DESTROY_TIMER(4f);
+                        }                    
+
+                        _cmd.Clear();
+                    }else {
+                        _cmd.Clear();
+                    }
                 }
                 break;
             case COMMAND_CTL_CAMERA.TEXT :
@@ -886,12 +921,19 @@ public class Q_COMMAND_CTL_CAMERA {
             }
             break;
         case COMMAND_CTL_CAMERA.LOOKAT :
+
+            if(Appmain.appimg._nowVideoCommander._lastLookAt != null) {
+                Appmain.appimg._nowVideoCommander._lastLookAt.Clear();
+            }
+
             _x = Convert.ToInt32(_tmp[i++]);
             _y = Convert.ToInt32(_tmp[i++]);
-            _zoom = Convert.ToSingle(_tmp[i++]);
+            //_zoom = Convert.ToSingle(_tmp[i++]);
             if(Appmain.appimg._nowFullCtl.toggleOption[(int)SETTING.AUTO_ZOOM].value == false) {
                 Clear();
             }
+
+            Appmain.appimg._nowVideoCommander._lastLookAt = this;
             break;
         case COMMAND_CTL_CAMERA.CHANNEL :
             _channel_index = Convert.ToInt32(_tmp[i++]);
@@ -1059,6 +1101,8 @@ public class VIDEO_EXTRA_INFOMATION {
 
     public _object GET_OBJECT_FROM_ID(int id) {
 
+        if(objects == null) return null;
+
         for(int i = 0; i<objects.Length; i++) {
 
             if(objects[i].id == id) {
@@ -1113,6 +1157,9 @@ public enum COMMAND_CTL_CAMERA {
     GAME_RESULT,
 
     SET_YELLOW_CARD,
+
+    SET_LOOKAT,
+    UNSET_LOOKAT,
 
 #endif
 

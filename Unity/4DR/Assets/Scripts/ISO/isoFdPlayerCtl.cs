@@ -198,9 +198,9 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
                 if (isPressRightCamera == false && isPressLeftCamera == false) {
 
-                    Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
+                    //Appmain.appui._EFFECT_MAIN.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, _cameraY, 0.0f));                
 
-                    _cameraY = _info.channel * _cameraRotationSpeed;
+                    //_cameraY = _info.channel * _cameraRotationSpeed;
                 }
                 
                 labelTime.text = Appdoc.getNumberToDateTime4Ori(_info.time / 1000, string.Empty, false);
@@ -236,6 +236,8 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
 #if UNITY_EDITOR
         lastCallFrame = -999;
+        //for testing...
+        //Appmain.appnet.__WEB_CONNECT_AND_SEND_RECV_4_FAST_JSON_EXTRA(Appmain.appimg._nowFullCtl._videoInfo.id, 1365, 40);
 #endif
     }   
 
