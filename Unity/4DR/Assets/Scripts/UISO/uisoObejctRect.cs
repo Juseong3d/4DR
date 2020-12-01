@@ -41,6 +41,22 @@ public class uisoObejctRect : MonoBehaviour
     }
 
 
+    public int[] GET_RECT() {
+
+        int[] _rtn = new int[] {
+            (int)spriteMain.transform.localPosition.x, 
+            (int)spriteMain.transform.localPosition.y,
+
+            spriteMain.width,
+            spriteMain.height
+        };
+
+
+        return _rtn;
+
+    }
+
+
     public void SET_LINE(int index, int[] _tr) {
 
         int x = _tr[0] + (_tr[2] >> 1);

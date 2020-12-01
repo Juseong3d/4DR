@@ -154,6 +154,23 @@ public class isoFdPlayerCtl : MonoBehaviour {
      // Update is called once per frame
     void LateUpdate() {
 
+        //slow!!!!!!!!!!
+        if(Appmain.appimg._nowVideoCommander.slowSpeed != 1.0f) {
+            if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                OnClickButton4Pause();
+            }
+
+            int tmpSpeed = (int)((1.0f - Appmain.appimg._nowVideoCommander.slowSpeed) * 10f);
+
+            //Debug.Log("tmpSpeed : " + tmpSpeed);
+            if(Appmain.gameStatusCnt % tmpSpeed == 0) {
+                OnClickButton4Right(true);
+            }
+
+            return;
+        }
+
+
         //if(isLeftTime == false && isRightTime == false) 
         {
             if(isLeft == true || joyStickChannel._sider.value == 1f) {
@@ -174,9 +191,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }else if(isRightTime == true) {
                 OnClickButton4Right(true);
             }
-        }
-
-        //slow!!!!!!!!!!
+        }        
         
         if(isPressLeftCamera == true) {
             OnClickButton4Left_Camera(this.gameObject, true);
@@ -307,7 +322,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
 
-    public void OnValueChangeJoyStick4Time() {
+    public void OnValueChangeJoyStick4Time() {        
 
         if(joyStickTime._sider.value < 0.5f) {
             isRightTime = false;
@@ -322,6 +337,10 @@ public class isoFdPlayerCtl : MonoBehaviour {
         if(joyStickTime._sider.value == 0.5f) {
             isLeftTime = false;
             isRightTime = false;
+        }else {
+            if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                OnClickButton4Pause();
+            }
         }
     }
 
@@ -805,7 +824,7 @@ public class isoFdPlayerCtl : MonoBehaviour {
     }
 
 
-    public void OnClickButton4Right(bool _how) {
+    public void OnClickButton4Right(bool isTime) {
                 
         if(Appmain.appmain.selectVideoType != VIDEO_TYPE.LOCAL_LIST) {
             if(max_channel != 0) {
@@ -817,16 +836,16 @@ public class isoFdPlayerCtl : MonoBehaviour {
             }
         }               
 
-        StartCoroutine(_OnClickButton4Right(_how));
+        StartCoroutine(_OnClickButton4Right(isTime));
     }
 
 
-    IEnumerator _OnClickButton4Right(bool _how) {
+    IEnumerator _OnClickButton4Right(bool isTime) {
 
-        //yield return new WaitForFixedUpdate();
-        yield return new WaitForSeconds(Time.fixedDeltaTime);
+        yield return new WaitForFixedUpdate();
+        //yield return new WaitForSeconds(Time.fixedDeltaTime);
                 
-        _mpc.Right(_how);        
+        _mpc.Right(isTime);        
 
 #if UNITY_EDITOR
         //_info.channel ++;

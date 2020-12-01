@@ -340,7 +340,7 @@ public class Appnet : MonoBehaviour {
 									int[] _tr2 = _obj2.rect;
 					
 									if(_tr != null || _tr2 != null) {					
-											int x1 = _tr[0] + _tr[1] + _tr[3] + (_tr[2] >> 1);					
+											int x1 = _tr[0] + _tr[1] + _tr[3] + (_tr[2] >> 1);
 											int x2 = _tr2[0] + _tr2[1] + _tr2[3] + (_tr2[2] >> 1);					
 											int dist = Math.Abs(x1 - x2);						
 					

@@ -9,7 +9,7 @@ public class AppCommandCtlCamera : MonoBehaviour
     public Camera _mainCamera;
     public isoCameraZoom _cameraCtl;
     public isoShakeCamera _cameraShake;
-    public MediaPlayerCtrl _mediaMain;
+    public MediaPlayerCtrl _mpc;
     public AppandroidCallback4FDPlayer _videoInfo;
 
     public isoFdPlayerCtl _fdPlayerCTLUI;
@@ -37,6 +37,9 @@ public class AppCommandCtlCamera : MonoBehaviour
     private float fixedDeltaTime;
 
     public Q_COMMAND_CTL_CAMERA _lastLookAt;
+    public Q_COMMAND_CTL_CAMERA _lastSetLookAt;
+
+    public float slowSpeed;
 
     private void Awake() {
         
@@ -52,11 +55,11 @@ public class AppCommandCtlCamera : MonoBehaviour
             _mainCamera = Appmain.appui.mainCamera3D;
         _cameraCtl = _mainCamera.GetComponent<isoCameraZoom>();
         _cameraShake = _mainCamera.GetComponent<isoShakeCamera>();
-        _mediaMain = this.gameObject.GetComponentInChildren<MediaPlayerCtrl>();
+        _mpc = this.gameObject.GetComponentInChildren<MediaPlayerCtrl>();
         _fdPlayerCTLUI = this.gameObject.transform.parent.GetComponentInChildren<isoFdPlayerCtl>();
 
 
-        _cameraCtl._mediaMain = this._mediaMain;
+        _cameraCtl._mediaMain = this._mpc;
         _cameraCtl._fdPlayerCTLUI = this._fdPlayerCTLUI;
         
         _videoInfo = FindObjectOfType<AppandroidCallback4FDPlayer>();        
@@ -70,9 +73,11 @@ public class AppCommandCtlCamera : MonoBehaviour
 
         _videoInfo.time = 0;
 
+        slowSpeed = 1f;
+
         commanderReflashTime = DEFINE.COMMAND_REFLASH_TIME;
 
-        _mediaMain.OnEnd += initEndSoInitCommandStatus;
+        _mpc.OnEnd += initEndSoInitCommandStatus;
     }
 
     ~AppCommandCtlCamera() {
@@ -168,7 +173,8 @@ public class AppCommandCtlCamera : MonoBehaviour
         processingCommandCTLCamera();
 
 #if _COMMANDER_
-        commanderReflashTime -= Time.deltaTime;
+        float tmpDeltaTime = ((1.0f - Time.timeScale) + 1.0f) * Time.deltaTime;
+        commanderReflashTime -= tmpDeltaTime;
 
         if(commanderReflashTime <= 0f) {
 
@@ -188,7 +194,7 @@ public class AppCommandCtlCamera : MonoBehaviour
             _fdPlayerCTLUI.labelCommandList.text = GET_COMMANDS_STATUS();
         }
 
-        if(_mediaMain == null) return;
+        if(_mpc == null) return;
         if(_mainCamera == null) return;
         if(_cameraCtl == null) return;
         if(_videoInfo == null) return;        
@@ -223,8 +229,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                 //카메라의 orthsize leap하기
                 //_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, 1f, Time.deltaTime * _baseSpeed);
 
-                    if (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
-                        _mediaMain.Play();
+                    if (_mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                        _mpc.Play();
                     }
 
                 //if(Mathf.Abs(_mainCamera.orthographicSize - 1f) < 0.001f) {
@@ -240,25 +246,25 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.PLAY :
                 {
-                    _mediaMain.Play();
+                    _mpc.Play();
                     _cmd.Clear();
                 }
                 break;
             case COMMAND_CTL_CAMERA.PAUSE :
                 if(_cmd._pause_time == 0) {
-                    _mediaMain.Pause();
+                    _mpc.Pause();
                     _cmd.Clear();
                 }else {                    
                     {
                         _cmd._pause_time -= Time.deltaTime;                       
 
                         if(_cmd._pause_time <= 0f) {
-                            _mediaMain.Play();
+                            _mpc.Play();
                             _cmd._pause_time = 0f;
                             _cmd.Clear();
                         }else {
-                            if(_mediaMain.GetCurrentState() != MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
-                                _mediaMain.Pause();
+                            if(_mpc.GetCurrentState() != MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                                _mpc.Pause();
                             }
                         }
                     }
@@ -274,45 +280,89 @@ public class AppCommandCtlCamera : MonoBehaviour
                     }
                 }
                 break;
+            case COMMAND_CTL_CAMERA.SET_LOOKAT:
+                {
+                    Vector3 _position = new Vector3();
+                    _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, 0.7f, Time.deltaTime * _baseSpeed);                                        
+                    
+
+                    if(_cmd.setScoreWho == WHAT_TEAM_COLOR.BLUE) {
+                        int[] _tr = Appmain.appimg.imgObjects[(int)EXTRA_OBJECT_TYPE.blue].GET_RECT();
+                        
+                        if(_tr[0] < 0) {
+                            _tr = Appmain.appimg.imgObjects[(int)EXTRA_OBJECT_TYPE.hug].GET_RECT();
+                        }
+                        
+                        int x1 = _tr[0] + (_tr[2] >> 1);
+                        int y1 = (int)DEFINE.BASE_SCREEN_HEIGHT - (_tr[1] + (_tr[3] >> 1));
+
+                        _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(x1, y1));
+
+                    }else if(_cmd.setScoreWho == WHAT_TEAM_COLOR.RED) {
+                        
+                        int[] _tr = Appmain.appimg.imgObjects[(int)EXTRA_OBJECT_TYPE.red].GET_RECT();
+
+                        if(_tr[0] < 0) {
+                            _tr = Appmain.appimg.imgObjects[(int)EXTRA_OBJECT_TYPE.hug].GET_RECT();
+                        }
+                        
+                        int x1 = _tr[0] + (_tr[2] >> 1);
+                        int y1 = (int)DEFINE.BASE_SCREEN_HEIGHT - (_tr[1] + (_tr[3] >> 1));
+
+                        _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(x1, y1));
+
+                    }else if(_cmd.setScoreWho == WHAT_TEAM_COLOR.REFREEE) {
+                        int[] _tr = Appmain.appimg.imgObjects[(int)EXTRA_OBJECT_TYPE.refree].GET_RECT();
+
+                        int x1 = _tr[0] + (_tr[2] >> 1);
+                        int y1 = (int)DEFINE.BASE_SCREEN_HEIGHT - (_tr[1] + (_tr[3] >> 1));
+
+                        _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(x1, y1));
+                    }
+
+                    _position -= new Vector3(0.2f, 0.1f, 0f);
+                    _position = _position * (1.0f - Appmain.appui.mainCamera3D.orthographicSize);                
+
+                    float _speed = Time.deltaTime * 3;
+                    Vector3 _tmpTarget = new Vector3(
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.x, _position.x, _speed),
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.y, _position.y, _speed),
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.z, 0f, _speed)
+                        );
+                    Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.localPosition - _position;                
+
+                    Appmain.appui.mainCamera3D.transform.localPosition = _tmpTarget;
+
+                    //if (Mathf.Abs(___ddddd.x) <= 0.09f && Mathf.Abs(___ddddd.y) <= 0.09f /*&& _mainCamera.orthographicSize <= _cmd._zoom*/) {
+                    //    //Appmain.appui.mainCamera3D.transform.localPosition = _position;
+                    //    //_cmd.Clear();
+                    //}else {
+                        
+                    //}
+
+                }
+                break;
             case COMMAND_CTL_CAMERA.LOOKAT :
                 {
+                    Vector3 _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
+                    _position -= new Vector3(0.2f, 0.1f, 0f);
+                    _position = _position * (1.0f - Appmain.appui.mainCamera3D.orthographicSize);                
 
-                //Vector3 touchStart = Appmain.appui.mainCamera3D.ScreenToWorldPoint(Appmain.appui.mainCamera3D.transform.position);
-                //Vector3 direction = (touchStart - Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y))); 
+                    Vector3 _tmpTarget = new Vector3(
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.x, _position.x, Time.deltaTime),
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.y, _position.y, Time.deltaTime),
+                            Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.z, 0f, Time.deltaTime)
+                        );
+                    Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.localPosition - _position;                
 
-                //Debug.Log("one touch :: " + direction);
+                    if (Mathf.Abs(___ddddd.x) <= 0.09f && Mathf.Abs(___ddddd.y) <= 0.09f /*&& _mainCamera.orthographicSize <= _cmd._zoom*/) {
+                        Appmain.appui.mainCamera3D.transform.localPosition = _position;
+                        _cmd.Clear();
+                    }else {
+                        Appmain.appui.mainCamera3D.transform.localPosition = _tmpTarget;
+                    }             
 
-                //Appmain.appui.mainCamera3D.transform.position += direction;
-                ////Appmain.appui.mainCamera3D.transform.position = Mathf.Lerp(Appmain.appui.mainCamera3D.transform.position, direction, 
-
-                //_cmd.Clear();
-
-                //Vector3 _position = Appmain.appui.mainCamera3D.ScreenToWorldPoint(new Vector3(_cmd._x, _cmd._y));
-                //Vector3 _tmpTarget = new Vector3(
-                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.x, _position.x, Time.deltaTime),
-                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.y, _position.y, Time.deltaTime),
-                //        Mathf.Lerp(Appmain.appui.mainCamera3D.transform.localPosition.z, 0f, Time.deltaTime)
-                //    );
-                //Vector3 ___ddddd = Appmain.appui.mainCamera3D.transform.localPosition - _position;
-                //Debug.Log("___ddddd :: " + ___ddddd.x + "/" + ___ddddd.y + "//" + Appmain.appui.mainCamera3D.transform.localPosition + "//" + _tmpTarget);
-
-                //if (Mathf.Abs(___ddddd.x) <= 0.2f && Mathf.Abs(___ddddd.y) <= 0.2f /*&& _mainCamera.orthographicSize <= _cmd._zoom*/) {
-                //    _cmd.Clear();
-                //}
-                //else {
-
-                //    Appmain.appui.mainCamera3D.transform.localPosition = _tmpTarget;
-                //    //_mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, _cmd._zoom, Time.deltaTime * _baseSpeed);
-
-                //    //if(Mathf.Abs(_mainCamera.orthographicSize - _cmd._zoom) <= 0.001f) {
-                //    //    _mainCamera.orthographicSize = _cmd._zoom;
-                //    //}
-
-                //}
-                Appmain.appui.mainCamera3D.transform.LookAt(new Vector3(_cmd._x, _cmd._y, 0));
-                _cmd.Clear();
-
-            }
+                }
                 break;
             case COMMAND_CTL_CAMERA.CHANNEL :
 
@@ -333,7 +383,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                     //if(_videoInfo.isChangeChannel && isCheckType) 
                     {
                         //time은 pause만 되는거라함 그래서 
-                        bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
+                        bool isPlaying = (_mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
 
                         //for(int i = 0; i<Mathf.Abs(_cmd._channel_index); i++) 
                         //{
@@ -440,7 +490,7 @@ public class AppCommandCtlCamera : MonoBehaviour
 
                     //if(_videoInfo.isChangeChannel && isCheckType) 
                     {
-                        bool isPlaying = (_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
+                        bool isPlaying = (_mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING);
                         int whereto = _cmd._channel_index - _videoInfo.channel;
 
                         //Debug.Log("whereto : " + whereto + "/" + _cmd._channel_index + "/vc: + " + _videoInfo.channel);
@@ -470,8 +520,8 @@ public class AppCommandCtlCamera : MonoBehaviour
                 //if(_lastCallChangeTimeMove != _videoInfo.frame) 
                 {
 
-                    if(_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
-                        _mediaMain.Pause();
+                    if(_mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        _mpc.Pause();
                     }
                     {
                         //if(_cmd._time_rewind == 0) {
@@ -488,7 +538,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                         if(_cmd._time_rewind <= 0f) {
                             _cmd.Clear();
 
-                            if(_cmd._isReplay) _mediaMain.Play();
+                            if(_cmd._isReplay) _mpc.Play();
                         }
                     }
                 }  
@@ -496,8 +546,8 @@ public class AppCommandCtlCamera : MonoBehaviour
             case COMMAND_CTL_CAMERA.TIME_FORWARD:
                 //if(_lastCallChangeTimeMove != _videoInfo.frame) 
                 {
-                    if(_mediaMain.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
-                        _mediaMain.Pause();
+                    if(_mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PLAYING) {
+                        _mpc.Pause();
                     }
                     {                    
 
@@ -515,7 +565,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                         if(_cmd._time_forward <= 0f) {
                             
                             _cmd.Clear();
-                            if(_cmd._isReplay) _mediaMain.Play();
+                            if(_cmd._isReplay) _mpc.Play();
                         }
                     }
                 }  
@@ -524,9 +574,18 @@ public class AppCommandCtlCamera : MonoBehaviour
                 if(_cmd._speed > 0) {
                     //_mediaMain.Speed(_cmd._speed);
                     Time.timeScale = _cmd._speed;
+                    slowSpeed = _cmd._speed;
+
                     Debug.Log("Time.timeScale : " + Time.timeScale);
                     
 		            Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
+
+                    if(_cmd._speed == 1) {
+                        if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {
+                            _fdPlayerCTLUI.OnClickButton4Load();
+                        }
+                    }
+
                     _cmd.Clear();
                 }
                 break;
@@ -763,7 +822,7 @@ public class AppCommandCtlCamera : MonoBehaviour
                 break;
             case COMMAND_CTL_CAMERA.SET_VIBRATE_PATTEN:
                 {
-                    _mediaMain.VIBRATOR(_cmd.vibratior_pattern);
+                    _mpc.VIBRATOR(_cmd.vibratior_pattern);
                     _cmd.Clear();
                 }
                 break;
@@ -1028,6 +1087,13 @@ public class Q_COMMAND_CTL_CAMERA {
         case COMMAND_CTL_CAMERA.ROUND_PAUSE:
         case COMMAND_CTL_CAMERA.ROUND_RESTART:
             break;
+        case COMMAND_CTL_CAMERA.SET_LOOKAT:
+            if(Appmain.appimg._nowVideoCommander._lastSetLookAt != null) {
+                Appmain.appimg._nowVideoCommander._lastSetLookAt.Clear();
+            }
+            setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
+            Appmain.appimg._nowVideoCommander._lastSetLookAt = this;
+            break;
         case COMMAND_CTL_CAMERA.PENALTY_START:
             setScoreWho = (WHAT_TEAM_COLOR)Convert.ToInt32(_tmp[i++]);
             break;
@@ -1049,6 +1115,11 @@ public class Q_COMMAND_CTL_CAMERA {
                 for(int j = 0; j<_tmptmp.Length; j++) {
                     vibratior_pattern[j] = Convert.ToInt64(_tmptmp[j]);
                 }
+            }
+            break;
+        case COMMAND_CTL_CAMERA.UNSET_LOOKAT:
+            if(Appmain.appimg._nowVideoCommander._lastSetLookAt != null) {
+                Appmain.appimg._nowVideoCommander._lastSetLookAt.Clear();
             }
             break;
         }        
@@ -1161,6 +1232,9 @@ public enum COMMAND_CTL_CAMERA {
     SET_LOOKAT,
     UNSET_LOOKAT,
 
+    SET_SLOW,
+    UNSET_SLOW,
+
 #endif
 
     SET_VIBRATE,
@@ -1184,7 +1258,8 @@ public enum WHAT_TEAM_COLOR {
 
     NONE = -1,
     BLUE = 0,
-    RED = 1
+    RED = 1,
+    REFREEE = 2
 
 }
 
