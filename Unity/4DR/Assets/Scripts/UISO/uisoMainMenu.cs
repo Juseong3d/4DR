@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class uisoMainMenu : MonoBehaviour
 {
     public UIGrid _gridMain;
-
+    public UICenterOnChild centerOnChildMain;
     public int maxCnt;
 
     public int prevCursor;
@@ -28,12 +29,12 @@ public class uisoMainMenu : MonoBehaviour
     {
         prevCursor = 0;
         nowCursor = -2;
-        
+        NGUITools.SetActive(reflashButtonCursor, false);
+
         _gridMain.onReposition += SET_MAX_CNT;
 
         isPressedDPADV = false;
         isPressedDPADH = false;
-
 
         isRightmenu = false;
     }
@@ -70,6 +71,9 @@ public class uisoMainMenu : MonoBehaviour
                 
                 prevCursor = nowCursor;
                 nowCursor = Mathf.Clamp(nowCursor - 3, -1, maxCnt);            
+                if(nowCursor == -1) {
+                    centerOnChildMain.enabled = false;
+                }
                 SET_CURSOR();
                 isPressedDPADH = true;
 
@@ -80,6 +84,7 @@ public class uisoMainMenu : MonoBehaviour
                 prevCursor = nowCursor;
                 if(nowCursor < 0) {
                     nowCursor = 0;
+                    centerOnChildMain.enabled = true;
                 }else {
                     nowCursor = Mathf.Clamp(nowCursor + 3, 0, maxCnt);     
                 }
@@ -142,9 +147,11 @@ public class uisoMainMenu : MonoBehaviour
         if(nowCursor >= 0) {
             Transform _now = _gridMain.GetChild(nowCursor);
             uisoITEM_VIDEO_MINI _mini = _now.GetComponent<uisoITEM_VIDEO_MINI>();
-            UICenterOnChild _center = _gridMain.GetComponentInChildren<UICenterOnChild>();
+            //UICenterOnChild _center = _gridMain.GetComponentInChildren<UICenterOnChild>();
 
-            _center.CenterOn(_now);
+            if(centerOnChildMain.enabled == true) {                
+                centerOnChildMain.CenterOn(_now);
+            }
             _mini.SET_CURSOR(true);
         }
 
