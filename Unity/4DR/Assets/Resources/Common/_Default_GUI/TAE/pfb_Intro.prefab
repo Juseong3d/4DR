@@ -491,13 +491,13 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 0}
   mPivot: 4
   mWidth: 512
-  mHeight: 228
+  mHeight: 244
   mDepth: 3
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.245614
+  aspectRatio: 2.0983605
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -512,7 +512,7 @@ MonoBehaviour:
   bottomType: 1
   topType: 1
   mAtlas: {fileID: 1770415957338192516, guid: ab04d3c5207baee41a96414e345a60c7, type: 3}
-  mSpriteName: WT-logo_primary-01
+  mSpriteName: World taekwondo_logo
   mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &8565904622901786690

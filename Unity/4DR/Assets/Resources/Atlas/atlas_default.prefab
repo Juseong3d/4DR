@@ -46,8 +46,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 9783bc9e6ceeeb2408f928c3857a78ea, type: 2}
   mSprites:
   - name: 4D_CI_500W_Background Color - Black
-    x: 865
-    y: 196
+    x: 1365
+    y: 736
     width: 499
     height: 64
     borderLeft: 0
@@ -59,8 +59,8 @@ MonoBehaviour:
     paddingTop: 218
     paddingBottom: 218
   - name: 4D_CI_500W_Background Color - ColoredGradient
-    x: 865
-    y: 131
+    x: 1365
+    y: 671
     width: 499
     height: 64
     borderLeft: 0
@@ -72,8 +72,8 @@ MonoBehaviour:
     paddingTop: 218
     paddingBottom: 218
   - name: 4D_CI_500W_Background Color - White
-    x: 865
-    y: 66
+    x: 1365
+    y: 606
     width: 499
     height: 64
     borderLeft: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     paddingBottom: 218
   - name: KTA_CI_500W_Background Color - Black
     x: 0
-    y: 34
+    y: 14
     width: 496
     height: 159
     borderLeft: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
     paddingBottom: 171
   - name: KTA_CI_500W_Background Color - ColoredGradient
     x: 865
-    y: 421
+    y: 197
     width: 496
     height: 159
     borderLeft: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     paddingBottom: 171
   - name: KTA_CI_500W_Background Color - White
     x: 865
-    y: 261
+    y: 37
     width: 496
     height: 159
     borderLeft: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
     paddingTop: 170
     paddingBottom: 171
   - name: logo
-    x: 511
-    y: 179
+    x: 513
+    y: 407
     width: 233
     height: 238
     borderLeft: 0
@@ -137,8 +137,8 @@ MonoBehaviour:
     paddingTop: 9
     paddingBottom: 9
   - name: logo_intro
-    x: 0
-    y: 194
+    x: 865
+    y: 801
     width: 510
     height: 223
     borderLeft: 0
@@ -162,8 +162,21 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: World taekwondo_logo
+    x: 0
+    y: 402
+    width: 512
+    height: 243
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: WTF_CI_500W_Background Color - Black
-    x: 865
+    x: 1376
     y: 803
     width: 499
     height: 221
@@ -176,8 +189,8 @@ MonoBehaviour:
     paddingTop: 139
     paddingBottom: 140
   - name: WTF_CI_500W_Background Color - ColoredGradient
-    x: 1365
-    y: 803
+    x: 865
+    y: 579
     width: 499
     height: 221
     borderLeft: 0
@@ -190,7 +203,7 @@ MonoBehaviour:
     paddingBottom: 140
   - name: WTF_CI_500W_Background Color - White
     x: 865
-    y: 581
+    y: 357
     width: 499
     height: 221
     borderLeft: 0
@@ -203,7 +216,7 @@ MonoBehaviour:
     paddingBottom: 140
   - name: WT-logo_primary-01
     x: 0
-    y: 418
+    y: 174
     width: 512
     height: 227
     borderLeft: 0

@@ -89,7 +89,7 @@ public class Appevent : MonoBehaviour {
 				int i = (int)XOBX_ONE_BUTTON.BUTTON_A;
 				string tmp = string.Format("joystick button {0}", i);
 				
-				if(Input.GetKeyDown(tmp) == true) {
+				if(Input.GetKeyDown(tmp) == true || Input.GetKeyDown(KeyCode.Return)) {
 					appdoc.setGameStatus(GAME_STATUS.GS_MENU);
 				}
 			}
