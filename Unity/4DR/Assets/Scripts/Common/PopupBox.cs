@@ -51,27 +51,95 @@ public class PopupBox : MonoBehaviour {
 
 	public GameObject[] gameObjectButtonType;
 
+	public POPUPBOX_ACTION_TYPE actionType;
 	public POPUPBOX_RETURN_TYPE returnType;
     //int type;
 
 	//Appmain appmain;
     Appsound appsound;
 
+	public int prevCursor;
+	public int nowCursor;
+
+	public GameObject[] gameObjectCursor;
+
     void Awake() {
 
 		//appmain = (Appmain)FindObjectOfType<Appmain>();
         appsound = Appmain.appsound;
 
+		nowCursor = -1;
+
     }
 
 
 	private void LateUpdate() {
-		
+
 		if(Input.GetKeyDown(KeyCode.Return)) {
 			OnClickOk();
 		}
 
 		//키 처리
+
+		if(Input.GetKeyDown(KeyCode.DownArrow)) {
+			if(nowCursor < 0) {
+				prevCursor = nowCursor;
+				nowCursor = 0;
+				SET_CURSOR();
+			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow)) {
+			prevCursor = nowCursor;
+			nowCursor = Mathf.Clamp(nowCursor - 1, 0, 1);
+			SET_CURSOR();
+
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightArrow)) {
+			prevCursor = nowCursor;
+			nowCursor = Mathf.Clamp(nowCursor + 1, 0, 1);
+			SET_CURSOR();
+		}
+
+		int i = (int)XOBX_ONE_BUTTON.BUTTON_A;
+		string tmp = string.Format("joystick button {0}", i);
+				
+		if(Input.GetKeyDown(tmp) == true) {
+			switch(actionType) {
+			case POPUPBOX_ACTION_TYPE.OK:
+				OnClickOk();
+				break;
+			case POPUPBOX_ACTION_TYPE.YESNO:
+				if(nowCursor == 0) {
+					OnClickNo();
+				}else if(nowCursor == 1) {
+					OnClickYes();
+				}
+				break;
+			}
+		}
+	}
+
+
+	public void SET_CURSOR() {
+
+		for(int i = 0; i<gameObjectCursor.Length; i++) {
+			NGUITools.SetActive(gameObjectCursor[i], false);
+		}
+
+		switch(actionType) {
+		case POPUPBOX_ACTION_TYPE.OK:
+			if(nowCursor >= 0) {
+				NGUITools.SetActive(gameObjectCursor[0], true);
+			}
+			break;
+		case POPUPBOX_ACTION_TYPE.YESNO:
+			if(nowCursor >= 0) {
+				NGUITools.SetActive(gameObjectCursor[nowCursor + 1], true);
+			}
+			break;
+		}
 	}
 
 
@@ -189,6 +257,7 @@ public class PopupBox : MonoBehaviour {
 		this.titleLabel.text = title;
 		this.contentLabel.text = content;
 
+		this.actionType = actionType;
         this.eventReciver = eventReciver;
         this.funcName = funcName;
 		

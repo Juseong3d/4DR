@@ -31,7 +31,7 @@ public class uisoITEM_VIDEO_MINI : MonoBehaviour
 
     public void SET_INFO(LIST_CONTENT_FDLIVE_ITEM _info) {
 
-        string _tmp = string.Format("{0}", _info.title);
+        string _tmp = string.Format("{0} : {1}", _info.id, _info.title);
         bool isResult = Enum.TryParse<VIDEO_CONTENT_TYPE>(_info.type, out _info._type);
 
         __info = _info;

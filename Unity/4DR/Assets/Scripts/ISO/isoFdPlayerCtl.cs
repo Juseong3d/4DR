@@ -357,6 +357,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
     void processPressedControllerButton() {
 
+        if(Input.GetKey(KeyCode.LeftArrow)) {
+            OnClickButton4Left(false);
+        }else if(Input.GetKey(KeyCode.RightArrow)) {
+            OnClickButton4Right(false);
+        }
+
         if(Input.GetAxis("Vertical") < 0.5f && Input.GetAxis("Vertical") > -0.5f) 
             {
             if(Input.GetAxis("Horizontal") > 0.5f) {
@@ -425,12 +431,12 @@ public class isoFdPlayerCtl : MonoBehaviour {
 
                 switch((XOBX_ONE_BUTTON)i) {
                     case XOBX_ONE_BUTTON.BUTTON_Y:
-                        {
-                            AppCommandCtlCamera _ccc = this.beforeParent.GetComponent<AppCommandCtlCamera>();
+                        //{
+                        //    AppCommandCtlCamera _ccc = this.beforeParent.GetComponent<AppCommandCtlCamera>();
                             
-                            _ccc._cameraShake.StartUpDownShake(3f);
-                            _ccc._cameraShake.StartLeftRightShake(2f);
-                        }
+                        //    _ccc._cameraShake.StartUpDownShake(3f);
+                        //    _ccc._cameraShake.StartLeftRightShake(2f);
+                        //}
                         break;
                     case XOBX_ONE_BUTTON.BUTTON_A:
                         if( _mpc.GetCurrentState() == MediaPlayerCtrl.MEDIAPLAYER_STATE.PAUSED) {

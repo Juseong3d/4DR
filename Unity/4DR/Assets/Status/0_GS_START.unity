@@ -2322,11 +2322,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880802951}
     m_Modifications:
-    - target: {fileID: 3993594888378106913, guid: f76d31dcaf179dd4e9df765dc7e4146f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4461875327642935367, guid: f76d31dcaf179dd4e9df765dc7e4146f,
         type: 3}
       propertyPath: m_Name
@@ -2405,7 +2400,7 @@ PrefabInstance:
     - target: {fileID: 9216384825522450938, guid: f76d31dcaf179dd4e9df765dc7e4146f,
         type: 3}
       propertyPath: aspectRatio
-      value: 0.5833333
+      value: 0.33333334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f76d31dcaf179dd4e9df765dc7e4146f, type: 3}

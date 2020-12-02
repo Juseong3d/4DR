@@ -109,7 +109,6 @@ public class Appmain : MonoBehaviour {
 	}
 
 
-
 	/////
 	///
 	public double getPresentServerTs() {		

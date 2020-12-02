@@ -46,30 +46,9 @@ public class Appevent : MonoBehaviour {
 			isButtonDown = true;
 			isDrag = true;
 
-			//switch(Appmain.gameStatus) {
-			//	case GAME_STATUS.GS_TITLE :
-			//		if(appnet.lapStatus >= LAP_STATUS.CATEGORY_LIST_WAIT)
-			//			appdoc.setGameStatus(GAME_STATUS.GS_MENU);
-			//		break;
-			//}
-
-			
-
-			
 		}
 
 		if(isDrag == true) {
-
-			//float _x = Input.mousePosition.x - (Screen.width / 2);
-			//float _y = Input.mousePosition.y - (Screen.height / 2);
-
-			////Debug.Log("_x :: " + _x + "/" + _y);
-			////for testing...
-			//GameObject prefab = Appimg.LoadResource4Prefab(UIDEFINE.TEST_EFFECT);
-			
-			//prefab.transform.SetParent(AppUI.mainCamera.transform);
-			//prefab.transform.localPosition = new Vector3(_x, _y, -100.0f);
-			//prefab.transform.localScale = new Vector3(50, 50, 50);
 
 		}
 
@@ -81,10 +60,7 @@ public class Appevent : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Escape)) {
-
-            //if(Appmain.gameStatus < GAME_STATUS.GS_TITLE)   //로컬라이징 전에 종료 안뜨게 
-            //    return;            
-
+            
 			switch(Appmain.gameStatus) {
 				case GAME_STATUS.GS_TITLE:
 				case GAME_STATUS.GS_MENU:
@@ -102,8 +78,32 @@ public class Appevent : MonoBehaviour {
 			}
 		}
 
-		//if(Input.anyKeyDown)
-		//	Debug.Log(Input.inputString);
+		if(Appmain.havePopupCnt > 0) {
+			return;
+		}
+
+		switch(Appmain.gameStatus) {
+		case GAME_STATUS.GS_TITLE:
+#if _TAE_
+			{
+				int i = (int)XOBX_ONE_BUTTON.BUTTON_A;
+				string tmp = string.Format("joystick button {0}", i);
+				
+				if(Input.GetKeyDown(tmp) == true) {
+					appdoc.setGameStatus(GAME_STATUS.GS_MENU);
+				}
+			}
+#endif
+		break;
+		case GAME_STATUS.GS_MENU:
+			if(Appmain.appmain.isPlayVideo == false) {
+				if(appimg.imgMainMenu != null) {
+					appimg.imgMainMenu._LateUpdate();
+				}
+			}
+			break;
+
+		}
 	}
 
 

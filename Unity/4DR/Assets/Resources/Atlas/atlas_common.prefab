@@ -45,6 +45,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 4ca387f0dec872f4f95eed07db5b4de0, type: 2}
   mSprites:
+  - name: img_rect
+    x: 162
+    y: 112
+    width: 16
+    height: 16
+    borderLeft: 4
+    borderRight: 4
+    borderTop: 4
+    borderBottom: 4
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: img_rect_round
+    x: 129
+    y: 96
+    width: 32
+    height: 32
+    borderLeft: 8
+    borderRight: 8
+    borderTop: 8
+    borderBottom: 8
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: white
     x: 0
     y: 0

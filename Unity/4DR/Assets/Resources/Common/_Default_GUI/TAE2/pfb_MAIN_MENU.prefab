@@ -65,6 +65,7 @@ MonoBehaviour:
   mWidth: 420
   mHeight: 14
   mDepth: 5
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -74,6 +75,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -81,6 +85,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 8747233925756884837, guid: 0b7f29bdff6f03248a0c3c21dfbfc780, type: 3}
   mSpriteName: menu
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &894100083
 GameObject:
@@ -148,19 +153,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3003
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: -62, y: -300, z: 430, w: 1032}
   mClipSoftness: {x: 0, y: 0}
   mDepth: 40
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0
 --- !u!54 &7807267668914879921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,9 +229,11 @@ MonoBehaviour:
     m_RotationOrder: 4
   ignoreTimeScale: 1
   delay: 0
+  delayAffects: 2
   duration: 0.8
   steeperCurves: 0
   tweenGroup: 0
+  useFixedUpdate: 0
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
@@ -294,6 +308,7 @@ MonoBehaviour:
   mWidth: 460
   mHeight: 1032
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -303,6 +318,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -310,6 +328,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 3}
   mSpriteName: Window
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!65 &4737810385773980647
 BoxCollider:
@@ -374,6 +393,7 @@ MonoBehaviour:
   cellWidth: 400
   cellHeight: 102
   animateSmoothly: 0
+  animateFadeIn: 0
   hideInactive: 1
   keepWithinPanel: 0
   sorted: 0
@@ -442,6 +462,7 @@ MonoBehaviour:
   mWidth: 144
   mHeight: 30
   mDepth: 4
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -460,12 +481,19 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0
   mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mOverflowHeight: 0
+  mModifier: 0
+  mSymbolDepth: 0
   mShrinkToFit: 0
   mMaxLineWidth: 0
   mMaxLineHeight: 0
@@ -503,6 +531,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3260834778608648258}
+  - {fileID: 956124784034299894}
   m_Father: {fileID: 2463534010199643289}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -540,6 +569,7 @@ MonoBehaviour:
   mWidth: 104
   mHeight: 104
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 1
@@ -549,6 +579,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -556,6 +589,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 1869436633823575151, guid: 5d0fd6c163c7b4e4994cd204891e04ca, type: 3}
   mSpriteName: icon_refresh_normal
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &2236559826631366723
 MonoBehaviour:
@@ -648,14 +682,17 @@ MonoBehaviour:
     m_RotationOrder: 4
   ignoreTimeScale: 1
   delay: 0
+  delayAffects: 2
   duration: 0.5
   steeperCurves: 0
   tweenGroup: 0
+  useFixedUpdate: 0
   onFinished: []
   eventReceiver: {fileID: 0}
   callWhenFinished: 
   from: {x: -0, y: 0, z: 0}
   to: {x: -0, y: 0, z: -360}
+  quaternionLerp: 0
 --- !u!1 &1741473243687579097
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +758,7 @@ MonoBehaviour:
   mWidth: 144
   mHeight: 30
   mDepth: 4
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -739,12 +777,19 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0
   mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mOverflowHeight: 0
+  mModifier: 0
+  mSymbolDepth: 0
   mShrinkToFit: 0
   mMaxLineWidth: 0
   mMaxLineHeight: 0
@@ -815,6 +860,7 @@ MonoBehaviour:
   mWidth: 400
   mHeight: 60
   mDepth: 4
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -833,12 +879,19 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0
   mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mOverflowHeight: 0
+  mModifier: 0
+  mSymbolDepth: 0
   mShrinkToFit: 0
   mMaxLineWidth: 0
   mMaxLineHeight: 0
@@ -909,6 +962,7 @@ MonoBehaviour:
   mWidth: 1920
   mHeight: 176
   mDepth: 1
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -918,6 +972,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -925,6 +982,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 1869436633823575151, guid: 5d0fd6c163c7b4e4994cd204891e04ca, type: 3}
   mSpriteName: img_shadow_bottom
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &2463534009889395885
 GameObject:
@@ -991,19 +1049,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3001
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 3
   mClipRange: {x: 0, y: 0, z: 1920, w: 912}
   mClipSoftness: {x: 0, y: 0}
   mDepth: 2
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: -84}
+  useSortingOrder: 0
 --- !u!54 &2463534009889395881
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1035,11 +1100,13 @@ MonoBehaviour:
   movement: 1
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
   scrollWheelFactor: 0.25
   momentumAmount: 35
+  dampenStrength: 9
   horizontalScrollBar: {fileID: 0}
   verticalScrollBar: {fileID: 0}
   showScrollBars: 1
@@ -1047,6 +1114,7 @@ MonoBehaviour:
   contentPivot: 0
   scale: {x: 0, y: 0, z: 0}
   relativePositionOnReset: {x: 0, y: 0}
+  centerOnChild: {fileID: 0}
 --- !u!1 &2463534010199643288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1185,7 @@ MonoBehaviour:
   mWidth: 1920
   mHeight: 168
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1126,6 +1195,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -1133,6 +1205,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 1869436633823575151, guid: 5d0fd6c163c7b4e4994cd204891e04ca, type: 3}
   mSpriteName: img_main_top
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!54 &612243878
 Rigidbody:
@@ -1196,11 +1269,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrangement: 0
   sorting: 0
-  pivot: 1
+  pivot: 4
   maxPerLine: 3
   cellWidth: 627
   cellHeight: 442
   animateSmoothly: 0
+  animateFadeIn: 0
   hideInactive: 1
   keepWithinPanel: 1
   sorted: 0
@@ -1211,7 +1285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2463534010363399681}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d35d721694fa0ee48a2d14bddfcbf4a4, type: 3}
   m_Name: 
@@ -1286,19 +1360,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3000
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 0
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0
 --- !u!54 &2463534010576494593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1336,6 +1417,7 @@ MonoBehaviour:
   _gridRightMain: {fileID: 1493427020}
   _tweenPosition: {fileID: 4821645661722875199}
   isRightmenu: 0
+  reflashButtonCursor: {fileID: 4132928195216577359}
 --- !u!1 &3057009635395376430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,19 +1483,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3005
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 3
   mClipRange: {x: -62, y: -339, z: 424, w: 918}
   mClipSoftness: {x: 0, y: 0}
   mDepth: 45
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: -24}
+  useSortingOrder: 0
 --- !u!54 &251973139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1445,11 +1534,13 @@ MonoBehaviour:
   movement: 1
   dragEffect: 2
   restrictWithinPanel: 1
+  constrainOnDrag: 0
   disableDragIfFits: 0
   smoothDragStart: 1
   iOSDragEmulation: 1
   scrollWheelFactor: 0.25
   momentumAmount: 35
+  dampenStrength: 9
   horizontalScrollBar: {fileID: 0}
   verticalScrollBar: {fileID: 0}
   showScrollBars: 1
@@ -1457,6 +1548,7 @@ MonoBehaviour:
   contentPivot: 0
   scale: {x: 0, y: 0, z: 0}
   relativePositionOnReset: {x: 0, y: 0}
+  centerOnChild: {fileID: 0}
 --- !u!1 &3351392143918174739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1614,7 @@ MonoBehaviour:
   mWidth: 1920
   mHeight: 1080
   mDepth: 0
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1531,6 +1624,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 1
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -1538,6 +1634,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 3938670707984331167, guid: ffbdb8fa9cedc3144bf80a56d5ce4957, type: 3}
   mSpriteName: white
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &3458723422567482668
 GameObject:
@@ -1607,6 +1704,7 @@ MonoBehaviour:
   mWidth: 64
   mHeight: 64
   mDepth: 3
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 1
@@ -1616,6 +1714,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -1623,6 +1724,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 8747233925756884837, guid: 0b7f29bdff6f03248a0c3c21dfbfc780, type: 3}
   mSpriteName: arrow_left
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!114 &2969244839270763284
 MonoBehaviour:
@@ -1735,6 +1837,7 @@ MonoBehaviour:
   mWidth: 64
   mHeight: 64
   mDepth: 5
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1744,6 +1847,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -1751,6 +1857,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 8747233925756884837, guid: 0b7f29bdff6f03248a0c3c21dfbfc780, type: 3}
   mSpriteName: plus
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!65 &4005627674916311574
 BoxCollider:
@@ -1795,6 +1902,93 @@ MonoBehaviour:
     mMethodName: OnClickButton4RightMenu
     mParameters: []
     oneShot: 0
+--- !u!1 &4132928195216577359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956124784034299894}
+  - component: {fileID: 42606973130320742}
+  m_Layer: 8
+  m_Name: Sprite_cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &956124784034299894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4132928195216577359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138236384077480560}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42606973130320742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4132928195216577359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  rightAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  bottomAnchor:
+    target: {fileID: 0}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 0}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mWidth: 105
+  mHeight: 105
+  mDepth: 4
+  mMat: {fileID: 0}
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 1
+  mType: 1
+  mFillDirection: 4
+  mFillAmount: 1
+  mInvert: 0
+  mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  centerType: 1
+  leftType: 1
+  rightType: 1
+  bottomType: 1
+  topType: 1
+  mAtlas: {fileID: 3938670707984331167, guid: ffbdb8fa9cedc3144bf80a56d5ce4957, type: 3}
+  mSpriteName: img_rect
+  mFixedAspect: 0
+  mFillCenter: 1
 --- !u!1 &4395832767072931039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,19 +2054,26 @@ MonoBehaviour:
   updateAnchors: 1
   showInPanelTool: 1
   generateNormals: 0
+  generateUV2: 0
+  shadowMode: 0
   widgetsAreStatic: 0
   cullWhileDragging: 0
   alwaysOnScreen: 0
   anchorOffset: 0
+  softBorderPadding: 1
   renderQueue: 0
   startingRenderQueue: 3001
+  mClipTexture: {fileID: 0}
   mAlpha: 1
+  mAlphaProp: 
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
   mDepth: 30
   mSortingOrder: 0
+  mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
+  useSortingOrder: 0
 --- !u!54 &923102477
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1954,6 +2155,7 @@ MonoBehaviour:
   mWidth: 510
   mHeight: 224
   mDepth: 2
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 1
@@ -1963,6 +2165,9 @@ MonoBehaviour:
   mFillAmount: 1
   mInvert: 0
   mFlip: 0
+  mApplyGradient: 0
+  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
+  mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   centerType: 1
   leftType: 1
   rightType: 1
@@ -1970,6 +2175,7 @@ MonoBehaviour:
   topType: 1
   mAtlas: {fileID: 1770415957338192516, guid: ab04d3c5207baee41a96414e345a60c7, type: 3}
   mSpriteName: logo_intro
+  mFixedAspect: 0
   mFillCenter: 1
 --- !u!1 &7699361422638977988
 GameObject:
@@ -2036,6 +2242,7 @@ MonoBehaviour:
   mWidth: 128
   mHeight: 56
   mDepth: 6
+  mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2056,12 +2263,19 @@ MonoBehaviour:
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
-  mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   mSpacingX: 0
   mSpacingY: 0
+  mUseFloatSpacing: 0
+  mFloatSpacingX: 0
+  mFloatSpacingY: 0
+  mOverflowEllipsis: 0
+  mOverflowWidth: 0
+  mOverflowHeight: 0
+  mModifier: 0
+  mSymbolDepth: 0
   mShrinkToFit: 0
   mMaxLineWidth: 0
   mMaxLineHeight: 0

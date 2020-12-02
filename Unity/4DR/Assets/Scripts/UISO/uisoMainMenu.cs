@@ -21,11 +21,13 @@ public class uisoMainMenu : MonoBehaviour
     public TweenPosition _tweenPosition;
     public bool isRightmenu;
 
+    public GameObject reflashButtonCursor;
+
     // Start is called before the first frame update
     void Start()
     {
         prevCursor = 0;
-        nowCursor = -1;
+        nowCursor = -2;
         
         _gridMain.onReposition += SET_MAX_CNT;
 
@@ -43,13 +45,13 @@ public class uisoMainMenu : MonoBehaviour
     }
 
 
-    private void LateUpdate() {               
+    public void _LateUpdate() {               
                        
         if((Input.GetAxis("DPAD_v") < 0.0f) || Input.GetKeyDown(KeyCode.LeftArrow)) {
             if(isPressedDPADV == false) {
                 
                 prevCursor = nowCursor;
-                nowCursor = Mathf.Clamp(nowCursor - 2, 0, maxCnt);
+                nowCursor = Mathf.Clamp(nowCursor - 1, 0, maxCnt);
                 SET_CURSOR();
                 isPressedDPADV = true;
 
@@ -58,7 +60,7 @@ public class uisoMainMenu : MonoBehaviour
             if(isPressedDPADV == false) {
                 
                 prevCursor = nowCursor;
-                nowCursor = Mathf.Clamp(nowCursor + 2, 0, maxCnt);            
+                nowCursor = Mathf.Clamp(nowCursor + 1, 0, maxCnt);            
                 SET_CURSOR();
                 isPressedDPADV = true;
 
@@ -67,7 +69,7 @@ public class uisoMainMenu : MonoBehaviour
             if(isPressedDPADH == false) {
                 
                 prevCursor = nowCursor;
-                nowCursor = Mathf.Clamp(nowCursor - 1, 0, maxCnt);            
+                nowCursor = Mathf.Clamp(nowCursor - 3, -1, maxCnt);            
                 SET_CURSOR();
                 isPressedDPADH = true;
 
@@ -76,7 +78,11 @@ public class uisoMainMenu : MonoBehaviour
             if(isPressedDPADH == false) {
 
                 prevCursor = nowCursor;
-                nowCursor = Mathf.Clamp(nowCursor + 1, 0, maxCnt);     
+                if(nowCursor < 0) {
+                    nowCursor = 0;
+                }else {
+                    nowCursor = Mathf.Clamp(nowCursor + 3, 0, maxCnt);     
+                }
                 SET_CURSOR();
                 isPressedDPADH = true;
 
@@ -107,6 +113,10 @@ public class uisoMainMenu : MonoBehaviour
 
                         _mini.OnClickButton4FullScreen();
                     }
+
+                    if(nowCursor == -1) {
+                        Appmain.appimg.imgMainMenu.OnClickButton4Reflash();   
+                    }
                     break;
                 case XOBX_ONE_BUTTON.BUTTON_X:
                     {
@@ -128,6 +138,7 @@ public class uisoMainMenu : MonoBehaviour
             uisoITEM_VIDEO_MINI _mini = _now.GetComponent<uisoITEM_VIDEO_MINI>();
             _mini.SET_CURSOR(false);
         }
+
         if(nowCursor >= 0) {
             Transform _now = _gridMain.GetChild(nowCursor);
             uisoITEM_VIDEO_MINI _mini = _now.GetComponent<uisoITEM_VIDEO_MINI>();
@@ -136,6 +147,18 @@ public class uisoMainMenu : MonoBehaviour
             _center.CenterOn(_now);
             _mini.SET_CURSOR(true);
         }
+
+        if(nowCursor == -1) {
+            SET_CURSOR_REFLASH(true);
+        }else {
+            SET_CURSOR_REFLASH(false);
+        }
+    }
+
+
+    public void SET_CURSOR_REFLASH(bool ishow) {
+
+        NGUITools.SetActive(reflashButtonCursor, ishow);
 
     }
 
