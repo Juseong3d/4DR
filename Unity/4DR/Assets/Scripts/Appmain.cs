@@ -103,10 +103,9 @@ public class Appmain : MonoBehaviour {
 		}
 
 		Debug.Log("appStartTime : " + appStartTime);
-
 		Debug.Log("Screen Size :: " + Screen.width + "/" + Screen.height);		
-
 		Appmain.appnet.GET_UID();
+
 	}
 
 

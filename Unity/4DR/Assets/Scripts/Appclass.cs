@@ -40,10 +40,10 @@ public class APP_INFO {
 
 		version0 = "0";
 		version1 = "4";
-		version2 = "2";
+		version2 = "3";
 
 		appVersion = "V." + version0 + "." + version1 + "." + version2;
-		appVersion += ".2.ALPHA";
+		appVersion += ".ALPHA";
 #if _DIRECT_URL_
 		appVersion += ".D";
 #endif

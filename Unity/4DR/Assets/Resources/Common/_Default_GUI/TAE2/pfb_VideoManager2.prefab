@@ -1584,7 +1584,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -3949,7 +3949,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3000
+  startingRenderQueue: 3005
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -4944,7 +4944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3544318963862279805
 Transform:
   m_ObjectHideFlags: 0
@@ -5000,7 +5000,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3009
+  startingRenderQueue: 3014
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -5142,7 +5142,7 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _cameraCtl: {fileID: 0}
   _cameraShake: {fileID: 0}
-  _mediaMain: {fileID: 0}
+  _mpc: {fileID: 0}
   _videoInfo: {fileID: 0}
   _fdPlayerCTLUI: {fileID: 0}
   _commandes: []
@@ -5154,6 +5154,89 @@ MonoBehaviour:
   gameObjectPlayerInfoVs: {fileID: 0}
   gameObjectTAEScore: {fileID: 0}
   commanderReflashTime: 0
+  _lastLookAt:
+    _ori_command: 
+    index: 0
+    status: 0
+    cmd: 0
+    _x: 0
+    _y: 0
+    _pause_time: 0
+    _ori_zoom: 0
+    _zoom: 0
+    _prevChannel: 0
+    _channel_index: 0
+    _effect_index: 0
+    _effect_info:
+      index: 0
+      resources_path: 
+      pfb_name: 
+      etc: 
+    _str: 
+    _backcolor: 
+    _life_time: 0
+    _cameraShake_ud: 0
+    _cameraShake_lr: 0
+    _camera_amp: 0
+    _camera_freq: 0
+    _time_rewind: 0
+    _time_forward: 0
+    _isReplay: 0
+    _channel_time: 0
+    _speed: 0
+    statusCnt: 0
+    blud_playerindex: 0
+    red_playerindex: 0
+    round_index: 0
+    blueWinCnt: 0
+    redWinCnt: 0
+    nowStageCnt: 0
+    gameInfoIndex: 0
+    setScoreWho: 0
+    setScore: 0
+    vibratior_pattern: 
+  _lastSetLookAt:
+    _ori_command: 
+    index: 0
+    status: 0
+    cmd: 0
+    _x: 0
+    _y: 0
+    _pause_time: 0
+    _ori_zoom: 0
+    _zoom: 0
+    _prevChannel: 0
+    _channel_index: 0
+    _effect_index: 0
+    _effect_info:
+      index: 0
+      resources_path: 
+      pfb_name: 
+      etc: 
+    _str: 
+    _backcolor: 
+    _life_time: 0
+    _cameraShake_ud: 0
+    _cameraShake_lr: 0
+    _camera_amp: 0
+    _camera_freq: 0
+    _time_rewind: 0
+    _time_forward: 0
+    _isReplay: 0
+    _channel_time: 0
+    _speed: 0
+    statusCnt: 0
+    blud_playerindex: 0
+    red_playerindex: 0
+    round_index: 0
+    blueWinCnt: 0
+    redWinCnt: 0
+    nowStageCnt: 0
+    gameInfoIndex: 0
+    setScoreWho: 0
+    setScore: 0
+    vibratior_pattern: 
+  slowSpeed: 0
 --- !u!1 &4825171232540429394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5799,7 +5882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5238061402770174384
 Transform:
   m_ObjectHideFlags: 0
@@ -5858,7 +5941,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3011
+  startingRenderQueue: 3007
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -7909,7 +7992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7568389253214293358
 Transform:
   m_ObjectHideFlags: 0
@@ -8699,18 +8782,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 0
-  mWidth: 14
+  mWidth: 8
   mHeight: 24
   mDepth: 30
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.034313727
+  aspectRatio: 0.5833333
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11477304, guid: e9ee0a9adf0d4184f8131732430568b3, type: 3}
-  mText: '-'
+  mText: 
   mFontSize: 24
   mFontStyle: 0
   mAlignment: 0
